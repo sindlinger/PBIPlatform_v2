@@ -1,0 +1,35 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "1048cefdb040cdce33a1",
+  "position": {
+    "x": 0,
+    "y": 31.580736679704994,
+    "z": 33001,
+    "height": 33.0164795796513,
+    "width": 35.462144733699546,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "image",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "imageUrl": {
+              "expr": {
+                "ResourcePackageItem": {
+                  "PackageName": "RegisteredResources",
+                  "PackageType": 1,
+                  "ItemName": "6137755_calculate_calculator_m8594901545710901.png"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "parentGroupName": "e18de40065d535ac0847",
+  "howCreated": "InsertVisualButton"
+}

@@ -1,0 +1,81 @@
+table BridgePeritoEspecialidade
+	isHidden
+	lineageTag: 2bfb1277-f37d-4740-b070-fc298afdceda
+
+	column Especialidade
+		dataType: string
+		lineageTag: ac9e14b6-2e5c-4226-8e3c-b8827e9f654e
+		summarizeBy: none
+		sourceColumn: Especialidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column PeritoKey
+		dataType: string
+		isHidden
+		lineageTag: 4a04c16a-e045-4245-8df0-603123342f10
+		summarizeBy: none
+		sourceColumn: PeritoKey
+
+		annotation SummarizationSetBy = Automatic
+
+	partition BridgePeritoEspecialidade = m
+		mode: import
+		source =
+				let
+				    Source = FactPericias,
+				
+				    NormalizeLabel = (value as any) as nullable text =>
+				        let
+				            Base = fnNormalizeText(value),
+				            Trimmed = if Base = null then null else Text.Trim(Base),
+				            Canonical = if Trimmed = null or Trimmed = "" then null else Text.Proper(Text.Lower(Trimmed)),
+				            UpperValue = if Canonical = null then null else Text.Upper(Canonical)
+				        in
+				            if UpperValue = null or UpperValue = "" or UpperValue = "SEM INFO" then null
+				            else if Text.StartsWith(UpperValue, "SEM ") then UpperValue
+				            else Canonical,
+				
+				    BuildKey = (textValue as nullable text) as nullable text =>
+				        if textValue = null then
+				            null
+				        else
+				            let
+				                Upper = Text.Upper(textValue),
+				                KeptChars = Text.Select(Upper, List.Combine({{"A".."Z"}, {"0".."9"}, {" "}})),
+				                Parts = List.Select(Text.Split(Text.Trim(KeptChars), " "), each _ <> ""),
+				                Key = if List.Count(Parts) = 0 then null else Text.Combine(Parts, " ")
+				            in
+				                Key,
+				
+				    KeepColumns = Table.SelectColumns(Source, {"PeritoKey", "Especialidade"}, MissingField.UseNull),
+				    Cleaned = Table.TransformColumns(
+				        KeepColumns,
+				        {
+				            {"PeritoKey", each if _ = null then null else Text.Trim(Text.From(_)), type nullable text},
+				            {"Especialidade", each NormalizeLabel(_), type nullable text}
+				        }
+				    ),
+				    WithKey = Table.AddColumn(Cleaned, "EspecialidadeKey", each BuildKey([Especialidade]), type nullable text),
+				    RemoveNullOrBlank = Table.SelectRows(
+				        WithKey,
+				        each
+				            [PeritoKey] <> null
+				                and Text.Trim([PeritoKey]) <> ""
+				                and [EspecialidadeKey] <> null
+				                and Text.Trim([EspecialidadeKey]) <> ""
+				    ),
+				    Grouped = Table.Group(
+				        RemoveNullOrBlank,
+				        {"PeritoKey", "EspecialidadeKey"},
+				        {{"Especialidade", each List.Min(List.RemoveNulls([Especialidade])), type nullable text}}
+				    ),
+				    Result = Table.SelectColumns(Grouped, {"PeritoKey", "Especialidade"}),
+				    Sorted = Table.Sort(Result, {{"PeritoKey", Order.Ascending}, {"Especialidade", Order.Ascending}})
+				in
+				    Sorted
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Exception
+

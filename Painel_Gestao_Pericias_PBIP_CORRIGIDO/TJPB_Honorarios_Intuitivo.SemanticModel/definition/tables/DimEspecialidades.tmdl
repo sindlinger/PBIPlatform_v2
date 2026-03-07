@@ -1,0 +1,25 @@
+table DimEspecialidades
+	lineageTag: 6cd415ce-ffa5-4e2d-a0d7-0cef3b5c2c2e
+
+	column Especialidade
+		dataType: string
+		lineageTag: 4a10f6be-620a-497f-b624-77de52b72656
+		summarizeBy: none
+		sourceColumn: Especialidade
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimEspecialidades = calculated
+		mode: import
+		source =
+				DISTINCT (
+				    SELECTCOLUMNS (
+				        FILTER ( FactPericias, NOT ISBLANK ( FactPericias[Especialidade] ) ),
+				        "Especialidade", FactPericias[Especialidade]
+				    )
+				)
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Exception
+

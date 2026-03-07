@@ -1,0 +1,36 @@
+table People
+	isHidden
+	lineageTag: 88f53406-b3d6-46d9-aab2-c5dcf74a64ef
+
+	column Person
+		dataType: string
+		lineageTag: 1c4271e1-f87c-4ad5-9730-2868c9d894e0
+		summarizeBy: none
+		sourceColumn: Person
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: string
+		lineageTag: b9aa9d68-4ae8-4aa7-a4e0-99f328478f75
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	partition People = m
+		mode: import
+		source =
+				let
+				    Source = Table.SelectColumns(Orders, {"Region"}, MissingField.UseNull),
+				    #"Filtered" = Table.SelectRows(Source, each [Region] <> null and Text.Trim(Text.From([Region])) <> ""),
+				    #"Distinct Regions" = Table.Distinct(#"Filtered"),
+				    #"Added Person" = Table.AddColumn(#"Distinct Regions", "Person", each [Region], type text),
+				    #"Reordered" = Table.ReorderColumns(#"Added Person",{"Person","Region"})
+				in
+				    #"Reordered"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

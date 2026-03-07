@@ -1,0 +1,10 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
+  "name": "c53011ae822e9c542005",
+  "displayName": "Tooltip Comarca",
+  "displayOption": "FitToPage",
+  "height": 240,
+  "width": 320,
+  "visibility": "HiddenInViewMode",
+  "type": "Tooltip"
+}

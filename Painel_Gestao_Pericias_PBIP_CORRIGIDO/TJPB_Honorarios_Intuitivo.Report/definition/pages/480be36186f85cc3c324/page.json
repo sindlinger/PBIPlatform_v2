@@ -1,0 +1,14 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
+  "name": "480be36186f85cc3c324",
+  "displayName": "Tendência",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "pageBinding": {
+    "name": "f24af4b3b005f8611e2d",
+    "type": "Default",
+    "parameters": []
+  },
+  "visibility": "HiddenInViewMode"
+}

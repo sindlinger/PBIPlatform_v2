@@ -1,0 +1,50 @@
+table Returns
+	isHidden
+	lineageTag: 4b1b9cc0-57a5-4868-984c-eacd394a4a50
+
+	column Returned
+		dataType: string
+		lineageTag: 811c4a39-fb65-4432-85af-809ad2d2013a
+		summarizeBy: none
+		sourceColumn: Returned
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order ID'
+		dataType: string
+		lineageTag: be6e13b8-9910-406d-b3f5-558cb152a937
+		summarizeBy: none
+		sourceColumn: Order ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: string
+		lineageTag: b594b867-62bf-4e85-a3f3-3886bfd5da14
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Returns = m
+		mode: import
+		source =
+				let
+				    Source = Table.SelectColumns(FactPericias, {"NumeroPericia", "ComarcaExibicao", "StatusFluxo"}, MissingField.UseNull),
+				    #"Cleaned" = Table.TransformColumns(Source, {
+				        {"NumeroPericia", each if _ = null then null else Text.Trim(Text.From(_)), type nullable text},
+				        {"ComarcaExibicao", each if _ = null then null else Text.Trim(Text.From(_)), type nullable text},
+				        {"StatusFluxo", each if _ = null then null else Text.Trim(Text.From(_)), type nullable text}
+				    }),
+				    #"Filtered Pending" = Table.SelectRows(#"Cleaned", each [NumeroPericia] <> null and [NumeroPericia] <> "" and [StatusFluxo] <> "Com Adiantamento"),
+				    #"Distinct Orders" = Table.Distinct(Table.SelectColumns(#"Filtered Pending", {"NumeroPericia", "ComarcaExibicao"})),
+				    #"Renamed Columns" = Table.RenameColumns(#"Distinct Orders", {{"NumeroPericia", "Order ID"}, {"ComarcaExibicao", "Region"}}),
+				    #"Added Returned" = Table.AddColumn(#"Renamed Columns", "Returned", each "Yes", type text),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Added Returned", {"Returned", "Order ID", "Region"})
+				in
+				    #"Reordered Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

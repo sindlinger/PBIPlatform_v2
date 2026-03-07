@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "TJPB Honorários - Intuitivo"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "e4d098ad-5af8-4fc1-8cde-2778c43cbdd2"
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "bf8378b06049a1b99578",
+  "position": {
+    "x": 0,
+    "y": 26.931481724092752,
+    "z": 3000,
+    "height": 44.069697366697227,
+    "width": 150.55001915533015,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": {
+                      "propertyIdentifier": {
+                        "objectName": "values",
+                        "propertyName": "expr"
+                      },
+                      "selector": {
+                        "id": "Value"
+                      }
+                    },
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "fontSize": "18pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "expr": {
+              "expr": {
+                "Min": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "Subquery": {
+                          "Query": {
+                            "Version": 2,
+                            "From": [
+                              {
+                                "Name": "m",
+                                "Entity": "Measure",
+                                "Type": 0
+                              }
+                            ],
+                            "Select": [
+                              {
+                                "Measure": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "m"
+                                    }
+                                  },
+                                  "Property": "SMA Profit 2Y"
+                                },
+                                "Name": "Measure.SMA Profit 2Y"
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      "Property": "Measure.SMA Profit 2Y"
+                    }
+                  },
+                  "IncludeAllTypes": 1
+                },
+                "Annotations": {
+                  "NaturalLanguage": {
+                    "version": 1,
+                    "kind": "NaturalLanguage",
+                    "annotation": {
+                      "name": "Value",
+                      "utterance": "SMA profit 2Y"
+                    }
+                  }
+                }
+              }
+            },
+            "formatString": {
+              "expr": {
+                "Literal": {
+                  "Value": "'\\$#,0;(\\$#,0);\\$#,0'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "Value"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "parentGroupName": "d0616cf9c8693c3b8401"
+}

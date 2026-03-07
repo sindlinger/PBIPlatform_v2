@@ -1,0 +1,59 @@
+table ParametroMetrica
+	lineageTag: e2d96c4f-9ce8-4d1f-b4e6-4d4c9e3b2c7a
+
+	column 'Parametro Metrica'
+		dataType: string
+		lineageTag: c0f49010-a035-4aab-95dc-9ab167f7d9ea
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'ParametroMetrica Order'
+
+		relatedColumnDetails
+			groupByColumn: 'ParametroMetrica Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ParametroMetrica Fields'
+		dataType: string
+		isHidden
+		lineageTag: 83b86e7c-1095-4502-b6f0-164c29a8d5f4
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'ParametroMetrica Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ParametroMetrica Order'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 5df5e07b-fcf3-4af0-bbd3-1883042745ce
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ParametroMetrica = calculated
+		mode: import
+		source =
+				{
+				    ("Valor Arbitrado", NAMEOF('FactPericias'[Valor Arbitrado]), 0),
+				    ("Saldo a Receber", NAMEOF('FactPericias'[Saldo a Receber]), 1),
+				    ("Qtd Perícias", NAMEOF('FactPericias'[Qtd Perícias]), 2),
+				    ("Ticket Médio", NAMEOF('FactPericias'[Ticket Médio]), 3),
+				    ("Gasto Mensal", NAMEOF('Measure'[Gasto Mês Atual]), 4),
+				    ("Gasto Semanal", NAMEOF('Measure'[Gasto Semana Atual]), 5),
+				    ("Gasto Anual", NAMEOF('Measure'[Gasto Ano Atual]), 6),
+				    ("Variação Mensal %", NAMEOF('Measure'[Variação Mensal %]), 7),
+				    ("Variação Semanal %", NAMEOF('Measure'[Variação Semanal %]), 8),
+				    ("Variação Anual %", NAMEOF('Measure'[Variação Anual %]), 9)
+				}
+
+	annotation PBI_Id = 4f998330a5504bf2b7d95ae9ea4f8d11
+

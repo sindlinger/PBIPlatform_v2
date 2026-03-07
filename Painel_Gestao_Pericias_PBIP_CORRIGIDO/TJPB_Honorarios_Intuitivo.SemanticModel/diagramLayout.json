@@ -1,0 +1,87 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 225,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "nodeIndex": "Orders",
+          "nodeLineageTag": "114509ab-07c9-458f-a88d-f598bcaf825a",
+          "size": {
+            "height": 503,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 653,
+            "y": 270
+          },
+          "nodeIndex": "People",
+          "nodeLineageTag": "88f53406-b3d6-46d9-aab2-c5dcf74a64ef",
+          "size": {
+            "height": 190,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 299,
+            "y": 0
+          },
+          "nodeIndex": "Returns",
+          "nodeLineageTag": "4b1b9cc0-57a5-4868-984c-eacd394a4a50",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 910,
+            "y": 213
+          },
+          "nodeIndex": "Measure",
+          "nodeLineageTag": "c1ea8466-bd59-416d-b0f7-90c508f662c4",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 355.60000610351563,
+            "y": 282
+          },
+          "nodeIndex": "Date",
+          "nodeLineageTag": "45982ff9-04ee-474d-9f7c-7c40e6bde318",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 4
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

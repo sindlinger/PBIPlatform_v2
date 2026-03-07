@@ -1,0 +1,53 @@
+cultureInfo pt-BR
+
+	linguisticMetadata =
+			{
+			  "Version": "2.0.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "measure.count_orders_returned": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Count Orders Returned"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Returned": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.total_sales": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Total Sales"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Sales Returned": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    }
+			  }
+			}
+		contentType: json
+

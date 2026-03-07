@@ -1,0 +1,307 @@
+table Orders
+	lineageTag: 114509ab-07c9-458f-a88d-f598bcaf825a
+
+	column 'Row ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 683552d5-cb98-4896-bda5-7743bbedb711
+		summarizeBy: count
+		sourceColumn: Row ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order ID'
+		dataType: string
+		lineageTag: 15e4f061-a5ac-4abc-8597-105c381e70b5
+		summarizeBy: none
+		sourceColumn: Order ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order Date'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 115e7e89-9339-4bb5-b983-5938e292378d
+		summarizeBy: none
+		sourceColumn: Order Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Ship Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 1034e492-d32a-4191-bf4e-6e01772480bf
+		summarizeBy: none
+		sourceColumn: Ship Date
+
+		variation Variation
+			isDefault
+			relationship: a047fc17-17e5-455b-8936-37f501d354a5
+			defaultHierarchy: LocalDateTable_50a97398-b3df-49af-898a-e7b744eebdba.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Ship Mode'
+		dataType: string
+		lineageTag: fc651ffe-e780-46aa-b6d4-b6377089a3a1
+		summarizeBy: none
+		sourceColumn: Ship Mode
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer ID'
+		dataType: string
+		lineageTag: fb36bc25-801c-4f89-aaa7-df3668b21488
+		summarizeBy: none
+		sourceColumn: Customer ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer Name'
+		dataType: string
+		lineageTag: 7513d908-ae31-4da4-a6cb-2314550f3d3b
+		summarizeBy: none
+		sourceColumn: Customer Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Segment
+		dataType: string
+		lineageTag: c2ee048d-1a76-4a5f-9e61-40c7290adde3
+		summarizeBy: none
+		sourceColumn: Segment
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Postal Code'
+		dataType: int64
+		formatString: 0
+		lineageTag: d0af5507-0a75-4b50-8fd6-733b6350f0f9
+		summarizeBy: count
+		sourceColumn: Postal Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: d0431d6f-df80-4be2-af21-681608531758
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column State
+		dataType: string
+		lineageTag: b42f489f-d567-4323-995b-2e0efad41b38
+		summarizeBy: none
+		sourceColumn: State
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: bcddd654-6b2c-4a37-8221-932aeb3ae78a
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: string
+		lineageTag: 2c17103a-1816-4bdc-a76a-2dfb0faf366a
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column Market
+		dataType: string
+		lineageTag: 205e4023-e1c1-4592-9400-68e7a17684f0
+		summarizeBy: none
+		sourceColumn: Market
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product ID'
+		dataType: string
+		lineageTag: 968ed079-8410-40eb-a181-97993f95d5e0
+		summarizeBy: none
+		sourceColumn: Product ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: 8ccff477-7764-46d5-b562-bd0b986c76db
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sub-Category
+		dataType: string
+		lineageTag: a05ebe3b-38a9-431b-8c7d-4631dfd738f1
+		summarizeBy: none
+		sourceColumn: Sub-Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Name'
+		dataType: string
+		lineageTag: f3d91ad7-cf5f-4cf1-9693-30b893546971
+		summarizeBy: none
+		sourceColumn: Product Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sales
+		dataType: double
+		formatString: R$ #,0.00;(R$ #,0.00);R$ #,0.00
+		lineageTag: 66640e3b-e755-40d8-a3d5-3bb3bc440a5a
+		summarizeBy: sum
+		sourceColumn: Sales
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column Quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: 3c3e055c-b798-44fc-944b-0efa1c00ed55
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column Discount
+		dataType: double
+		lineageTag: 8cb1b54e-1959-4b2e-9f2c-af6538e07a65
+		summarizeBy: sum
+		sourceColumn: Discount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Profit
+		dataType: double
+		formatString: R$ #,0.00;(R$ #,0.00);R$ #,0.00
+		lineageTag: b4a69b04-870e-4a54-9860-a4875d9a7b68
+		summarizeBy: sum
+		sourceColumn: Profit
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column 'Shipping Cost'
+		dataType: double
+		lineageTag: 0d40dcf5-ed69-4905-98da-d7f947c1f27c
+		summarizeBy: sum
+		sourceColumn: Shipping Cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Order Priority'
+		dataType: string
+		lineageTag: 7194689e-3490-41e5-80fe-db55cda69ca3
+		summarizeBy: none
+		sourceColumn: Order Priority
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Orders = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\git\PBIPlatform\powerbi\tjpb\TJPB_Honorarios_Intuitivo\EstatisticasPeritos.xlsx"), null, true),
+				    Dados_Sheet = Source{[Item="Dados (Tabela)",Kind="Sheet"]}[Data],
+				    #"Skip Top Rows" = Table.Skip(Dados_Sheet, 2),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Skip Top Rows", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{
+				        {"DATA DA REQUISIÇÃO", type date},
+				        {"PROCESSO ADMIN. Nº", type text},
+				        {"JUÍZO", type text},
+				        {"COMARCA", type text},
+				        {"PROCESSO Nº", type text},
+				        {"PERITO", type text},
+				        {"CPF/CNJP", type text},
+				        {"ESPECIALIDADE", type text},
+				        {"ESPÉCIE DE PERÍCIA", type text},
+				        {"VALOR ARBITRADO", type number}
+				    }),
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each
+				        let
+				            p = if [PERITO] = null then "" else Text.Upper(Text.Trim(Text.From([PERITO]))),
+				            c = if [COMARCA] = null then "" else Text.Trim(Text.From([COMARCA])),
+				            j = if [JUÍZO] = null then "" else Text.Trim(Text.From([JUÍZO])),
+				            e = if [ESPECIALIDADE] = null then "" else Text.Trim(Text.From([ESPECIALIDADE]))
+				        in
+				            p <> ""
+				            and not List.Contains({"SEM PERITO","EM BRANCO","NOME|SEM PERITO"}, p)
+				            and c <> ""
+				            and j <> ""
+				            and e <> ""
+				            and [#"VALOR ARBITRADO"] <> null
+				            and [#"DATA DA REQUISIÇÃO"] <> null
+				        ),
+				    #"Added Index" = Table.AddIndexColumn(#"Filtered Rows", "Row ID", 1, 1, Int64.Type),
+				    #"Added Order ID" = Table.AddColumn(#"Added Index", "Order ID", each Text.From([#"Row ID"]), type text),
+				    #"Added Order Date" = Table.AddColumn(#"Added Order ID", "Order Date", each [#"DATA DA REQUISIÇÃO"], type date),
+				    #"Added Ship Date" = Table.AddColumn(#"Added Order Date", "Ship Date", each [#"DATA DA REQUISIÇÃO"], type date),
+				    #"Added Customer ID" = Table.AddColumn(#"Added Ship Date", "Customer ID", each if [#"CPF/CNJP"] = null then null else Text.From([#"CPF/CNJP"]), type text),
+				    #"Added Customer Name" = Table.AddColumn(#"Added Customer ID", "Customer Name", each [PERITO], type text),
+				    #"Added Segment" = Table.AddColumn(#"Added Customer Name", "Segment", each [#"ESPÉCIE DE PERÍCIA"], type text),
+				    #"Added Postal Code" = Table.AddColumn(#"Added Segment", "Postal Code", each null, Int64.Type),
+				    #"Added City" = Table.AddColumn(#"Added Postal Code", "City", each [JUÍZO], type text),
+				    #"Added State" = Table.AddColumn(#"Added City", "State", each
+				        let
+				            c0 = if [COMARCA] = null then null else Text.Trim(Text.From([COMARCA])),
+				            prefixes = {"Comarca de","Comarca da","Comarca do","Comarca das","Comarca dos"},
+				            seat = if c0 = null then null else
+				                List.Accumulate(prefixes, c0, (s, p) =>
+				                    if s <> null and Text.StartsWith(s, p, Comparer.OrdinalIgnoreCase) then Text.Trim(Text.Range(s, Text.Length(p))) else s
+				                )
+				        in
+				            seat,
+				        type text),
+				    #"Added Country" = Table.AddColumn(#"Added State", "Country", each "Brasil", type text),
+				    #"Added Region" = Table.AddColumn(#"Added Country", "Region", each [COMARCA], type text),
+				    #"Added Market" = Table.AddColumn(#"Added Region", "Market", each "TJPB", type text),
+				    #"Added Product ID" = Table.AddColumn(#"Added Market", "Product ID", each if [#"PROCESSO Nº"] = null then null else Text.From([#"PROCESSO Nº"]), type text),
+				    #"Added Category" = Table.AddColumn(#"Added Product ID", "Category", each [ESPECIALIDADE], type text),
+				    #"Added Sub-Category" = Table.AddColumn(#"Added Category", "Sub-Category", each [JUÍZO], type text),
+				    #"Added Product Name" = Table.AddColumn(#"Added Sub-Category", "Product Name", each [PERITO], type text),
+				    #"Added Sales" = Table.AddColumn(#"Added Product Name", "Sales", each [#"VALOR ARBITRADO"], type number),
+				    #"Added Quantity" = Table.AddColumn(#"Added Sales", "Quantity", each 1, Int64.Type),
+				    #"Added Discount" = Table.AddColumn(#"Added Quantity", "Discount", each 0, type number),
+				    #"Added Profit" = Table.AddColumn(#"Added Discount", "Profit", each [#"VALOR ARBITRADO"], type number),
+				    #"Added Shipping Cost" = Table.AddColumn(#"Added Profit", "Shipping Cost", each null, type number),
+				    #"Added Order Priority" = Table.AddColumn(#"Added Shipping Cost", "Order Priority", each null, type text),
+				    #"Added Ship Mode" = Table.AddColumn(#"Added Order Priority", "Ship Mode", each
+				        let v = [#"VALOR ARBITRADO"] in
+				        if v = null then null
+				        else if v < 300 then "Até R$ 300"
+				        else if v < 370 then "R$ 300 - 369"
+				        else if v < 450 then "R$ 370 - 449"
+				        else if v < 1000 then "R$ 450 - 999"
+				        else "R$ 1.000+",
+				        type text),
+				    #"Selected Columns" = Table.SelectColumns(#"Added Ship Mode",{"Row ID","Order ID","Order Date","Ship Date","Ship Mode","Customer ID","Customer Name","Segment","Postal Code","City","State","Country","Region","Market","Product ID","Category","Sub-Category","Product Name","Sales","Quantity","Discount","Profit","Shipping Cost","Order Priority"}),
+				    #"Final Types" = Table.TransformColumnTypes(#"Selected Columns",{{"Row ID", Int64.Type}, {"Order ID", type text}, {"Order Date", type date}, {"Ship Date", type date}, {"Ship Mode", type text}, {"Customer ID", type text}, {"Customer Name", type text}, {"Segment", type text}, {"Postal Code", Int64.Type}, {"City", type text}, {"State", type text}, {"Country", type text}, {"Region", type text}, {"Market", type text}, {"Product ID", type text}, {"Category", type text}, {"Sub-Category", type text}, {"Product Name", type text}, {"Sales", type number}, {"Quantity", Int64.Type}, {"Discount", type number}, {"Profit", type number}, {"Shipping Cost", type number}, {"Order Priority", type text}}),
+				    #"Replace Date Errors" = Table.ReplaceErrorValues(#"Final Types", {{"Order Date", null}, {"Ship Date", null}})
+
+				in
+				    #"Replace Date Errors"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

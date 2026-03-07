@@ -1,0 +1,126 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "b4bd3b8784ca7b06aa9a",
+  "position": {
+    "x": 17.378022910479423,
+    "y": 62.064367537426506,
+    "z": 3000,
+    "height": 40.9624825747015,
+    "width": 106.7507121643736,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": {
+                      "propertyIdentifier": {
+                        "objectName": "values",
+                        "propertyName": "expr"
+                      },
+                      "selector": {
+                        "id": "Value"
+                      }
+                    },
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "fontSize": "20pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "expr": {
+              "expr": {
+                "Min": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "Subquery": {
+                          "Query": {
+                            "Version": 2,
+                            "From": [
+                              {
+                                "Name": "m",
+                                "Entity": "Measure",
+                                "Type": 0
+                              }
+                            ],
+                            "Select": [
+                              {
+                                "Measure": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "m"
+                                    }
+                                  },
+                                  "Property": "Total Sales"
+                                },
+                                "Name": "Measure.Total Sales"
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      "Property": "Measure.Total Sales"
+                    }
+                  },
+                  "IncludeAllTypes": 1
+                },
+                "Annotations": {
+                  "NaturalLanguage": {
+                    "version": 1,
+                    "kind": "NaturalLanguage",
+                    "annotation": {
+                      "name": "Value",
+                      "utterance": "sum of total sales"
+                    }
+                  }
+                }
+              }
+            },
+            "formatString": {
+              "expr": {
+                "Literal": {
+                  "Value": "'\\$#,0;(\\$#,0);\\$#,0'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "Value"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "parentGroupName": "b08f93bb0866e5af89ad"
+}

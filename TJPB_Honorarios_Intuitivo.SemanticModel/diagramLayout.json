@@ -1,0 +1,217 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 225,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 2222.57120485447,
+            "y": 27.477892810742389
+          },
+          "nodeIndex": "Orders",
+          "nodeLineageTag": "114509ab-07c9-458f-a88d-f598bcaf825a",
+          "size": {
+            "height": 503,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 2875.57120485447,
+            "y": 297.47789281074239
+          },
+          "nodeIndex": "People",
+          "nodeLineageTag": "88f53406-b3d6-46d9-aab2-c5dcf74a64ef",
+          "size": {
+            "height": 190,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 2521.57120485447,
+            "y": 27.477892810742389
+          },
+          "nodeIndex": "Returns",
+          "nodeLineageTag": "4b1b9cc0-57a5-4868-984c-eacd394a4a50",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 3132.57120485447,
+            "y": 240.47789281074239
+          },
+          "nodeIndex": "Measure",
+          "nodeLineageTag": "c1ea8466-bd59-416d-b0f7-90c508f662c4",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 2578.1712109579857,
+            "y": 309.47789281074239
+          },
+          "nodeIndex": "Date",
+          "nodeLineageTag": "45982ff9-04ee-474d-9f7c-7c40e6bde318",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 902.57120485446978,
+            "y": 258.28176919971764
+          },
+          "nodeIndex": "BridgePeritoEspecialidade",
+          "nodeLineageTag": "2bfb1277-f37d-4740-b070-fc298afdceda",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": 355.95578562148478
+          },
+          "nodeIndex": "DimComarcas",
+          "nodeLineageTag": "baafbf6b-42ea-4f14-a501-43681f157dad",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 618.39139051789016,
+            "y": 396.07905630193926
+          },
+          "nodeIndex": "DimEspecialidades",
+          "nodeLineageTag": "6cd415ce-ffa5-4e2d-a0d7-0cef3b5c2c2e",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 618.42602001076148,
+            "y": 64.809154982593043
+          },
+          "nodeIndex": "DimPeritos",
+          "nodeLineageTag": "dc72f77e-13ec-40ca-b60e-de47e09470ae",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 131.56210984465429,
+            "y": -50
+          },
+          "nodeIndex": "DimVaras",
+          "nodeLineageTag": "7e7f68f1-506e-475b-9a84-0b1c531fe4a2",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1136.57120485447,
+            "y": 226.97789281074239
+          },
+          "nodeIndex": "ExcelPath",
+          "nodeLineageTag": "176a116f-16b1-42cc-a89e-ab2120316d88",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 334.18616029983286,
+            "y": 104.18054302775431
+          },
+          "nodeIndex": "FactPericias",
+          "nodeLineageTag": "5236453a-0009-44f5-95b4-6a46c5c9dc10",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1420.57120485447,
+            "y": 202.97789281074239
+          },
+          "nodeIndex": "ParametroDimensao",
+          "nodeLineageTag": "3e90672f-6a5f-47b7-a4fa-b0f1ab66dbcb",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1704.57120485447,
+            "y": 202.97789281074239
+          },
+          "nodeIndex": "ParametroMetrica",
+          "nodeLineageTag": "e2d96c4f-9ce8-4d1f-b4e6-4d4c9e3b2c7a",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1988.57120485447,
+            "y": 226.97789281074239
+          },
+          "nodeIndex": "SheetName",
+          "nodeLineageTag": "b556cf22-9be7-485f-8e99-9d4d398f10ce",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

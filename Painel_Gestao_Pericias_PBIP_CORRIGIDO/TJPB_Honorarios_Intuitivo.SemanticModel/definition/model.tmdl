@@ -1,0 +1,40 @@
+model Model
+	culture: pt-BR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["fnNormalizeText", "ExcelPath", "SheetName", "fnDigitsOnly", "FactPericias", "DimComarcas", "DimVaras", "DimPeritos", "DimEspecialidades", "BridgePeritoEspecialidade", "ParametroMetrica", "ParametroDimensao", "Orders", "People", "Returns"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table Orders
+ref table People
+ref table Returns
+ref table Measure
+ref table Date
+ref table ExcelPath
+ref table SheetName
+ref table FactPericias
+ref table DimComarcas
+ref table DimVaras
+ref table DimPeritos
+ref table DimEspecialidades
+ref table BridgePeritoEspecialidade
+ref table ParametroMetrica
+ref table ParametroDimensao
+ref table DateTableTemplate_8ff9e74c-731c-4700-bf21-0703618a663f
+ref table LocalDateTable_50a97398-b3df-49af-898a-e7b744eebdba
+ref table LocalDateTable_7ec24810-8abf-4aa6-91e1-c9fc064f5413
+ref table LocalDateTable_11d32690-e49b-42d4-8ed7-9f850e4a5e81
+ref table DateTableTemplate_a135b490-b7b3-48f1-a981-c83e52d2d408
+ref table LocalDateTable_80d6bfdd-4f21-4567-b3a6-8617d8845fde
+ref table LocalDateTable_76cc1d11-5866-4430-bacd-bf62edb5aae0
+ref table LocalDateTable_ee889c8e-afcf-4150-8321-4984f89ba935
+
+ref cultureInfo pt-BR
+ref cultureInfo en-US

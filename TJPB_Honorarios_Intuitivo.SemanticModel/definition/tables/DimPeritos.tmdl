@@ -1,0 +1,144 @@
+table DimPeritos
+	lineageTag: dc72f77e-13ec-40ca-b60e-de47e09470ae
+
+	column CpfCnpjMascarado
+		dataType: string
+		isHidden
+		lineageTag: f3ed2dc2-3c6e-4047-b465-4d3ba21a13ec
+		summarizeBy: none
+		sourceColumn: CpfCnpjMascarado
+
+		annotation SummarizationSetBy = Automatic
+
+	column PeritoKey
+		dataType: string
+		isHidden
+		lineageTag: 7a22bb31-5fd9-47fc-9d8e-30b82e600923
+		summarizeBy: none
+		sourceColumn: PeritoKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column PeritoNomeExibicao
+		dataType: string
+		isHidden
+		lineageTag: a1c452ce-d102-443b-8135-697aaef0d7f0
+		summarizeBy: none
+		sourceColumn: PeritoNomeExibicao
+
+		annotation SummarizationSetBy = Automatic
+
+	column PeritoLabel
+		dataType: string
+		lineageTag: 0ae5cb42-2437-47f7-b65d-050aa1f3d9a2
+		summarizeBy: none
+		sourceColumn: PeritoLabel
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimPeritos = m
+		mode: import
+		source =
+				let
+				    Source = FactPericias,
+				
+				    Keep =
+				        Table.SelectColumns(
+				            Source,
+				            {"PeritoKey", "PeritoNomeExibicao", "PeritoLabel", "CpfCnpjMascarado"},
+				            MissingField.UseNull
+				        ),
+				
+				    Clean =
+				        Table.TransformColumns(
+				            Keep,
+				            {
+				                {"PeritoKey", each if _ = null then null else Text.Trim(Text.From(_)), type nullable text},
+				                {"PeritoNomeExibicao", each if _ = null then null else Text.Trim(Text.From(_)), type nullable text},
+				                {"PeritoLabel", each if _ = null then null else Text.Trim(Text.From(_)), type nullable text},
+				                {"CpfCnpjMascarado", each if _ = null then null else Text.Trim(Text.From(_)), type nullable text}
+				            }
+				        ),
+				
+				    // Mantém apenas quem tem chave robusta
+				    NonBlank =
+				        Table.SelectRows(
+				            Clean,
+				            each [PeritoKey] <> null and [PeritoKey] <> ""
+				        ),
+				
+				    // Garante 1 linha por PeritoKey
+				    Grouped =
+				        Table.Group(
+				            NonBlank,
+				            {"PeritoKey"},
+				            {
+				                {"PeritoNomeExibicao", each List.First(List.RemoveNulls([PeritoNomeExibicao]), null), type nullable text},
+				                {"PeritoLabel", each List.First(List.RemoveNulls([PeritoLabel]), null), type nullable text},
+				                {"CpfCnpjMascarado", each List.First(List.RemoveNulls([CpfCnpjMascarado]), null), type nullable text}
+				            }
+				        ),
+				
+				    WithNameFallback =
+				        Table.TransformColumns(
+				            Grouped,
+				            {
+				                {
+				                    "PeritoNomeExibicao",
+				                    each
+				                        let
+				                            v = if _ = null then "" else Text.Trim(Text.From(_))
+				                        in
+				                            if v = "" then "SEM PERITO" else v,
+				                    type text
+				                }
+				            }
+				        ),
+				
+				    WithLabelFallback =
+				        Table.AddColumn(
+				            WithNameFallback,
+				            "PeritoLabelSafe",
+				            each
+				                let
+				                    nome = [PeritoNomeExibicao],
+				                    lbl = if [PeritoLabel] = null then "" else Text.Trim([PeritoLabel]),
+				                    doc = if [CpfCnpjMascarado] = null then "" else Text.Trim([CpfCnpjMascarado])
+				                in
+				                    if lbl <> "" then lbl
+				                    else if doc <> "" then nome & " (" & doc & ")"
+				                    else nome,
+				            type text
+				        ),
+				
+				    WithMaskedSafe =
+				        Table.AddColumn(
+				            WithLabelFallback,
+				            "CpfCnpjMascaradoSafe",
+				            each
+				                let
+				                    k = [PeritoKey]
+				                in
+				                    if k <> null and Text.StartsWith(k, "DOC|") then [CpfCnpjMascarado] else null,
+				            type nullable text
+				        ),
+				
+				    Result =
+				        Table.RenameColumns(
+				            Table.RemoveColumns(WithMaskedSafe, {"CpfCnpjMascarado", "PeritoLabel"}, MissingField.Ignore),
+				            {
+				                {"CpfCnpjMascaradoSafe", "CpfCnpjMascarado"},
+				                {"PeritoLabelSafe", "PeritoLabel"}
+				            }
+				        ),
+				
+				    FinalColumns = Table.SelectColumns(Result, {"PeritoKey", "PeritoNomeExibicao", "PeritoLabel", "CpfCnpjMascarado"}, MissingField.UseNull),
+				
+				    Sorted = Table.Sort(FinalColumns, {{"PeritoLabel", Order.Ascending}})
+				in
+				    Sorted
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Exception
+

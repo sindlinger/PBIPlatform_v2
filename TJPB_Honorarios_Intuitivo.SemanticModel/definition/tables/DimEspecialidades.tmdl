@@ -1,0 +1,55 @@
+table DimEspecialidades
+	lineageTag: 6cd415ce-ffa5-4e2d-a0d7-0cef3b5c2c2e
+
+	column Especialidade
+		dataType: string
+		lineageTag: 4a10f6be-620a-497f-b624-77de52b72656
+		summarizeBy: none
+		sourceColumn: Especialidade
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimEspecialidades = m
+		mode: import
+		source =
+				let
+				    Source = FactPericias,
+				
+				    NormalizeLabel = (value as any) as nullable text =>
+				        let
+				            Base = fnNormalizeText(value),
+				            Trimmed = if Base = null then null else Text.Trim(Base),
+				            Canonical = if Trimmed = null or Trimmed = "" then null else Text.Proper(Text.Lower(Trimmed)),
+				            UpperValue = if Canonical = null then null else Text.Upper(Canonical)
+				        in
+				            if UpperValue = null or UpperValue = "" or UpperValue = "SEM INFO" then null
+				            else if Text.StartsWith(UpperValue, "SEM ") then null
+				            else Canonical,
+				
+				    BuildKey = (textValue as nullable text) as nullable text =>
+				        if textValue = null then
+				            null
+				        else
+				            let
+				                Upper = Text.Upper(textValue),
+				                KeptChars = Text.Select(Upper, List.Combine({{"A".."Z"}, {"0".."9"}, {" "}})),
+				                Parts = List.Select(Text.Split(Text.Trim(KeptChars), " "), each _ <> ""),
+				                Key = if List.Count(Parts) = 0 then null else Text.Combine(Parts, " ")
+				            in
+				                Key,
+				
+				    KeepColumns = Table.SelectColumns(Source, {"Especialidade"}, MissingField.UseNull),
+				    Cleaned = Table.TransformColumns(KeepColumns, {{"Especialidade", each NormalizeLabel(_), type nullable text}}),
+				    WithKey = Table.AddColumn(Cleaned, "EspecialidadeKey", each BuildKey([Especialidade]), type nullable text),
+				    RemoveNullOrBlank = Table.SelectRows(WithKey, each [EspecialidadeKey] <> null and Text.Trim([EspecialidadeKey]) <> ""),
+				    Grouped = Table.Group(RemoveNullOrBlank, {"EspecialidadeKey"}, {{"Especialidade", each List.Min(List.RemoveNulls([Especialidade])), type nullable text}}),
+				    Result = Table.SelectColumns(Grouped, {"Especialidade"}),
+				    Sorted = Table.Sort(Result, {{"Especialidade", Order.Ascending}}),
+				    #"Valor Substituído" = Table.ReplaceValue(Sorted,"Medicina / Odontologia","Medicina / Odontologia",Replacer.ReplaceText,{"Especialidade"})
+				in
+				    #"Valor Substituído"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Exception
+

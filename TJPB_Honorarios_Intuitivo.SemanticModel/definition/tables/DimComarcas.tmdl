@@ -1,0 +1,68 @@
+table DimComarcas
+	lineageTag: baafbf6b-42ea-4f14-a501-43681f157dad
+
+	column Comarca
+		dataType: string
+		lineageTag: 33944230-9a8f-413c-812a-19b482e3dfbf
+		summarizeBy: none
+		sourceColumn: Comarca
+
+		annotation SummarizationSetBy = Automatic
+
+	column UF = "PB"
+		dataType: string
+		lineageTag: 4d4a8d49-1583-4c5f-8628-4da5389f29bc
+		summarizeBy: none
+
+		annotation SummarizationSetBy = User
+
+	column Pais = "Brasil"
+		dataType: string
+		lineageTag: 2584be90-e9b4-46a0-a4d3-bf541f3095f7
+		summarizeBy: none
+
+		annotation SummarizationSetBy = User
+
+	partition DimComarcas = m
+		mode: import
+		source =
+				let
+				    Source = FactPericias,
+				
+				    NormalizeLabel = (value as any) as nullable text =>
+				        let
+				            Base = fnNormalizeText(value),
+				            Trimmed = if Base = null then null else Text.Trim(Base),
+				            Canonical = if Trimmed = null or Trimmed = "" then null else Text.Proper(Text.Lower(Trimmed)),
+				            UpperValue = if Canonical = null then null else Text.Upper(Canonical)
+				        in
+				            if UpperValue = null or UpperValue = "" or UpperValue = "SEM INFO" then null
+				            else if Text.StartsWith(UpperValue, "SEM ") then null
+				            else Canonical,
+				
+				    BuildKey = (textValue as nullable text) as nullable text =>
+				        if textValue = null then
+				            null
+				        else
+				            let
+				                Upper = Text.Upper(textValue),
+				                KeptChars = Text.Select(Upper, List.Combine({{"A".."Z"}, {"0".."9"}, {" "}})),
+				                Parts = List.Select(Text.Split(Text.Trim(KeptChars), " "), each _ <> ""),
+				                Key = if List.Count(Parts) = 0 then null else Text.Combine(Parts, " ")
+				            in
+				                Key,
+				
+				    KeepColumns = Table.SelectColumns(Source, {"Comarca"}, MissingField.UseNull),
+				    Cleaned = Table.TransformColumns(KeepColumns, {{"Comarca", each NormalizeLabel(_), type nullable text}}),
+				    WithKey = Table.AddColumn(Cleaned, "ComarcaKey", each BuildKey([Comarca]), type nullable text),
+				    RemoveNullOrBlank = Table.SelectRows(WithKey, each [ComarcaKey] <> null and Text.Trim([ComarcaKey]) <> ""),
+				    Grouped = Table.Group(RemoveNullOrBlank, {"ComarcaKey"}, {{"Comarca", each List.Min(List.RemoveNulls([Comarca])), type nullable text}}),
+				    Result = Table.SelectColumns(Grouped, {"Comarca"}),
+				    Sorted = Table.Sort(Result, {{"Comarca", Order.Ascending}})
+				in
+				    Sorted
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Exception
+

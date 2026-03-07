@@ -1,0 +1,39 @@
+table DimComarcas
+	lineageTag: baafbf6b-42ea-4f14-a501-43681f157dad
+
+	column Comarca
+		dataType: string
+		lineageTag: 33944230-9a8f-413c-812a-19b482e3dfbf
+		summarizeBy: none
+		sourceColumn: Comarca
+
+		annotation SummarizationSetBy = Automatic
+
+	column UF = "PB"
+		dataType: string
+		lineageTag: 4d4a8d49-1583-4c5f-8628-4da5389f29bc
+		summarizeBy: none
+
+		annotation SummarizationSetBy = User
+
+	column Pais = "Brasil"
+		dataType: string
+		lineageTag: 2584be90-e9b4-46a0-a4d3-bf541f3095f7
+		summarizeBy: none
+
+		annotation SummarizationSetBy = User
+
+	partition DimComarcas = calculated
+		mode: import
+		source =
+				DISTINCT (
+				    SELECTCOLUMNS (
+				        FILTER ( FactPericias, NOT ISBLANK ( FactPericias[Comarca] ) ),
+				        "Comarca", FactPericias[Comarca]
+				    )
+				)
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Exception
+

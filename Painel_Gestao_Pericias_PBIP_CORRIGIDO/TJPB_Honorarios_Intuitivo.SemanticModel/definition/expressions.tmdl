@@ -1,0 +1,30 @@
+expression fnNormalizeText =
+		(t as nullable any) as text =>
+		let
+		    s0 = if t is null then "" else Text.From(t),
+		    s1 = Text.Replace(Text.Replace(s0, "#(lf)", " "), "#(cr)", " "),
+		    s2 = Text.Trim(Text.Clean(s1)),
+		    parts = List.Select(Text.Split(s2, " "), each _ <> ""),
+		    s3 = Text.Combine(parts, " ")
+		in
+		    if s3 = "" then "SEM INFO" else s3
+	lineageTag: b12fcb3c-d13a-48fd-82a7-e6480493fe52
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Function
+
+expression fnDigitsOnly =
+		(t as nullable any) as nullable text =>
+		let
+		    s0 = if t = null then "" else Text.From(t),
+		    d  = Text.Select(s0, {"0".."9"}),
+		    d2 = Text.Trim(d)
+		in
+		    if d2 = "" then null else d2
+	lineageTag: 13003b95-b222-4bdc-83e1-32b47e71ff7c
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Function
+
