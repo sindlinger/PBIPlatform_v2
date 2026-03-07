@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Orders"
+                      "Entity": "DimComarcas"
                     }
                   },
-                  "Property": "Segment"
+                  "Property": "Comarca"
                 }
               },
-              "queryRef": "Orders.Segment",
-              "nativeQueryRef": "Segment",
+              "queryRef": "DimComarcas.Comarca",
+              "nativeQueryRef": "Comarca",
               "active": true
             }
           ]
@@ -111,10 +111,10 @@
                       "Column": {
                         "Expression": {
                           "SourceRef": {
-                            "Entity": "Orders"
+                            "Entity": "DimComarcas"
                           }
                         },
-                        "Property": "Segment"
+                        "Property": "Comarca"
                       }
                     },
                     "Right": {
@@ -152,10 +152,10 @@
                       "Column": {
                         "Expression": {
                           "SourceRef": {
-                            "Entity": "Orders"
+                            "Entity": "DimComarcas"
                           }
                         },
-                        "Property": "Segment"
+                        "Property": "Comarca"
                       }
                     },
                     "Right": {
@@ -193,10 +193,10 @@
                       "Column": {
                         "Expression": {
                           "SourceRef": {
-                            "Entity": "Orders"
+                            "Entity": "DimComarcas"
                           }
                         },
-                        "Property": "Segment"
+                        "Property": "Comarca"
                       }
                     },
                     "Right": {

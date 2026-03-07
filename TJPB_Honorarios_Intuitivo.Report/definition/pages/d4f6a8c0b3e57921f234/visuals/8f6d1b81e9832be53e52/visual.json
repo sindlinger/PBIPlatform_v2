@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Orders"
+                      "Entity": "DimComarcas"
                     }
                   },
-                  "Property": "State Mapa"
+                  "Property": "Comarca"
                 }
               },
-              "queryRef": "Orders.State Mapa",
-              "nativeQueryRef": "State Mapa",
+              "queryRef": "DimComarcas.Comarca",
+              "nativeQueryRef": "Comarca",
               "format": "G"
             }
           ]

@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Orders"
+                      "Entity": "DimComarcas"
                     }
                   },
-                  "Property": "State"
+                  "Property": "Comarca"
                 }
               },
-              "queryRef": "Orders.State",
-              "nativeQueryRef": "State",
+              "queryRef": "DimComarcas.Comarca",
+              "nativeQueryRef": "Comarca",
               "active": true
             }
           ]
@@ -561,10 +561,10 @@
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "Orders"
+                "Entity": "DimComarcas"
               }
             },
-            "Property": "State"
+            "Property": "Comarca"
           }
         },
         "type": "TopN",
@@ -580,7 +580,7 @@
                     "From": [
                       {
                         "Name": "o",
-                        "Entity": "Orders",
+                        "Entity": "DimComarcas",
                         "Type": 0
                       }
                     ],
@@ -592,7 +592,7 @@
                               "Source": "o"
                             }
                           },
-                          "Property": "State"
+                          "Property": "Comarca"
                         },
                         "Name": "field"
                       }
@@ -625,7 +625,7 @@
             },
             {
               "Name": "o",
-              "Entity": "Orders",
+              "Entity": "DimComarcas",
               "Type": 0
             }
           ],
@@ -641,7 +641,7 @@
                             "Source": "o"
                           }
                         },
-                        "Property": "State"
+                        "Property": "Comarca"
                       }
                     }
                   ],

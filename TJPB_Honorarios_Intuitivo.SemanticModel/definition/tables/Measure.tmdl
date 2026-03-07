@@ -2,17 +2,17 @@ table Measure
 	isHidden
 	lineageTag: c1ea8466-bd59-416d-b0f7-90c508f662c4
 
-	measure 'Total Sales' = SUM(Orders[Sales])
+	measure 'Total Sales' = [Valor Arbitrado]
 		formatString: R$ #,0.00;(R$ #,0.00);R$ #,0.00
 		lineageTag: 564f4df6-5f04-49cb-baa0-d38f4662c55e
 
 		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
 
-	measure 'Units Sold' = SUM(Orders[Quantity])
+	measure 'Units Sold' = [Qtd Perícias]
 		formatString: 0
 		lineageTag: 4090e24e-4f98-4809-b237-cd8a49114349
 
-	measure 'Orders Total' = DISTINCTCOUNT(Orders[Order ID])
+	measure 'Orders Total' = [Peritos Distintos]
 		formatString: 0
 		lineageTag: 735061f6-2b07-4a7a-9f31-8f30178f2732
 
@@ -21,7 +21,7 @@ table Measure
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'Avg Daily Sales' = AVERAGEX(VALUES(Orders[Order Date]), [Total Sales])
+	measure 'Avg Daily Sales' = DIVIDE([Total Sales], DISTINCTCOUNT('Date'[Date]))
 		formatString: R$ #,0.###############;(R$ #,0.###############);R$ #,0.###############
 		lineageTag: 4304dc30-572e-487c-a7f9-8aa93b757a06
 
@@ -63,7 +63,7 @@ table Measure
 			```
 		lineageTag: 6e18fa24-d43c-494b-b952-2a8e7cb593bf
 
-	measure 'Avg Sales' = AVERAGE(Orders[Sales])
+	measure 'Avg Sales' = [Valor Médio por Perícia]
 		lineageTag: 30797419-53e9-4f5a-8556-1cbad935cbbb
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -114,27 +114,26 @@ table Measure
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure '% Sales Total' = DIVIDE([Total Sales], CALCULATE([Total Sales], ALL('Orders')))
+	measure '% Sales Total' = DIVIDE(
+		[Total Sales],
+		CALCULATE(
+			[Total Sales],
+			ALLSELECTED(DimComarcas),
+			ALLSELECTED(DimVaras),
+			ALLSELECTED(DimPeritos),
+			ALLSELECTED(DimEspecialidades)
+		)
+	)
 		formatString: 0.0%;-0.0%;0.0%
 		lineageTag: 8bb2f26e-68ae-4bf2-8650-314df3e2133c
 
-	measure '% Sales' =
-			
-			DIVIDE(
-			    SUM('Orders'[Sales]),
-			    CALCULATE(
-			        SUM('Orders'[Sales]),
-			        REMOVEFILTERS('Orders'),
-			        KEEPFILTERS(VALUES('Orders'[Country])),
-			        KEEPFILTERS(VALUES('Date'[Year]))
-			    )
-			)
+	measure '% Sales' = [% Sales Total]
 		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: ba407c7b-92fb-4d33-8230-f134833f16f4
 
 	measure 'Label City Sales %' = ```
 			
-			SELECTEDVALUE('Orders'[State]) & " | " &
+			SELECTEDVALUE(DimComarcas[Comarca], "Todas as comarcas") & " | " &
 			FORMAT([% Sales], "0%")
 			
 			```
@@ -143,7 +142,7 @@ table Measure
 	measure 'Label Bar City Sales %' =
 			
 			FORMAT([% Sales], "0%")  & " | " &
-			FORMAT(SUM(Orders[Sales]), "R$ #,##0")
+			FORMAT([Total Sales], "R$ #,##0")
 		lineageTag: db159ac3-8f7d-494d-a013-6c62302afd41
 
 	measure 'SMA Sales (N)' =
@@ -221,7 +220,7 @@ table Measure
 			```
 		lineageTag: 2804da70-6824-429a-99b2-faa72d84be7f
 
-	measure 'Total Profit' = SUM(Orders[Profit])
+	measure 'Total Profit' = [Saldo a Receber]
 		formatString: 0
 		lineageTag: 78557660-7de4-4c0c-9804-f5630b1918cd
 
