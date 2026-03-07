@@ -261,18 +261,13 @@
                       {
                         "Direction": 2,
                         "Expression": {
-                          "Aggregation": {
+                          "Measure": {
                             "Expression": {
-                              "Column": {
-                                "Expression": {
-                                  "SourceRef": {
-                                    "Source": "o"
-                                  }
-                                },
-                                "Property": "Sales"
+                              "SourceRef": {
+                                "Entity": "Measure"
                               }
                             },
-                            "Function": 0
+                            "Property": "Total Sales"
                           }
                         }
                       }
