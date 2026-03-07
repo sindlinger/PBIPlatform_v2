@@ -103,6 +103,14 @@ table Orders
 
 		annotation SummarizationSetBy = Automatic
 
+	column 'State Mapa'
+		dataType: string
+		lineageTag: d1e5a6f2-6d8c-4f7e-a982-8fc9f1207be3
+		summarizeBy: none
+		sourceColumn: State Mapa
+
+		annotation SummarizationSetBy = User
+
 	column Country
 		dataType: string
 		lineageTag: bcddd654-6b2c-4a37-8221-932aeb3ae78a
@@ -233,6 +241,23 @@ table Orders
 				        {"ComarcaExibicao", each if _ = null or Text.Trim(Text.From(_)) = "" then "SEM COMARCA" else Text.Trim(Text.From(_)), type text},
 				        {"EspecialidadeExibicao", each if _ = null or Text.Trim(Text.From(_)) = "" then "SEM ESPECIALIDADE" else Text.Trim(Text.From(_)), type text}
 				    }),
+				    NormalizeComarcaMapa = (value as any) as nullable text =>
+				        let
+				            Base = if value = null then null else Text.Trim(Text.From(value)),
+				            UpperBase = if Base = null then null else Text.Upper(Base),
+				            WithoutPrefix =
+				                if UpperBase = null then null
+				                else if Text.StartsWith(UpperBase, "COMARCA DE ") then Text.Trim(Text.Range(Base, Text.Length("Comarca de ")))
+				                else if Text.StartsWith(UpperBase, "COMARCA DA ") then Text.Trim(Text.Range(Base, Text.Length("Comarca da ")))
+				                else if Text.StartsWith(UpperBase, "COMARCA DO ") then Text.Trim(Text.Range(Base, Text.Length("Comarca do ")))
+				                else Base,
+				            WithoutUf1 = if WithoutPrefix = null then null else Text.Replace(WithoutPrefix, "/PB", ""),
+				            WithoutUf2 = if WithoutUf1 = null then null else Text.Replace(WithoutUf1, "- PB", ""),
+				            WithoutUf3 = if WithoutUf2 = null then null else Text.Replace(WithoutUf2, "(PB)", ""),
+				            Trimmed = if WithoutUf3 = null then null else Text.Trim(WithoutUf3),
+				            UpperTrimmed = if Trimmed = null then null else Text.Upper(Trimmed)
+				        in
+				            if UpperTrimmed = null or UpperTrimmed = "" or Text.StartsWith(UpperTrimmed, "SEM ") then null else Text.Proper(Text.Lower(Trimmed)),
 				    Filtered = Table.SelectRows(Clean, each [DataRequisicao] <> null and [ValorArbitrado] <> null),
 				    #"Added Index" = Table.AddIndexColumn(Filtered, "Row ID", 1, 1, Int64.Type),
 				    #"Added Order ID" = Table.AddColumn(#"Added Index", "Order ID", each if [NumeroPericia] <> null and [NumeroPericia] <> "" then [NumeroPericia] else Text.From([#"Row ID"]), type text),
@@ -245,7 +270,8 @@ table Orders
 				    #"Added Postal Code" = Table.AddColumn(#"Added Segment", "Postal Code", each null, Int64.Type),
 				    #"Added City" = Table.AddColumn(#"Added Postal Code", "City", each [JuizoExibicao], type text),
 				    #"Added State" = Table.AddColumn(#"Added City", "State", each [ComarcaExibicao], type text),
-				    #"Added Country" = Table.AddColumn(#"Added State", "Country", each "Brasil", type text),
+				    #"Added State Mapa" = Table.AddColumn(#"Added State", "State Mapa", each NormalizeComarcaMapa([ComarcaExibicao]), type nullable text),
+				    #"Added Country" = Table.AddColumn(#"Added State Mapa", "Country", each "Brasil", type text),
 				    #"Added Region" = Table.AddColumn(#"Added Country", "Region", each [ComarcaExibicao], type text),
 				    #"Added Market" = Table.AddColumn(#"Added Region", "Market", each "TJPB", type text),
 				    #"Added Product ID" = Table.AddColumn(#"Added Market", "Product ID", each [NumeroPericia], type text),
@@ -258,7 +284,7 @@ table Orders
 				    #"Added Profit" = Table.AddColumn(#"Added Discount", "Profit", each Number.From([SaldoCalculado]), type number),
 				    #"Added Shipping Cost" = Table.AddColumn(#"Added Profit", "Shipping Cost", each null, type number),
 				    #"Added Order Priority" = Table.AddColumn(#"Added Shipping Cost", "Order Priority", each [StatusFluxo], type text),
-				    #"Selected Columns" = Table.SelectColumns(#"Added Order Priority", {"Row ID", "Order ID", "Order Date", "Ship Date", "Ship Mode", "Customer ID", "Customer Name", "Segment", "Postal Code", "City", "State", "Country", "Region", "Market", "Product ID", "Category", "Sub-Category", "Product Name", "Sales", "Quantity", "Discount", "Profit", "Shipping Cost", "Order Priority"})
+				    #"Selected Columns" = Table.SelectColumns(#"Added Order Priority", {"Row ID", "Order ID", "Order Date", "Ship Date", "Ship Mode", "Customer ID", "Customer Name", "Segment", "Postal Code", "City", "State", "State Mapa", "Country", "Region", "Market", "Product ID", "Category", "Sub-Category", "Product Name", "Sales", "Quantity", "Discount", "Profit", "Shipping Cost", "Order Priority"})
 				in
 				    #"Selected Columns"
 

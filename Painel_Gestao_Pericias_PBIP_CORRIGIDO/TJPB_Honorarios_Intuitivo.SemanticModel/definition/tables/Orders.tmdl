@@ -103,6 +103,14 @@ table Orders
 
 		annotation SummarizationSetBy = Automatic
 
+	column 'State Mapa'
+		dataType: string
+		lineageTag: d1e5a6f2-6d8c-4f7e-a982-8fc9f1207be3
+		summarizeBy: none
+		sourceColumn: State Mapa
+
+		annotation SummarizationSetBy = User
+
 	column Country
 		dataType: string
 		lineageTag: bcddd654-6b2c-4a37-8221-932aeb3ae78a
@@ -218,63 +226,67 @@ table Orders
 
 		annotation SummarizationSetBy = Automatic
 
-	partition Orders = calculated
+	partition Orders = m
 		mode: import
 		source =
-				VAR Base =
-				    FILTER (
-				        FactPericias,
-				        NOT ISBLANK ( FactPericias[DataRequisicao] ) &&
-				        NOT ISBLANK ( FactPericias[ValorArbitrado] )
-				    )
-				RETURN
-				    SELECTCOLUMNS (
-				        Base,
-				        "Row ID", 1,
-				        "Order ID",
-				            COALESCE (
-				                FactPericias[NumeroPericia],
-				                FactPericias[ProcessoNumero],
-				                FactPericias[PeritoKey] & "|" & FORMAT ( FactPericias[DataRequisicao], "yyyymmdd" )
-				            ),
-				        "Order Date", FactPericias[DataRequisicao],
-				        "Ship Date", FactPericias[DataRequisicao],
-				        "Ship Mode",
-				            VAR v = FactPericias[ValorArbitrado]
-				            RETURN
-				                IF (
-				                    ISBLANK ( v ),
-				                    BLANK (),
-				                    IF (
-				                        v < 300,
-				                        "Até R$ 300",
-				                        IF (
-				                            v < 370,
-				                            "R$ 300 - 369",
-				                            IF ( v < 450, "R$ 370 - 449", IF ( v < 1000, "R$ 450 - 999", "R$ 1.000+" ) )
-				                        )
-				                    )
-				                ),
-				        "Customer ID", FactPericias[CpfCnpjDigits],
-				        "Customer Name", FactPericias[PeritoNomeExibicao],
-				        "Segment", FactPericias[EspeciePericia],
-				        "Postal Code", BLANK (),
-				        "City", FactPericias[JuizoExibicao],
-				        "State", FactPericias[ComarcaExibicao],
-				        "Country", "Brasil",
-				        "Region", FactPericias[ComarcaExibicao],
-				        "Market", "TJPB",
-				        "Product ID", FactPericias[NumeroPericia],
-				        "Category", FactPericias[EspecialidadeExibicao],
-				        "Sub-Category", FactPericias[JuizoExibicao],
-				        "Product Name", FactPericias[PeritoNomeExibicao],
-				        "Sales", FactPericias[ValorArbitrado],
-				        "Quantity", 1,
-				        "Discount", 0,
-				        "Profit", FactPericias[SaldoCalculado],
-				        "Shipping Cost", BLANK (),
-				        "Order Priority", FactPericias[StatusFluxo]
-				    )
+				let
+				    Source = FactPericias,
+				    Keep = Table.SelectColumns(Source, {"NumeroPericia", "DataRequisicao", "CpfCnpjDigits", "PeritoNomeExibicao", "EspeciePericia", "JuizoExibicao", "ComarcaExibicao", "EspecialidadeExibicao", "ValorArbitrado", "SaldoCalculado", "StatusFluxo"}, MissingField.UseNull),
+				    Clean = Table.TransformColumns(Keep, {
+				        {"NumeroPericia", each if _ = null then null else Text.Trim(Text.From(_)), type nullable text},
+				        {"CpfCnpjDigits", each if _ = null then null else Text.Trim(Text.From(_)), type nullable text},
+				        {"PeritoNomeExibicao", each if _ = null or Text.Trim(Text.From(_)) = "" then "SEM PERITO" else Text.Trim(Text.From(_)), type text},
+				        {"EspeciePericia", each if _ = null or Text.Trim(Text.From(_)) = "" then "SEM ESPÉCIE" else Text.Trim(Text.From(_)), type text},
+				        {"JuizoExibicao", each if _ = null or Text.Trim(Text.From(_)) = "" then "SEM JUÍZO" else Text.Trim(Text.From(_)), type text},
+				        {"ComarcaExibicao", each if _ = null or Text.Trim(Text.From(_)) = "" then "SEM COMARCA" else Text.Trim(Text.From(_)), type text},
+				        {"EspecialidadeExibicao", each if _ = null or Text.Trim(Text.From(_)) = "" then "SEM ESPECIALIDADE" else Text.Trim(Text.From(_)), type text}
+				    }),
+				    NormalizeComarcaMapa = (value as any) as nullable text =>
+				        let
+				            Base = if value = null then null else Text.Trim(Text.From(value)),
+				            UpperBase = if Base = null then null else Text.Upper(Base),
+				            WithoutPrefix =
+				                if UpperBase = null then null
+				                else if Text.StartsWith(UpperBase, "COMARCA DE ") then Text.Trim(Text.Range(Base, Text.Length("Comarca de ")))
+				                else if Text.StartsWith(UpperBase, "COMARCA DA ") then Text.Trim(Text.Range(Base, Text.Length("Comarca da ")))
+				                else if Text.StartsWith(UpperBase, "COMARCA DO ") then Text.Trim(Text.Range(Base, Text.Length("Comarca do ")))
+				                else Base,
+				            WithoutUf1 = if WithoutPrefix = null then null else Text.Replace(WithoutPrefix, "/PB", ""),
+				            WithoutUf2 = if WithoutUf1 = null then null else Text.Replace(WithoutUf1, "- PB", ""),
+				            WithoutUf3 = if WithoutUf2 = null then null else Text.Replace(WithoutUf2, "(PB)", ""),
+				            Trimmed = if WithoutUf3 = null then null else Text.Trim(WithoutUf3),
+				            UpperTrimmed = if Trimmed = null then null else Text.Upper(Trimmed)
+				        in
+				            if UpperTrimmed = null or UpperTrimmed = "" or Text.StartsWith(UpperTrimmed, "SEM ") then null else Text.Proper(Text.Lower(Trimmed)),
+				    Filtered = Table.SelectRows(Clean, each [DataRequisicao] <> null and [ValorArbitrado] <> null),
+				    #"Added Index" = Table.AddIndexColumn(Filtered, "Row ID", 1, 1, Int64.Type),
+				    #"Added Order ID" = Table.AddColumn(#"Added Index", "Order ID", each if [NumeroPericia] <> null and [NumeroPericia] <> "" then [NumeroPericia] else Text.From([#"Row ID"]), type text),
+				    #"Added Order Date" = Table.AddColumn(#"Added Order ID", "Order Date", each Date.From([DataRequisicao]), type date),
+				    #"Added Ship Date" = Table.AddColumn(#"Added Order Date", "Ship Date", each Date.From([DataRequisicao]), type date),
+				    #"Added Ship Mode" = Table.AddColumn(#"Added Ship Date", "Ship Mode", each let v = [ValorArbitrado] in if v = null then null else if v < 300 then "Até R$ 300" else if v < 370 then "R$ 300 - 369" else if v < 450 then "R$ 370 - 449" else if v < 1000 then "R$ 450 - 999" else "R$ 1.000+", type text),
+				    #"Added Customer ID" = Table.AddColumn(#"Added Ship Mode", "Customer ID", each [CpfCnpjDigits], type text),
+				    #"Added Customer Name" = Table.AddColumn(#"Added Customer ID", "Customer Name", each [PeritoNomeExibicao], type text),
+				    #"Added Segment" = Table.AddColumn(#"Added Customer Name", "Segment", each [EspeciePericia], type text),
+				    #"Added Postal Code" = Table.AddColumn(#"Added Segment", "Postal Code", each null, Int64.Type),
+				    #"Added City" = Table.AddColumn(#"Added Postal Code", "City", each [JuizoExibicao], type text),
+				    #"Added State" = Table.AddColumn(#"Added City", "State", each [ComarcaExibicao], type text),
+				    #"Added State Mapa" = Table.AddColumn(#"Added State", "State Mapa", each NormalizeComarcaMapa([ComarcaExibicao]), type nullable text),
+				    #"Added Country" = Table.AddColumn(#"Added State Mapa", "Country", each "Brasil", type text),
+				    #"Added Region" = Table.AddColumn(#"Added Country", "Region", each [ComarcaExibicao], type text),
+				    #"Added Market" = Table.AddColumn(#"Added Region", "Market", each "TJPB", type text),
+				    #"Added Product ID" = Table.AddColumn(#"Added Market", "Product ID", each [NumeroPericia], type text),
+				    #"Added Category" = Table.AddColumn(#"Added Product ID", "Category", each [EspecialidadeExibicao], type text),
+				    #"Added Sub-Category" = Table.AddColumn(#"Added Category", "Sub-Category", each [JuizoExibicao], type text),
+				    #"Added Product Name" = Table.AddColumn(#"Added Sub-Category", "Product Name", each [PeritoNomeExibicao], type text),
+				    #"Added Sales" = Table.AddColumn(#"Added Product Name", "Sales", each Number.From([ValorArbitrado]), type number),
+				    #"Added Quantity" = Table.AddColumn(#"Added Sales", "Quantity", each 1, Int64.Type),
+				    #"Added Discount" = Table.AddColumn(#"Added Quantity", "Discount", each 0, type number),
+				    #"Added Profit" = Table.AddColumn(#"Added Discount", "Profit", each Number.From([SaldoCalculado]), type number),
+				    #"Added Shipping Cost" = Table.AddColumn(#"Added Profit", "Shipping Cost", each null, type number),
+				    #"Added Order Priority" = Table.AddColumn(#"Added Shipping Cost", "Order Priority", each [StatusFluxo], type text),
+				    #"Selected Columns" = Table.SelectColumns(#"Added Order Priority", {"Row ID", "Order ID", "Order Date", "Ship Date", "Ship Mode", "Customer ID", "Customer Name", "Segment", "Postal Code", "City", "State", "State Mapa", "Country", "Region", "Market", "Product ID", "Category", "Sub-Category", "Product Name", "Sales", "Quantity", "Discount", "Profit", "Shipping Cost", "Order Priority"})
+				in
+				    #"Selected Columns"
 
 	annotation PBI_NavigationStepName = Navigation
 

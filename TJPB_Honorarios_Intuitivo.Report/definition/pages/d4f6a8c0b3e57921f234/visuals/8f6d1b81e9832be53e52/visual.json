@@ -23,11 +23,11 @@
                       "Entity": "Orders"
                     }
                   },
-                  "Property": "State"
+                  "Property": "State Mapa"
                 }
               },
-              "queryRef": "Orders.State",
-              "nativeQueryRef": "State",
+              "queryRef": "Orders.State Mapa",
+              "nativeQueryRef": "State Mapa",
               "format": "G"
             }
           ]
@@ -90,10 +90,7 @@
                 }
               }
             },
-            "showAllDataPoints": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
+            "showAllDataPoints": {"expr": {"Literal": {"Value": "true"
                 }
               }
             }
