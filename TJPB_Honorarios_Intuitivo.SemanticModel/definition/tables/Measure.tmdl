@@ -114,16 +114,7 @@ table Measure
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure '% Sales Total' = DIVIDE(
-		[Total Sales],
-		CALCULATE(
-			[Total Sales],
-			ALLSELECTED(DimComarcas),
-			ALLSELECTED(DimVaras),
-			ALLSELECTED(DimPeritos),
-			ALLSELECTED(DimEspecialidades)
-		)
-	)
+	measure '% Sales Total' = DIVIDE([Total Sales], CALCULATE([Total Sales], ALLSELECTED(DimComarcas), ALLSELECTED(DimVaras), ALLSELECTED(DimPeritos), ALLSELECTED(DimEspecialidades)))
 		formatString: 0.0%;-0.0%;0.0%
 		lineageTag: 8bb2f26e-68ae-4bf2-8650-314df3e2133c
 
@@ -139,10 +130,7 @@ table Measure
 			```
 		lineageTag: 86e5eaa3-9bde-4aa6-b6ae-5ba13a6de0f4
 
-	measure 'Label Bar City Sales %' =
-			
-			FORMAT([% Sales], "0%")  & " | " &
-			FORMAT([Total Sales], "R$ #,##0")
+	measure 'Label Bar City Sales %' = FORMAT([% Sales], "0%")  & " | " & FORMAT([Total Sales], "R$ #,##0")
 		lineageTag: db159ac3-8f7d-494d-a013-6c62302afd41
 
 	measure 'SMA Sales (N)' =
