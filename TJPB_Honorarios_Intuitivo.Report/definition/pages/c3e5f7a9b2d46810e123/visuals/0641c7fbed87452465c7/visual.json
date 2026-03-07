@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Orders"
+                      "Entity": "DimPeritos"
                     }
                   },
-                  "Property": "Ship Mode"
+                  "Property": "PeritoLabel"
                 }
               },
-              "queryRef": "Orders.Ship Mode",
-              "nativeQueryRef": "Ship Mode",
+              "queryRef": "DimPeritos.PeritoLabel",
+              "nativeQueryRef": "PeritoLabel",
               "active": true
             }
           ]
@@ -111,10 +111,10 @@
                       "Column": {
                         "Expression": {
                           "SourceRef": {
-                            "Entity": "Orders"
+                            "Entity": "DimPeritos"
                           }
                         },
-                        "Property": "Ship Mode"
+                        "Property": "PeritoLabel"
                       }
                     },
                     "Right": {
@@ -152,10 +152,10 @@
                       "Column": {
                         "Expression": {
                           "SourceRef": {
-                            "Entity": "Orders"
+                            "Entity": "DimPeritos"
                           }
                         },
-                        "Property": "Ship Mode"
+                        "Property": "PeritoLabel"
                       }
                     },
                     "Right": {
@@ -193,10 +193,10 @@
                       "Column": {
                         "Expression": {
                           "SourceRef": {
-                            "Entity": "Orders"
+                            "Entity": "DimPeritos"
                           }
                         },
-                        "Property": "Ship Mode"
+                        "Property": "PeritoLabel"
                       }
                     },
                     "Right": {
@@ -234,10 +234,10 @@
                       "Column": {
                         "Expression": {
                           "SourceRef": {
-                            "Entity": "Orders"
+                            "Entity": "DimPeritos"
                           }
                         },
-                        "Property": "Ship Mode"
+                        "Property": "PeritoLabel"
                       }
                     },
                     "Right": {

@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Orders"
+                      "Entity": "DimEspecialidades"
                     }
                   },
-                  "Property": "Ship Mode"
+                  "Property": "Especialidade"
                 }
               },
-              "queryRef": "Orders.Ship Mode",
-              "nativeQueryRef": "Ship Mode",
+              "queryRef": "DimEspecialidades.Especialidade",
+              "nativeQueryRef": "Especialidade",
               "active": true
             }
           ]
@@ -111,10 +111,10 @@
                       "Column": {
                         "Expression": {
                           "SourceRef": {
-                            "Entity": "Orders"
+                            "Entity": "DimEspecialidades"
                           }
                         },
-                        "Property": "Ship Mode"
+                        "Property": "Especialidade"
                       }
                     },
                     "Right": {
@@ -152,10 +152,10 @@
                       "Column": {
                         "Expression": {
                           "SourceRef": {
-                            "Entity": "Orders"
+                            "Entity": "DimEspecialidades"
                           }
                         },
-                        "Property": "Ship Mode"
+                        "Property": "Especialidade"
                       }
                     },
                     "Right": {
@@ -193,10 +193,10 @@
                       "Column": {
                         "Expression": {
                           "SourceRef": {
-                            "Entity": "Orders"
+                            "Entity": "DimEspecialidades"
                           }
                         },
-                        "Property": "Ship Mode"
+                        "Property": "Especialidade"
                       }
                     },
                     "Right": {
@@ -234,10 +234,10 @@
                       "Column": {
                         "Expression": {
                           "SourceRef": {
-                            "Entity": "Orders"
+                            "Entity": "DimEspecialidades"
                           }
                         },
-                        "Property": "Ship Mode"
+                        "Property": "Especialidade"
                       }
                     },
                     "Right": {

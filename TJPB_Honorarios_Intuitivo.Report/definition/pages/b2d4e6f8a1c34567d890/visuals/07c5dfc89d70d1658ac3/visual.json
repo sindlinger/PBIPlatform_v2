@@ -130,17 +130,17 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "Orders"
+                          "Entity": "FactPericias"
                         }
                       },
-                      "Property": "Gasto Semana Atual"
+                      "Property": "ValorArbitrado"
                     }
                   },
                   "Function": 0
                 }
               },
-              "queryRef": "Measure.Gasto Semana Atual",
-              "nativeQueryRef": "Gasto Semana Atual"
+              "queryRef": "Sum(FactPericias.ValorArbitrado)",
+              "nativeQueryRef": "Sum of ValorArbitrado"
             }
           ]
         }
@@ -260,7 +260,7 @@
             }
           },
           "selector": {
-            "metadata": "Measure.Gasto Semana Atual",
+            "metadata": "Sum(FactPericias.ValorArbitrado)",
             "id": "1"
           }
         }
@@ -347,7 +347,7 @@
             }
           },
           "selector": {
-            "metadata": "Measure.Gasto Semana Atual"
+            "metadata": "Sum(FactPericias.ValorArbitrado)"
           }
         }
       ],
@@ -391,7 +391,7 @@
             }
           },
           "selector": {
-            "metadata": "Measure.Gasto Semana Atual"
+            "metadata": "Sum(FactPericias.ValorArbitrado)"
           }
         },
         {
@@ -424,7 +424,7 @@
                 }
               }
             ],
-            "metadata": "Measure.Gasto Semana Atual",
+            "metadata": "Sum(FactPericias.ValorArbitrado)",
             "highlightMatching": 1
           }
         }

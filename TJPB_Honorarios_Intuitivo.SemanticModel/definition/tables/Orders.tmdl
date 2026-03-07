@@ -103,14 +103,6 @@ table Orders
 
 		annotation SummarizationSetBy = Automatic
 
-	column 'State Mapa'
-		dataType: string
-		lineageTag: d1e5a6f2-6d8c-4f7e-a982-8fc9f1207be3
-		summarizeBy: none
-		sourceColumn: State Mapa
-
-		annotation SummarizationSetBy = User
-
 	column Country
 		dataType: string
 		lineageTag: bcddd654-6b2c-4a37-8221-932aeb3ae78a
@@ -225,6 +217,14 @@ table Orders
 		sourceColumn: Order Priority
 
 		annotation SummarizationSetBy = Automatic
+
+	column 'State Mapa'
+		dataType: string
+		lineageTag: d1e5a6f2-6d8c-4f7e-a982-8fc9f1207be3
+		summarizeBy: none
+		sourceColumn: State Mapa
+
+		annotation SummarizationSetBy = User
 
 	partition Orders = m
 		mode: import

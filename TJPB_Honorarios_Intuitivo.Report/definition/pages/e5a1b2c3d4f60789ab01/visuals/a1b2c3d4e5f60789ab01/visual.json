@@ -4,10 +4,10 @@
   "position": {
     "x": 868,
     "y": 420,
-    "z": 9000,
+    "z": 11000,
     "height": 225,
     "width": 185,
-    "tabOrder": 8100
+    "tabOrder": 10000
   },
   "visual": {
     "visualType": "shapeMap",
@@ -90,7 +90,10 @@
                 }
               }
             },
-            "showAllDataPoints": {"expr": {"Literal": {"Value": "true"
+            "showAllDataPoints": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }

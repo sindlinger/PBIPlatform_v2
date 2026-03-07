@@ -130,17 +130,17 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "Orders"
+                          "Entity": "FactPericias"
                         }
                       },
-                      "Property": "Sales"
+                      "Property": "ValorArbitrado"
                     }
                   },
                   "Function": 0
                 }
               },
-              "queryRef": "Sum(Orders.Sales)",
-              "nativeQueryRef": "Sum of Sales"
+              "queryRef": "Sum(FactPericias.ValorArbitrado)",
+              "nativeQueryRef": "Sum of ValorArbitrado"
             }
           ]
         }
@@ -260,7 +260,7 @@
             }
           },
           "selector": {
-            "metadata": "Sum(Orders.Sales)",
+            "metadata": "Sum(FactPericias.ValorArbitrado)",
             "id": "1"
           }
         }
@@ -347,7 +347,7 @@
             }
           },
           "selector": {
-            "metadata": "Sum(Orders.Sales)"
+            "metadata": "Sum(FactPericias.ValorArbitrado)"
           }
         }
       ],
@@ -391,7 +391,7 @@
             }
           },
           "selector": {
-            "metadata": "Sum(Orders.Sales)"
+            "metadata": "Sum(FactPericias.ValorArbitrado)"
           }
         },
         {
@@ -424,7 +424,7 @@
                 }
               }
             ],
-            "metadata": "Sum(Orders.Sales)",
+            "metadata": "Sum(FactPericias.ValorArbitrado)",
             "highlightMatching": 1
           }
         }

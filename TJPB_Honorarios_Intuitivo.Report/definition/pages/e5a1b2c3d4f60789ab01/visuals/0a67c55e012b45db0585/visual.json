@@ -4,10 +4,10 @@
   "position": {
     "x": 539.00462962962968,
     "y": 473.33333333333337,
-    "z": 20000,
+    "z": 21000,
     "height": 185,
     "width": 269.16666666666669,
-    "tabOrder": 23000
+    "tabOrder": 25000
   },
   "visualGroup": {
     "displayName": "Segment",

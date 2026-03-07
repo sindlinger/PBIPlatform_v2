@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Orders"
+                      "Entity": "DimPeritos"
                     }
                   },
-                  "Property": "Product Name"
+                  "Property": "PeritoLabel"
                 }
               },
-              "queryRef": "Orders.Product Name",
-              "nativeQueryRef": "Product Name",
+              "queryRef": "DimPeritos.PeritoLabel",
+              "nativeQueryRef": "PeritoLabel",
               "active": true
             }
           ]
@@ -201,10 +201,10 @@
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "Orders"
+                "Entity": "DimPeritos"
               }
             },
-            "Property": "Product Name"
+            "Property": "PeritoLabel"
           }
         },
         "type": "TopN",
@@ -220,7 +220,7 @@
                     "From": [
                       {
                         "Name": "o",
-                        "Entity": "Orders",
+                        "Entity": "DimPeritos",
                         "Type": 0
                       }
                     ],
@@ -232,7 +232,7 @@
                               "Source": "o"
                             }
                           },
-                          "Property": "Product Name"
+                          "Property": "PeritoLabel"
                         },
                         "Name": "field"
                       }
@@ -265,7 +265,7 @@
             },
             {
               "Name": "o",
-              "Entity": "Orders",
+              "Entity": "DimPeritos",
               "Type": 0
             }
           ],
@@ -281,7 +281,7 @@
                             "Source": "o"
                           }
                         },
-                        "Property": "Product Name"
+                        "Property": "PeritoLabel"
                       }
                     }
                   ],

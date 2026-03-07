@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Orders"
+                      "Entity": "DimEspecialidades"
                     }
                   },
-                  "Property": "Product Name"
+                  "Property": "Especialidade"
                 }
               },
-              "queryRef": "Orders.Product Name",
-              "nativeQueryRef": "Product Name",
+              "queryRef": "DimEspecialidades.Especialidade",
+              "nativeQueryRef": "Especialidade",
               "active": true
             }
           ]
@@ -201,10 +201,10 @@
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "Orders"
+                "Entity": "DimEspecialidades"
               }
             },
-            "Property": "Product Name"
+            "Property": "Especialidade"
           }
         },
         "type": "TopN",
@@ -220,7 +220,7 @@
                     "From": [
                       {
                         "Name": "o",
-                        "Entity": "Orders",
+                        "Entity": "DimEspecialidades",
                         "Type": 0
                       }
                     ],
@@ -232,7 +232,7 @@
                               "Source": "o"
                             }
                           },
-                          "Property": "Product Name"
+                          "Property": "Especialidade"
                         },
                         "Name": "field"
                       }
@@ -265,7 +265,7 @@
             },
             {
               "Name": "o",
-              "Entity": "Orders",
+              "Entity": "DimEspecialidades",
               "Type": 0
             }
           ],
@@ -281,7 +281,7 @@
                             "Source": "o"
                           }
                         },
-                        "Property": "Product Name"
+                        "Property": "Especialidade"
                       }
                     }
                   ],
