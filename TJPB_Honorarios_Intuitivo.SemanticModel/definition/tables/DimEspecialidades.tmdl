@@ -31,7 +31,7 @@ table DimEspecialidades
 				            null
 				        else
 				            let
-				                Upper = Text.Upper(textValue),
+				                Upper = Text.Upper(Text.RemoveDiacritics(textValue)),
 				                KeptChars = Text.Select(Upper, List.Combine({{"A".."Z"}, {"0".."9"}, {" "}})),
 				                Parts = List.Select(Text.Split(Text.Trim(KeptChars), " "), each _ <> ""),
 				                Key = if List.Count(Parts) = 0 then null else Text.Combine(Parts, " ")
@@ -44,12 +44,12 @@ table DimEspecialidades
 				    RemoveNullOrBlank = Table.SelectRows(WithKey, each [EspecialidadeKey] <> null and Text.Trim([EspecialidadeKey]) <> ""),
 				    Grouped = Table.Group(RemoveNullOrBlank, {"EspecialidadeKey"}, {{"Especialidade", each List.Min(List.RemoveNulls([Especialidade])), type nullable text}}),
 				    Result = Table.SelectColumns(Grouped, {"Especialidade"}),
-				    Sorted = Table.Sort(Result, {{"Especialidade", Order.Ascending}}),
-				    #"Valor Substituído" = Table.ReplaceValue(Sorted,"Medicina / Odontologia","Medicina / Odontologia",Replacer.ReplaceText,{"Especialidade"})
+				    DistinctEspecialidades = Table.Distinct(Result, {"Especialidade"}),
+				    Sorted = Table.Sort(DistinctEspecialidades, {{"Especialidade", Order.Ascending}})
 				in
-				    #"Valor Substituído"
+				    Sorted
 
 	annotation PBI_NavigationStepName = Navegação
 
-	annotation PBI_ResultType = Exception
+	annotation PBI_ResultType = Table
 
