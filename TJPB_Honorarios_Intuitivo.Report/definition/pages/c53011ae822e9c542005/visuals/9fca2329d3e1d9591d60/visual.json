@@ -3,7 +3,7 @@
   "name": "9fca2329d3e1d9591d60",
   "position": {
     "x": 15.060240963855422,
-    "y": 84.93975903614458,
+    "y": 84.939759036144579,
     "z": 6000,
     "height": 154.81927710843374,
     "width": 280.72289156626505,
@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Orders"
+                      "Entity": "DimVaras"
                     }
                   },
-                  "Property": "City"
+                  "Property": "Juizo"
                 }
               },
-              "queryRef": "Orders.City",
-              "nativeQueryRef": "City",
+              "queryRef": "DimVaras.Juizo",
+              "nativeQueryRef": "Juizo",
               "active": true
             }
           ]
@@ -188,32 +188,6 @@
               }
             }
           }
-        },
-        {
-          "properties": {
-            "dynamicLabelValue": {
-              "expr": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Measure"
-                    }
-                  },
-                  "Property": "Label Bar City Sales %"
-                }
-              }
-            }
-          },
-          "selector": {
-            "data": [
-              {
-                "dataViewWildcard": {
-                  "matchingOption": 1
-                }
-              }
-            ],
-            "highlightMatching": 1
-          }
         }
       ]
     },
@@ -246,8 +220,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": []
   }
 }
