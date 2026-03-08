@@ -1,6 +1,6 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.0.0/schema.json",
-  "displayName": "Ship Mode",
+  "displayName": "Faixa de Valor",
   "name": "ce01212141deed8bc050",
   "options": {
     "applyOnlyToTargetVisuals": true,

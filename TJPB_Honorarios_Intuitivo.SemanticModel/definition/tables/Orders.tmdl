@@ -255,9 +255,34 @@ table Orders
 				            WithoutUf2 = if WithoutUf1 = null then null else Text.Replace(WithoutUf1, "- PB", ""),
 				            WithoutUf3 = if WithoutUf2 = null then null else Text.Replace(WithoutUf2, "(PB)", ""),
 				            Trimmed = if WithoutUf3 = null then null else Text.Trim(WithoutUf3),
-				            UpperTrimmed = if Trimmed = null then null else Text.Upper(Trimmed)
+				            UpperTrimmed = if Trimmed = null then null else Text.Upper(Trimmed),
+				            Titled = if Trimmed = null then null else Text.Proper(Text.Lower(Trimmed)),
+				            LowerConnectors =
+				                if Titled = null then null
+				                else
+				                    Text.Replace(
+				                        Text.Replace(
+				                            Text.Replace(
+				                                Text.Replace(
+				                                    Text.Replace(
+				                                        Text.Replace(Titled, " De ", " de "),
+				                                        " Da ",
+				                                        " da "
+				                                    ),
+				                                    " Do ",
+				                                    " do "
+				                                ),
+				                                " Das ",
+				                                " das "
+				                            ),
+				                            " Dos ",
+				                            " dos "
+				                        ),
+				                        " E ",
+				                        " e "
+				                    )
 				        in
-				            if UpperTrimmed = null or UpperTrimmed = "" or Text.StartsWith(UpperTrimmed, "SEM ") then null else Text.Proper(Text.Lower(Trimmed)),
+				            if UpperTrimmed = null or UpperTrimmed = "" or Text.StartsWith(UpperTrimmed, "SEM ") then null else LowerConnectors,
 				    Filtered = Table.SelectRows(Clean, each [DataRequisicao] <> null and [ValorArbitrado] <> null),
 				    #"Added Index" = Table.AddIndexColumn(Filtered, "Row ID", 1, 1, Int64.Type),
 				    #"Added Order ID" = Table.AddColumn(#"Added Index", "Order ID", each if [NumeroPericia] <> null and [NumeroPericia] <> "" then [NumeroPericia] else Text.From([#"Row ID"]), type text),
@@ -266,7 +291,7 @@ table Orders
 				    #"Added Ship Mode" = Table.AddColumn(#"Added Ship Date", "Ship Mode", each let v = [ValorArbitrado] in if v = null then null else if v < 300 then "Até R$ 300" else if v < 370 then "R$ 300 - 369" else if v < 450 then "R$ 370 - 449" else if v < 1000 then "R$ 450 - 999" else "R$ 1.000+", type text),
 				    #"Added Customer ID" = Table.AddColumn(#"Added Ship Mode", "Customer ID", each [CpfCnpjDigits], type text),
 				    #"Added Customer Name" = Table.AddColumn(#"Added Customer ID", "Customer Name", each [PeritoNomeExibicao], type text),
-				    #"Added Segment" = Table.AddColumn(#"Added Customer Name", "Segment", each [EspeciePericia], type text),
+				    #"Added Segment" = Table.AddColumn(#"Added Customer Name", "Segment", each [EspecialidadeExibicao], type text),
 				    #"Added Postal Code" = Table.AddColumn(#"Added Segment", "Postal Code", each null, Int64.Type),
 				    #"Added City" = Table.AddColumn(#"Added Postal Code", "City", each [JuizoExibicao], type text),
 				    #"Added State" = Table.AddColumn(#"Added City", "State", each [ComarcaExibicao], type text),

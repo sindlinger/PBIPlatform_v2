@@ -4,7 +4,7 @@
   "position": {
     "x": 875,
     "y": 180,
-    "z": 10000,
+    "z": 17000,
     "height": 255,
     "width": 360,
     "tabOrder": 5000
@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "DimComarcas"
+                      "Entity": "Orders"
                     }
                   },
-                  "Property": "Comarca"
+                  "Property": "State Mapa"
                 }
               },
-              "queryRef": "DimComarcas.Comarca",
-              "nativeQueryRef": "Comarca",
+              "queryRef": "Orders.State Mapa",
+              "nativeQueryRef": "State Mapa",
               "format": "G"
             }
           ]
@@ -186,7 +186,14 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Mapa Geral - Paraíba'"
                 }
               }
             }
