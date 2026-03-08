@@ -82,22 +82,31 @@ table Measure
 			```
 		lineageTag: 9af65256-ac83-44dc-9287-b2b4e5b11197
 
-	measure 'Sales Color' = ```
-			
-			VAR PromedioTotal =
-			    CALCULATE(
-			        AVERAGEX(
-			            VALUES('Date'[MonthName]),
-			            [Total Sales]
-			        ),
-			        ALLSELECTED('Date')
-			    )
-			VAR Actual = [Total Sales]
-			RETURN
-			    IF(Actual >= PromedioTotal, "#1e88e5", "#cccccc")
-			
-			
-			```
+		measure 'Sales Color' = ```
+				
+				VAR CorContexto =
+				    SWITCH(
+				        TRUE(),
+				        ISINSCOPE(DimPeritos[PeritoLabel]), "#1E88E5",
+				        ISINSCOPE(DimComarcas[Comarca]), "#0EA5A4",
+				        ISINSCOPE(DimVaras[Juizo]), "#F59E0B",
+				        ISINSCOPE(DimEspecialidades[Especialidade]), "#22C55E",
+				        BLANK()
+				    )
+				VAR MediaPeriodo =
+				    CALCULATE(
+				        AVERAGEX(
+				            VALUES('Date'[MonthName]),
+				            [Total Sales]
+				        ),
+				        ALLSELECTED('Date')
+				    )
+				VAR Atual = [Total Sales]
+				RETURN
+				    COALESCE(CorContexto, IF(Atual >= MediaPeriodo, "#1E88E5", "#C7D2E2"))
+				
+				
+				```
 		lineageTag: eb8ce935-040f-4581-ab6d-6e36854bc8b2
 
 	measure 'Annual Avg Line Fixed' = ```

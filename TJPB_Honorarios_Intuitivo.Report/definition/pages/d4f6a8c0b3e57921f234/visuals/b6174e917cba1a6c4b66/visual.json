@@ -6,11 +6,11 @@
     "y": 234.76901707525406,
     "z": 8000,
     "height": 132.0984441481931,
-    "width": 602.29043099250418,
+    "width": 602.2904309925042,
     "tabOrder": 0
   },
   "visual": {
-    "visualType": "lineChart",
+    "visualType": "clusteredColumnChart",
     "query": {
       "queryState": {
         "Category": {
@@ -231,157 +231,6 @@
           }
         }
       ],
-      "referenceLine": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "displayName": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Avg'"
-                }
-              }
-            },
-            "value": {
-              "expr": {
-                "Aggregation": {
-                  "Expression": {
-                    "SelectRef": {
-                      "ExpressionName": "Measure.Total Sales"
-                    }
-                  },
-                  "Function": 1
-                }
-              }
-            },
-            "lineColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#7984EE'"
-                    }
-                  }
-                }
-              }
-            },
-            "width": {
-              "expr": {
-                "Literal": {
-                  "Value": "1D"
-                }
-              }
-            },
-            "dataLabelShow": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "shadeShow": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "dataLabelText": {
-              "expr": {
-                "Literal": {
-                  "Value": "'ValueAndName'"
-                }
-              }
-            },
-            "dataLabelColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 7,
-                      "Percent": 0.2
-                    }
-                  }
-                }
-              }
-            },
-            "dataLabelDisplayUnits": {
-              "expr": {
-                "Literal": {
-                  "Value": "1000D"
-                }
-              }
-            },
-            "dataLabelDecimalPoints": {
-              "expr": {
-                "Literal": {
-                  "Value": "0D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Measure.Total Sales",
-            "id": "1"
-          }
-        }
-      ],
-      "error": [
-        {
-          "properties": {
-            "enabled": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Measure.Total Sales"
-          }
-        },
-        {
-          "properties": {
-            "errorRange": {
-              "kind": "ErrorRange",
-              "percentage": {
-                "lowerBoundDelta": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "0.1D"
-                    }
-                  }
-                },
-                "upperBoundDelta": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "0.1D"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "data": [
-              {
-                "dataViewWildcard": {
-                  "matchingOption": 0
-                }
-              }
-            ],
-            "metadata": "Measure.Total Sales",
-            "highlightMatching": 1
-          }
-        }
-      ],
       "zoom": [
         {
           "properties": {
@@ -403,7 +252,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Curva de Gasto no Tempo'"
+                  "Value": "'Histograma Mensal de Gasto'"
                 }
               }
             },
