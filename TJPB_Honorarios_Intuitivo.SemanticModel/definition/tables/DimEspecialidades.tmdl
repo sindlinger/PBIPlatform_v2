@@ -25,13 +25,36 @@ table DimEspecialidades
 				            if UpperValue = null or UpperValue = "" or UpperValue = "SEM INFO" then null
 				            else if Text.StartsWith(UpperValue, "SEM ") then null
 				            else Canonical,
+
+				    StripAccents = (textValue as nullable text) as nullable text =>
+				        if textValue = null then
+				            null
+				        else
+				            let
+				                Replacements = {
+				                    {"Á", "A"}, {"À", "A"}, {"Â", "A"}, {"Ã", "A"}, {"Ä", "A"},
+				                    {"á", "a"}, {"à", "a"}, {"â", "a"}, {"ã", "a"}, {"ä", "a"},
+				                    {"É", "E"}, {"È", "E"}, {"Ê", "E"}, {"Ë", "E"},
+				                    {"é", "e"}, {"è", "e"}, {"ê", "e"}, {"ë", "e"},
+				                    {"Í", "I"}, {"Ì", "I"}, {"Î", "I"}, {"Ï", "I"},
+				                    {"í", "i"}, {"ì", "i"}, {"î", "i"}, {"ï", "i"},
+				                    {"Ó", "O"}, {"Ò", "O"}, {"Ô", "O"}, {"Õ", "O"}, {"Ö", "O"},
+				                    {"ó", "o"}, {"ò", "o"}, {"ô", "o"}, {"õ", "o"}, {"ö", "o"},
+				                    {"Ú", "U"}, {"Ù", "U"}, {"Û", "U"}, {"Ü", "U"},
+				                    {"ú", "u"}, {"ù", "u"}, {"û", "u"}, {"ü", "u"},
+				                    {"Ç", "C"}, {"ç", "c"},
+				                    {"Ñ", "N"}, {"ñ", "n"}
+				                },
+				                Stripped = List.Accumulate(Replacements, textValue, (state as text, pair as list) => Text.Replace(state, pair{0}, pair{1}))
+				            in
+				                Stripped,
 				
 				    BuildKey = (textValue as nullable text) as nullable text =>
 				        if textValue = null then
 				            null
 				        else
 				            let
-				                Upper = Text.Upper(Text.RemoveDiacritics(textValue)),
+				                Upper = Text.Upper(StripAccents(textValue)),
 				                KeptChars = Text.Select(Upper, List.Combine({{"A".."Z"}, {"0".."9"}, {" "}})),
 				                Parts = List.Select(Text.Split(Text.Trim(KeptChars), " "), each _ <> ""),
 				                Key = if List.Count(Parts) = 0 then null else Text.Combine(Parts, " ")
