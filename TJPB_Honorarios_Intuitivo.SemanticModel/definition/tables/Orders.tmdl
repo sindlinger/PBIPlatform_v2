@@ -247,6 +247,9 @@ table Orders
 				            UpperBase = if Base = null then null else Text.Upper(Base),
 				            WithoutPrefix =
 				                if UpperBase = null then null
+				                else if Text.StartsWith(UpperBase, "COMARCA INTEGRADA DE ") then Text.Trim(Text.Range(Base, Text.Length("Comarca Integrada de ")))
+				                else if Text.StartsWith(UpperBase, "COMARCA INTEGRADA DA ") then Text.Trim(Text.Range(Base, Text.Length("Comarca Integrada da ")))
+				                else if Text.StartsWith(UpperBase, "COMARCA INTEGRADA DO ") then Text.Trim(Text.Range(Base, Text.Length("Comarca Integrada do ")))
 				                else if Text.StartsWith(UpperBase, "COMARCA DE ") then Text.Trim(Text.Range(Base, Text.Length("Comarca de ")))
 				                else if Text.StartsWith(UpperBase, "COMARCA DA ") then Text.Trim(Text.Range(Base, Text.Length("Comarca da ")))
 				                else if Text.StartsWith(UpperBase, "COMARCA DO ") then Text.Trim(Text.Range(Base, Text.Length("Comarca do ")))
@@ -255,8 +258,57 @@ table Orders
 				            WithoutUf2 = if WithoutUf1 = null then null else Text.Replace(WithoutUf1, "- PB", ""),
 				            WithoutUf3 = if WithoutUf2 = null then null else Text.Replace(WithoutUf2, "(PB)", ""),
 				            Trimmed = if WithoutUf3 = null then null else Text.Trim(WithoutUf3),
-				            UpperTrimmed = if Trimmed = null then null else Text.Upper(Trimmed),
-				            Titled = if Trimmed = null then null else Text.Proper(Text.Lower(Trimmed)),
+				            NormalizedSpaces =
+				                if Trimmed = null then null
+				                else Text.Combine(List.Select(Text.Split(Trimmed, " "), each _ <> ""), " "),
+				            StripAccents = (textValue as nullable text) as nullable text =>
+				                if textValue = null then
+				                    null
+				                else
+				                    let
+				                        Replacements = {
+				                            {"Á", "A"}, {"À", "A"}, {"Â", "A"}, {"Ã", "A"}, {"Ä", "A"},
+				                            {"á", "a"}, {"à", "a"}, {"â", "a"}, {"ã", "a"}, {"ä", "a"},
+				                            {"É", "E"}, {"È", "E"}, {"Ê", "E"}, {"Ë", "E"},
+				                            {"é", "e"}, {"è", "e"}, {"ê", "e"}, {"ë", "e"},
+				                            {"Í", "I"}, {"Ì", "I"}, {"Î", "I"}, {"Ï", "I"},
+				                            {"í", "i"}, {"ì", "i"}, {"î", "i"}, {"ï", "i"},
+				                            {"Ó", "O"}, {"Ò", "O"}, {"Ô", "O"}, {"Õ", "O"}, {"Ö", "O"},
+				                            {"ó", "o"}, {"ò", "o"}, {"ô", "o"}, {"õ", "o"}, {"ö", "o"},
+				                            {"Ú", "U"}, {"Ù", "U"}, {"Û", "U"}, {"Ü", "U"},
+				                            {"ú", "u"}, {"ù", "u"}, {"û", "u"}, {"ü", "u"},
+				                            {"Ç", "C"}, {"ç", "c"},
+				                            {"Ñ", "N"}, {"ñ", "n"}
+				                        },
+				                        Stripped = List.Accumulate(Replacements, textValue, (state as text, pair as list) => Text.Replace(state, pair{0}, pair{1}))
+				                    in
+				                        Stripped,
+				            AccentlessUpper = if NormalizedSpaces = null then null else Text.Upper(StripAccents(NormalizedSpaces)),
+				            Alias =
+				                if AccentlessUpper = null then null
+				                else if AccentlessUpper = "BAYEUX E SANTA RITA" then "Santa Rita"
+				                else if AccentlessUpper = "LITORAL SUL" then "Alhandra"
+				                else if AccentlessUpper = "PRINCESA ISABEL E AGUA BRANCA" then "Princesa Isabel"
+				                else if AccentlessUpper = "AGUA BRANCA" then "Água Branca"
+				                else if AccentlessUpper = "CAAPORA" then "Caaporã"
+				                else if AccentlessUpper = "CATOLE DO ROCHA" then "Catolé do Rocha"
+				                else if AccentlessUpper = "CONCEICAO" then "Conceição"
+				                else if AccentlessUpper = "CUITE" then "Cuité"
+				                else if AccentlessUpper = "GURINHEM" then "Gurinhém"
+				                else if AccentlessUpper = "INGA" then "Ingá"
+				                else if AccentlessUpper = "JACARAU" then "Jacaraú"
+				                else if AccentlessUpper = "JOAO PESSOA" then "João Pessoa"
+				                else if AccentlessUpper = "PIANCO" then "Piancó"
+				                else if AccentlessUpper = "SAO BENTO" then "São Bento"
+				                else if AccentlessUpper = "SAO JOAO DO RIO DO PEIXE" then "São João do Rio do Peixe"
+				                else if AccentlessUpper = "SAO JOSE DE PIRANHAS" then "São José de Piranhas"
+				                else if AccentlessUpper = "SAPE" then "Sapé"
+				                else if AccentlessUpper = "SOLANEA" then "Solânea"
+				                else if AccentlessUpper = "SUME" then "Sumé"
+				                else if AccentlessUpper = "UIRAUNA" then "Uiraúna"
+				                else NormalizedSpaces,
+				            UpperAlias = if Alias = null then null else Text.Upper(Alias),
+				            Titled = if Alias = null then null else Text.Proper(Text.Lower(Alias)),
 				            LowerConnectors =
 				                if Titled = null then null
 				                else
@@ -282,7 +334,7 @@ table Orders
 				                        " e "
 				                    )
 				        in
-				            if UpperTrimmed = null or UpperTrimmed = "" or Text.StartsWith(UpperTrimmed, "SEM ") then null else LowerConnectors,
+				            if UpperAlias = null or UpperAlias = "" or Text.StartsWith(UpperAlias, "SEM ") then null else LowerConnectors,
 				    Filtered = Table.SelectRows(Clean, each [DataRequisicao] <> null and [ValorArbitrado] <> null),
 				    #"Added Index" = Table.AddIndexColumn(Filtered, "Row ID", 1, 1, Int64.Type),
 				    #"Added Order ID" = Table.AddColumn(#"Added Index", "Order ID", each if [NumeroPericia] <> null and [NumeroPericia] <> "" then [NumeroPericia] else Text.From([#"Row ID"]), type text),

@@ -93,7 +93,7 @@
             "showAllDataPoints": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             }
@@ -174,7 +174,7 @@
             "defaultShow": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             }
@@ -196,7 +196,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Mapa Geral - Paraíba'"
+                  "Value": "'Mapa de Comarcas - Paraíba'"
                 }
               }
             }
