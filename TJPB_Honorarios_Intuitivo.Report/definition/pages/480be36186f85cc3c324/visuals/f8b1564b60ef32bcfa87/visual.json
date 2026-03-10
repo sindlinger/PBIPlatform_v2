@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "— over time",
+                    "value": "Modo: escolha o tipo de grafico",
                     "textStyle": {
                       "fontFamily": "DIN",
                       "fontSize": "10pt"
@@ -48,6 +48,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "isHidden": true
+  }
 }

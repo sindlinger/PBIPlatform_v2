@@ -3,10 +3,10 @@
   "name": "316e18ad0d4eb3ce8177",
   "position": {
     "x": 15.906234554825955,
-    "y": 146.04815363976559,
+    "y": 146.0481536397656,
     "z": 2000,
     "height": 203.88900656640544,
-    "width": 284.86620066370119,
+    "width": 284.8662006637012,
     "tabOrder": 9992000
   },
   "visual": {
@@ -42,11 +42,11 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "Count Orders Returned"
+                  "Property": "Qtd Retornos"
                 }
               },
-              "queryRef": "Measure.Count Orders Returned",
-              "nativeQueryRef": "Count Orders Returned"
+              "queryRef": "Measure.Qtd Retornos",
+              "nativeQueryRef": "Qtd Retornos"
             }
           ]
         }
@@ -61,7 +61,7 @@
                     "Entity": "Measure"
                   }
                 },
-                "Property": "Count Orders Returned"
+                "Property": "Qtd Retornos"
               }
             },
             "direction": "Descending"
@@ -163,7 +163,7 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "Label Return Category %"
+                  "Property": "Rótulo Categoria Retorno %"
                 }
               }
             }

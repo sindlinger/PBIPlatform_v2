@@ -42,11 +42,11 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "Total Sales"
+                  "Property": "Valor Arbitrado Base"
                 }
               },
-              "queryRef": "Measure.Total Sales",
-              "nativeQueryRef": "Total Sales"
+              "queryRef": "Measure.Valor Arbitrado Base",
+              "nativeQueryRef": "Valor Arbitrado Base"
             }
           ]
         }

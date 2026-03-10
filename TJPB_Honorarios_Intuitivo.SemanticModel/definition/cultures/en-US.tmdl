@@ -3287,7 +3287,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Measure",
-			          "ConceptualProperty": "Total Sales"
+			          "ConceptualProperty": "Valor Arbitrado Base"
 			        }
 			      },
 			      "State": "Generated",
@@ -3349,7 +3349,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Measure",
-			          "ConceptualProperty": "Units Sold"
+			          "ConceptualProperty": "Qtd Perícias Base"
 			        }
 			      },
 			      "State": "Generated",
@@ -3375,7 +3375,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Measure",
-			          "ConceptualProperty": "Orders Total"
+			          "ConceptualProperty": "Peritos Distintos Base"
 			        }
 			      },
 			      "State": "Generated",
@@ -3411,7 +3411,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Measure",
-			          "ConceptualProperty": "Avg Order Value"
+			          "ConceptualProperty": "Valor Médio por Perito"
 			        }
 			      },
 			      "State": "Generated",
@@ -3527,7 +3527,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Measure",
-			          "ConceptualProperty": "Avg Daily Sales"
+			          "ConceptualProperty": "Média Diária Valor Arbitrado"
 			        }
 			      },
 			      "State": "Generated",
@@ -3563,7 +3563,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Measure",
-			          "ConceptualProperty": "Sales MoM %"
+			          "ConceptualProperty": "Variação Mensal Valor Arbitrado %"
 			        }
 			      },
 			      "State": "Generated",
@@ -3609,7 +3609,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Measure",
-			          "ConceptualProperty": "Sales MoM"
+			          "ConceptualProperty": "Variação Mensal Valor Arbitrado"
 			        }
 			      },
 			      "State": "Generated",
@@ -3731,7 +3731,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Measure",
-			          "ConceptualProperty": "Sales Card Subtitle"
+			          "ConceptualProperty": "Subtítulo Card Valor Arbitrado"
 			        }
 			      },
 			      "State": "Generated",
@@ -3859,7 +3859,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Measure",
-			          "ConceptualProperty": "Avg Sales"
+			          "ConceptualProperty": "Valor Médio por Perícia Base"
 			        }
 			      },
 			      "State": "Generated",
@@ -3895,7 +3895,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Measure",
-			          "ConceptualProperty": "Sales MoM Label"
+			          "ConceptualProperty": "Rótulo Variação Mensal Valor Arbitrado"
 			        }
 			      },
 			      "State": "Generated",
@@ -4023,7 +4023,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Measure",
-			          "ConceptualProperty": "Sales Color"
+			          "ConceptualProperty": "Cor Valor Arbitrado"
 			        }
 			      },
 			      "State": "Generated",
@@ -4145,7 +4145,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Measure",
-			          "ConceptualProperty": "Annual Avg Line Fixed"
+			          "ConceptualProperty": "Linha Média Anual Fixa"
 			        }
 			      },
 			      "State": "Generated",
@@ -4261,7 +4261,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Measure",
-			          "ConceptualProperty": "% Sales Total"
+			          "ConceptualProperty": "% Valor Arbitrado Total"
 			        }
 			      },
 			      "State": "Generated",
@@ -4327,7 +4327,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Measure",
-			          "ConceptualProperty": "% Sales"
+			          "ConceptualProperty": "% Valor Arbitrado"
 			        }
 			      },
 			      "State": "Generated",
@@ -4373,7 +4373,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Measure",
-			          "ConceptualProperty": "Label City Sales %"
+			          "ConceptualProperty": "Rótulo Vara Valor %"
 			        }
 			      },
 			      "State": "Generated",
@@ -4489,7 +4489,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Measure",
-			          "ConceptualProperty": "Label Bar City Sales %"
+			          "ConceptualProperty": "Rótulo Barra Vara Valor %"
 			        }
 			      },
 			      "State": "Generated",
@@ -4605,7 +4605,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Measure",
-			          "ConceptualProperty": "SMA Sales (N)"
+			          "ConceptualProperty": "Média Móvel Valor Arbitrado (N)"
 			        }
 			      },
 			      "State": "Generated",
@@ -4637,7 +4637,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Measure",
-			          "ConceptualProperty": "StdDev Sales (N)"
+			          "ConceptualProperty": "Desvio Padrão Valor Arbitrado (N)"
 			        }
 			      },
 			      "State": "Generated",
@@ -4669,7 +4669,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Measure",
-			          "ConceptualProperty": "Lower Band (N)"
+			          "ConceptualProperty": "Banda Inferior (N)"
 			        }
 			      },
 			      "State": "Generated",
@@ -4691,7 +4691,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Measure",
-			          "ConceptualProperty": "Upper Band (N)"
+			          "ConceptualProperty": "Banda Superior (N)"
 			        }
 			      },
 			      "State": "Generated",
@@ -4713,7 +4713,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Measure",
-			          "ConceptualProperty": "Sales YoY"
+			          "ConceptualProperty": "Valor Arbitrado YoY"
 			        }
 			      },
 			      "State": "Generated",
@@ -4739,7 +4739,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Measure",
-			          "ConceptualProperty": "Sales YoY %"
+			          "ConceptualProperty": "Valor Arbitrado YoY %"
 			        }
 			      },
 			      "State": "Generated",
@@ -4785,7 +4785,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Measure",
-			          "ConceptualProperty": "YoY Sales Card Subtitle"
+			          "ConceptualProperty": "Subtítulo Card Valor Arbitrado YoY"
 			        }
 			      },
 			      "State": "Generated",
@@ -4901,7 +4901,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Measure",
-			          "ConceptualProperty": "Total Profit"
+			          "ConceptualProperty": "Saldo a Receber Base"
 			        }
 			      },
 			      "State": "Generated",
@@ -5017,7 +5017,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Measure",
-			          "ConceptualProperty": "Profit YoY %"
+			          "ConceptualProperty": "Saldo a Receber YoY %"
 			        }
 			      },
 			      "State": "Generated",
@@ -5053,7 +5053,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Measure",
-			          "ConceptualProperty": "Profit YoY"
+			          "ConceptualProperty": "Saldo a Receber YoY"
 			        }
 			      },
 			      "State": "Generated",
@@ -5069,7 +5069,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Measure",
-			          "ConceptualProperty": "YoY Profit Card Subtitle"
+			          "ConceptualProperty": "Subtítulo Card Saldo a Receber YoY"
 			        }
 			      },
 			      "State": "Generated",
@@ -5185,7 +5185,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Measure",
-			          "ConceptualProperty": "Daily Sales YoY"
+			          "ConceptualProperty": "Valor Médio por Perícia YoY"
 			        }
 			      },
 			      "State": "Generated",
@@ -5211,7 +5211,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Measure",
-			          "ConceptualProperty": "Daily Sales YoY %"
+			          "ConceptualProperty": "Valor Médio por Perícia YoY %"
 			        }
 			      },
 			      "State": "Generated",
@@ -5257,7 +5257,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Measure",
-			          "ConceptualProperty": "YoY Daily Sales Card Subtitle"
+			          "ConceptualProperty": "Subtítulo Card Valor Médio por Perícia YoY"
 			        }
 			      },
 			      "State": "Generated",
@@ -5373,7 +5373,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Measure",
-			          "ConceptualProperty": "Units Sold YoY"
+			          "ConceptualProperty": "Qtd Perícias YoY"
 			        }
 			      },
 			      "State": "Generated",
@@ -5399,7 +5399,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Measure",
-			          "ConceptualProperty": "Units Sold YoY %"
+			          "ConceptualProperty": "Qtd Perícias YoY %"
 			        }
 			      },
 			      "State": "Generated",
@@ -5445,7 +5445,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Measure",
-			          "ConceptualProperty": "YoY Units Sold Card Subtitle"
+			          "ConceptualProperty": "Subtítulo Card Qtd Perícias YoY"
 			        }
 			      },
 			      "State": "Generated",
@@ -5561,7 +5561,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Measure",
-			          "ConceptualProperty": "Orders Total YoY"
+			          "ConceptualProperty": "Peritos Distintos YoY"
 			        }
 			      },
 			      "State": "Generated",
@@ -5597,7 +5597,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Measure",
-			          "ConceptualProperty": "Orders Total YoY %"
+			          "ConceptualProperty": "Peritos Distintos YoY %"
 			        }
 			      },
 			      "State": "Generated",
@@ -5653,7 +5653,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Measure",
-			          "ConceptualProperty": "YoY Orders Total Card Subtitle"
+			          "ConceptualProperty": "Subtítulo Card Peritos Distintos YoY"
 			        }
 			      },
 			      "State": "Generated",
@@ -5769,7 +5769,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Measure",
-			          "ConceptualProperty": "Sales City Label"
+			          "ConceptualProperty": "Rótulo Vara Valor"
 			        }
 			      },
 			      "State": "Generated",
@@ -5897,7 +5897,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Measure",
-			          "ConceptualProperty": "Label Return Category %"
+			          "ConceptualProperty": "Rótulo Categoria Retorno %"
 			        }
 			      },
 			      "State": "Generated",
@@ -6013,7 +6013,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Measure",
-			          "ConceptualProperty": "Count Orders Returned"
+			          "ConceptualProperty": "Qtd Retornos"
 			        }
 			      },
 			      "State": "Generated",
@@ -6139,7 +6139,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Measure",
-			          "ConceptualProperty": "Returns YoY %"
+			          "ConceptualProperty": "Retornos YoY %"
 			        }
 			      },
 			      "State": "Generated",

@@ -6,7 +6,7 @@
     "y": 29.719153130905728,
     "z": 1000,
     "height": 158.22266450676307,
-    "width": 288.72180451127821,
+    "width": 288.7218045112782,
     "tabOrder": 1000
   },
   "visual": {
@@ -42,11 +42,11 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "Total Sales"
+                  "Property": "Valor Arbitrado Base"
                 }
               },
-              "queryRef": "Measure.Total Sales",
-              "nativeQueryRef": "Total Sales"
+              "queryRef": "Measure.Valor Arbitrado Base",
+              "nativeQueryRef": "Valor Arbitrado Base"
             }
           ]
         }
@@ -61,7 +61,7 @@
                     "Entity": "Measure"
                   }
                 },
-                "Property": "Total Sales"
+                "Property": "Valor Arbitrado Base"
               }
             },
             "direction": "Descending"
@@ -157,7 +157,7 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "Label Bar City Sales %"
+                  "Property": "Rótulo Barra Vara Valor %"
                 }
               }
             }
@@ -297,5 +297,6 @@
         }
       }
     ]
-  }
+  },
+  "isHidden": true
 }

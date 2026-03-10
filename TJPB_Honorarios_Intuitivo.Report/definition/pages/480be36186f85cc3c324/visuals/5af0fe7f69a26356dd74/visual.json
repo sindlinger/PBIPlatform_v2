@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Curva historica"
+                    "value": "Curva historica de volume"
                   }
                 ]
               }
@@ -45,5 +45,6 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "51d63b4f58c8609a1a33"
+  "parentGroupName": "51d63b4f58c8609a1a33",
+  "isHidden": true
 }

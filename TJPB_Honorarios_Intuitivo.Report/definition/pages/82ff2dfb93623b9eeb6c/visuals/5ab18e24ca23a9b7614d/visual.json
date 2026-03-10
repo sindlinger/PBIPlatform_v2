@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "5ab18e24ca23a9b7614d",
   "position": {
-    "x": 581.82832244008716,
+    "x": 581.8283224400872,
     "y": 174.9054466230937,
     "z": 22000,
     "height": 199.89193899782134,
-    "width": 292.69891067538128,
+    "width": 292.6989106753813,
     "tabOrder": 21000
   },
   "visual": {
@@ -37,10 +37,10 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "Count Orders Returned"
+                  "Property": "Qtd Retornos"
                 }
               },
-              "queryRef": "Measure.Count Orders Returned",
+              "queryRef": "Measure.Qtd Retornos",
               "nativeQueryRef": "Returned ",
               "displayName": "Returned "
             },
@@ -52,10 +52,10 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "Total Sales"
+                  "Property": "Valor Arbitrado Base"
                 }
               },
-              "queryRef": "Measure.Total Sales",
+              "queryRef": "Measure.Valor Arbitrado Base",
               "nativeQueryRef": "Sales Returned",
               "displayName": "Sales Returned"
             }
@@ -72,7 +72,7 @@
                     "Entity": "Measure"
                   }
                 },
-                "Property": "Count Orders Returned"
+                "Property": "Qtd Retornos"
               }
             },
             "direction": "Descending"
@@ -174,7 +174,7 @@
                               "Entity": "Measure"
                             }
                           },
-                          "Property": "Total Sales"
+                          "Property": "Valor Arbitrado Base"
                         }
                       },
                       "FillRule": {
@@ -216,7 +216,7 @@
                 }
               }
             ],
-            "metadata": "Measure.Total Sales"
+            "metadata": "Measure.Valor Arbitrado Base"
           }
         }
       ],
@@ -254,7 +254,7 @@
         {
           "properties": {},
           "selector": {
-            "metadata": "Measure.Total Sales"
+            "metadata": "Measure.Valor Arbitrado Base"
           }
         }
       ],
@@ -319,7 +319,7 @@
             }
           },
           "selector": {
-            "metadata": "Measure.Count Orders Returned"
+            "metadata": "Measure.Qtd Retornos"
           }
         }
       ]

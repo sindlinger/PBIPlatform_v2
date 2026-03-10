@@ -3,9 +3,9 @@
   "name": "2cdd2f4380c06e08d031",
   "position": {
     "x": 0,
-    "y": 26.931481724092752,
+    "y": 26.93148172409275,
     "z": 3000,
-    "height": 44.069697366697227,
+    "height": 44.06969736669723,
     "width": 150.55001915533015,
     "tabOrder": 0
   },
@@ -66,15 +66,15 @@
                                       "Source": "m"
                                     }
                                   },
-                                  "Property": "SMA Return 2Y"
+                                  "Property": "Média Móvel Retornos 2A"
                                 },
-                                "Name": "Measure.SMA Return 2Y"
+                                "Name": "Measure.Média Móvel Retornos 2A"
                               }
                             ]
                           }
                         }
                       },
-                      "Property": "Measure.SMA Return 2Y"
+                      "Property": "Measure.Média Móvel Retornos 2A"
                     }
                   },
                   "IncludeAllTypes": 1

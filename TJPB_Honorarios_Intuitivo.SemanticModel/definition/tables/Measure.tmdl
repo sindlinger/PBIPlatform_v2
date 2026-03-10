@@ -2,54 +2,54 @@ table Measure
 	isHidden
 	lineageTag: c1ea8466-bd59-416d-b0f7-90c508f662c4
 
-	measure 'Total Sales' = [Valor Arbitrado]
+	measure 'Valor Arbitrado Base' = [Valor Arbitrado]
 		formatString: R$ #,0.00;(R$ #,0.00);R$ #,0.00
 		lineageTag: 564f4df6-5f04-49cb-baa0-d38f4662c55e
 
 		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
 
-	measure 'Units Sold' = [Qtd Perícias]
+	measure 'Qtd Perícias Base' = [Qtd Perícias]
 		formatString: 0
 		lineageTag: 4090e24e-4f98-4809-b237-cd8a49114349
 
-	measure 'Orders Total' = [Peritos Distintos]
+	measure 'Peritos Distintos Base' = [Peritos Distintos]
 		formatString: 0
 		lineageTag: 735061f6-2b07-4a7a-9f31-8f30178f2732
 
-	measure 'Avg Order Value' = DIVIDE([Total Sales], [Orders Total])
+	measure 'Valor Médio por Perito' = DIVIDE([Valor Arbitrado Base], [Peritos Distintos Base])
 		lineageTag: 0b242536-0fd8-4774-8292-9b477d7b19b9
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'Avg Daily Sales' = DIVIDE([Total Sales], DISTINCTCOUNT('Date'[Date]))
+	measure 'Média Diária Valor Arbitrado' = DIVIDE([Valor Arbitrado Base], DISTINCTCOUNT('Date'[Date]))
 		formatString: R$ #,0.###############;(R$ #,0.###############);R$ #,0.###############
 		lineageTag: 4304dc30-572e-487c-a7f9-8aa93b757a06
 
-	measure 'Sales MoM %' =
+	measure 'Variação Mensal Valor Arbitrado %' =
 			
-			VAR CurrentMonth = [Total Sales]
+			VAR CurrentMonth = [Valor Arbitrado Base]
 			VAR PreviousMonths =
-			    CALCULATE ( [Total Sales], DATEADD ( 'Date'[Date], -1, MONTH ) )
+			    CALCULATE ( [Valor Arbitrado Base], DATEADD ( 'Date'[Date], -1, MONTH ) )
 			RETURN
 			    DIVIDE ( CurrentMonth - PreviousMonths, PreviousMonths )
 		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: 4e398f9e-7a70-47a6-b87c-667b2c848547
 
-	measure 'Sales MoM' =
+	measure 'Variação Mensal Valor Arbitrado' =
 			
-			VAR CurrentMonth = [Total Sales]
+			VAR CurrentMonth = [Valor Arbitrado Base]
 			VAR PreviousMonths =
-			    CALCULATE ( [Total Sales], PREVIOUSMONTH( 'Date'[Date]) )
+			    CALCULATE ( [Valor Arbitrado Base], PREVIOUSMONTH( 'Date'[Date]) )
 			RETURN
 			    CurrentMonth - PreviousMonths
 		lineageTag: abae15d5-75d0-4ef6-969b-098b1ca24f79
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'Sales Card Subtitle' =
+	measure 'Subtítulo Card Valor Arbitrado' =
 			
-			VAR diff = COALESCE([Sales MoM], 0)
-			VAR perc = COALESCE([Sales MoM %], 0)
+			VAR diff = COALESCE([Variação Mensal Valor Arbitrado], 0)
+			VAR perc = COALESCE([Variação Mensal Valor Arbitrado %], 0)
 			VAR sign = IF(perc >= 0, "+", "-")
 			RETURN
 			    sign &
@@ -57,21 +57,21 @@ table Measure
 			    sign & FORMAT(ABS(perc), "0.0%")
 		lineageTag: 6e18fa24-d43c-494b-b952-2a8e7cb593bf
 
-	measure 'Avg Sales' = [Valor Médio por Perícia]
+	measure 'Valor Médio por Perícia Base' = [Valor Médio por Perícia]
 		lineageTag: 30797419-53e9-4f5a-8556-1cbad935cbbb
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'Sales MoM Label' =
+	measure 'Rótulo Variação Mensal Valor Arbitrado' =
 			
-			VAR diff = COALESCE([Sales MoM], 0)
-			VAR perc = COALESCE([Sales MoM %], 0)
+			VAR diff = COALESCE([Variação Mensal Valor Arbitrado], 0)
+			VAR perc = COALESCE([Variação Mensal Valor Arbitrado %], 0)
 			VAR sign = IF(perc >= 0, "+", "-")
 			RETURN
 			    sign & FORMAT(ABS(perc), "0%")
 		lineageTag: 9af65256-ac83-44dc-9287-b2b4e5b11197
 
-	measure 'Sales Color' =
+	measure 'Cor Valor Arbitrado' =
 			
 			VAR CorContexto =
 			    SWITCH(
@@ -86,46 +86,46 @@ table Measure
 			    CALCULATE(
 			        AVERAGEX(
 			            VALUES('Date'[MonthName]),
-			            [Total Sales]
+			            [Valor Arbitrado Base]
 			        ),
 			        ALLSELECTED('Date')
 			    )
-			VAR Atual = [Total Sales]
+			VAR Atual = [Valor Arbitrado Base]
 			RETURN
 			    COALESCE(CorContexto, IF(Atual >= MediaPeriodo, "#1E88E5", "#C7D2E2"))
 		lineageTag: eb8ce935-040f-4581-ab6d-6e36854bc8b2
 
-	measure 'Annual Avg Line Fixed' =
+	measure 'Linha Média Anual Fixa' =
 			
 			VAR Visible_Months =
 			    ALLSELECTED('Date'[MonthName])  // Lists all months visible in the current filter context
 			RETURN
 			    AVERAGEX(
 			        Visible_Months,             // Iterates over each of those months
-			        [Total Sales]               // Averages the [Total Sales] value for each month
+			        [Valor Arbitrado Base]               // Averages the [Valor Arbitrado Base] value for each month
 			    )
 		lineageTag: 21186e28-ffd9-4cb2-9298-c42d2bfeb09e
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure '% Sales Total' = DIVIDE([Total Sales], CALCULATE([Total Sales], ALLSELECTED(DimComarcas), ALLSELECTED(DimVaras), ALLSELECTED(DimPeritos), ALLSELECTED(DimEspecialidades)))
+	measure '% Valor Arbitrado Total' = DIVIDE([Valor Arbitrado Base], CALCULATE([Valor Arbitrado Base], ALLSELECTED(DimComarcas), ALLSELECTED(DimVaras), ALLSELECTED(DimPeritos), ALLSELECTED(DimEspecialidades)))
 		formatString: 0.0%;-0.0%;0.0%
 		lineageTag: 8bb2f26e-68ae-4bf2-8650-314df3e2133c
 
-	measure '% Sales' = [% Sales Total]
+	measure '% Valor Arbitrado' = [% Valor Arbitrado Total]
 		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: ba407c7b-92fb-4d33-8230-f134833f16f4
 
-	measure 'Label City Sales %' =
+	measure 'Rótulo Vara Valor %' =
 			
 			SELECTEDVALUE(DimComarcas[Comarca], "Todas as comarcas") & " | " &
-			FORMAT([% Sales], "0%")
+			FORMAT([% Valor Arbitrado], "0%")
 		lineageTag: 86e5eaa3-9bde-4aa6-b6ae-5ba13a6de0f4
 
-	measure 'Label Bar City Sales %' = FORMAT([% Sales], "0%")  & " | " & FORMAT([Total Sales], "R$ #,##0")
+	measure 'Rótulo Barra Vara Valor %' = FORMAT([% Valor Arbitrado], "0%")  & " | " & FORMAT([Valor Arbitrado Base], "R$ #,##0")
 		lineageTag: db159ac3-8f7d-494d-a013-6c62302afd41
 
-	measure 'SMA Sales (N)' =
+	measure 'Média Móvel Valor Arbitrado (N)' =
 			
 			
 			
@@ -133,13 +133,13 @@ table Measure
 			RETURN
 			AVERAGEX(
 			  DATESINPERIOD( 'Date'[Date], MAX( 'Date'[Date] ), -Nperiods + 1, DAY ),
-			  [Total Sales]
+			  [Valor Arbitrado Base]
 			)
 		lineageTag: 4816f810-2237-4483-964f-e755abc953d1
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'StdDev Sales (N)' =
+	measure 'Desvio Padrão Valor Arbitrado (N)' =
 			
 			
 			
@@ -147,48 +147,48 @@ table Measure
 			RETURN
 			STDEVX.P(
 			  DATESINPERIOD( 'Date'[Date], MAX( 'Date'[Date] ), -Nperiods + 1, DAY ),
-			  CALCULATE( [Total Sales] )
+			  CALCULATE( [Valor Arbitrado Base] )
 			)
 		lineageTag: c1e391b5-7250-4650-825b-a20401389373
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'Lower Band (N)' = [SMA Sales (N)] - [StdDev Sales (N)]
+	measure 'Banda Inferior (N)' = [Média Móvel Valor Arbitrado (N)] - [Desvio Padrão Valor Arbitrado (N)]
 		lineageTag: e909730c-b008-4cf3-b25c-9e080f916953
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'Upper Band (N)' = [SMA Sales (N)] + [StdDev Sales (N)]
+	measure 'Banda Superior (N)' = [Média Móvel Valor Arbitrado (N)] + [Desvio Padrão Valor Arbitrado (N)]
 		lineageTag: 4a8b79c8-7735-4b83-991e-8f354776c8f9
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'Sales YoY' =
+	measure 'Valor Arbitrado YoY' =
 			
-			VAR CurrentYear = [Total Sales]
+			VAR CurrentYear = [Valor Arbitrado Base]
 			VAR PreviousYears =
-			    CALCULATE([Total Sales], PREVIOUSYEAR('Date'[Date]))
+			    CALCULATE([Valor Arbitrado Base], PREVIOUSYEAR('Date'[Date]))
 			RETURN
 			    CurrentYear - PreviousYears
 		lineageTag: 37549049-ed85-4a55-967b-3fdf3453ac25
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'Sales YoY %' =
+	measure 'Valor Arbitrado YoY %' =
 			
-			VAR CurrentYear = [Total Sales]
+			VAR CurrentYear = [Valor Arbitrado Base]
 			VAR PreviousYears =
-			    CALCULATE([Total Sales], PREVIOUSYEAR('Date'[Date]))
+			    CALCULATE([Valor Arbitrado Base], PREVIOUSYEAR('Date'[Date]))
 			RETURN
 			    DIVIDE(CurrentYear - PreviousYears, PreviousYears)
 		lineageTag: ab8fd303-1dbc-464a-9412-880cc3c8aeae
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'YoY Sales Card Subtitle' =
+	measure 'Subtítulo Card Valor Arbitrado YoY' =
 			
-			VAR diff = COALESCE([Sales YoY], 0)
-			VAR perc = COALESCE([Sales YoY %], 0)
+			VAR diff = COALESCE([Valor Arbitrado YoY], 0)
+			VAR perc = COALESCE([Valor Arbitrado YoY %], 0)
 			VAR sign = IF(perc >= 0, "+", "-")
 			RETURN
 			    sign &
@@ -196,44 +196,44 @@ table Measure
 			    sign & FORMAT(ABS(perc), "0.0%")
 		lineageTag: 2804da70-6824-429a-99b2-faa72d84be7f
 
-	measure 'Total Profit' = [Saldo a Receber]
+	measure 'Saldo a Receber Base' = [Saldo a Receber]
 		formatString: 0
 		lineageTag: 78557660-7de4-4c0c-9804-f5630b1918cd
 
 		annotation PBI_FormatHint = {"isDecimal":true}
 
-	measure 'Profit YoY %' =
+	measure 'Saldo a Receber YoY %' =
 			
 			
 			
-			VAR CurrentYear = [Total Profit]
+			VAR CurrentYear = [Saldo a Receber Base]
 			VAR PreviousYears =
-			    CALCULATE([Total Profit], PREVIOUSYEAR('Date'[Date]))
+			    CALCULATE([Saldo a Receber Base], PREVIOUSYEAR('Date'[Date]))
 			RETURN
 			    DIVIDE(CurrentYear - PreviousYears, PreviousYears)
 		lineageTag: d59a5d57-bc81-4ebd-96d4-c2aa66134f3c
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'Profit YoY' =
+	measure 'Saldo a Receber YoY' =
 			
 			
 			
-			VAR CurrentYear = [Total Profit]
+			VAR CurrentYear = [Saldo a Receber Base]
 			VAR PreviousYears =
-			    CALCULATE([Total Profit], PREVIOUSYEAR('Date'[Date]))
+			    CALCULATE([Saldo a Receber Base], PREVIOUSYEAR('Date'[Date]))
 			RETURN
 			    CurrentYear - PreviousYears
 		lineageTag: c50699f9-09bc-4e3a-8897-d54235ceb095
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'YoY Profit Card Subtitle' =
+	measure 'Subtítulo Card Saldo a Receber YoY' =
 			
 			
 			
-			VAR diff = COALESCE([Profit YoY], 0)
-			VAR perc = COALESCE([Profit YoY %], 0)
+			VAR diff = COALESCE([Saldo a Receber YoY], 0)
+			VAR perc = COALESCE([Saldo a Receber YoY %], 0)
 			VAR sign = IF(perc >= 0, "+", "-")
 			RETURN
 			    sign &
@@ -241,38 +241,38 @@ table Measure
 			    sign & FORMAT(ABS(perc), "0.0%")
 		lineageTag: e2e7ccdc-7e53-46f9-ad5b-046140a380f4
 
-	measure 'Daily Sales YoY' =
+	measure 'Valor Médio por Perícia YoY' =
 			
 			
 			
-			VAR CurrentYear = [Avg Sales]
+			VAR CurrentYear = [Valor Médio por Perícia Base]
 			VAR PreviousYears =
-			    CALCULATE([Avg Sales], PREVIOUSYEAR('Date'[Date]))
+			    CALCULATE([Valor Médio por Perícia Base], PREVIOUSYEAR('Date'[Date]))
 			RETURN
 			    CurrentYear - PreviousYears
 		lineageTag: 1a1eaa21-eece-450e-a921-d85da97ac100
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'Daily Sales YoY %' =
+	measure 'Valor Médio por Perícia YoY %' =
 			
 			
 			
-			VAR CurrentYear = [Avg Sales]
+			VAR CurrentYear = [Valor Médio por Perícia Base]
 			VAR PreviousYears =
-			    CALCULATE([Avg Sales], PREVIOUSYEAR('Date'[Date]))
+			    CALCULATE([Valor Médio por Perícia Base], PREVIOUSYEAR('Date'[Date]))
 			RETURN
 			    DIVIDE(CurrentYear - PreviousYears, PreviousYears)
 		lineageTag: 1ca7ea78-4c49-48b5-8a98-e9b26fa25924
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'YoY Daily Sales Card Subtitle' =
+	measure 'Subtítulo Card Valor Médio por Perícia YoY' =
 			
 			
 			
-			VAR diff = COALESCE([Daily Sales YoY], 0)
-			VAR perc = COALESCE([Daily Sales YoY %], 0)
+			VAR diff = COALESCE([Valor Médio por Perícia YoY], 0)
+			VAR perc = COALESCE([Valor Médio por Perícia YoY %], 0)
 			VAR sign = IF(perc >= 0, "+", "-")
 			RETURN
 			    sign &
@@ -280,37 +280,37 @@ table Measure
 			    sign & FORMAT(ABS(perc), "0.0%")
 		lineageTag: 64e1afc5-454f-4edd-bc9e-9b2d162d3c8e
 
-	measure 'Units Sold YoY' =
+	measure 'Qtd Perícias YoY' =
 			
 			
 			
-			VAR CurrentYear = [Units Sold]
+			VAR CurrentYear = [Qtd Perícias Base]
 			VAR PreviousYears =
-			    CALCULATE([Units Sold], PREVIOUSYEAR('Date'[Date]))
+			    CALCULATE([Qtd Perícias Base], PREVIOUSYEAR('Date'[Date]))
 			RETURN
 			    CurrentYear - PreviousYears
 		formatString: 0
 		lineageTag: 7af2f18d-e490-4033-a70b-04cdcdb33a76
 
-	measure 'Units Sold YoY %' =
+	measure 'Qtd Perícias YoY %' =
 			
 			
 			
-			VAR CurrentYear = [Units Sold]
+			VAR CurrentYear = [Qtd Perícias Base]
 			VAR PreviousYears =
-			    CALCULATE([Units Sold], PREVIOUSYEAR('Date'[Date]))
+			    CALCULATE([Qtd Perícias Base], PREVIOUSYEAR('Date'[Date]))
 			RETURN
 			    DIVIDE(CurrentYear - PreviousYears, PreviousYears)
 		lineageTag: 97c30127-b1ec-4579-b3d5-765d35d5b853
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'YoY Units Sold Card Subtitle' =
+	measure 'Subtítulo Card Qtd Perícias YoY' =
 			
 			
 			
-			VAR diff = COALESCE([Units Sold YoY], 0)
-			VAR perc = COALESCE([Units Sold YoY %], 0)
+			VAR diff = COALESCE([Qtd Perícias YoY], 0)
+			VAR perc = COALESCE([Qtd Perícias YoY %], 0)
 			VAR sign = IF(perc >= 0, "+", "-")
 			RETURN
 			    sign &
@@ -318,37 +318,37 @@ table Measure
 			    sign & FORMAT(ABS(perc), "0.0%")
 		lineageTag: 84733aba-c82d-4241-8cf0-59ff22b0e033
 
-	measure 'Orders Total YoY' =
+	measure 'Peritos Distintos YoY' =
 			
 			
 			
-			VAR CurrentYear = [Orders Total]
+			VAR CurrentYear = [Peritos Distintos Base]
 			VAR PreviousYears =
-			    CALCULATE([Orders Total], PREVIOUSYEAR('Date'[Date]))
+			    CALCULATE([Peritos Distintos Base], PREVIOUSYEAR('Date'[Date]))
 			RETURN
 			    CurrentYear - PreviousYears
 		formatString: 0
 		lineageTag: 0eed62af-f6b0-463a-be7c-ca2b13617b3e
 
-	measure 'Orders Total YoY %' =
+	measure 'Peritos Distintos YoY %' =
 			
 			
 			
-			VAR CurrentYear = [Orders Total YoY]
+			VAR CurrentYear = [Peritos Distintos YoY]
 			VAR PreviousYears =
-			    CALCULATE([Orders Total YoY], PREVIOUSYEAR('Date'[Date]))
+			    CALCULATE([Peritos Distintos YoY], PREVIOUSYEAR('Date'[Date]))
 			RETURN
 			    DIVIDE(CurrentYear - PreviousYears, PreviousYears)
 		lineageTag: 9ed035db-524c-465e-bf60-001ddbbab7ad
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'YoY Orders Total Card Subtitle' =
+	measure 'Subtítulo Card Peritos Distintos YoY' =
 			
 			
 			
-			VAR diff = COALESCE([Orders Total YoY], 0)
-			VAR perc = COALESCE([Orders Total YoY %], 0)
+			VAR diff = COALESCE([Peritos Distintos YoY], 0)
+			VAR perc = COALESCE([Peritos Distintos YoY %], 0)
 			VAR sign = IF(perc >= 0, "+", "-")
 			RETURN
 			    sign &
@@ -356,7 +356,7 @@ table Measure
 			    sign & FORMAT(ABS(perc), "0.0%")
 		lineageTag: 98f89897-e508-41d9-870c-861ebef58fca
 
-	measure 'Sales City Label' =
+	measure 'Rótulo Vara Valor' =
 			
 			
 			
@@ -373,7 +373,7 @@ table Measure
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'Label Return Category %' =
+	measure 'Rótulo Categoria Retorno %' =
 			
 			
 			
@@ -381,23 +381,23 @@ table Measure
 			FORMAT(SUM(Orders[Sales]), "R$ #,##0")
 		lineageTag: f8ea8861-8004-41d7-887a-b0c9e641918f
 
-	measure 'Count Orders Returned' = DISTINCTCOUNT(Returns[Order ID])
+	measure 'Qtd Retornos' = DISTINCTCOUNT(Returns[Order ID])
 		formatString: 0
 		lineageTag: 08bd0220-3e8a-4351-a4c1-2e874a6c76af
 
-	measure 'Returns YoY %' =
+	measure 'Retornos YoY %' =
 			
 			
 			
-			VAR CurrentYear = [Count Orders Returned]
+			VAR CurrentYear = [Qtd Retornos]
 			VAR PreviousYears =
-			    CALCULATE ( [Count Orders Returned], DATEADD ( 'Date'[Date], -1, YEAR ) )
+			    CALCULATE ( [Qtd Retornos], DATEADD ( 'Date'[Date], -1, YEAR ) )
 			RETURN
 			    DIVIDE ( CurrentYear - PreviousYears, PreviousYears )
 		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: afdd6471-1ead-45aa-b6a4-94f169fa9e18
 
-	measure 'SMA Sales 2Y' =
+	measure 'Média Móvel Valor Arbitrado 2A' =
 			
 			VAR SelectedYear = SELECTEDVALUE('Date'[Year])
 			
@@ -427,7 +427,7 @@ table Measure
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'SMA Units Sold 2Y' =
+	measure 'Média Móvel Qtd Perícias 2A' =
 			
 			
 			
@@ -435,7 +435,7 @@ table Measure
 			
 			VAR UY1 =
 			    CALCULATE(
-			        [Units Sold],
+			        [Qtd Perícias Base],
 			        REMOVEFILTERS('Date'),
 			        FILTER(
 			            ALL( Orders[Order Date] ),
@@ -445,7 +445,7 @@ table Measure
 			
 			VAR UY2 =
 			    CALCULATE(
-			        [Units Sold],
+			        [Qtd Perícias Base],
 			        REMOVEFILTERS('Date'),
 			        FILTER(
 			            ALL( Orders[Order Date] ),
@@ -459,7 +459,7 @@ table Measure
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'SMA Profit 2Y' =
+	measure 'Média Móvel Saldo a Receber 2A' =
 			
 			
 			
@@ -491,7 +491,7 @@ table Measure
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'SMA Return 2Y' =
+	measure 'Média Móvel Retornos 2A' =
 			
 			
 			
@@ -499,7 +499,7 @@ table Measure
 			
 			VAR RY1 =
 			    CALCULATE(
-			        [Count Orders Returned],
+			        [Qtd Retornos],
 			        REMOVEFILTERS('Date'),
 			        FILTER(
 			            ALL( Orders[Order Date] ),
@@ -509,7 +509,7 @@ table Measure
 			
 			VAR RY2 =
 			    CALCULATE(
-			        [Count Orders Returned],
+			        [Qtd Retornos],
 			        REMOVEFILTERS('Date'),
 			        FILTER(
 			            ALL( Orders[Order Date] ),
@@ -523,7 +523,7 @@ table Measure
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'Gasto Mês Atual' = CALCULATE([Total Sales], DATESMTD('Date'[Date]))
+	measure 'Gasto Mês Atual' = CALCULATE([Valor Arbitrado Base], DATESMTD('Date'[Date]))
 		formatString: R$ #,0.00;(R$ #,0.00);R$ #,0.00
 		lineageTag: 6db42ec4-6b0d-4ac6-aec0-d6a01f5f00f1
 
@@ -535,17 +535,17 @@ table Measure
 			VAR FimSemana = InicioSemana + 6
 			RETURN
 			    CALCULATE(
-			        [Total Sales],
+			        [Valor Arbitrado Base],
 			        DATESBETWEEN('Date'[Date], InicioSemana, FimSemana)
 			    )
 		formatString: R$ #,0.00;(R$ #,0.00);R$ #,0.00
 		lineageTag: e9c3df92-f4c2-4df4-803f-c5a426ca7603
 
-	measure 'Gasto Ano Atual' = CALCULATE([Total Sales], DATESYTD('Date'[Date]))
+	measure 'Gasto Ano Atual' = CALCULATE([Valor Arbitrado Base], DATESYTD('Date'[Date]))
 		formatString: R$ #,0.00;(R$ #,0.00);R$ #,0.00
 		lineageTag: 8f19a17a-8344-4d74-b2f0-9fbc2dc9f349
 
-	measure 'Gasto Mês Anterior' = CALCULATE([Total Sales], DATEADD('Date'[Date], -1, MONTH))
+	measure 'Gasto Mês Anterior' = CALCULATE([Valor Arbitrado Base], DATEADD('Date'[Date], -1, MONTH))
 		formatString: R$ #,0.00;(R$ #,0.00);R$ #,0.00
 		lineageTag: 727f4dc0-622d-44e3-83b2-8996f9074ea8
 
@@ -558,13 +558,13 @@ table Measure
 			VAR FimSemanaAnterior = InicioSemana - 1
 			RETURN
 			    CALCULATE(
-			        [Total Sales],
+			        [Valor Arbitrado Base],
 			        DATESBETWEEN('Date'[Date], InicioSemanaAnterior, FimSemanaAnterior)
 			    )
 		formatString: R$ #,0.00;(R$ #,0.00);R$ #,0.00
 		lineageTag: 3d22030e-bfbe-4e4f-9995-3f9581417ce3
 
-	measure 'Gasto Ano Anterior' = CALCULATE([Total Sales], DATEADD('Date'[Date], -1, YEAR))
+	measure 'Gasto Ano Anterior' = CALCULATE([Valor Arbitrado Base], DATEADD('Date'[Date], -1, YEAR))
 		formatString: R$ #,0.00;(R$ #,0.00);R$ #,0.00
 		lineageTag: a13f0f35-0f87-422a-93f6-32e907d9f25d
 
@@ -623,7 +623,7 @@ table Measure
 			        SUMMARIZE(
 			            ALLSELECTED(Orders.'Product Name'),
 			            Orders.'Product Name',
-			            "ValorPerito", [Total Sales]
+			            "ValorPerito", [Valor Arbitrado Base]
 			        ),
 			        [ValorPerito], DESC,
 			        Orders.'Product Name', ASC
@@ -641,7 +641,7 @@ table Measure
 			        SUMMARIZE(
 			            ALLSELECTED(Orders.'Product Name'),
 			            Orders.'Product Name',
-			            "ValorPerito", [Total Sales]
+			            "ValorPerito", [Valor Arbitrado Base]
 			        ),
 			        [ValorPerito], DESC,
 			        Orders.'Product Name', ASC
@@ -664,12 +664,12 @@ table Measure
 			    )
 		lineageTag: 07f92466-1a81-4c8c-b3f7-17a396699361
 
-	measure 'Total Sales RM João Pessoa' =
+	measure 'Valor Arbitrado RM João Pessoa' =
 			
 			
 			
 			CALCULATE(
-			    [Total Sales],
+			    [Valor Arbitrado Base],
 			    KEEPFILTERS(
 			        Orders[State Mapa] IN {
 			            "João Pessoa",
@@ -711,28 +711,28 @@ table Measure
 	measure 'Título Mapa Comarcas' = IF(HASONEVALUE(Orders[State Mapa]), "Comarca selecionada: " & SELECTEDVALUE(Orders[State Mapa]), "Mapa de Comarcas - Paraíba")
 		lineageTag: 312df80d-5d5a-4736-ad6f-2f7d14742e66
 
-	measure 'Destaque Comarca' = VAR UmaComarca = HASONEVALUE(Orders[State Mapa]) VAR NomeSel = SELECTEDVALUE(Orders[State Mapa]) VAR ValorSel = [Total Sales] VAR T = TOPN(1, SUMMARIZE(ALLSELECTED(Orders[State Mapa]), Orders[State Mapa], "V", [Total Sales]), [V], DESC, Orders[State Mapa], ASC) VAR N = MAXX(T, Orders[State Mapa]) VAR V = MAXX(T, [V]) RETURN IF(UmaComarca, "Comarca: " & NomeSel & " | " & FORMAT(COALESCE(ValorSel, 0), "R$ #,##0.00"), IF(ISBLANK(V), "Sem dados no contexto atual", "Maior valor no contexto: " & N & " | " & FORMAT(V, "R$ #,##0.00")))
+	measure 'Destaque Comarca' = VAR UmaComarca = HASONEVALUE(Orders[State Mapa]) VAR NomeSel = SELECTEDVALUE(Orders[State Mapa]) VAR ValorSel = [Valor Arbitrado Base] VAR T = TOPN(1, SUMMARIZE(ALLSELECTED(Orders[State Mapa]), Orders[State Mapa], "V", [Valor Arbitrado Base]), [V], DESC, Orders[State Mapa], ASC) VAR N = MAXX(T, Orders[State Mapa]) VAR V = MAXX(T, [V]) RETURN IF(UmaComarca, "Comarca: " & NomeSel & " | " & FORMAT(COALESCE(ValorSel, 0), "R$ #,##0.00"), IF(ISBLANK(V), "Sem dados no contexto atual", "Maior valor no contexto: " & N & " | " & FORMAT(V, "R$ #,##0.00")))
 		lineageTag: c3891e61-c0dd-4423-97c9-167a152b0e2c
 
-	measure 'Destaque Vara' = VAR T = TOPN(1, SUMMARIZE(ALLSELECTED('Orders'[City]), 'Orders'[City], "V", [Total Sales]), [V], DESC, 'Orders'[City], ASC) VAR N = MAXX(T, 'Orders'[City]) VAR V = MAXX(T, [V]) RETURN IF(ISBLANK(V), "Sem dados", N & " | " & FORMAT(V, "R$ #,##0.00"))
+	measure 'Destaque Vara' = VAR T = TOPN(1, SUMMARIZE(ALLSELECTED('Orders'[City]), 'Orders'[City], "V", [Valor Arbitrado Base]), [V], DESC, 'Orders'[City], ASC) VAR N = MAXX(T, 'Orders'[City]) VAR V = MAXX(T, [V]) RETURN IF(ISBLANK(V), "Sem dados", N & " | " & FORMAT(V, "R$ #,##0.00"))
 		lineageTag: d6a30125-ca15-4e75-a735-bd5dbc83eea0
 
-	measure 'Destaque Perito' = VAR T = TOPN(1, SUMMARIZE(ALLSELECTED('Orders'[Product Name]), 'Orders'[Product Name], "V", [Total Sales]), [V], DESC, 'Orders'[Product Name], ASC) VAR N = MAXX(T, 'Orders'[Product Name]) VAR V = MAXX(T, [V]) RETURN IF(ISBLANK(V), "Sem dados", N & " | " & FORMAT(V, "R$ #,##0.00"))
+	measure 'Destaque Perito' = VAR T = TOPN(1, SUMMARIZE(ALLSELECTED('Orders'[Product Name]), 'Orders'[Product Name], "V", [Valor Arbitrado Base]), [V], DESC, 'Orders'[Product Name], ASC) VAR N = MAXX(T, 'Orders'[Product Name]) VAR V = MAXX(T, [V]) RETURN IF(ISBLANK(V), "Sem dados", N & " | " & FORMAT(V, "R$ #,##0.00"))
 		lineageTag: 68da0ad6-ade2-41d1-bf05-87128172454f
 
-	measure 'Destaque Especialidade' = VAR T = TOPN(1, SUMMARIZE(ALLSELECTED('Orders'[Category]), 'Orders'[Category], "V", [Total Sales]), [V], DESC, 'Orders'[Category], ASC) VAR N = MAXX(T, 'Orders'[Category]) VAR V = MAXX(T, [V]) RETURN IF(ISBLANK(V), "Sem dados", N & " | " & FORMAT(V, "R$ #,##0.00"))
+	measure 'Destaque Especialidade' = VAR T = TOPN(1, SUMMARIZE(ALLSELECTED('Orders'[Category]), 'Orders'[Category], "V", [Valor Arbitrado Base]), [V], DESC, 'Orders'[Category], ASC) VAR N = MAXX(T, 'Orders'[Category]) VAR V = MAXX(T, [V]) RETURN IF(ISBLANK(V), "Sem dados", N & " | " & FORMAT(V, "R$ #,##0.00"))
 		lineageTag: c2cb2df0-2f07-4141-8425-2a4a44078712
 
-	measure 'Total Sales Tooltip' = COALESCE([Total Sales], 0)
+	measure 'Valor Arbitrado Tooltip' = COALESCE([Valor Arbitrado Base], 0)
 		formatString: R$ #,0.00;(R$ #,0.00);R$ #,0.00
 		lineageTag: 6870bab2-9e0d-4499-91d0-149fd04d15c3
 
-	measure 'Sales Card Subtitle Tooltip' =
+	measure 'Subtítulo Card Valor Arbitrado Tooltip' =
 			
-			VAR TextoBase = [Sales Card Subtitle]
+			VAR TextoBase = [Subtítulo Card Valor Arbitrado]
 			RETURN
 			    IF(
-			        ISBLANK([Total Sales]),
+			        ISBLANK([Valor Arbitrado Base]),
 			        "Sem dados",
 			        COALESCE(TextoBase, "Sem dados")
 			    )

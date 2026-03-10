@@ -5,7 +5,7 @@
     "x": 0,
     "y": 26.436653223400942,
     "z": 3000,
-    "height": 44.560459548519511,
+    "height": 44.56045954851951,
     "width": 171.43958214686245,
     "tabOrder": 0
   },
@@ -66,15 +66,15 @@
                                       "Source": "m"
                                     }
                                   },
-                                  "Property": "Total Sales"
+                                  "Property": "Valor Arbitrado Base"
                                 },
-                                "Name": "Measure.Total Sales"
+                                "Name": "Measure.Valor Arbitrado Base"
                               }
                             ]
                           }
                         }
                       },
-                      "Property": "Measure.Total Sales"
+                      "Property": "Measure.Valor Arbitrado Base"
                     }
                   },
                   "IncludeAllTypes": 1

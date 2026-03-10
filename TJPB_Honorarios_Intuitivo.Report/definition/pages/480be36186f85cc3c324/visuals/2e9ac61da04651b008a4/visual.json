@@ -5,7 +5,7 @@
     "x": 0,
     "y": 26.436653223400942,
     "z": 3000,
-    "height": 44.560459548519511,
+    "height": 44.56045954851951,
     "width": 171.43958214686245,
     "tabOrder": 0
   },
@@ -66,15 +66,15 @@
                                       "Source": "m"
                                     }
                                   },
-                                  "Property": "Count Orders Returned"
+                                  "Property": "Qtd Retornos"
                                 },
-                                "Name": "Measure.Count Orders Returned"
+                                "Name": "Measure.Qtd Retornos"
                               }
                             ]
                           }
                         }
                       },
-                      "Property": "Measure.Count Orders Returned"
+                      "Property": "Measure.Qtd Retornos"
                     }
                   },
                   "IncludeAllTypes": 1

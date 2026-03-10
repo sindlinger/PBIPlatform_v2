@@ -42,11 +42,11 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "% Sales Total"
+                  "Property": "% Valor Arbitrado Total"
                 }
               },
-              "queryRef": "Measure.% Sales Total",
-              "nativeQueryRef": "% Sales Total"
+              "queryRef": "Measure.% Valor Arbitrado Total",
+              "nativeQueryRef": "% Valor Arbitrado Total"
             },
             {
               "field": {
@@ -56,11 +56,11 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "Total Sales"
+                  "Property": "Valor Arbitrado Base"
                 }
               },
-              "queryRef": "Measure.Total Sales",
-              "nativeQueryRef": "Total Sales"
+              "queryRef": "Measure.Valor Arbitrado Base",
+              "nativeQueryRef": "Valor Arbitrado Base"
             }
           ]
         }
@@ -75,7 +75,7 @@
                     "Entity": "Measure"
                   }
                 },
-                "Property": "% Sales Total"
+                "Property": "% Valor Arbitrado Total"
               }
             },
             "direction": "Descending"
@@ -156,7 +156,7 @@
             }
           },
           "selector": {
-            "metadata": "Measure.Total Sales"
+            "metadata": "Measure.Valor Arbitrado Base"
           }
         },
         {
@@ -182,7 +182,7 @@
             }
           },
           "selector": {
-            "metadata": "Measure.% Sales Total"
+            "metadata": "Measure.% Valor Arbitrado Total"
           }
         }
       ],
@@ -286,7 +286,7 @@
             }
           },
           "selector": {
-            "metadata": "Measure.Total Sales"
+            "metadata": "Measure.Valor Arbitrado Base"
           }
         },
         {
@@ -299,7 +299,7 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "Label City Sales %"
+                  "Property": "Rótulo Vara Valor %"
                 }
               }
             }
@@ -312,7 +312,7 @@
                 }
               }
             ],
-            "metadata": "Measure.% Sales Total",
+            "metadata": "Measure.% Valor Arbitrado Total",
             "highlightMatching": 1
           }
         },
@@ -362,7 +362,7 @@
             }
           },
           "selector": {
-            "metadata": "Measure.% Sales Total"
+            "metadata": "Measure.% Valor Arbitrado Total"
           }
         }
       ],

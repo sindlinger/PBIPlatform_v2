@@ -5,7 +5,7 @@
     "x": 0,
     "y": 0,
     "z": 0,
-    "height": 37.143205918453582,
+    "height": 37.14320591845358,
     "width": 141.89368210639822,
     "tabOrder": 1000
   },
@@ -49,5 +49,6 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "56522877312f663a7d8b"
+  "parentGroupName": "56522877312f663a7d8b",
+  "isHidden": true
 }

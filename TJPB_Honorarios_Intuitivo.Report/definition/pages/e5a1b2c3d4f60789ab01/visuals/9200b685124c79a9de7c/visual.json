@@ -5,8 +5,8 @@
     "x": -5000,
     "y": 0,
     "z": 13000,
-    "height": 45.244805349892523,
-    "width": 524.59517554334843,
+    "height": 45.24480534989252,
+    "width": 524.5951755433484,
     "tabOrder": 8000
   },
   "visual": {
@@ -42,11 +42,11 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "Sales MoM Label"
+                  "Property": "Rótulo Variação Mensal Valor Arbitrado"
                 }
               },
-              "queryRef": "Measure.Sales MoM Label",
-              "nativeQueryRef": "Sales MoM Label"
+              "queryRef": "Measure.Rótulo Variação Mensal Valor Arbitrado",
+              "nativeQueryRef": "Rótulo Variação Mensal Valor Arbitrado"
             }
           ]
         }
@@ -104,7 +104,7 @@
                                           "Entity": "Measure"
                                         }
                                       },
-                                      "Property": "Sales MoM Label"
+                                      "Property": "Rótulo Variação Mensal Valor Arbitrado"
                                     }
                                   },
                                   "Right": {
@@ -136,7 +136,7 @@
                                       "Entity": "Measure"
                                     }
                                   },
-                                  "Property": "Sales MoM Label"
+                                  "Property": "Rótulo Variação Mensal Valor Arbitrado"
                                 }
                               },
                               "Right": {
@@ -171,7 +171,7 @@
                 }
               }
             ],
-            "metadata": "Measure.Sales MoM Label"
+            "metadata": "Measure.Rótulo Variação Mensal Valor Arbitrado"
           }
         },
         {
@@ -321,7 +321,7 @@
             }
           },
           "selector": {
-            "metadata": "Measure.Sales MoM Label"
+            "metadata": "Measure.Rótulo Variação Mensal Valor Arbitrado"
           }
         }
       ],

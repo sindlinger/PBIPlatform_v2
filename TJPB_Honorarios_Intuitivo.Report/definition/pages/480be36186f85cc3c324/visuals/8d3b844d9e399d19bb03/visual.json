@@ -54,7 +54,7 @@
                             "From": [
                               {
                                 "Name": "m",
-                                "Entity": "Measure",
+                                "Entity": "FactPericias",
                                 "Type": 0
                               }
                             ],
@@ -66,15 +66,15 @@
                                       "Source": "m"
                                     }
                                   },
-                                  "Property": "Units Sold"
+                                  "Property": "Qtd Perícias"
                                 },
-                                "Name": "Measure.Units Sold"
+                                "Name": "FactPericias.Qtd Perícias"
                               }
                             ]
                           }
                         }
                       },
-                      "Property": "Measure.Units Sold"
+                      "Property": "FactPericias.Qtd Perícias"
                     }
                   },
                   "IncludeAllTypes": 1

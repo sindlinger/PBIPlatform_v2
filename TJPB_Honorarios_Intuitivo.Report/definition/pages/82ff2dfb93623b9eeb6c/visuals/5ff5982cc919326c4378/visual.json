@@ -6,7 +6,7 @@
     "y": 174.9054466230937,
     "z": 23000,
     "height": 199.89193899782134,
-    "width": 292.69891067538128,
+    "width": 292.6989106753813,
     "tabOrder": 22000
   },
   "visual": {
@@ -37,11 +37,11 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "Total Profit"
+                  "Property": "Saldo a Receber Base"
                 }
               },
-              "queryRef": "Measure.Total Profit",
-              "nativeQueryRef": "Total Profit"
+              "queryRef": "Measure.Saldo a Receber Base",
+              "nativeQueryRef": "Saldo a Receber Base"
             },
             {
               "field": {
@@ -51,11 +51,11 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "Units Sold"
+                  "Property": "Qtd Perícias Base"
                 }
               },
-              "queryRef": "Measure.Units Sold",
-              "nativeQueryRef": "Units Sold"
+              "queryRef": "Measure.Qtd Perícias Base",
+              "nativeQueryRef": "Qtd Perícias Base"
             },
             {
               "field": {
@@ -65,11 +65,11 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "Total Sales"
+                  "Property": "Valor Arbitrado Base"
                 }
               },
-              "queryRef": "Measure.Total Sales",
-              "nativeQueryRef": "Total Sales"
+              "queryRef": "Measure.Valor Arbitrado Base",
+              "nativeQueryRef": "Valor Arbitrado Base"
             }
           ]
         }
@@ -84,7 +84,7 @@
                     "Entity": "Measure"
                   }
                 },
-                "Property": "Total Sales"
+                "Property": "Valor Arbitrado Base"
               }
             },
             "direction": "Descending"
@@ -186,7 +186,7 @@
                               "Entity": "Measure"
                             }
                           },
-                          "Property": "Total Sales"
+                          "Property": "Valor Arbitrado Base"
                         }
                       },
                       "FillRule": {
@@ -228,7 +228,7 @@
                 }
               }
             ],
-            "metadata": "Measure.Total Sales"
+            "metadata": "Measure.Valor Arbitrado Base"
           }
         },
         {
@@ -266,7 +266,7 @@
                                         "Entity": "Measure"
                                       }
                                     },
-                                    "Property": "Total Profit"
+                                    "Property": "Saldo a Receber Base"
                                   }
                                 },
                                 "Right": {
@@ -286,7 +286,7 @@
                                         "Entity": "Measure"
                                       }
                                     },
-                                    "Property": "Total Profit"
+                                    "Property": "Saldo a Receber Base"
                                   }
                                 },
                                 "Right": {
@@ -317,7 +317,7 @@
                                         "Entity": "Measure"
                                       }
                                     },
-                                    "Property": "Total Profit"
+                                    "Property": "Saldo a Receber Base"
                                   }
                                 },
                                 "Right": {
@@ -337,7 +337,7 @@
                                         "Entity": "Measure"
                                       }
                                     },
-                                    "Property": "Total Profit"
+                                    "Property": "Saldo a Receber Base"
                                   }
                                 },
                                 "Right": {
@@ -369,7 +369,7 @@
                 }
               }
             ],
-            "metadata": "Measure.Total Profit"
+            "metadata": "Measure.Saldo a Receber Base"
           }
         }
       ],
@@ -434,7 +434,7 @@
             }
           },
           "selector": {
-            "metadata": "Measure.Units Sold"
+            "metadata": "Measure.Qtd Perícias Base"
           }
         }
       ],
@@ -460,19 +460,19 @@
         {
           "properties": {},
           "selector": {
-            "metadata": "Measure.Total Profit"
+            "metadata": "Measure.Saldo a Receber Base"
           }
         },
         {
           "properties": {},
           "selector": {
-            "metadata": "Measure.Units Sold"
+            "metadata": "Measure.Qtd Perícias Base"
           }
         },
         {
           "properties": {},
           "selector": {
-            "metadata": "Measure.Total Sales"
+            "metadata": "Measure.Valor Arbitrado Base"
           }
         }
       ]

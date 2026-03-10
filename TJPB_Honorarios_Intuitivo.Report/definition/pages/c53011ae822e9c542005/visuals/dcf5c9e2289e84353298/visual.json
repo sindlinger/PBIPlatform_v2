@@ -65,15 +65,15 @@
                                       "Source": "m"
                                     }
                                   },
-                                  "Property": "Total Sales Tooltip"
+                                  "Property": "Valor Arbitrado Tooltip"
                                 },
-                                "Name": "Measure.Total Sales Tooltip"
+                                "Name": "Measure.Valor Arbitrado Tooltip"
                               }
                             ]
                           }
                         }
                       },
-                      "Property": "Measure.Total Sales Tooltip"
+                      "Property": "Measure.Valor Arbitrado Tooltip"
                     }
                   },
                   "IncludeAllTypes": 1

@@ -6,7 +6,7 @@
     "y": 40,
     "z": 1000,
     "height": 145,
-    "width": 269.16666666666669,
+    "width": 269.1666666666667,
     "tabOrder": 1000
   },
   "visual": {
@@ -42,11 +42,11 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "Total Sales"
+                  "Property": "Valor Arbitrado Base"
                 }
               },
-              "queryRef": "Measure.Total Sales",
-              "nativeQueryRef": "Total Sales"
+              "queryRef": "Measure.Valor Arbitrado Base",
+              "nativeQueryRef": "Valor Arbitrado Base"
             }
           ]
         }
@@ -61,7 +61,7 @@
                     "Entity": "Measure"
                   }
                 },
-                "Property": "Total Sales"
+                "Property": "Valor Arbitrado Base"
               }
             },
             "direction": "Descending"
@@ -296,5 +296,6 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "1c1410e9e295d87af163"
+  "parentGroupName": "1c1410e9e295d87af163",
+  "isHidden": true
 }

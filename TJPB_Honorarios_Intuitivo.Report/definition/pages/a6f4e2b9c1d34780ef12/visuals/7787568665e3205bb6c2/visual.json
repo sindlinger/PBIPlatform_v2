@@ -5,7 +5,7 @@
     "x": 29.686985670496927,
     "y": 69.2696332311595,
     "z": 0,
-    "height": 42.056563033203979,
+    "height": 42.05656303320398,
     "width": 118.74794268198771,
     "tabOrder": 3000
   },
@@ -23,11 +23,11 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "YoY Units Sold Card Subtitle"
+                  "Property": "Subtítulo Card Qtd Perícias YoY"
                 }
               },
-              "queryRef": "Measure.YoY Units Sold Card Subtitle",
-              "nativeQueryRef": "YoY Units Sold Card Subtitle"
+              "queryRef": "Measure.Subtítulo Card Qtd Perícias YoY",
+              "nativeQueryRef": "Subtítulo Card Qtd Perícias YoY"
             }
           ]
         }
@@ -42,7 +42,7 @@
                     "Entity": "Measure"
                   }
                 },
-                "Property": "Sales MoM %"
+                "Property": "Variação Mensal Valor Arbitrado %"
               }
             },
             "direction": "Descending"
@@ -87,7 +87,7 @@
                                           "Entity": "Measure"
                                         }
                                       },
-                                      "Property": "YoY Units Sold Card Subtitle"
+                                      "Property": "Subtítulo Card Qtd Perícias YoY"
                                     }
                                   },
                                   "Right": {
@@ -119,7 +119,7 @@
                                       "Entity": "Measure"
                                     }
                                   },
-                                  "Property": "YoY Units Sold Card Subtitle"
+                                  "Property": "Subtítulo Card Qtd Perícias YoY"
                                 }
                               },
                               "Right": {

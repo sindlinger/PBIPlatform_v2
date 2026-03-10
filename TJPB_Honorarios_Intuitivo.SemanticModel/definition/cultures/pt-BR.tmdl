@@ -9,7 +9,7 @@ cultureInfo pt-BR
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Measure",
-			          "ConceptualProperty": "Count Orders Returned"
+			          "ConceptualProperty": "Qtd Retornos"
 			        }
 			      },
 			      "State": "Generated",
@@ -30,7 +30,7 @@ cultureInfo pt-BR
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Measure",
-			          "ConceptualProperty": "Total Sales"
+			          "ConceptualProperty": "Valor Arbitrado Base"
 			        }
 			      },
 			      "State": "Generated",

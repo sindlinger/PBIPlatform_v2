@@ -3,7 +3,7 @@
   "name": "0ef44800ed7ba9b2a451",
   "position": {
     "x": 0,
-    "y": 35.238027376650813,
+    "y": 35.23802737665081,
     "z": 3000,
     "height": 49.651494029941205,
     "width": 171.29765440329717,
@@ -66,15 +66,15 @@
                                       "Source": "m"
                                     }
                                   },
-                                  "Property": "Units Sold"
+                                  "Property": "Qtd Perícias Base"
                                 },
-                                "Name": "Measure.Units Sold"
+                                "Name": "Measure.Qtd Perícias Base"
                               }
                             ]
                           }
                         }
                       },
-                      "Property": "Measure.Units Sold"
+                      "Property": "Measure.Qtd Perícias Base"
                     }
                   },
                   "IncludeAllTypes": 1

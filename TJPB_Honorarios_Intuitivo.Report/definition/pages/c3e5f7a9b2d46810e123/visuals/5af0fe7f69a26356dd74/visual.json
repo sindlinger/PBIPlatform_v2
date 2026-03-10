@@ -3,10 +3,10 @@
   "name": "5af0fe7f69a26356dd74",
   "position": {
     "x": 0,
-    "y": 16.8094717172476,
-    "z": 1000,
-    "height": 45.17545524010292,
+    "y": 15.384615384615387,
     "width": 178.84615384615384,
+    "height": 41.34615384615385,
+    "z": 1000,
     "tabOrder": 0
   },
   "visual": {
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Curva Anual de Gasto"
+                    "value": "Historico do volume por especialidade"
                   }
                 ]
               }

@@ -3,9 +3,9 @@
   "name": "a7c5b2d9f1840e63c2ab",
   "position": {
     "x": 447.63572679509633,
-    "y": 342.97723292469351,
+    "y": 342.9772329246935,
     "z": 15000,
-    "height": 320.28021015761823,
+    "height": 320.2802101576182,
     "width": 316.49737302977235,
     "tabOrder": 23000
   },
@@ -65,11 +65,11 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "Total Sales"
+                  "Property": "Valor Arbitrado Base"
                 }
               },
-              "queryRef": "Measure.Total Sales",
-              "nativeQueryRef": "Total Sales"
+              "queryRef": "Measure.Valor Arbitrado Base",
+              "nativeQueryRef": "Valor Arbitrado Base"
             }
           ]
         }
@@ -172,7 +172,7 @@
                           "Entity": "Measure"
                         }
                       },
-                      "Property": "Sales Color"
+                      "Property": "Cor Valor Arbitrado"
                     }
                   }
                 }
@@ -204,7 +204,7 @@
             }
           },
           "selector": {
-            "metadata": "Measure.Total Sales"
+            "metadata": "Measure.Valor Arbitrado Base"
           }
         },
         {
@@ -253,7 +253,7 @@
                 "Aggregation": {
                   "Expression": {
                     "SelectRef": {
-                      "ExpressionName": "Measure.Total Sales"
+                      "ExpressionName": "Measure.Valor Arbitrado Base"
                     }
                   },
                   "Function": 1
@@ -327,7 +327,7 @@
             }
           },
           "selector": {
-            "metadata": "Measure.Total Sales",
+            "metadata": "Measure.Valor Arbitrado Base",
             "id": "1"
           }
         }
@@ -344,7 +344,7 @@
             }
           },
           "selector": {
-            "metadata": "Measure.Total Sales"
+            "metadata": "Measure.Valor Arbitrado Base"
           }
         },
         {
@@ -377,7 +377,7 @@
                 }
               }
             ],
-            "metadata": "Measure.Total Sales",
+            "metadata": "Measure.Valor Arbitrado Base",
             "highlightMatching": 1
           }
         }

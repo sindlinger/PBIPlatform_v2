@@ -42,7 +42,7 @@
                     "Entity": "Measure"
                   }
                 },
-                "Property": "Sales MoM %"
+                "Property": "Variação Mensal Valor Arbitrado %"
               }
             },
             "direction": "Descending"
@@ -153,6 +153,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "isHidden": true
+  }
 }

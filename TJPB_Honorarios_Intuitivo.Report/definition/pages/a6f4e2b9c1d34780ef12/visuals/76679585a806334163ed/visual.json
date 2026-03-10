@@ -6,7 +6,7 @@
     "y": 69.2696332311595,
     "z": 3000,
     "height": 40.819605296933275,
-    "width": 98.956618901656427,
+    "width": 98.95661890165643,
     "tabOrder": 3000
   },
   "visual": {
@@ -23,11 +23,11 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "YoY Daily Sales Card Subtitle"
+                  "Property": "Subtítulo Card Valor Médio por Perícia YoY"
                 }
               },
-              "queryRef": "Measure.YoY Daily Sales Card Subtitle",
-              "nativeQueryRef": "YoY Daily Sales Card Subtitle"
+              "queryRef": "Measure.Subtítulo Card Valor Médio por Perícia YoY",
+              "nativeQueryRef": "Subtítulo Card Valor Médio por Perícia YoY"
             }
           ]
         }
@@ -42,7 +42,7 @@
                     "Entity": "Measure"
                   }
                 },
-                "Property": "Avg Sales"
+                "Property": "Valor Médio por Perícia Base"
               }
             },
             "direction": "Descending"
@@ -87,7 +87,7 @@
                                           "Entity": "Measure"
                                         }
                                       },
-                                      "Property": "YoY Daily Sales Card Subtitle"
+                                      "Property": "Subtítulo Card Valor Médio por Perícia YoY"
                                     }
                                   },
                                   "Right": {
@@ -119,7 +119,7 @@
                                       "Entity": "Measure"
                                     }
                                   },
-                                  "Property": "YoY Daily Sales Card Subtitle"
+                                  "Property": "Subtítulo Card Valor Médio por Perícia YoY"
                                 }
                               },
                               "Right": {

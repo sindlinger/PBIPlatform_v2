@@ -5,7 +5,7 @@
     "x": 26.744261969312003,
     "y": 68.60484592127861,
     "z": 0,
-    "height": 41.860583951966611,
+    "height": 41.86058395196661,
     "width": 118.60498786390541,
     "tabOrder": 3000
   },
@@ -23,11 +23,11 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "YoY Orders Total Card Subtitle"
+                  "Property": "Subtítulo Card Peritos Distintos YoY"
                 }
               },
-              "queryRef": "Measure.YoY Orders Total Card Subtitle",
-              "nativeQueryRef": "YoY Orders Total Card Subtitle"
+              "queryRef": "Measure.Subtítulo Card Peritos Distintos YoY",
+              "nativeQueryRef": "Subtítulo Card Peritos Distintos YoY"
             }
           ]
         }
@@ -42,7 +42,7 @@
                     "Entity": "Measure"
                   }
                 },
-                "Property": "Sales MoM %"
+                "Property": "Variação Mensal Valor Arbitrado %"
               }
             },
             "direction": "Descending"
@@ -87,7 +87,7 @@
                                           "Entity": "Measure"
                                         }
                                       },
-                                      "Property": "YoY Orders Total Card Subtitle"
+                                      "Property": "Subtítulo Card Peritos Distintos YoY"
                                     }
                                   },
                                   "Right": {
@@ -119,7 +119,7 @@
                                       "Entity": "Measure"
                                     }
                                   },
-                                  "Property": "YoY Orders Total Card Subtitle"
+                                  "Property": "Subtítulo Card Peritos Distintos YoY"
                                 }
                               },
                               "Right": {

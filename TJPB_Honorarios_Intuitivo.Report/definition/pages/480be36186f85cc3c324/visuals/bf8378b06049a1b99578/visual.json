@@ -3,9 +3,9 @@
   "name": "bf8378b06049a1b99578",
   "position": {
     "x": 0,
-    "y": 26.931481724092752,
+    "y": 26.93148172409275,
     "z": 3000,
-    "height": 44.069697366697227,
+    "height": 44.06969736669723,
     "width": 150.55001915533015,
     "tabOrder": 0
   },
@@ -66,15 +66,15 @@
                                       "Source": "m"
                                     }
                                   },
-                                  "Property": "SMA Profit 2Y"
+                                  "Property": "Média Móvel Saldo a Receber 2A"
                                 },
-                                "Name": "Measure.SMA Profit 2Y"
+                                "Name": "Measure.Média Móvel Saldo a Receber 2A"
                               }
                             ]
                           }
                         }
                       },
-                      "Property": "Measure.SMA Profit 2Y"
+                      "Property": "Measure.Média Móvel Saldo a Receber 2A"
                     }
                   },
                   "IncludeAllTypes": 1

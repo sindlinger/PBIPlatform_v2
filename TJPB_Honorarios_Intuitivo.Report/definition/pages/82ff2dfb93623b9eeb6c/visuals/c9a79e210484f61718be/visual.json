@@ -23,11 +23,11 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "Sales MoM %"
+                  "Property": "Variação Mensal Valor Arbitrado %"
                 }
               },
-              "queryRef": "Measure.Sales MoM %",
-              "nativeQueryRef": "Sales MoM %"
+              "queryRef": "Measure.Variação Mensal Valor Arbitrado %",
+              "nativeQueryRef": "Variação Mensal Valor Arbitrado %"
             }
           ]
         }
@@ -42,7 +42,7 @@
                     "Entity": "Measure"
                   }
                 },
-                "Property": "Sales MoM %"
+                "Property": "Variação Mensal Valor Arbitrado %"
               }
             },
             "direction": "Descending"
@@ -88,7 +88,7 @@
                                           "Entity": "Measure"
                                         }
                                       },
-                                      "Property": "Sales MoM"
+                                      "Property": "Variação Mensal Valor Arbitrado"
                                     }
                                   },
                                   "Right": {
@@ -108,7 +108,7 @@
                                           "Entity": "Measure"
                                         }
                                       },
-                                      "Property": "Sales MoM"
+                                      "Property": "Variação Mensal Valor Arbitrado"
                                     }
                                   },
                                   "Right": {
@@ -139,7 +139,7 @@
                                           "Entity": "Measure"
                                         }
                                       },
-                                      "Property": "Sales MoM"
+                                      "Property": "Variação Mensal Valor Arbitrado"
                                     }
                                   },
                                   "Right": {
@@ -159,7 +159,7 @@
                                           "Entity": "Measure"
                                         }
                                       },
-                                      "Property": "Sales MoM"
+                                      "Property": "Variação Mensal Valor Arbitrado"
                                     }
                                   },
                                   "Right": {

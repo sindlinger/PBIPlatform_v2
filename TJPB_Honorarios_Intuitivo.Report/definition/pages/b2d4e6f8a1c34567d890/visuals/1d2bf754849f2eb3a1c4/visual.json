@@ -4,9 +4,9 @@
   "position": {
     "x": 0,
     "y": 0,
-    "z": 0,
-    "height": 45.17545524010292,
     "width": 104.8076923076923,
+    "height": 41.34615384615385,
+    "z": 0,
     "tabOrder": 1000
   },
   "visual": {
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "— over time",
+                    "value": "Valor Medio por Pericia ao Longo do Tempo",
                     "textStyle": {
                       "fontFamily": "DIN",
                       "fontSize": "10pt"
@@ -49,6 +49,5 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "51d63b4f58c8609a1a33",
-  "isHidden": true
+  "parentGroupName": "51d63b4f58c8609a1a33"
 }

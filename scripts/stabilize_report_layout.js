@@ -7,6 +7,12 @@ const { execSync } = require("child_process");
 const ROOT = path.resolve(__dirname, "..");
 const REPORT_ROOT = path.join(ROOT, "TJPB_Honorarios_Intuitivo.Report/definition");
 const BOOKMARKS_PATH = path.join(REPORT_ROOT, "bookmarks/bookmarks.json");
+const MEASURE_ENTITY_BY_NAME = {
+  "Valor Arbitrado": "FactPericias",
+  "Qtd Perícias": "FactPericias",
+  "Peritos Distintos": "FactPericias",
+  "Valor Médio por Perícia": "FactPericias",
+};
 
 const CLUTTER_BY_PAGE = {
   f1a9c2e7d4b86350a1f2: [
@@ -519,10 +525,116 @@ const KPI_TEXTBOX_FIXES = {
       labelId: "6c8d5882eee0b47898c1",
       valueId: "8d3b844d9e399d19bb03",
       label: "Qtd Pericias",
-      measure: "Units Sold",
+      measure: "Qtd Perícias",
       formatString: "'#,0'",
     },
   },
+};
+
+const DETAIL_EXTRA_CHARTS = {
+  f1a9c2e7d4b86350a1f2: {
+    chartId: "va11aa22bb33cc44dd55",
+    measure: "Qtd Perícias",
+    title: "Qtd Pericias ao Longo do Tempo",
+    subtitle: "Historico de volume por periodo",
+    highlightTitle: "Destaque de Varas",
+    cardId: "f67a89c63b41e2a74038",
+  },
+  b2d4e6f8a1c34567d890: {
+    chartId: "pe11aa22bb33cc44dd55",
+    measure: "Valor Médio por Perícia",
+    title: "Valor Medio por Pericia ao Longo do Tempo",
+    subtitle: "Historico do valor medio por periodo",
+    highlightTitle: "Destaque de Peritos",
+    cardId: "f67a89c63b41e2a74038",
+  },
+  c3e5f7a9b2d46810e123: {
+    chartId: "es11aa22bb33cc44dd55",
+    measure: "Qtd Perícias",
+    title: "Qtd Pericias ao Longo do Tempo",
+    subtitle: "Historico do volume por especialidade",
+    highlightTitle: "Destaque de Especialidades",
+    cardId: "f67a89c63b41e2a74038",
+  },
+};
+
+const TITLE_OVERLAY_HIDE = {
+  fe4687310000e672d410: ["497f294b2027826219b5", "7a0a375c13acb32abc97"],
+  d4f6a8c0b3e57921f234: ["497f294b2027826219b5", "7a0a375c13acb32abc97"],
+  a6f4e2b9c1d34780ef12: ["497f294b2027826219b5", "7a0a375c13acb32abc97"],
+  e5a1b2c3d4f60789ab01: ["497f294b2027826219b5", "7a0a375c13acb32abc97"],
+  f1a9c2e7d4b86350a1f2: [
+    "7371b1ce6104fb8e1064",
+    "94a45d6d2279208770ef",
+    "25e0de9a58874d1a36db",
+    "ffcf14e5603b23436829",
+    "5af0fe7f69a26356dd74",
+  ],
+  b2d4e6f8a1c34567d890: [
+    "7371b1ce6104fb8e1064",
+    "94a45d6d2279208770ef",
+    "25e0de9a58874d1a36db",
+    "ffcf14e5603b23436829",
+    "5af0fe7f69a26356dd74",
+  ],
+  c3e5f7a9b2d46810e123: [
+    "7371b1ce6104fb8e1064",
+    "94a45d6d2279208770ef",
+    "25e0de9a58874d1a36db",
+    "ffcf14e5603b23436829",
+    "5af0fe7f69a26356dd74",
+  ],
+  "480be36186f85cc3c324": [
+    "7371b1ce6104fb8e1064",
+    "94a45d6d2279208770ef",
+    "5af0fe7f69a26356dd74",
+    "ffcf14e5603b23436829",
+  ],
+};
+
+const TENDENCIA_STRAY_LOWER_ROW_HIDE = [
+  "066019ba059cc7614a8b",
+  "a3fd999b18168eab6ea9",
+  "ab7dded9cc785816772d",
+  "c59c9e94f2ac24805c9b",
+  "5715f23ae7323c710a25",
+  "0641c7fbed87452465c7",
+];
+
+const EXTRA_CHART_SLOT = {
+  x: 202.9902077860043,
+  y: 248.9859087652257,
+  z: 4000,
+  width: 622.4217817052782,
+  height: 170,
+  tabOrder: 18000,
+};
+
+const EXTRA_CHART_INNER_POSITION = {
+  x: 13.451158347265345,
+  y: 34.239312156675425,
+  width: 612.6391210890853,
+  height: 126,
+  z: 0,
+  tabOrder: 0,
+};
+
+const EXTRA_CHART_HEADER_POSITION = {
+  x: 0,
+  y: 0,
+  width: 104.8076923076923,
+  height: 41.34615384615385,
+  z: 0,
+  tabOrder: 1000,
+};
+
+const EXTRA_CHART_SUBHEADER_POSITION = {
+  x: 0,
+  y: 15.384615384615387,
+  width: 178.84615384615384,
+  height: 41.34615384615385,
+  z: 1000,
+  tabOrder: 0,
 };
 
 const BOOKMARK_STABILIZE_SKIP_PAGES = new Set([
@@ -565,6 +677,18 @@ function bookmarkPath(bookmarkId) {
 
 function pageVisualsDir(pageId) {
   return path.join(REPORT_ROOT, "pages", pageId, "visuals");
+}
+
+function upsertVisual(pageId, visualId, sourceVisualId, transform) {
+  const targetPath = visualPath(pageId, visualId);
+  const source = readJson(visualPath(pageId, sourceVisualId));
+  const next = deepClone(source);
+  next.name = visualId;
+  if (typeof transform === "function") {
+    transform(next);
+  }
+  ensureDir(path.dirname(targetPath));
+  writeJson(targetPath, next);
 }
 
 function findWrappedChildVisualId(pageId, parentGroupId) {
@@ -879,10 +1003,18 @@ function setTextboxMeasure(pageId, visualId, measureProperty, formatString) {
     value?.expr?.expr?.Min?.Expression?.Column;
   const select = expr?.Expression?.Subquery?.Query?.Select;
   if (!value || !expr || !Array.isArray(select) || !select[0]?.Measure) return;
+  const entity = MEASURE_ENTITY_BY_NAME[measureProperty] || "Measure";
 
+  select[0].Measure.Expression.SourceRef.Source = "m";
   select[0].Measure.Property = measureProperty;
-  select[0].Name = `Measure.${measureProperty}`;
-  expr.Property = `Measure.${measureProperty}`;
+  select[0].Name = `${entity}.${measureProperty}`;
+  expr.Property = `${entity}.${measureProperty}`;
+  const from = expr?.Expression?.Subquery?.Query?.From;
+  if (Array.isArray(from) && from[0]) {
+    from[0].Entity = entity;
+    from[0].Name = "m";
+    from[0].Type = 0;
+  }
   if (value.formatString?.expr?.Literal) {
     value.formatString.expr.Literal.Value = formatString;
   }
@@ -905,21 +1037,53 @@ function setChartMeasure(pageId, visualId, measureProperty) {
   const visual = readJson(filePath);
   const projection = visual.visual?.query?.queryState?.Y?.projections?.[0];
   if (!projection) return;
+  const entity = MEASURE_ENTITY_BY_NAME[measureProperty] || "Measure";
 
   projection.field = {
     Measure: {
       Expression: {
         SourceRef: {
-          Entity: "Measure",
+          Entity: entity,
         },
       },
       Property: measureProperty,
     },
   };
-  projection.queryRef = `Measure.${measureProperty}`;
+  projection.queryRef = `${entity}.${measureProperty}`;
   projection.nativeQueryRef = measureProperty;
   delete visual.isHidden;
   writeJson(filePath, visual);
+}
+
+function setChartTitle(visual, title) {
+  const titleBlock = visual.visual?.visualContainerObjects?.title?.[0]?.properties;
+  if (!titleBlock) return;
+  titleBlock.show = {
+    expr: {
+      Literal: {
+        Value: "true",
+      },
+    },
+  };
+  titleBlock.text = {
+    expr: {
+      Literal: {
+        Value: `'${title}'`,
+      },
+    },
+  };
+}
+
+function createExtraChart(pageId, chartId, measureProperty, title) {
+  upsertVisual(pageId, chartId, "c35f2c23e04ae096e02f", (visual) => {
+    visual.parentGroupName = "acee2d020bb8c1c4903b";
+    visual.position = { ...EXTRA_CHART_INNER_POSITION };
+    visual.visual.visualType = "lineChart";
+    visual.visual.objects = createGenericChartObjects();
+    setChartTitle(visual, title);
+    delete visual.isHidden;
+  });
+  setChartMeasure(pageId, chartId, measureProperty);
 }
 
 function fixSideKpis() {
@@ -1287,14 +1451,84 @@ function restoreTrendCharts() {
 function fixTrendPage() {
   const pageId = "480be36186f85cc3c324";
 
-  setChartMeasure(pageId, "07c5dfc89d70d1658ac3", "Total Sales");
-  setChartMeasure(pageId, "c35f2c23e04ae096e02f", "Units Sold");
-  setChartMeasure(pageId, "cdc1b6c2cd04d7b04dd7", "Orders Total");
+  setChartMeasure(pageId, "07c5dfc89d70d1658ac3", "Valor Arbitrado");
+  setChartMeasure(pageId, "c35f2c23e04ae096e02f", "Qtd Perícias");
+  setChartMeasure(pageId, "cdc1b6c2cd04d7b04dd7", "Peritos Distintos");
 
-  setTextLabel(pageId, "1d2bf754849f2eb3a1c4", "Qtd Pericias ao longo do tempo");
-  setTextLabel(pageId, "5af0fe7f69a26356dd74", "Curva historica");
-  setTextLabel(pageId, "25e0de9a58874d1a36db", "Peritos ao longo do tempo");
-  setTextLabel(pageId, "ffcf14e5603b23436829", "Curva historica");
+  for (const chartId of ["07c5dfc89d70d1658ac3", "c35f2c23e04ae096e02f", "cdc1b6c2cd04d7b04dd7"]) {
+    const chartPath = visualPath(pageId, chartId);
+    const chart = readJson(chartPath);
+    chart.visual.visualType = "lineChart";
+    chart.visual.objects = createGenericChartObjects();
+    delete chart.isHidden;
+    writeJson(chartPath, chart);
+  }
+
+  const midGroup = readJson(visualPath(pageId, "acee2d020bb8c1c4903b"));
+  midGroup.position = {
+    x: 202.9902077860043,
+    y: 252.22098385602504,
+    z: 8000,
+    width: 626.0902794363507,
+    height: 217,
+    tabOrder: 16000,
+  };
+  delete midGroup.isHidden;
+  writeJson(visualPath(pageId, "acee2d020bb8c1c4903b"), midGroup);
+
+  const lowGroup = readJson(visualPath(pageId, "5c438973c435b483aa95"));
+  lowGroup.position = {
+    x: 202.9902077860043,
+    y: 482.61271288873627,
+    z: 4000,
+    width: 621.8849627250136,
+    height: 217,
+    tabOrder: 17000,
+  };
+  delete lowGroup.isHidden;
+  writeJson(visualPath(pageId, "5c438973c435b483aa95"), lowGroup);
+
+  setTextLabel(pageId, "1d2bf754849f2eb3a1c4", "Qtd Pericias ao Longo do Tempo");
+  setTextLabel(pageId, "5af0fe7f69a26356dd74", "Curva historica de volume");
+  setTextLabel(pageId, "25e0de9a58874d1a36db", "Valor Arbitrado ao Longo do Tempo");
+  setTextLabel(pageId, "ffcf14e5603b23436829", "Curva historica de gasto");
+  setTextLabel(pageId, "f8b1564b60ef32bcfa87", "Modo: escolha o tipo de grafico");
+}
+
+function addExtraChartsToDetailPages() {
+  for (const [pageId, cfg] of Object.entries(DETAIL_EXTRA_CHARTS)) {
+    const chartPanel = readJson(visualPath(pageId, "acee2d020bb8c1c4903b"));
+    chartPanel.position = { ...EXTRA_CHART_SLOT };
+    delete chartPanel.isHidden;
+    writeJson(visualPath(pageId, "acee2d020bb8c1c4903b"), chartPanel);
+
+    createExtraChart(pageId, cfg.chartId, cfg.measure, cfg.title);
+
+    const titleGroup = readJson(visualPath(pageId, "51d63b4f58c8609a1a33"));
+    delete titleGroup.isHidden;
+    writeJson(visualPath(pageId, "51d63b4f58c8609a1a33"), titleGroup);
+
+    const titleBox = readJson(visualPath(pageId, "1d2bf754849f2eb3a1c4"));
+    titleBox.position = { ...EXTRA_CHART_HEADER_POSITION };
+    updateTextboxValue(titleBox, cfg.title);
+    delete titleBox.isHidden;
+    writeJson(visualPath(pageId, "1d2bf754849f2eb3a1c4"), titleBox);
+
+    const subtitleBox = readJson(visualPath(pageId, "5af0fe7f69a26356dd74"));
+    subtitleBox.position = { ...EXTRA_CHART_SUBHEADER_POSITION };
+    updateTextboxValue(subtitleBox, cfg.subtitle);
+    delete subtitleBox.isHidden;
+    writeJson(visualPath(pageId, "5af0fe7f69a26356dd74"), subtitleBox);
+
+    const rightTitle = readJson(visualPath(pageId, "1ec0e6adc7607be01bdd"));
+    updateTextboxValue(rightTitle, cfg.highlightTitle);
+    delete rightTitle.isHidden;
+    writeJson(visualPath(pageId, "1ec0e6adc7607be01bdd"), rightTitle);
+
+    const highlightCard = readJson(visualPath(pageId, cfg.cardId));
+    delete highlightCard.isHidden;
+    writeJson(visualPath(pageId, cfg.cardId), highlightCard);
+  }
 }
 
 function fixCruzamentosOverlap() {
@@ -1320,6 +1554,29 @@ function hideClutter() {
   }
 }
 
+function hideTitleOverlays() {
+  for (const [pageId, visualIds] of Object.entries(TITLE_OVERLAY_HIDE)) {
+    for (const visualId of visualIds) {
+      const filePath = visualPath(pageId, visualId);
+      if (!fs.existsSync(filePath)) continue;
+      const visual = readJson(filePath);
+      visual.isHidden = true;
+      writeJson(filePath, visual);
+    }
+  }
+}
+
+function cleanTrendLowerRow() {
+  const pageId = "480be36186f85cc3c324";
+  for (const visualId of TENDENCIA_STRAY_LOWER_ROW_HIDE) {
+    const filePath = visualPath(pageId, visualId);
+    if (!fs.existsSync(filePath)) continue;
+    const visual = readJson(filePath);
+    visual.isHidden = true;
+    writeJson(filePath, visual);
+  }
+}
+
 function main() {
   stabilizeBookmarkGroups();
   fixChartTypeTogglePages();
@@ -1331,7 +1588,10 @@ function main() {
   fixSideKpis();
   restoreTrendCharts();
   fixTrendPage();
+  addExtraChartsToDetailPages();
   fixCruzamentosOverlap();
+  cleanTrendLowerRow();
+  hideTitleOverlays();
   console.log("Layout estabilizado: grupos de bookmark recriados e overlays ocultados.");
 }
 

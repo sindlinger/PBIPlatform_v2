@@ -207,7 +207,7 @@
                           "Entity": "Measure"
                         }
                       },
-                      "Property": "Total Sales"
+                      "Property": "Valor Arbitrado Base"
                     }
                   },
                   "howCreated": 0
@@ -227,7 +227,7 @@
                           "Entity": "Measure"
                         }
                       },
-                      "Property": "Total Sales"
+                      "Property": "Valor Arbitrado Base"
                     }
                   }
                 }
@@ -506,7 +506,7 @@
                           "Entity": "Measure"
                         }
                       },
-                      "Property": "Sales MoM %"
+                      "Property": "Variação Mensal Valor Arbitrado %"
                     }
                   },
                   "howCreated": 0
@@ -526,7 +526,7 @@
                           "Entity": "Measure"
                         }
                       },
-                      "Property": "Sales MoM %"
+                      "Property": "Variação Mensal Valor Arbitrado %"
                     }
                   }
                 }
@@ -570,7 +570,7 @@
                           "Entity": "Measure"
                         }
                       },
-                      "Property": "Total Sales"
+                      "Property": "Valor Arbitrado Base"
                     }
                   },
                   "howCreated": 0
@@ -605,7 +605,7 @@
                           "Entity": "Measure"
                         }
                       },
-                      "Property": "Total Sales"
+                      "Property": "Valor Arbitrado Base"
                     }
                   }
                 }
@@ -796,7 +796,7 @@
                                           "Source": "m"
                                         }
                                       },
-                                      "Property": "Count Orders Returned"
+                                      "Property": "Qtd Retornos"
                                     }
                                   }
                                 }
@@ -949,7 +949,7 @@
                           "Entity": "Measure"
                         }
                       },
-                      "Property": "Returns YoY %"
+                      "Property": "Retornos YoY %"
                     }
                   },
                   "howCreated": 0
@@ -969,7 +969,7 @@
                           "Entity": "Measure"
                         }
                       },
-                      "Property": "Returns YoY %"
+                      "Property": "Retornos YoY %"
                     }
                   }
                 }
@@ -1196,7 +1196,7 @@
                           "Entity": "Measure"
                         }
                       },
-                      "Property": "Sales MoM %"
+                      "Property": "Variação Mensal Valor Arbitrado %"
                     }
                   },
                   "howCreated": 0
@@ -1216,7 +1216,7 @@
                           "Entity": "Measure"
                         }
                       },
-                      "Property": "Sales MoM %"
+                      "Property": "Variação Mensal Valor Arbitrado %"
                     }
                   }
                 }
@@ -1444,7 +1444,7 @@
                           "Entity": "Measure"
                         }
                       },
-                      "Property": "Total Sales"
+                      "Property": "Valor Arbitrado Base"
                     }
                   },
                   "howCreated": 0
@@ -1459,7 +1459,7 @@
                           "Entity": "Measure"
                         }
                       },
-                      "Property": "Units Sold"
+                      "Property": "Qtd Perícias Base"
                     }
                   },
                   "howCreated": 0
@@ -1474,7 +1474,7 @@
                           "Entity": "Measure"
                         }
                       },
-                      "Property": "Total Profit"
+                      "Property": "Saldo a Receber Base"
                     }
                   },
                   "howCreated": 0
@@ -1494,7 +1494,7 @@
                           "Entity": "Measure"
                         }
                       },
-                      "Property": "Total Sales"
+                      "Property": "Valor Arbitrado Base"
                     }
                   }
                 }
