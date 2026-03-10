@@ -1998,7 +1998,7 @@ function createOrUpdateDetailTable(pageId, visualId, title, columns) {
         },
       ],
     };
-    visual.drillFilterOtherVisuals = true;
+    delete visual.drillFilterOtherVisuals;
     delete visual.parentGroupName;
     delete visual.isHidden;
   });
