@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "9d1e2f3a4b5c6d7e8f91",
   "position": {
-    "x": 1000,
-    "y": 152,
-    "z": 20520,
-    "height": 24,
-    "width": 234,
-    "tabOrder": 20520
+    "x": 1147,
+    "y": 164,
+    "z": 22000,
+    "height": 14,
+    "width": 80,
+    "tabOrder": 10000
   },
   "visual": {
     "visualType": "bookmarkNavigator",
@@ -68,7 +68,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "8D"
+                  "Value": "5D"
                 }
               }
             }
@@ -125,7 +125,7 @@
             "cellPadding": {
               "expr": {
                 "Literal": {
-                  "Value": "3L"
+                  "Value": "0L"
                 }
               }
             }
@@ -192,6 +192,17 @@
                   "Value": "true"
                 }
               }
+            },
+            "lineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#475569'"
+                    }
+                  }
+                }
+              }
             }
           }
         }
@@ -225,6 +236,13 @@
               "expr": {
                 "Literal": {
                   "Value": "'Toggle Detalhes Mapa'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }

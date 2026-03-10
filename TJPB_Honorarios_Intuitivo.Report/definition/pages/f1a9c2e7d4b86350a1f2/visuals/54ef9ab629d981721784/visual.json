@@ -1,0 +1,53 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "54ef9ab629d981721784",
+  "position": {
+    "x": 834,
+    "y": 606,
+    "z": 24520,
+    "height": 18,
+    "width": 400,
+    "tabOrder": 24520
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Legenda: claro = menor valor | escuro = maior valor | botão Nomes = lista",
+                    "textStyle": {
+                      "fontFamily": "DIN Light",
+                      "fontSize": "7pt",
+                      "color": "#0F766E"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

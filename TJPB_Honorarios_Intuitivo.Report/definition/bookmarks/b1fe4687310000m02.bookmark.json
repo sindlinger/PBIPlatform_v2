@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.0.0/schema.json",
+  "displayName": "Nomes",
+  "name": "b1fe4687310000m02",
+  "options": {
+    "applyOnlyToTargetVisuals": true,
+    "targetVisualNames": [
+      "8f6d1b81e9832be53e52",
+      "fe46mapnames000001"
+    ],
+    "suppressData": true
+  },
+  "explorationState": {
+    "version": "1.0",
+    "activeSection": "fe4687310000e672d410",
+    "sections": {
+      "fe4687310000e672d410": {
+        "visualContainers": {
+          "8f6d1b81e9832be53e52": {
+            "singleVisual": {
+              "visualType": "shapeMap",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "fe46mapnames000001": {
+            "singleVisual": {
+              "visualType": "tableEx",
+              "objects": {}
+            }
+          }
+        }
+      }
+    }
+  }
+}

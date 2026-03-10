@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "53c66d29d5a7934b053c",
   "position": {
-    "x": 0.8334389658392354,
-    "y": 0,
+    "x": 8,
+    "y": 8,
     "z": 1000,
-    "height": 41.86058395196661,
-    "width": 159.30277781720628,
+    "height": 18,
+    "width": 150,
     "tabOrder": 1000
   },
   "visual": {
@@ -22,7 +22,7 @@
                     "value": "Peritos únicos",
                     "textStyle": {
                       "fontFamily": "DIN",
-                      "fontSize": "14pt"
+                      "fontSize": "10pt"
                     }
                   }
                 ]

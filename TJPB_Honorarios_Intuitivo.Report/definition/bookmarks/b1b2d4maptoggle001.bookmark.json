@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.0.0/schema.json",
+  "displayName": "Mapa",
+  "name": "b1b2d4maptoggle001",
+  "options": {
+    "applyOnlyToTargetVisuals": true,
+    "targetVisualNames": [
+      "8f6d1b81e9832be53e52",
+      "b2d4mapnames000001"
+    ],
+    "suppressData": true
+  },
+  "explorationState": {
+    "version": "1.0",
+    "activeSection": "b2d4e6f8a1c34567d890",
+    "sections": {
+      "b2d4e6f8a1c34567d890": {
+        "visualContainers": {
+          "8f6d1b81e9832be53e52": {
+            "singleVisual": {
+              "visualType": "shapeMap",
+              "objects": {}
+            }
+          },
+          "b2d4mapnames000001": {
+            "singleVisual": {
+              "visualType": "tableEx",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

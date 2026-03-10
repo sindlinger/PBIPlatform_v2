@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "146b4b2456c5190541a0",
   "position": {
-    "x": 0,
-    "y": 35.23802737665081,
+    "x": 8,
+    "y": 28,
     "z": 2000,
-    "height": 49.651494029941205,
-    "width": 171.29765440329717,
+    "height": 32,
+    "width": 160,
     "tabOrder": 0
   },
   "visual": {
@@ -30,7 +30,7 @@
                     },
                     "textStyle": {
                       "fontFamily": "DIN",
-                      "fontSize": "20pt"
+                      "fontSize": "16pt"
                     }
                   }
                 ]
@@ -53,33 +53,28 @@
                             "Version": 2,
                             "From": [
                               {
-                                "Name": "o",
-                                "Entity": "Orders",
+                                "Name": "m",
+                                "Entity": "Measure",
                                 "Type": 0
                               }
                             ],
                             "Select": [
                               {
-                                "Aggregation": {
+                                "Measure": {
                                   "Expression": {
-                                    "Column": {
-                                      "Expression": {
-                                        "SourceRef": {
-                                          "Source": "o"
-                                        }
-                                      },
-                                      "Property": "Sales"
+                                    "SourceRef": {
+                                      "Source": "m"
                                     }
                                   },
-                                  "Function": 1
+                                  "Property": "Média Diária Valor Arbitrado"
                                 },
-                                "Name": "Avg(Orders.Sales)"
+                                "Name": "Measure.Média Diária Valor Arbitrado"
                               }
                             ]
                           }
                         }
                       },
-                      "Property": "Avg(Orders.Sales)"
+                      "Property": "Measure.Média Diária Valor Arbitrado"
                     }
                   },
                   "IncludeAllTypes": 1
@@ -99,7 +94,7 @@
             "formatString": {
               "expr": {
                 "Literal": {
-                  "Value": "'\\$#,0.0;(\\$#,0.0);\\$#,0.0'"
+                  "Value": "R$ #,0.00;(R$ #,0.00);R$ #,0.00"
                 }
               }
             }

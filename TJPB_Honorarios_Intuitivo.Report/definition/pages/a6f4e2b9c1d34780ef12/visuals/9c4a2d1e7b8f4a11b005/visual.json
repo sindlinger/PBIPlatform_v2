@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "9c4a2d1e7b8f4a11b005",
   "position": {
-    "x": 550,
-    "y": 233,
+    "x": 646,
+    "y": 186,
     "z": 35000,
-    "height": 28,
-    "width": 250,
+    "height": 16,
+    "width": 152,
     "tabOrder": 20500
   },
   "visual": {
@@ -68,7 +68,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "8D"
+                  "Value": "5D"
                 }
               }
             }
@@ -125,7 +125,7 @@
             "cellPadding": {
               "expr": {
                 "Literal": {
-                  "Value": "3L"
+                  "Value": "0L"
                 }
               }
             }
@@ -153,7 +153,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#1E88E5'"
+                      "Value": "'#0B7F7E'"
                     }
                   }
                 }
@@ -173,7 +173,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#2196F3'"
+                      "Value": "'#0B7F7E'"
                     }
                   }
                 }
@@ -190,6 +190,17 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
+                }
+              }
+            },
+            "lineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#475569'"
+                    }
+                  }
                 }
               }
             }
@@ -227,6 +238,13 @@
                   "Value": "'Bookmark Nav Segment'"
                 }
               }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
             }
           }
         }
@@ -234,5 +252,6 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "howCreated": "InsertVisualButton"
+  "howCreated": "InsertVisualButton",
+  "isHidden": false
 }

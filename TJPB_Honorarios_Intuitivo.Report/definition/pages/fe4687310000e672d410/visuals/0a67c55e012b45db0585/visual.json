@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "0a67c55e012b45db0585",
   "position": {
-    "x": 539.0046296296297,
-    "y": 473.33333333333337,
-    "z": 21000,
-    "height": 185,
-    "width": 269.1666666666667,
-    "tabOrder": 25000
+    "x": 232,
+    "y": 652,
+    "z": 19200,
+    "height": 160,
+    "width": 470,
+    "tabOrder": 2200
   },
   "visualGroup": {
     "displayName": "Especialidade",

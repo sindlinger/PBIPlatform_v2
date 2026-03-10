@@ -3,17 +3,17 @@
   "name": "dcb76924e59193d0b160",
   "position": {
     "x": 0,
-    "y": 40,
+    "y": 28,
     "z": 1000,
-    "height": 145,
-    "width": 269.1666666666667,
+    "height": 126,
+    "width": 470,
     "tabOrder": 1000
   },
   "visual": {
-    "visualType": "treemap",
+    "visualType": "clusteredBarChart",
     "query": {
       "queryState": {
-        "Group": {
+        "Category": {
           "projections": [
             {
               "field": {
@@ -32,7 +32,7 @@
             }
           ]
         },
-        "Values": {
+        "Y": {
           "projections": [
             {
               "field": {
@@ -88,6 +88,53 @@
           }
         }
       ],
+      "valueAxis": [
+        {
+          "properties": {
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1000D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "categoryAxis": [
+        {
+          "properties": {
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "innerPadding": {
+              "expr": {
+                "Literal": {
+                  "Value": "36L"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
+                }
+              }
+            }
+          }
+        }
+      ],
       "labels": [
         {
           "properties": {
@@ -98,10 +145,17 @@
                 }
               }
             },
-            "fontSize": {
+            "labelPosition": {
               "expr": {
                 "Literal": {
-                  "Value": "9D"
+                  "Value": "'InsideEnd'"
+                }
+              }
+            },
+            "optimizeLabelDisplay": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }

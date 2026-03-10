@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "FactPericias"
+                      "Entity": "Orders"
                     }
                   },
-                  "Property": "ComarcaExibicao"
+                  "Property": "State Mapa"
                 }
               },
-              "queryRef": "FactPericias.ComarcaExibicao",
-              "nativeQueryRef": "ComarcaExibicao",
+              "queryRef": "Orders.State Mapa",
+              "nativeQueryRef": "State Mapa",
               "displayName": "Comarca"
             }
           ]
@@ -197,15 +197,15 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "FactPericias-ComarcaExibicao-10",
+        "name": "Orders-State Mapa-10",
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "FactPericias"
+                "Entity": "Orders"
               }
             },
-            "Property": "ComarcaExibicao"
+            "Property": "State Mapa"
           }
         },
         "type": "TopN",
@@ -221,7 +221,7 @@
                     "From": [
                       {
                         "Name": "f",
-                        "Entity": "FactPericias",
+                        "Entity": "Orders",
                         "Type": 0
                       }
                     ],
@@ -233,7 +233,7 @@
                               "Source": "f"
                             }
                           },
-                          "Property": "ComarcaExibicao"
+                          "Property": "State Mapa"
                         },
                         "Name": "field"
                       }
@@ -250,7 +250,7 @@
                                     "Source": "f"
                                   }
                                 },
-                                "Property": "ValorArbitrado"
+                                "Property": "Sales"
                               }
                             },
                             "Function": 0
@@ -266,7 +266,7 @@
             },
             {
               "Name": "f",
-              "Entity": "FactPericias",
+              "Entity": "Orders",
               "Type": 0
             }
           ],
@@ -282,7 +282,7 @@
                             "Source": "f"
                           }
                         },
-                        "Property": "ComarcaExibicao"
+                        "Property": "State Mapa"
                       }
                     }
                   ],

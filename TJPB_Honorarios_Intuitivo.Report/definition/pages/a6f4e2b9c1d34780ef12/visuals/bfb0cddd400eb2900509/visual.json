@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "bfb0cddd400eb2900509",
   "position": {
-    "x": 0.8334389658392354,
-    "y": 0,
+    "x": 8,
+    "y": 8,
     "z": 0,
-    "height": 41.86058395196661,
-    "width": 159.30277781720628,
+    "height": 18,
+    "width": 150,
     "tabOrder": 1000
   },
   "visual": {
@@ -19,10 +19,10 @@
               {
                 "textRuns": [
                   {
-                    "value": "—",
+                    "value": "Ticket médio",
                     "textStyle": {
                       "fontFamily": "DIN",
-                      "fontSize": "14pt"
+                      "fontSize": "10pt"
                     }
                   }
                 ]
@@ -49,6 +49,5 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "5b9d2604747920a48a6e",
-  "isHidden": true
+  "parentGroupName": "5b9d2604747920a48a6e"
 }

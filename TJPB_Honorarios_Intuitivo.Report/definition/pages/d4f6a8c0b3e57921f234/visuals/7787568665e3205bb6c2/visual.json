@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "7787568665e3205bb6c2",
   "position": {
-    "x": 29.686985670496927,
-    "y": 69.2696332311595,
+    "x": 30,
+    "y": 74,
     "z": 0,
-    "height": 42.05656303320398,
-    "width": 118.74794268198771,
+    "height": 18,
+    "width": 118,
     "tabOrder": 3000
   },
   "visual": {
@@ -42,7 +42,7 @@
                     "Entity": "Measure"
                   }
                 },
-                "Property": "Variação Mensal Valor Arbitrado %"
+                "Property": "Qtd Perícias YoY %"
               }
             },
             "direction": "Descending"

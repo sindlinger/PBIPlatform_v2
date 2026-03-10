@@ -76,3 +76,9 @@ relationship d6d97383-f2cc-4688-af68-4cf46422f7e9
 	fromColumn: DimMunicipiosRMCampina.ComarcaMapa
 	toColumn: Orders.'State Mapa'
 
+relationship d1e7f0d2-44a6-49dd-a6d5-6ec2f0d4c7aa
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: DimMunicipiosRMJoaoPessoa.ComarcaMapa
+	toColumn: Orders.'State Mapa'
+

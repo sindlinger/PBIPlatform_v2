@@ -202,6 +202,45 @@
             "width": 234
           },
           "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3366.57120485447,
+            "y": 214.23894640537117
+          },
+          "nodeIndex": "DimMunicipiosRMCampina",
+          "nodeLineageTag": "42c625ac-24fd-47f8-bf43-e7407ef44f9e",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3600.57120485447,
+            "y": 214.23894640537117
+          },
+          "nodeIndex": "ParametroMetricaVisual",
+          "nodeLineageTag": "6a905e01-d974-44b2-ab69-9b47482f14d4",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3834.57120485447,
+            "y": 214.23894640537117
+          },
+          "nodeIndex": "DimMunicipiosRMJoaoPessoa",
+          "nodeLineageTag": "14a22f6e-717d-4ca7-9ed3-f4329e3db513",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
         }
       ],
       "name": "All tables",

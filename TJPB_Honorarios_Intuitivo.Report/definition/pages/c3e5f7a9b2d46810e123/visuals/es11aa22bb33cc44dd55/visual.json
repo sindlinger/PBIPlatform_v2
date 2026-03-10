@@ -180,6 +180,13 @@
                   "Value": "'Qtd Pericias ao Longo do Tempo'"
                 }
               }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
+                }
+              }
             }
           }
         }

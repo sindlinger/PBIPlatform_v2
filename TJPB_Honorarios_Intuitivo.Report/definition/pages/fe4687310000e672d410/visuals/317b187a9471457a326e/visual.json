@@ -3,14 +3,14 @@
   "name": "317b187a9471457a326e",
   "position": {
     "x": 0,
-    "y": 29.719153130905728,
+    "y": 28,
     "z": 1000,
-    "height": 158.22266450676307,
-    "width": 576,
+    "height": 126,
+    "width": 470,
     "tabOrder": 1000
   },
   "visual": {
-    "visualType": "clusteredBarChart",
+    "visualType": "clusteredColumnChart",
     "query": {
       "queryState": {
         "Category": {
@@ -118,17 +118,17 @@
                 }
               }
             },
-            "innerPadding": {
-              "expr": {
-                "Literal": {
-                  "Value": "36L"
-                }
-              }
-            },
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "9D"
+                  "Value": "8D"
+                }
+              }
+            },
+            "labelOverflow": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
@@ -148,7 +148,7 @@
             "labelPosition": {
               "expr": {
                 "Literal": {
-                  "Value": "'InsideEnd'"
+                  "Value": "'OutsideEnd'"
                 }
               }
             },
@@ -156,6 +156,13 @@
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
                 }
               }
             }

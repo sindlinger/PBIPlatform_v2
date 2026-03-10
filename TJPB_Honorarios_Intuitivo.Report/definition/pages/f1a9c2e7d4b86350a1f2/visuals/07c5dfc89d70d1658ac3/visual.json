@@ -5,7 +5,7 @@
     "x": 0,
     "y": 0,
     "z": 0,
-    "height": 165.08239789825652,
+    "height": 189.53904943873897,
     "width": 613.8619536661095,
     "tabOrder": 0
   },
@@ -273,7 +273,21 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Varas | Valor Arbitrado ao longo do tempo'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
                 }
               }
             }
@@ -309,5 +323,6 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "gf1a9c2e7d4b86301"
+  "parentGroupName": "gf1a9c2e7d4b86301",
+  "isHidden": false
 }

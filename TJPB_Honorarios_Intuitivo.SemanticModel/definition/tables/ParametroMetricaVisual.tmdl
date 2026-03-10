@@ -1,0 +1,34 @@
+table ParametroMetricaVisual
+	lineageTag: 6a905e01-d974-44b2-ab69-9b47482f14d4
+
+	column 'Parametro Metrica Visual'
+		dataType: string
+		lineageTag: ee4fc625-de11-49ec-aea2-3e1aeea53eb6
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'ParametroMetricaVisual Order'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ParametroMetricaVisual Order'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a233cf0a-0566-4988-9f61-0cf4534c0028
+		summarizeBy: sum
+		sourceColumn: [Value2]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ParametroMetricaVisual = calculated
+		mode: import
+		source =
+				{
+				    ("Valor Arbitrado", 0),
+				    ("Qtd Perícias", 1),
+				    ("Saldo a Receber", 2),
+				    ("Ticket Médio", 3)
+				}
+
+	annotation PBI_Id = 498c9fc7e241497d818324bfa2a4cb80
+

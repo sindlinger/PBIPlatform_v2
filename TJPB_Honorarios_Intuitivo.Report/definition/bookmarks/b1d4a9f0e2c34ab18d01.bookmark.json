@@ -1,14 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.0.0/schema.json",
-  "displayName": "Mostrar detalhes",
+  "displayName": "Mapa",
   "name": "b1d4a9f0e2c34ab18d01",
   "options": {
     "applyOnlyToTargetVisuals": true,
     "targetVisualNames": [
-      "e85feb694080c3b3bc21",
-      "8bf3bac09e4e3528d02a",
-      "383c1f03c460e952a08d",
-      "b2d9b7eea3c0e116eac9"
+      "8f6d1b81e9832be53e52",
+      "d4f6mapnames000001"
     ],
     "suppressData": true
   },
@@ -18,28 +16,19 @@
     "sections": {
       "d4f6a8c0b3e57921f234": {
         "visualContainers": {
-          "e85feb694080c3b3bc21": {
+          "8f6d1b81e9832be53e52": {
             "singleVisual": {
-              "visualType": "clusteredBarChart",
+              "visualType": "shapeMap",
               "objects": {}
             }
           },
-          "8bf3bac09e4e3528d02a": {
+          "d4f6mapnames000001": {
             "singleVisual": {
-              "visualType": "textbox",
-              "objects": {}
-            }
-          },
-          "383c1f03c460e952a08d": {
-            "singleVisual": {
-              "visualType": "textbox",
-              "objects": {}
-            }
-          },
-          "b2d9b7eea3c0e116eac9": {
-            "singleVisual": {
-              "visualType": "textbox",
-              "objects": {}
+              "visualType": "tableEx",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
             }
           }
         }

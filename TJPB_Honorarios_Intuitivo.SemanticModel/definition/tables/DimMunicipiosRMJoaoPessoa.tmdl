@@ -1,0 +1,51 @@
+table DimMunicipiosRMJoaoPessoa
+	lineageTag: 14a22f6e-717d-4ca7-9ed3-f4329e3db513
+
+	column Municipio
+		dataType: string
+		lineageTag: 3cfa53f4-d8ac-46d9-b4fd-c2c591ea6644
+		summarizeBy: none
+		sourceColumn: Municipio
+
+		annotation SummarizationSetBy = User
+
+	column ComarcaMapa
+		dataType: string
+		lineageTag: 55ad762e-7380-4f53-8fc1-7c07ca270edb
+		summarizeBy: none
+		sourceColumn: ComarcaMapa
+
+		annotation SummarizationSetBy = User
+
+	column Ordem
+		dataType: int64
+		formatString: 0
+		lineageTag: c2bd62df-4424-42db-ad17-d2fe4e9f25a2
+		summarizeBy: none
+		sourceColumn: Ordem
+
+		annotation SummarizationSetBy = User
+
+	partition DimMunicipiosRMJoaoPessoa = m
+		mode: import
+		source =
+				let
+				    Source =
+				        Table.FromRecords(
+				            {
+				                [Municipio = "Bayeux", ComarcaMapa = "Bayeux", Ordem = 1],
+				                [Municipio = "Cabedelo", ComarcaMapa = "Cabedelo", Ordem = 2],
+				                [Municipio = "Conde", ComarcaMapa = "Conde", Ordem = 3],
+				                [Municipio = "João Pessoa", ComarcaMapa = "João Pessoa", Ordem = 4],
+				                [Municipio = "Santa Rita", ComarcaMapa = "Santa Rita", Ordem = 5]
+				            }
+				        ),
+				    Typed = Table.TransformColumnTypes(Source, {{"Municipio", type text}, {"ComarcaMapa", type text}, {"Ordem", Int64.Type}}),
+				    Sorted = Table.Sort(Typed, {{"Ordem", Order.Ascending}})
+				in
+				    Sorted
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

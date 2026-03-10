@@ -5,10 +5,10 @@
   "options": {
     "applyOnlyToTargetVisuals": true,
     "targetVisualNames": [
-      "gfe4687310000e601",
-      "gfe4687310000e602",
-      "gfe4687310000e603",
-      "gfe4687310000e604"
+      "b6174e917cba1a6c4b66",
+      "aa22bb33cc44dd55ee66",
+      "bb33cc44dd55ee66ff77",
+      "ee66ff778899aa00bb11"
     ],
     "suppressData": true
   },
@@ -17,19 +17,39 @@
     "activeSection": "fe4687310000e672d410",
     "sections": {
       "fe4687310000e672d410": {
-        "visualContainers": {},
-        "visualContainerGroups": {
-          "gfe4687310000e601": {
-            "isHidden": true
+        "visualContainers": {
+          "b6174e917cba1a6c4b66": {
+            "singleVisual": {
+              "visualType": "clusteredColumnChart",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
           },
-          "gfe4687310000e602": {
-            "isHidden": true
+          "aa22bb33cc44dd55ee66": {
+            "singleVisual": {
+              "visualType": "lineChart",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
           },
-          "gfe4687310000e603": {
-            "isHidden": true
+          "bb33cc44dd55ee66ff77": {
+            "singleVisual": {
+              "visualType": "clusteredBarChart",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
           },
-          "gfe4687310000e604": {
-            "isHidden": false
+          "ee66ff778899aa00bb11": {
+            "singleVisual": {
+              "visualType": "areaChart",
+              "objects": {}
+            }
           }
         }
       }

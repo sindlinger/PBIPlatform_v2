@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "YoY:",
+                    "value": "Var",
                     "textStyle": {
                       "fontFamily": "DIN",
                       "fontSize": "10pt"

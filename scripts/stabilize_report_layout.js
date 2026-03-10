@@ -12,6 +12,7 @@ const MEASURE_ENTITY_BY_NAME = {
   "Qtd Perícias": "FactPericias",
   "Peritos Distintos": "FactPericias",
   "Valor Médio por Perícia": "FactPericias",
+  "Saldo a Receber Base": "Measure",
 };
 
 const CLUTTER_BY_PAGE = {
@@ -204,6 +205,7 @@ const CHART_TYPE_TOGGLE_PAGES = {
 
 const CHART_TYPE_TOP_OUTER_PANEL_ID = "3943a8f5dc4bb830b9ae";
 const CHART_TYPE_TOP_INNER_PANEL_ID = "c06e3ec2d2d69b43427e";
+const CHART_TYPE_LEGACY_HEADER_GROUP_ID = "2b44ca5113ee00cb1bf5";
 const CHART_TYPE_UNUSED_PANEL_IDS = [
   "acee2d020bb8c1c4903b",
   "5c438973c435b483aa95",
@@ -330,6 +332,219 @@ const TOP_GRAPH_VISUALS = {
     bar: "dd55ee66ff778899aa00",
     area: "ff77aa8899bb00cc11dd",
   },
+};
+
+const PRIMARY_CHART_ENTITY_TITLES = {
+  fe4687310000e672d410: "Visão geral | Valor Arbitrado ao longo do tempo",
+  d4f6a8c0b3e57921f234: "Comarcas | Valor Arbitrado ao longo do tempo",
+  a6f4e2b9c1d34780ef12: "RM João Pessoa | Valor Arbitrado ao longo do tempo",
+  f1a9c2e7d4b86350a1f2: "Varas | Valor Arbitrado ao longo do tempo",
+  b2d4e6f8a1c34567d890: "Peritos | Valor Arbitrado ao longo do tempo",
+  c3e5f7a9b2d46810e123: "Especialidades | Valor Arbitrado ao longo do tempo",
+};
+
+const TOP_METRIC_SLICER_CONFIG = {
+  fe4687310000e672d410: {
+    slicerId: "fe46metricslicer001",
+    entityTitle: "Visão geral | Evolução",
+  },
+  d4f6a8c0b3e57921f234: {
+    slicerId: "d4f6metricslicer001",
+    entityTitle: "Comarcas | Evolução",
+  },
+  a6f4e2b9c1d34780ef12: {
+    slicerId: "a6f4metricslicer001",
+    entityTitle: "RM João Pessoa | Evolução",
+  },
+  f1a9c2e7d4b86350a1f2: {
+    slicerId: "f1a9metricslicer001",
+    entityTitle: "Varas | Evolução",
+  },
+  b2d4e6f8a1c34567d890: {
+    slicerId: "b2d4metricslicer001",
+    entityTitle: "Peritos | Evolução",
+  },
+  c3e5f7a9b2d46810e123: {
+    slicerId: "c3e5metricslicer001",
+    entityTitle: "Especialidades | Evolução",
+  },
+};
+
+const MAP_BOX_CONFIG = {
+  fe4687310000e672d410: {
+    pageId: "fe4687310000e672d410",
+    mapVisualId: "8f6d1b81e9832be53e52",
+    legendId: "54ef9ab629d981721784",
+    navigatorId: "9d1e2f3a4b5c6d7e8f92",
+    navigatorSourcePageId: "d4f6a8c0b3e57921f234",
+    navigatorSourceVisualId: "9d1e2f3a4b5c6d7e8f90",
+    bookmarkGroupId: "c1fe4687310000m01",
+    bookmarkGroupDisplayName: "Overview Mapa Nomes",
+    bookmarks: {
+      map: { id: "b1fe4687310000m01", displayName: "Mapa" },
+      names: { id: "b1fe4687310000m02", displayName: "Nomes" },
+    },
+    namesTableId: "fe46mapnames000001",
+    namesTitle: "Nomes exibidos no mapa | Visão geral",
+  },
+  d4f6a8c0b3e57921f234: {
+    pageId: "d4f6a8c0b3e57921f234",
+    mapVisualId: "8f6d1b81e9832be53e52",
+    legendId: "54ef9ab629d981721784",
+    navigatorId: "9d1e2f3a4b5c6d7e8f90",
+    bookmarkGroupId: "c1d4a9f0e2c34ab18d00",
+    bookmarkGroupDisplayName: "Comarcas Mapa Nomes",
+    bookmarks: {
+      map: { id: "b1d4a9f0e2c34ab18d01", displayName: "Mapa" },
+      names: { id: "b1d4a9f0e2c34ab18d02", displayName: "Nomes" },
+    },
+    namesTableId: "d4f6mapnames000001",
+    namesTitle: "Nomes exibidos no mapa | Comarcas",
+  },
+  a6f4e2b9c1d34780ef12: {
+    pageId: "a6f4e2b9c1d34780ef12",
+    mapVisualId: "8f6d1b81e9832be53e52",
+    legendId: "54ef9ab629d981721784",
+    navigatorId: "9d1e2f3a4b5c6d7e8f91",
+    bookmarkGroupId: "c1a6a9f0e2c34ab18f00",
+    bookmarkGroupDisplayName: "RM Joao Pessoa Mapa Nomes",
+    bookmarks: {
+      map: { id: "b1a6a9f0e2c34ab18f01", displayName: "Mapa" },
+      names: { id: "b1a6a9f0e2c34ab18f02", displayName: "Nomes" },
+    },
+    namesTableId: "a6f4mapnames000001",
+    namesTitle: "Nomes exibidos no mapa | RM João Pessoa",
+  },
+  e5a1b2c3d4f60789ab01: {
+    pageId: "e5a1b2c3d4f60789ab01",
+    mapVisualId: "8f6d1b81e9832be53e52",
+    legendId: "54ef9ab629d981721784",
+    navigatorId: "9d1e2f3a4b5c6d7e8f93",
+    navigatorSourcePageId: "d4f6a8c0b3e57921f234",
+    navigatorSourceVisualId: "9d1e2f3a4b5c6d7e8f90",
+    bookmarkGroupId: "c1e5a1b2c3d4f6070a1",
+    bookmarkGroupDisplayName: "RM Campina Mapa Nomes",
+    bookmarks: {
+      map: { id: "b1e5a1b2c3d4f6070a1", displayName: "Mapa" },
+      names: { id: "b1e5a1b2c3d4f6070a2", displayName: "Nomes" },
+    },
+    namesTableId: "e5a1mapnames000001",
+    namesTitle: "Nomes exibidos no mapa | RM Campina Grande",
+  },
+  f1a9c2e7d4b86350a1f2: {
+    pageId: "f1a9c2e7d4b86350a1f2",
+    mapVisualId: "8f6d1b81e9832be53e52",
+    legendId: "54ef9ab629d981721784",
+    navigatorId: "9d1e2f3a4b5c6d7e8f94",
+    navigatorSourcePageId: "d4f6a8c0b3e57921f234",
+    navigatorSourceVisualId: "9d1e2f3a4b5c6d7e8f90",
+    bookmarkGroupId: "c1f1a9maptoggle001",
+    bookmarkGroupDisplayName: "Varas Mapa Nomes",
+    bookmarks: {
+      map: { id: "b1f1a9maptoggle001", displayName: "Mapa" },
+      names: { id: "b1f1a9maptoggle002", displayName: "Nomes" },
+    },
+    namesTableId: "f1a9mapnames000001",
+    namesTitle: "Nomes exibidos no mapa | Varas",
+    boxPosition: { x: 834, y: 360, z: 20520, width: 400, height: 240, tabOrder: 20520 },
+  },
+  b2d4e6f8a1c34567d890: {
+    pageId: "b2d4e6f8a1c34567d890",
+    mapVisualId: "8f6d1b81e9832be53e52",
+    legendId: "54ef9ab629d981721784",
+    navigatorId: "9d1e2f3a4b5c6d7e8f95",
+    navigatorSourcePageId: "d4f6a8c0b3e57921f234",
+    navigatorSourceVisualId: "9d1e2f3a4b5c6d7e8f90",
+    bookmarkGroupId: "c1b2d4maptoggle001",
+    bookmarkGroupDisplayName: "Peritos Mapa Nomes",
+    bookmarks: {
+      map: { id: "b1b2d4maptoggle001", displayName: "Mapa" },
+      names: { id: "b1b2d4maptoggle002", displayName: "Nomes" },
+    },
+    namesTableId: "b2d4mapnames000001",
+    namesTitle: "Nomes exibidos no mapa | Peritos",
+    boxPosition: { x: 834, y: 360, z: 20520, width: 400, height: 240, tabOrder: 20520 },
+  },
+  c3e5f7a9b2d46810e123: {
+    pageId: "c3e5f7a9b2d46810e123",
+    mapVisualId: "8f6d1b81e9832be53e52",
+    legendId: "54ef9ab629d981721784",
+    navigatorId: "9d1e2f3a4b5c6d7e8f96",
+    navigatorSourcePageId: "d4f6a8c0b3e57921f234",
+    navigatorSourceVisualId: "9d1e2f3a4b5c6d7e8f90",
+    bookmarkGroupId: "c1c3e5maptoggle001",
+    bookmarkGroupDisplayName: "Especialidades Mapa Nomes",
+    bookmarks: {
+      map: { id: "b1c3e5maptoggle001", displayName: "Mapa" },
+      names: { id: "b1c3e5maptoggle002", displayName: "Nomes" },
+    },
+    namesTableId: "c3e5mapnames000001",
+    namesTitle: "Nomes exibidos no mapa | Especialidades",
+    boxPosition: { x: 834, y: 360, z: 20520, width: 400, height: 240, tabOrder: 20520 },
+  },
+};
+
+const METROPOLITAN_PAGE_FILTERS = {
+  a6f4e2b9c1d34780ef12: {
+    slug: "rmjp",
+    values: ["João Pessoa", "Joao Pessoa", "Bayeux", "Cabedelo", "Conde", "Santa Rita"],
+  },
+  e5a1b2c3d4f60789ab01: {
+    slug: "rmcg",
+    values: [
+      "Alagoa Nova",
+      "Boqueirão",
+      "Boqueirao",
+      "Campina Grande",
+      "Ingá",
+      "Inga",
+      "Pocinhos",
+      "Queimadas",
+      "Umbuzeiro",
+    ],
+  },
+};
+
+const METROPOLITAN_FILTER_SKIP_VISUAL_TYPES = new Set([
+  "textbox",
+  "shape",
+  "image",
+  "pageNavigator",
+  "bookmarkNavigator",
+  "slicer",
+]);
+
+const STANDARD_PRIMARY_CHART_POSITION = {
+  x: 216.45834164877184,
+  y: 206,
+  z: 8000,
+  height: 154,
+  width: 602.2904309925042,
+  tabOrder: 0,
+};
+
+const STANDARD_PRIMARY_CHART_NAV_POSITION = {
+  x: 646,
+  y: 186,
+  z: 35000,
+  height: 16,
+  width: 152,
+  tabOrder: 20500,
+};
+
+const STANDARD_PRIMARY_METRIC_SLICER_OFFSET = {
+  x: 438,
+  y: 6,
+  z: 35000,
+  width: 154,
+  height: 28,
+  tabOrder: 20500,
+};
+
+const STANDARD_NAV_THEME = {
+  selectedFill: "#0B7F7E",
+  selectedOutline: "#0B7F7E",
+  defaultOutline: "#475569",
 };
 
 const RM_JOAO_PESSOA_TOGGLE_CONFIG = {
@@ -559,10 +774,10 @@ const DETAIL_EXTRA_CHARTS = {
 };
 
 const TITLE_OVERLAY_HIDE = {
-  fe4687310000e672d410: ["497f294b2027826219b5", "7a0a375c13acb32abc97"],
-  d4f6a8c0b3e57921f234: ["497f294b2027826219b5", "7a0a375c13acb32abc97"],
-  a6f4e2b9c1d34780ef12: ["497f294b2027826219b5", "7a0a375c13acb32abc97"],
-  e5a1b2c3d4f60789ab01: ["497f294b2027826219b5", "7a0a375c13acb32abc97"],
+  fe4687310000e672d410: ["497f294b2027826219b5", "7a0a375c13acb32abc97", "7b7b87384705d25179b0", "b368d39809ec2230a90e"],
+  d4f6a8c0b3e57921f234: ["497f294b2027826219b5", "7a0a375c13acb32abc97", "7b7b87384705d25179b0", "b368d39809ec2230a90e"],
+  a6f4e2b9c1d34780ef12: ["497f294b2027826219b5", "7a0a375c13acb32abc97", "7b7b87384705d25179b0", "b368d39809ec2230a90e"],
+  e5a1b2c3d4f60789ab01: ["497f294b2027826219b5", "7a0a375c13acb32abc97", "7b7b87384705d25179b0", "b368d39809ec2230a90e"],
   f1a9c2e7d4b86350a1f2: [
     "7371b1ce6104fb8e1064",
     "94a45d6d2279208770ef",
@@ -671,6 +886,82 @@ const ENTITY_PAGE_CANVAS_CONFIG = {
     sidebarBackgroundId: "71d424213bef4ecba9fd",
     sidebarPanelId: "aa00bb11cc22dd33ee82",
   },
+};
+
+const SIDEBAR_LAYOUT_CONFIG = {
+  fe4687310000e672d410: {
+    pageHeight: 900,
+    displayOption: "FitToWidth",
+    mainBackgroundId: "cbb9050b7ce28900e44a",
+    sidebarBackgroundId: "0325c4e7ec01108ac90b",
+    sidebarPanelId: "aa00bb11cc22dd33ee42",
+    titleOverlayId: "07d4da210de09608d4fb",
+    pageNavigatorId: "3c9eb8b9053b22bcd99f",
+    yearLabelId: "0b1ad6f613de09bd0dbe",
+    yearSlicerId: "72c2ba702fe2952b0f6b",
+    monthLabelId: "ac264f11a941630246ff",
+    monthSlicerId: "65c02e07e18d7728119a",
+  },
+  d4f6a8c0b3e57921f234: {
+    pageHeight: 980,
+    displayOption: "FitToWidth",
+    mainBackgroundId: "cbb9050b7ce28900e44a",
+    sidebarBackgroundId: "0325c4e7ec01108ac90b",
+    sidebarPanelId: "aa00bb11cc22dd33ee52",
+    titleOverlayId: "07d4da210de09608d4fb",
+    pageNavigatorId: "3c9eb8b9053b22bcd99f",
+    yearLabelId: "0b1ad6f613de09bd0dbe",
+    yearSlicerId: "72c2ba702fe2952b0f6b",
+    monthLabelId: "ac264f11a941630246ff",
+    monthSlicerId: "65c02e07e18d7728119a",
+  },
+  f1a9c2e7d4b86350a1f2: {
+    pageHeight: 980,
+    displayOption: "FitToWidth",
+    mainBackgroundId: "602d61c16500ea288cdc",
+    sidebarBackgroundId: "71d424213bef4ecba9fd",
+    sidebarPanelId: "aa00bb11cc22dd33ee62",
+    titleOverlayId: "b3ca9db4dc5f60ce98f2",
+    pageNavigatorId: "82a71ddf3d9cfc3071cb",
+    yearLabelId: "7b9674f786248db06ec7",
+    yearSlicerId: "d61893b8024d73344e50",
+    monthLabelId: "a36e96c0b8c299e25767",
+    monthSlicerId: "550de89675d60d2a7478",
+  },
+  b2d4e6f8a1c34567d890: {
+    pageHeight: 980,
+    displayOption: "FitToWidth",
+    mainBackgroundId: "602d61c16500ea288cdc",
+    sidebarBackgroundId: "71d424213bef4ecba9fd",
+    sidebarPanelId: "aa00bb11cc22dd33ee72",
+    titleOverlayId: "b3ca9db4dc5f60ce98f2",
+    pageNavigatorId: "82a71ddf3d9cfc3071cb",
+    yearLabelId: "7b9674f786248db06ec7",
+    yearSlicerId: "d61893b8024d73344e50",
+    monthLabelId: "a36e96c0b8c299e25767",
+    monthSlicerId: "550de89675d60d2a7478",
+  },
+  c3e5f7a9b2d46810e123: {
+    pageHeight: 980,
+    displayOption: "FitToWidth",
+    mainBackgroundId: "602d61c16500ea288cdc",
+    sidebarBackgroundId: "71d424213bef4ecba9fd",
+    sidebarPanelId: "aa00bb11cc22dd33ee82",
+    titleOverlayId: "b3ca9db4dc5f60ce98f2",
+    pageNavigatorId: "82a71ddf3d9cfc3071cb",
+    yearLabelId: "7b9674f786248db06ec7",
+    yearSlicerId: "d61893b8024d73344e50",
+    monthLabelId: "a36e96c0b8c299e25767",
+    monthSlicerId: "550de89675d60d2a7478",
+  },
+};
+
+const VARIATION_LABELS_BY_PAGE = {
+  fe4687310000e672d410: ["2346d05958531b1c0e70", "0698e7cbde04a3e75c43", "9e5c2c97509007d8206a", "d8c53201b61254046ba2", "8ed644355c0522d96e45"],
+  d4f6a8c0b3e57921f234: ["2346d05958531b1c0e70", "0698e7cbde04a3e75c43", "9e5c2c97509007d8206a", "d8c53201b61254046ba2", "8ed644355c0522d96e45"],
+  f1a9c2e7d4b86350a1f2: ["0161e6456000a5d02753", "38e72cead61c48ba1686", "bff85559182dcd273b08", "ea0b234db0d4e47d3222"],
+  b2d4e6f8a1c34567d890: ["0161e6456000a5d02753", "38e72cead61c48ba1686", "bff85559182dcd273b08", "ea0b234db0d4e47d3222"],
+  c3e5f7a9b2d46810e123: ["0161e6456000a5d02753", "38e72cead61c48ba1686", "bff85559182dcd273b08", "ea0b234db0d4e47d3222"],
 };
 
 const OVERVIEW_SUMMARY_CONFIG = {
@@ -1032,6 +1323,20 @@ function writeJson(filePath, value) {
   fs.writeFileSync(filePath, `${JSON.stringify(value, null, 2)}\n`);
 }
 
+function escapeLiteralText(value) {
+  return String(value).replace(/'/g, "''");
+}
+
+function literalExpr(value) {
+  return {
+    expr: {
+      Literal: {
+        Value: `'${escapeLiteralText(value)}'`,
+      },
+    },
+  };
+}
+
 function ensureDir(dirPath) {
   fs.mkdirSync(dirPath, { recursive: true });
 }
@@ -1384,12 +1689,26 @@ function setTextboxMeasure(pageId, visualId, measureProperty, formatString) {
   const expr =
     value?.expr?.expr?.Min?.Expression?.Column;
   const select = expr?.Expression?.Subquery?.Query?.Select;
-  if (!value || !expr || !Array.isArray(select) || !select[0]?.Measure) return;
+  if (!value || !expr || !Array.isArray(select) || !select[0]) return;
   const entity = MEASURE_ENTITY_BY_NAME[measureProperty] || "Measure";
 
-  select[0].Measure.Expression.SourceRef.Source = "m";
-  select[0].Measure.Property = measureProperty;
-  select[0].Name = `${entity}.${measureProperty}`;
+  if (select[0].Measure) {
+    select[0].Measure.Expression.SourceRef.Source = "m";
+    select[0].Measure.Property = measureProperty;
+    select[0].Name = `${entity}.${measureProperty}`;
+  } else {
+    select[0] = {
+      Measure: {
+        Expression: {
+          SourceRef: {
+            Source: "m",
+          },
+        },
+        Property: measureProperty,
+      },
+      Name: `${entity}.${measureProperty}`,
+    };
+  }
   expr.Property = `${entity}.${measureProperty}`;
   const from = expr?.Expression?.Subquery?.Query?.From;
   if (Array.isArray(from) && from[0]) {
@@ -1409,6 +1728,70 @@ function setTextLabel(pageId, visualId, value) {
   if (!fs.existsSync(filePath)) return;
   const visual = readJson(filePath);
   updateTextboxValue(visual, value);
+  delete visual.isHidden;
+  writeJson(filePath, visual);
+}
+
+function replaceMeasurePropertyInNode(node, oldProperty, newProperty) {
+  if (!node || oldProperty === newProperty) return;
+  if (Array.isArray(node)) {
+    node.forEach((item) => replaceMeasurePropertyInNode(item, oldProperty, newProperty));
+    return;
+  }
+  if (typeof node !== "object") return;
+
+  if (node.Measure?.Property === oldProperty) {
+    node.Measure.Property = newProperty;
+  }
+  if (
+    node.Property === oldProperty &&
+    (node.Expression?.SourceRef?.Entity === "Measure" ||
+      node.Expression?.SourceRef?.Source === "m")
+  ) {
+    node.Property = newProperty;
+  }
+
+  Object.values(node).forEach((value) => replaceMeasurePropertyInNode(value, oldProperty, newProperty));
+}
+
+function setCardVisualMeasure(pageId, visualId, measureProperty, sortMeasureProperty = measureProperty) {
+  const filePath = visualPath(pageId, visualId);
+  if (!fs.existsSync(filePath)) return;
+
+  const visual = readJson(filePath);
+  const projection = visual.visual?.query?.queryState?.Values?.projections?.[0];
+  if (!projection?.field?.Measure) return;
+  const oldProperty = projection.field.Measure.Property;
+
+  projection.field.Measure.Expression.SourceRef.Entity = "Measure";
+  projection.field.Measure.Property = measureProperty;
+  projection.queryRef = `Measure.${measureProperty}`;
+  projection.nativeQueryRef = measureProperty;
+
+  const sortField = visual.visual?.query?.sortDefinition?.sort?.[0]?.field?.Measure;
+  if (sortField) {
+    sortField.Expression.SourceRef.Entity = "Measure";
+    sortField.Property = sortMeasureProperty;
+  }
+
+  replaceMeasurePropertyInNode(visual.visual?.objects, oldProperty, measureProperty);
+  delete visual.isHidden;
+  writeJson(filePath, visual);
+}
+
+function setTextboxFontSize(pageId, visualId, fontSize) {
+  const filePath = visualPath(pageId, visualId);
+  if (!fs.existsSync(filePath)) return;
+  const visual = readJson(filePath);
+  const textRuns =
+    visual.visual?.objects?.general?.[0]?.properties?.paragraphs?.[0]?.textRuns;
+  if (!Array.isArray(textRuns) || textRuns.length === 0) return;
+  textRuns.forEach((run) => {
+    run.textStyle = {
+      ...(run.textStyle ?? {}),
+      fontSize,
+    };
+  });
   delete visual.isHidden;
   writeJson(filePath, visual);
 }
@@ -1433,6 +1816,29 @@ function setChartMeasure(pageId, visualId, measureProperty) {
   };
   projection.queryRef = `${entity}.${measureProperty}`;
   projection.nativeQueryRef = measureProperty;
+  delete visual.isHidden;
+  writeJson(filePath, visual);
+}
+
+function setChartFieldParameter(pageId, visualId, entity, property, label = property) {
+  const filePath = visualPath(pageId, visualId);
+  if (!fs.existsSync(filePath)) return;
+  const visual = readJson(filePath);
+  const projection = visual.visual?.query?.queryState?.Y?.projections?.[0];
+  if (!projection) return;
+
+  projection.field = {
+    Column: {
+      Expression: {
+        SourceRef: {
+          Entity: entity,
+        },
+      },
+      Property: property,
+    },
+  };
+  projection.queryRef = `${entity}.${property}`;
+  projection.nativeQueryRef = label;
   delete visual.isHidden;
   writeJson(filePath, visual);
 }
@@ -1477,6 +1883,363 @@ function setHidden(pageId, visualId, hidden) {
   writeJson(filePath, visual);
 }
 
+function setVisualContainerTitle(pageId, visualId, title, fontSize = "10D") {
+  const filePath = visualPath(pageId, visualId);
+  if (!fs.existsSync(filePath)) return;
+  const visual = readJson(filePath);
+  visual.visual = visual.visual || {};
+  visual.visual.visualContainerObjects = visual.visual.visualContainerObjects || {};
+  visual.visual.visualContainerObjects.title = [
+    {
+      properties: {
+        show: {
+          expr: {
+            Literal: {
+              Value: "true",
+            },
+          },
+        },
+        text: literalExpr(title),
+        fontSize: {
+          expr: {
+            Literal: {
+              Value: fontSize,
+            },
+          },
+        },
+      },
+    },
+  ];
+  writeJson(filePath, visual);
+}
+
+function setVisualContainerTitleVisibility(pageId, visualId, visible) {
+  const filePath = visualPath(pageId, visualId);
+  if (!fs.existsSync(filePath)) return;
+  const visual = readJson(filePath);
+  visual.visual = visual.visual || {};
+  visual.visual.visualContainerObjects = visual.visual.visualContainerObjects || {};
+  const titleBlock = visual.visual.visualContainerObjects.title?.[0]?.properties;
+  if (!titleBlock) return;
+  titleBlock.show = {
+    expr: {
+      Literal: {
+        Value: visible ? "true" : "false",
+      },
+    },
+  };
+  writeJson(filePath, visual);
+}
+
+function getFirstExistingSlicerTemplate(pageId) {
+  const candidates = [
+    "550de89675d60d2a7478",
+    "72c2ba702fe2952b0f6b",
+    "65c02e07e18d7728119a",
+    "66f7c5422ecb46c4a0fa",
+    "d61893b8024d73344e50",
+  ];
+  for (const visualId of candidates) {
+    if (fs.existsSync(visualPath(pageId, visualId))) {
+      return visualId;
+    }
+  }
+  return null;
+}
+
+function createOrUpdateDropdownSlicer(pageId, visualId, position, entity, property, title) {
+  const sourceVisualId = getFirstExistingSlicerTemplate(pageId) ?? "550de89675d60d2a7478";
+  const sourcePageId = fs.existsSync(visualPath(pageId, sourceVisualId))
+    ? pageId
+    : "b2d4e6f8a1c34567d890";
+
+  upsertVisualFromPage(pageId, visualId, sourcePageId, sourceVisualId, (visual) => {
+    visual.position = { ...position };
+    delete visual.parentGroupName;
+    delete visual.isHidden;
+    delete visual.filterConfig;
+    delete visual.drillFilterOtherVisuals;
+    visual.visual.visualType = "slicer";
+    visual.visual.query = {
+      queryState: {
+        Values: {
+          projections: [
+            {
+              field: {
+                Column: {
+                  Expression: {
+                    SourceRef: {
+                      Entity: entity,
+                    },
+                  },
+                  Property: property,
+                },
+              },
+              queryRef: `${entity}.${property}`,
+              nativeQueryRef: property,
+              active: true,
+            },
+          ],
+        },
+      },
+      sortDefinition: {
+        isDefaultSort: true,
+      },
+    };
+    visual.visual.objects = visual.visual.objects || {};
+    visual.visual.objects.data = [
+      {
+        properties: {
+          mode: {
+            expr: {
+              Literal: {
+                Value: "'Dropdown'",
+              },
+            },
+          },
+        },
+      },
+    ];
+    visual.visual.objects.header = [
+      {
+        properties: {
+          show: {
+            expr: {
+              Literal: {
+                Value: "false",
+              },
+            },
+          },
+        },
+      },
+    ];
+    visual.visual.objects.items = [
+      {
+        properties: {
+          fontColor: {
+            solid: {
+              color: {
+                expr: {
+                  Literal: {
+                    Value: "'#1F2937'",
+                  },
+                },
+              },
+            },
+          },
+          fontFamily: {
+            expr: {
+              Literal: {
+                Value: "'wf_standard-font, helvetica, arial, sans-serif'",
+              },
+            },
+          },
+          textSize: {
+            expr: {
+              Literal: {
+                Value: "8D",
+              },
+            },
+          },
+          background: {
+            solid: {
+              color: {
+                expr: {
+                  Literal: {
+                    Value: "'#FFFFFF'",
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    ];
+    visual.visual.visualContainerObjects = visual.visual.visualContainerObjects || {};
+    visual.visual.visualContainerObjects.background = [
+      {
+        properties: {
+          show: {
+            expr: {
+              Literal: {
+                Value: "true",
+              },
+            },
+          },
+          color: {
+            solid: {
+              color: {
+                expr: {
+                  Literal: {
+                    Value: "'#FFFFFF'",
+                  },
+                },
+              },
+            },
+          },
+          transparency: {
+            expr: {
+              Literal: {
+                Value: "6D",
+              },
+            },
+          },
+        },
+      },
+    ];
+    visual.visual.visualContainerObjects.border = [
+      {
+        properties: {
+          show: {
+            expr: {
+              Literal: {
+                Value: "true",
+              },
+            },
+          },
+          radius: {
+            expr: {
+              Literal: {
+                Value: "8D",
+              },
+            },
+          },
+          color: {
+            solid: {
+              color: {
+                expr: {
+                  Literal: {
+                    Value: "'#0B7F7E'",
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    ];
+    visual.visual.visualContainerObjects.title = [
+      {
+        properties: {
+          show: {
+            expr: {
+              Literal: {
+                Value: "true",
+              },
+            },
+          },
+          text: literalExpr(title),
+          fontSize: {
+            expr: {
+              Literal: {
+                Value: "7D",
+              },
+            },
+          },
+        },
+      },
+    ];
+    delete visual.visual.drillFilterOtherVisuals;
+  });
+}
+
+function standardizeBookmarkNavigatorVisual(pageId, visualId, options = {}) {
+  const filePath = visualPath(pageId, visualId);
+  if (!fs.existsSync(filePath)) return;
+  const visual = readJson(filePath);
+  delete visual.isHidden;
+  visual.position = {
+    ...visual.position,
+    ...(options.position ?? {}),
+  };
+  if (options.height != null) {
+    visual.position.height = options.height;
+  }
+  if (options.width != null) {
+    visual.position.width = options.width;
+  }
+  const textProps = visual.visual?.objects?.text?.[0]?.properties;
+  if (textProps && options.fontSize) {
+    textProps.fontSize = {
+      expr: {
+        Literal: {
+          Value: options.fontSize,
+        },
+      },
+    };
+  }
+  const titleProps = visual.visual?.visualContainerObjects?.title?.[0]?.properties;
+  if (titleProps) {
+    titleProps.show = {
+      expr: {
+        Literal: {
+          Value: "false",
+        },
+      },
+    };
+  }
+  const fillSelected = visual.visual?.objects?.fill?.[0]?.properties;
+  if (fillSelected) {
+    fillSelected.fillColor = {
+      solid: {
+        color: {
+          expr: {
+            Literal: {
+              Value: `'${STANDARD_NAV_THEME.selectedFill}'`,
+            },
+          },
+        },
+      },
+    };
+  }
+  const outlineSelected = visual.visual?.objects?.outline?.[0]?.properties;
+  if (outlineSelected) {
+    outlineSelected.lineColor = {
+      solid: {
+        color: {
+          expr: {
+            Literal: {
+              Value: `'${STANDARD_NAV_THEME.selectedOutline}'`,
+            },
+          },
+        },
+      },
+    };
+  }
+  const outlineDefault = visual.visual?.objects?.outline?.[1]?.properties;
+  if (outlineDefault) {
+    outlineDefault.show = {
+      expr: {
+        Literal: {
+          Value: "true",
+        },
+      },
+    };
+    outlineDefault.lineColor = {
+      solid: {
+        color: {
+          expr: {
+            Literal: {
+              Value: `'${STANDARD_NAV_THEME.defaultOutline}'`,
+            },
+          },
+        },
+      },
+    };
+  }
+  const layoutProps = visual.visual?.objects?.layout?.[0]?.properties;
+  if (layoutProps && options.cellPadding) {
+    layoutProps.cellPadding = {
+      expr: {
+        Literal: {
+          Value: options.cellPadding,
+        },
+      },
+    };
+  }
+  writeJson(filePath, visual);
+}
+
 function buildColumnProjection(entity, property, displayName) {
   const projection = {
     field: {
@@ -1513,6 +2276,78 @@ function buildMeasureProjection(entity, property, displayName) {
   };
   if (displayName) projection.displayName = displayName;
   return projection;
+}
+
+function buildCategoricalInFilter({ entity, property, values, filterName }) {
+  return {
+    name: filterName,
+    field: {
+      Column: {
+        Expression: {
+          SourceRef: {
+            Entity: entity,
+          },
+        },
+        Property: property,
+      },
+    },
+    type: "Categorical",
+    filter: {
+      Version: 2,
+      From: [
+        {
+          Name: "o",
+          Entity: entity,
+          Type: 0,
+        },
+      ],
+      Where: [
+        {
+          Condition: {
+            In: {
+              Expressions: [
+                {
+                  Column: {
+                    Expression: {
+                      SourceRef: {
+                        Source: "o",
+                      },
+                    },
+                    Property: property,
+                  },
+                },
+              ],
+              Values: values.map((value) => [{ Literal: { Value: `'${value}'` } }]),
+            },
+          },
+        },
+      ],
+    },
+    howCreated: "User",
+  };
+}
+
+function isColumnFilter(filter, entity, property) {
+  return (
+    filter?.field?.Column?.Expression?.SourceRef?.Entity === entity &&
+    filter?.field?.Column?.Property === property
+  );
+}
+
+function upsertCategoricalIncludeFilter(visual, { entity, property, values, filterName }) {
+  const filterConfig = visual.filterConfig && typeof visual.filterConfig === "object" ? visual.filterConfig : {};
+  const filters = Array.isArray(filterConfig.filters) ? [...filterConfig.filters] : [];
+  const nextFilter = buildCategoricalInFilter({ entity, property, values, filterName });
+  const existingIndex = filters.findIndex((filter) => isColumnFilter(filter, entity, property));
+  if (existingIndex >= 0) {
+    filters[existingIndex] = nextFilter;
+  } else {
+    filters.push(nextFilter);
+  }
+  visual.filterConfig = {
+    ...filterConfig,
+    filters,
+  };
 }
 
 function buildTopNFilter({ entity, property, top, measureEntity, factEntity, factProperty, aggFunction }) {
@@ -1719,6 +2554,164 @@ function createRankingBarObjects() {
   };
 }
 
+function createRankingColumnObjects() {
+  return {
+    dataPoint: [
+      {
+        properties: {
+          fill: {
+            solid: {
+              color: {
+                expr: {
+                  Literal: {
+                    Value: "'#1E88E5'",
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    ],
+    valueAxis: [
+      {
+        properties: {
+          showAxisTitle: {
+            expr: {
+              Literal: {
+                Value: "false",
+              },
+            },
+          },
+          labelDisplayUnits: {
+            expr: {
+              Literal: {
+                Value: "1000D",
+              },
+            },
+          },
+        },
+      },
+    ],
+    categoryAxis: [
+      {
+        properties: {
+          showAxisTitle: {
+            expr: {
+              Literal: {
+                Value: "false",
+              },
+            },
+          },
+          fontSize: {
+            expr: {
+              Literal: {
+                Value: "8D",
+              },
+            },
+          },
+          labelOverflow: {
+            expr: {
+              Literal: {
+                Value: "false",
+              },
+            },
+          },
+        },
+      },
+    ],
+    labels: [
+      {
+        properties: {
+          show: {
+            expr: {
+              Literal: {
+                Value: "true",
+              },
+            },
+          },
+          labelPosition: {
+            expr: {
+              Literal: {
+                Value: "'OutsideEnd'",
+              },
+            },
+          },
+          optimizeLabelDisplay: {
+            expr: {
+              Literal: {
+                Value: "false",
+              },
+            },
+          },
+          fontSize: {
+            expr: {
+              Literal: {
+                Value: "8D",
+              },
+            },
+          },
+        },
+      },
+    ],
+  };
+}
+
+function createDonutObjects() {
+  return {
+    dataPoint: [
+      {
+        properties: {
+          fill: {
+            solid: {
+              color: {
+                expr: {
+                  Literal: {
+                    Value: "'#1E88E5'",
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    ],
+    labels: [
+      {
+        properties: {
+          show: {
+            expr: {
+              Literal: {
+                Value: "true",
+              },
+            },
+          },
+          fontSize: {
+            expr: {
+              Literal: {
+                Value: "8D",
+              },
+            },
+          },
+        },
+      },
+    ],
+    legend: [
+      {
+        properties: {
+          show: {
+            expr: {
+              Literal: {
+                Value: "false",
+              },
+            },
+          },
+        },
+      },
+    ],
+  };
+}
+
 function createTreemapObjects() {
   return {
     dataPoint: [
@@ -1794,6 +2787,97 @@ function setBarChartBinding(pageId, visualId, category, measure, topN) {
     },
   };
   visual.visual.objects = createRankingBarObjects();
+  visual.filterConfig = buildTopNFilter({
+    entity: category.entity,
+    property: category.property,
+    top: topN,
+    measureEntity: measure.entity,
+    factEntity: measure.entity,
+    factProperty: measure.sortProperty ?? "ValorArbitrado",
+    aggFunction: measure.aggFunction ?? 0,
+  });
+  delete visual.isHidden;
+  writeJson(filePath, visual);
+}
+
+function setDonutChartBinding(pageId, visualId, category, measure, topN) {
+  const filePath = visualPath(pageId, visualId);
+  if (!fs.existsSync(filePath)) return;
+  const visual = readJson(filePath);
+  visual.visual.visualType = "donutChart";
+  visual.visual.query = {
+    queryState: {
+      Category: {
+        projections: [buildColumnProjection(category.entity, category.property, category.displayName)],
+      },
+      Y: {
+        projections: [buildMeasureProjection(measure.entity, measure.property, measure.displayName)],
+      },
+    },
+    sortDefinition: {
+      sort: [
+        {
+          field: {
+            Measure: {
+              Expression: {
+                SourceRef: {
+                  Entity: measure.entity,
+                },
+              },
+              Property: measure.property,
+            },
+          },
+          direction: "Descending",
+        },
+      ],
+    },
+  };
+  visual.filterConfig = buildTopNFilter({
+    entity: category.entity,
+    property: category.property,
+    top: topN,
+    factEntity: measure.entity,
+    factProperty: measure.sortProperty ?? "ValorArbitrado",
+    aggFunction: measure.aggFunction ?? 0,
+  });
+  visual.visual.objects = createDonutObjects();
+  delete visual.isHidden;
+  writeJson(filePath, visual);
+}
+
+function setColumnChartBinding(pageId, visualId, category, measure, topN) {
+  const filePath = visualPath(pageId, visualId);
+  if (!fs.existsSync(filePath)) return;
+  const visual = readJson(filePath);
+  visual.visual.visualType = "clusteredColumnChart";
+  visual.visual.query = {
+    queryState: {
+      Category: {
+        projections: [buildColumnProjection(category.entity, category.property, category.displayName)],
+      },
+      Y: {
+        projections: [buildMeasureProjection(measure.entity, measure.property, measure.displayName)],
+      },
+    },
+    sortDefinition: {
+      sort: [
+        {
+          field: {
+            Measure: {
+              Expression: {
+                SourceRef: {
+                  Entity: measure.entity,
+                },
+              },
+              Property: measure.property,
+            },
+          },
+          direction: "Descending",
+        },
+      ],
+    },
+  };
+  visual.visual.objects = createRankingColumnObjects();
   visual.filterConfig = buildTopNFilter({
     entity: category.entity,
     property: category.property,
@@ -2004,6 +3088,90 @@ function createOrUpdateDetailTable(pageId, visualId, title, columns) {
   });
 }
 
+function createOrUpdateCustomTable(pageId, visualId, position, title, columns) {
+  upsertVisualFromPage(pageId, visualId, DETAIL_TABLE_SOURCE_PAGE_ID, DETAIL_TABLE_SOURCE_VISUAL_ID, (visual) => {
+    visual.position = { ...position };
+    visual.visual.visualType = "tableEx";
+    visual.visual.query = {
+      queryState: {
+        Values: {
+          projections: columns,
+        },
+      },
+      sortDefinition: {
+        sort: [
+          {
+            field: {
+              Measure: {
+                Expression: {
+                  SourceRef: {
+                    Entity: "Measure",
+                  },
+                },
+                Property: "Valor Arbitrado Base",
+              },
+            },
+            direction: "Descending",
+          },
+        ],
+      },
+    };
+    visual.visual.objects = createDetailTableObjects();
+    visual.visual.visualContainerObjects = {
+      stylePreset: [
+        {
+          properties: {
+            name: {
+              expr: {
+                Literal: {
+                  Value: "'Sparse'",
+                },
+              },
+            },
+          },
+        },
+      ],
+      background: [
+        {
+          properties: {
+            show: {
+              expr: {
+                Literal: {
+                  Value: "true",
+                },
+              },
+            },
+          },
+        },
+      ],
+      title: [
+        {
+          properties: {
+            show: {
+              expr: {
+                Literal: {
+                  Value: "true",
+                },
+              },
+            },
+            text: literalExpr(title),
+            fontSize: {
+              expr: {
+                Literal: {
+                  Value: "9D",
+                },
+              },
+            },
+          },
+        },
+      ],
+    };
+    delete visual.drillFilterOtherVisuals;
+    delete visual.parentGroupName;
+    delete visual.isHidden;
+  });
+}
+
 function extendEntityPages() {
   for (const [pageId, cfg] of Object.entries(ENTITY_PAGE_CANVAS_CONFIG)) {
     const page = readPageJson(pageId);
@@ -2064,9 +3232,13 @@ function fixChartTypeTogglePages() {
     const topOuterPanel = readJson(visualPath(pageId, CHART_TYPE_TOP_OUTER_PANEL_ID));
     const topInnerPanel = readJson(visualPath(pageId, CHART_TYPE_TOP_INNER_PANEL_ID));
     delete topOuterPanel.isHidden;
-    delete topInnerPanel.isHidden;
+    topInnerPanel.isHidden = true;
     writeJson(visualPath(pageId, CHART_TYPE_TOP_OUTER_PANEL_ID), topOuterPanel);
     writeJson(visualPath(pageId, CHART_TYPE_TOP_INNER_PANEL_ID), topInnerPanel);
+
+    const legacyHeaderGroup = readJson(visualPath(pageId, CHART_TYPE_LEGACY_HEADER_GROUP_ID));
+    legacyHeaderGroup.isHidden = true;
+    writeJson(visualPath(pageId, CHART_TYPE_LEGACY_HEADER_GROUP_ID), legacyHeaderGroup);
 
     for (const panelId of CHART_TYPE_UNUSED_PANEL_IDS) {
       const panel = readJson(visualPath(pageId, panelId));
@@ -2075,11 +3247,24 @@ function fixChartTypeTogglePages() {
     }
 
     const histWrapper = readJson(visualPath(pageId, cfg.wrappers.hist));
-    const wrapperPosition = { ...histWrapper.position };
-    const wrapperParent = histWrapper.parentGroupName;
+    const wrapperPosition = {
+      x: (topOuterPanel.position?.x || 0) + (topInnerPanel.position?.x || 0),
+      y: (topOuterPanel.position?.y || 0) + (topInnerPanel.position?.y || 0),
+      z: (topOuterPanel.position?.z || 0) + 1000,
+      height: topInnerPanel.position?.height || STANDARD_PRIMARY_CHART_POSITION.height,
+      width: topInnerPanel.position?.width || STANDARD_PRIMARY_CHART_POSITION.width,
+      tabOrder: (topOuterPanel.position?.tabOrder || 0) + 1000,
+    };
     const histVisual = readJson(visualPath(pageId, cfg.visuals.hist));
     const baseQuery = deepClone(histVisual.visual.query);
-    const baseChildPosition = { ...histVisual.position };
+    const baseChildPosition = {
+      x: 0,
+      y: 0,
+      z: 0,
+      height: wrapperPosition.height,
+      width: wrapperPosition.width,
+      tabOrder: 0,
+    };
     const chartTypes = {
       hist: "clusteredColumnChart",
       line: "lineChart",
@@ -2092,9 +3277,9 @@ function fixChartTypeTogglePages() {
       const visualId = cfg.visuals[key];
       const wrapper = readJson(visualPath(pageId, wrapperId));
       wrapper.position = { ...wrapperPosition };
-      wrapper.parentGroupName = wrapperParent;
+      delete wrapper.parentGroupName;
       wrapper.visualGroup.displayName = cfg.bookmarkLabels[key];
-      wrapper.isHidden = key !== "hist";
+      wrapper.isHidden = false;
       writeJson(visualPath(pageId, wrapperId), wrapper);
 
       const visual = readJson(visualPath(pageId, visualId));
@@ -2103,22 +3288,25 @@ function fixChartTypeTogglePages() {
       visual.visual.visualType = chartTypes[key];
       visual.visual.query = deepClone(baseQuery);
       visual.visual.objects = createGenericChartObjects();
+      visual.isHidden = key !== "hist";
       writeJson(visualPath(pageId, visualId), visual);
     }
 
     for (const [bookmarkKey, bookmarkId] of Object.entries(cfg.bookmarks)) {
-      const bookmark = readJson(bookmarkPath(bookmarkId));
-      bookmark.displayName = cfg.bookmarkLabels[bookmarkKey];
-      const section = bookmark.explorationState.sections[pageId];
-      section.visualContainers = {};
-      section.visualContainerGroups = Object.fromEntries(
-        Object.entries(cfg.wrappers).map(([key, wrapperId]) => [
-          wrapperId,
-          { isHidden: key !== bookmarkKey },
-        ])
-      );
-      bookmark.options.targetVisualNames = Object.values(cfg.wrappers);
-      writeJson(bookmarkPath(bookmarkId), bookmark);
+      writeMinimalVisualDisplayBookmark({
+        bookmarkId,
+        displayName: cfg.bookmarkLabels[bookmarkKey],
+        pageId,
+        targetVisualStates: Object.fromEntries(
+          Object.entries(cfg.visuals).map(([key, visualId]) => [
+            visualId,
+            {
+              visualType: chartTypes[key],
+              hidden: key !== bookmarkKey,
+            },
+          ])
+        ),
+      });
     }
 
     upsertBookmarkGroup(
@@ -2129,10 +3317,20 @@ function fixChartTypeTogglePages() {
     );
 
     const navigator = readJson(visualPath(pageId, cfg.navigatorId));
+    delete navigator.isHidden;
+    navigator.position = { ...navigator.position, ...STANDARD_PRIMARY_CHART_NAV_POSITION };
     updateBookmarkSelected(navigator, cfg.defaultBookmarkId);
+    navigator.visual.objects.bookmarks[0].properties.bookmarkGroup = {
+      expr: {
+        Literal: {
+          Value: `'${cfg.bookmarkGroupId}'`,
+        },
+      },
+    };
     writeJson(visualPath(pageId, cfg.navigatorId), navigator);
 
     const modeLabel = readJson(visualPath(pageId, cfg.modeLabelId));
+    delete modeLabel.isHidden;
     updateTextboxValue(modeLabel, "Modo: escolha o tipo de grafico");
     writeJson(visualPath(pageId, cfg.modeLabelId), modeLabel);
   }
@@ -2186,8 +3384,8 @@ function fixTopGraphPages() {
 
     for (const [key, groupId] of Object.entries(groups)) {
       const group = readJson(visualPath(pageId, groupId));
-      group.position = { ...topSlotPosition };
-      group.isHidden = key !== "hist";
+      group.position = { ...STANDARD_PRIMARY_CHART_POSITION };
+      group.isHidden = false;
       writeJson(visualPath(pageId, groupId), group);
     }
 
@@ -2200,7 +3398,14 @@ function fixTopGraphPages() {
       };
       const histVisual = readJson(visualPath(pageId, childVisuals.hist));
       const baseQuery = deepClone(histVisual.visual.query);
-      const baseChildPosition = { ...histVisual.position };
+      const baseChildPosition = {
+        x: 0,
+        y: 0,
+        z: 0,
+        height: STANDARD_PRIMARY_CHART_POSITION.height,
+        width: STANDARD_PRIMARY_CHART_POSITION.width,
+        tabOrder: 0,
+      };
 
       for (const [key, groupId] of Object.entries(groups)) {
         const visualId = childVisuals[key];
@@ -2211,21 +3416,26 @@ function fixTopGraphPages() {
         visual.visual.visualType = chartTypes[key];
         visual.visual.query = deepClone(baseQuery);
         visual.visual.objects = createGenericChartObjects();
-        delete visual.isHidden;
+        visual.isHidden = key !== "hist";
         writeJson(visualPath(pageId, visualId), visual);
       }
-    }
 
-    for (const [key, bookmarkId] of Object.entries(pageBookmarks)) {
-      const bookmark = readJson(bookmarkPath(bookmarkId));
-      bookmark.displayName = bookmarkLabels[key];
-      const section = bookmark.explorationState.sections[pageId];
-      section.visualContainers = {};
-      section.visualContainerGroups = Object.fromEntries(
-        Object.entries(groupStates[bookmarkId]).map(([groupId, isHidden]) => [groupId, { isHidden }])
-      );
-      bookmark.options.targetVisualNames = groupIds;
-      writeJson(bookmarkPath(bookmarkId), bookmark);
+      for (const [key, bookmarkId] of Object.entries(pageBookmarks)) {
+        writeMinimalVisualDisplayBookmark({
+          bookmarkId,
+          displayName: bookmarkLabels[key],
+          pageId,
+          targetVisualStates: Object.fromEntries(
+            Object.entries(childVisuals).map(([stateKey, visualId]) => [
+              visualId,
+              {
+                visualType: chartTypes[stateKey],
+                hidden: stateKey !== key,
+              },
+            ])
+          ),
+        });
+      }
     }
 
     upsertBookmarkGroup(
@@ -2236,7 +3446,16 @@ function fixTopGraphPages() {
     );
 
     const navigator = readJson(visualPath(pageId, navigatorId));
+    delete navigator.isHidden;
+    navigator.position = { ...navigator.position, ...STANDARD_PRIMARY_CHART_NAV_POSITION };
     updateBookmarkSelected(navigator, defaultBookmarkId);
+    navigator.visual.objects.bookmarks[0].properties.bookmarkGroup = {
+      expr: {
+        Literal: {
+          Value: `'${bookmarkGroupId}'`,
+        },
+      },
+    };
     writeJson(visualPath(pageId, navigatorId), navigator);
   }
 
@@ -2277,6 +3496,47 @@ function writeMinimalGroupBookmark({ bookmarkId, displayName, pageId, targetVisu
           visualContainerGroups: Object.fromEntries(
             Object.entries(hiddenStates).map(([groupId, isHidden]) => [groupId, { isHidden }])
           ),
+        },
+      },
+    },
+  };
+
+  writeJson(bookmarkPath(bookmarkId), bookmark);
+}
+
+function writeMinimalVisualDisplayBookmark({ bookmarkId, displayName, pageId, targetVisualStates }) {
+  const targetVisualNames = Object.keys(targetVisualStates);
+  const visualContainers = Object.fromEntries(
+    Object.entries(targetVisualStates).map(([visualId, state]) => {
+      const singleVisual = {
+        visualType: state.visualType,
+        objects: {},
+      };
+      if (state.hidden) {
+        singleVisual.display = {
+          mode: "hidden",
+        };
+      }
+      return [visualId, { singleVisual }];
+    })
+  );
+
+  const bookmark = {
+    $schema:
+      "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.0.0/schema.json",
+    displayName,
+    name: bookmarkId,
+    options: {
+      applyOnlyToTargetVisuals: true,
+      targetVisualNames,
+      suppressData: true,
+    },
+    explorationState: {
+      version: "1.0",
+      activeSection: pageId,
+      sections: {
+        [pageId]: {
+          visualContainers,
         },
       },
     },
@@ -2539,25 +3799,117 @@ function cleanTrendLowerRow() {
   }
 }
 
+function configureSidebarLayouts() {
+  for (const [pageId, cfg] of Object.entries(SIDEBAR_LAYOUT_CONFIG)) {
+    const page = readPageJson(pageId);
+    page.height = cfg.pageHeight;
+    page.displayOption = cfg.displayOption;
+    writePageJson(pageId, page);
+
+    setPosition(pageId, cfg.mainBackgroundId, {
+      height: cfg.pageHeight,
+    });
+    setPosition(pageId, cfg.sidebarBackgroundId, {
+      height: cfg.pageHeight - 0.0533365658525,
+    });
+    setPosition(pageId, cfg.sidebarPanelId, {
+      y: 171,
+      height: cfg.pageHeight - 200,
+    });
+    setHidden(pageId, cfg.titleOverlayId, true);
+    setPosition(pageId, cfg.pageNavigatorId, {
+      x: 8,
+      y: 182,
+      width: 158,
+      height: 300,
+    });
+    setPosition(pageId, cfg.yearLabelId, {
+      x: 18,
+      y: 530,
+      width: 145,
+      height: 30,
+    });
+    setPosition(pageId, cfg.yearSlicerId, {
+      x: 12,
+      y: 555,
+      width: 151.63123955099115,
+      height: 54,
+    });
+    setPosition(pageId, cfg.monthLabelId, {
+      x: 18,
+      y: 635,
+      width: 167,
+      height: 30,
+    });
+    setPosition(pageId, cfg.monthSlicerId, {
+      x: 12,
+      y: 660,
+      width: 151.63123955099115,
+      height: 53,
+    });
+  }
+}
+
+function simplifyVariationLabels() {
+  for (const [pageId, visualIds] of Object.entries(VARIATION_LABELS_BY_PAGE)) {
+    visualIds.forEach((visualId) => {
+      setTextLabel(pageId, visualId, "Var");
+      setTextboxFontSize(pageId, visualId, "10pt");
+    });
+  }
+}
+
 function configureOverviewSummary() {
   const bookmarks = readJson(BOOKMARKS_PATH);
   const { pageId, left, right } = OVERVIEW_SUMMARY_CONFIG;
+  const overviewPage = readPageJson(pageId);
+  overviewPage.height = 900;
+  overviewPage.displayOption = "FitToWidth";
+  writePageJson(pageId, overviewPage);
+
+  setPosition(pageId, "cbb9050b7ce28900e44a", {
+    height: 900,
+    width: 1108.0851063829787,
+  });
+  setPosition(pageId, "0325c4e7ec01108ac90b", {
+    height: 899.9466634341475,
+  });
+  setPosition(pageId, "aa00bb11cc22dd33ee42", {
+    y: 171,
+    height: 700,
+  });
+  setHidden(pageId, "66f7c5422ecb46c4a0fa", true);
+  setHidden(pageId, "c8938c6da410891b5040", true);
+  setHidden(pageId, left.navigatorId, true);
+  setHidden(pageId, right.navigatorId, true);
+  setHidden(pageId, "e1b04cb7aad1837227ba", true);
+  setHidden(pageId, "e85feb694080c3b3bc21", true);
+  setPosition(pageId, "5d705d8ba8a6c89a0671", {
+    x: 202.9902077860043,
+    y: 446,
+    width: 1048,
+    height: 390,
+  });
+  setPosition(pageId, "4add58a884080dc1479c", {
+    y: 165.09121764955452,
+    height: 276,
+  });
 
   setBarChartBinding(
     pageId,
     left.charts.comarcas,
-    { entity: "FactPericias", property: "ComarcaExibicao", displayName: "Comarca" },
-    { entity: "Measure", property: "Valor Arbitrado Base", displayName: "Valor Arbitrado Base", sortProperty: "ValorArbitrado" },
+    { entity: "Orders", property: "State Mapa", displayName: "Comarca" },
+    { entity: "Measure", property: "Valor Arbitrado Base", displayName: "Valor Arbitrado Base", sortProperty: "Sales" },
     5
   );
-  setBarChartBinding(
+  setColumnChartBinding(
     pageId,
     left.charts.varas,
     { entity: "FactPericias", property: "JuizoExibicao", displayName: "Vara" },
     { entity: "Measure", property: "Valor Arbitrado Base", displayName: "Valor Arbitrado Base", sortProperty: "ValorArbitrado" },
     5
   );
-  setTreemapBinding(
+  setBarChartBinding(
     pageId,
     right.charts.peritos,
     { entity: "FactPericias", property: "PeritoNomeExibicao", displayName: "Perito" },
@@ -2572,20 +3924,76 @@ function configureOverviewSummary() {
     5
   );
 
-  for (const [key, groupId] of Object.entries(right.groups)) {
-    setPosition(pageId, groupId, right.groupPositions[key]);
-    setHidden(pageId, groupId, key !== "peritos");
-  }
-  setHidden(pageId, left.groups.comarcas, false);
-  setHidden(pageId, left.groups.varas, true);
+  const layout = {
+    comarcas: {
+      groupId: left.groups.comarcas,
+      headerId: "37ebee5606422016e610",
+      titleId: "04ae690c03b1748a60e1",
+      subtitleId: "bb6dc63c95c92ece933a",
+      chartId: left.charts.comarcas,
+      groupPos: { x: 232, y: 470, width: 470, height: 160, z: 19000, tabOrder: 2000 },
+    },
+    varas: {
+      groupId: left.groups.varas,
+      headerId: "c6edf0bd562dde90d345",
+      titleId: "81808ee2e04cb5a44453",
+      subtitleId: "06008ec31a834a664a82",
+      chartId: left.charts.varas,
+      groupPos: { x: 735, y: 470, width: 470, height: 160, z: 19100, tabOrder: 2100 },
+    },
+    peritos: {
+      groupId: right.groups.peritos,
+      headerId: "76b36fe27595d22aab08",
+      titleId: "0dec849700348dcb5b4a",
+      subtitleId: "695545bd2abe7cd323a2",
+      chartId: right.charts.peritos,
+      groupPos: { x: 232, y: 652, width: 470, height: 160, z: 19200, tabOrder: 2200 },
+    },
+    especialidades: {
+      groupId: right.groups.especialidades,
+      headerId: "9a2fb820725e4b63c670",
+      titleId: "ff6b88429017dbc20ae9",
+      subtitleId: "add260de38365a4d45a7",
+      chartId: right.charts.especialidades,
+      groupPos: { x: 735, y: 652, width: 470, height: 160, z: 19300, tabOrder: 2300 },
+    },
+  };
 
-  Object.values(left.titles).forEach(({ titleId, subtitleId, title, subtitle }) => {
-    setTextLabel(pageId, titleId, title);
-    setTextLabel(pageId, subtitleId, subtitle);
-  });
-  Object.values(right.titles).forEach(({ titleId, subtitleId, title, subtitle }) => {
-    setTextLabel(pageId, titleId, title);
-    setTextLabel(pageId, subtitleId, subtitle);
+  for (const cfg of Object.values(layout)) {
+    setPosition(pageId, cfg.groupId, cfg.groupPos);
+    setPosition(pageId, cfg.headerId, {
+      x: 0,
+      y: 0,
+      width: cfg.groupPos.width,
+      height: 34,
+    });
+    setPosition(pageId, cfg.titleId, {
+      x: 0,
+      y: 0,
+      width: 260,
+      height: 28,
+    });
+    setPosition(pageId, cfg.chartId, {
+      x: 0,
+      y: 28,
+      width: cfg.groupPos.width,
+      height: 126,
+    });
+    setHidden(pageId, cfg.groupId, false);
+    setHidden(pageId, cfg.subtitleId, true);
+  }
+
+  setTextLabel(pageId, layout.comarcas.titleId, "Top 5 Comarcas por Valor");
+  setTextLabel(pageId, layout.varas.titleId, "Top 5 Varas por Valor");
+  setTextLabel(pageId, layout.peritos.titleId, "Top 5 Peritos por Valor");
+  setTextLabel(pageId, layout.especialidades.titleId, "Top 5 Especialidades por Valor");
+
+  setTextboxMeasure(pageId, "c1ffe8209c0d20ba00a9", "Valor Médio por Perícia Base", "R$ #,0.00;(R$ #,0.00);R$ #,0.00");
+  setTextLabel(pageId, "bfb0cddd400eb2900509", "Ticket médio");
+  setHidden(pageId, "bfb0cddd400eb2900509", false);
+  setTextLabel(pageId, "608d654032270cbb431d", "Média diária");
+  ["f3de4e402caca2606d87", "608d654032270cbb431d", "4ffb18dd757aab970d7b", "53c66d29d5a7934b053c", "bfb0cddd400eb2900509"].forEach((visualId) => {
+    setTextboxFontSize(pageId, visualId, "12pt");
   });
 
   writeMinimalGroupBookmark({
@@ -2660,10 +4068,542 @@ function configureOverviewSummary() {
       },
     },
   };
-  delete rightNavigator.isHidden;
+  rightNavigator.isHidden = true;
   writeJson(visualPath(pageId, right.navigatorId), rightNavigator);
 
   writeJson(BOOKMARKS_PATH, bookmarks);
+}
+
+function standardizePrimaryChartBoxes() {
+  const navigatorConfigs = [
+    ...Object.values(TOP_GRAPH_PAGES).map((cfg) => ({
+      pageId: cfg.pageId,
+      navigatorId: cfg.navigatorId,
+      visualIds: Object.values(TOP_GRAPH_VISUALS[cfg.pageId] || {}),
+    })),
+    ...Object.entries(CHART_TYPE_TOGGLE_PAGES).map(([pageId, cfg]) => ({
+      pageId,
+      navigatorId: cfg.navigatorId,
+      visualIds: Object.values(cfg.visuals || {}),
+    })),
+  ];
+
+  for (const cfg of navigatorConfigs) {
+    standardizeBookmarkNavigatorVisual(cfg.pageId, cfg.navigatorId, {
+      position: STANDARD_PRIMARY_CHART_NAV_POSITION,
+      height: 16,
+      width: 152,
+      fontSize: "5D",
+      cellPadding: "0L",
+    });
+
+    const title = PRIMARY_CHART_ENTITY_TITLES[cfg.pageId];
+    if (!title) continue;
+    cfg.visualIds.forEach((visualId) => {
+      setVisualContainerTitle(cfg.pageId, visualId, title, "9D");
+    });
+  }
+}
+
+function standardizeMapBoxes() {
+  const bookmarks = readJson(BOOKMARKS_PATH);
+
+  for (const cfg of Object.values(MAP_BOX_CONFIG)) {
+    if (!fs.existsSync(visualPath(cfg.pageId, cfg.mapVisualId))) {
+      upsertVisualFromPage(
+        cfg.pageId,
+        cfg.mapVisualId,
+        "d4f6a8c0b3e57921f234",
+        "8f6d1b81e9832be53e52",
+        (visual) => {
+          delete visual.isHidden;
+        }
+      );
+    }
+    if (!fs.existsSync(visualPath(cfg.pageId, cfg.legendId))) {
+      upsertVisualFromPage(
+        cfg.pageId,
+        cfg.legendId,
+        "d4f6a8c0b3e57921f234",
+        "54ef9ab629d981721784",
+        (visual) => {
+          delete visual.parentGroupName;
+          delete visual.isHidden;
+        }
+      );
+    }
+
+    const mapFilePath = visualPath(cfg.pageId, cfg.mapVisualId);
+    if (!fs.existsSync(mapFilePath)) continue;
+
+    if (!fs.existsSync(visualPath(cfg.pageId, cfg.navigatorId)) && cfg.navigatorSourcePageId && cfg.navigatorSourceVisualId) {
+      upsertVisualFromPage(
+        cfg.pageId,
+        cfg.navigatorId,
+        cfg.navigatorSourcePageId,
+        cfg.navigatorSourceVisualId,
+        (visual) => {
+          delete visual.isHidden;
+        }
+      );
+    }
+
+    const mapVisual = readJson(mapFilePath);
+    if (cfg.boxPosition) {
+      mapVisual.position = { ...mapVisual.position, ...cfg.boxPosition };
+      delete mapVisual.isHidden;
+      writeJson(mapFilePath, mapVisual);
+    }
+    const mapPosition = { ...mapVisual.position };
+    const navigatorPosition = {
+      x: Math.max(0, Math.round((mapPosition.x || 0) + (mapPosition.width || 0) - 88)),
+      y: Math.max(0, Math.round((mapPosition.y || 0) - 16)),
+      z: (mapPosition.z || 0) + 5000,
+      height: 14,
+      width: 80,
+      tabOrder: (mapPosition.tabOrder || 0) + 5000,
+    };
+
+    standardizeBookmarkNavigatorVisual(cfg.pageId, cfg.navigatorId, {
+      position: navigatorPosition,
+      height: 14,
+      width: 80,
+      fontSize: "5D",
+      cellPadding: "0L",
+    });
+
+    setPosition(cfg.pageId, cfg.legendId, {
+      x: mapPosition.x,
+      y: mapPosition.y + mapPosition.height + 6,
+      width: mapPosition.width,
+      height: 18,
+      z: mapPosition.z + 4000,
+      tabOrder: mapPosition.tabOrder + 4000,
+    });
+    const legendPath = visualPath(cfg.pageId, cfg.legendId);
+    if (fs.existsSync(legendPath)) {
+      const legendVisual = readJson(legendPath);
+      delete legendVisual.parentGroupName;
+      delete legendVisual.isHidden;
+      writeJson(legendPath, legendVisual);
+    }
+
+    setTextLabel(
+      cfg.pageId,
+      cfg.legendId,
+      "Legenda: claro = menor valor | escuro = maior valor | botão Nomes = lista"
+    );
+    setTextboxFontSize(cfg.pageId, cfg.legendId, "7pt");
+
+    createOrUpdateCustomTable(
+      cfg.pageId,
+      cfg.namesTableId,
+      {
+        ...mapPosition,
+        z: (mapPosition.z || 0) + 1000,
+        tabOrder: (mapPosition.tabOrder || 0) + 1,
+      },
+      cfg.namesTitle,
+      [
+        buildColumnProjection("Orders", "State Mapa", "Nome"),
+        buildMeasureProjection("Measure", "Valor Arbitrado Base", "Valor Arbitrado"),
+      ]
+    );
+    setHidden(cfg.pageId, cfg.namesTableId, true);
+    setVisualContainerTitleVisibility(cfg.pageId, cfg.namesTableId, false);
+
+    writeMinimalVisualDisplayBookmark({
+      bookmarkId: cfg.bookmarks.map.id,
+      displayName: cfg.bookmarks.map.displayName,
+      pageId: cfg.pageId,
+      targetVisualStates: {
+        [cfg.mapVisualId]: {
+          visualType: "shapeMap",
+          hidden: false,
+        },
+        [cfg.namesTableId]: {
+          visualType: "tableEx",
+          hidden: true,
+        },
+      },
+    });
+
+    writeMinimalVisualDisplayBookmark({
+      bookmarkId: cfg.bookmarks.names.id,
+      displayName: cfg.bookmarks.names.displayName,
+      pageId: cfg.pageId,
+      targetVisualStates: {
+        [cfg.mapVisualId]: {
+          visualType: "shapeMap",
+          hidden: true,
+        },
+        [cfg.namesTableId]: {
+          visualType: "tableEx",
+          hidden: false,
+        },
+      },
+    });
+
+    upsertBookmarkGroup(
+      bookmarks,
+      cfg.bookmarkGroupId,
+      cfg.bookmarkGroupDisplayName,
+      [cfg.bookmarks.map.id, cfg.bookmarks.names.id]
+    );
+
+    const navigator = readJson(visualPath(cfg.pageId, cfg.navigatorId));
+    updateBookmarkSelected(navigator, cfg.bookmarks.map.id);
+    navigator.visual.objects.bookmarks[0].properties.bookmarkGroup = literalExpr(cfg.bookmarkGroupId);
+    writeJson(visualPath(cfg.pageId, cfg.navigatorId), navigator);
+  }
+
+  writeJson(BOOKMARKS_PATH, bookmarks);
+}
+
+function convertTopChartsToMetricSlicers() {
+  const pageIds = Object.keys(TOP_METRIC_SLICER_CONFIG);
+
+  for (const pageId of pageIds) {
+    const metricCfg = TOP_METRIC_SLICER_CONFIG[pageId];
+    const isChartTogglePage = Boolean(CHART_TYPE_TOGGLE_PAGES[pageId]);
+    const chartCfg = CHART_TYPE_TOGGLE_PAGES[pageId];
+    const topCfg = TOP_GRAPH_PAGES[pageId];
+
+    const lineContainerId = isChartTogglePage ? chartCfg.wrappers.line : topCfg.groups.line;
+    const lineVisualId = isChartTogglePage ? chartCfg.visuals.line : TOP_GRAPH_VISUALS[pageId].line;
+    const chartPosition = { ...STANDARD_PRIMARY_CHART_POSITION };
+    const slicerPosition = {
+      x: chartPosition.x + STANDARD_PRIMARY_METRIC_SLICER_OFFSET.x,
+      y: chartPosition.y + STANDARD_PRIMARY_METRIC_SLICER_OFFSET.y,
+      z: STANDARD_PRIMARY_METRIC_SLICER_OFFSET.z,
+      width: STANDARD_PRIMARY_METRIC_SLICER_OFFSET.width,
+      height: STANDARD_PRIMARY_METRIC_SLICER_OFFSET.height,
+      tabOrder: STANDARD_PRIMARY_METRIC_SLICER_OFFSET.tabOrder,
+    };
+
+    if (fs.existsSync(visualPath(pageId, lineContainerId))) {
+      setPosition(pageId, lineContainerId, chartPosition);
+      setHidden(pageId, lineContainerId, false);
+    }
+    setPosition(pageId, lineVisualId, {
+      x: 0,
+      y: 0,
+      z: 0,
+      width: chartPosition.width,
+      height: chartPosition.height,
+      tabOrder: 0,
+    });
+    setHidden(pageId, lineVisualId, false);
+    setChartMeasure(pageId, lineVisualId, "Metrica Visual Selecionada");
+    setVisualContainerTitle(pageId, lineVisualId, metricCfg.entityTitle, "9D");
+
+    if (isChartTogglePage) {
+      for (const [key, wrapperId] of Object.entries(chartCfg.wrappers)) {
+        if (key !== "line") setHidden(pageId, wrapperId, true);
+      }
+      for (const [key, visualId] of Object.entries(chartCfg.visuals)) {
+        if (key !== "line") setHidden(pageId, visualId, true);
+      }
+      setHidden(pageId, chartCfg.navigatorId, true);
+      setHidden(pageId, chartCfg.modeLabelId, true);
+    } else {
+      for (const [key, groupId] of Object.entries(topCfg.groups)) {
+        if (key !== "line") setHidden(pageId, groupId, true);
+      }
+      for (const [key, visualId] of Object.entries(TOP_GRAPH_VISUALS[pageId])) {
+        if (key !== "line") setHidden(pageId, visualId, true);
+      }
+      setHidden(pageId, topCfg.navigatorId, true);
+    }
+
+    createOrUpdateDropdownSlicer(
+      pageId,
+      metricCfg.slicerId,
+      slicerPosition,
+      "ParametroMetricaVisual",
+      "Parametro Metrica Visual",
+      "Métrica"
+    );
+  }
+}
+
+function removeTopMetricSlicersAndRestoreButtons() {
+  for (const [pageId, metricCfg] of Object.entries(TOP_METRIC_SLICER_CONFIG)) {
+    const slicerDir = path.dirname(visualPath(pageId, metricCfg.slicerId));
+    fs.rmSync(slicerDir, { recursive: true, force: true });
+
+    if (TOP_GRAPH_PAGES[pageId]) {
+      const cfg = TOP_GRAPH_PAGES[pageId];
+      setHidden(pageId, cfg.navigatorId, false);
+    }
+
+    if (CHART_TYPE_TOGGLE_PAGES[pageId]) {
+      const cfg = CHART_TYPE_TOGGLE_PAGES[pageId];
+      setHidden(pageId, cfg.navigatorId, false);
+      setHidden(pageId, cfg.modeLabelId, false);
+    }
+  }
+}
+
+function applyMetropolitanFilters() {
+  for (const [pageId, cfg] of Object.entries(METROPOLITAN_PAGE_FILTERS)) {
+    const visualsDir = path.join(REPORT_ROOT, "pages", pageId, "visuals");
+    if (!fs.existsSync(visualsDir)) continue;
+
+    for (const entry of fs.readdirSync(visualsDir, { withFileTypes: true })) {
+      if (!entry.isDirectory()) continue;
+      const filePath = path.join(visualsDir, entry.name, "visual.json");
+      if (!fs.existsSync(filePath)) continue;
+
+      const visual = readJson(filePath);
+      const visualType = visual?.visual?.visualType;
+      if (!visualType || METROPOLITAN_FILTER_SKIP_VISUAL_TYPES.has(visualType)) continue;
+
+      upsertCategoricalIncludeFilter(visual, {
+        entity: "Orders",
+        property: "State Mapa",
+        values: cfg.values,
+        filterName: `flt_${cfg.slug}_${entry.name.slice(0, 8)}`,
+      });
+
+      writeJson(filePath, visual);
+    }
+  }
+}
+
+function compactTopKpiCards() {
+  const topPages = [
+    "fe4687310000e672d410",
+    "d4f6a8c0b3e57921f234",
+    "a6f4e2b9c1d34780ef12",
+    "f1a9c2e7d4b86350a1f2",
+    "b2d4e6f8a1c34567d890",
+    "c3e5f7a9b2d46810e123",
+  ];
+  const outerGroups = [
+    "c27b164dcb574ce0774a",
+    "023d9031bdc059cb91e5",
+    "0b182f50da018a3c0ecc",
+    "96fb689035d3de660b04",
+    "8ae84b03c92891ceb709",
+  ];
+  const innerGroups = [
+    "44907662101800700ecc",
+    "5b9d2604747920a48a6e",
+    "c5c8629e334896c41696",
+    "c25572076e890d9dc34a",
+    "bce8872da1da18e40493",
+  ];
+  const shellTextboxes = [
+    "57bd32d86e050743c456",
+    "57fb7ea088dba8840545",
+    "604d45c9638bb1606852",
+    "c960bd069b6605e6eeda",
+    "606dec8a30465c5b9d0b",
+  ];
+
+  for (const pageId of topPages) {
+    outerGroups.forEach((visualId) => {
+      const filePath = visualPath(pageId, visualId);
+      if (!fs.existsSync(filePath)) return;
+      const visual = readJson(filePath);
+      visual.position.height = 118;
+      writeJson(filePath, visual);
+    });
+
+    innerGroups.forEach((visualId) => {
+      const filePath = visualPath(pageId, visualId);
+      if (!fs.existsSync(filePath)) return;
+      const visual = readJson(filePath);
+      visual.position.height = 110;
+      writeJson(filePath, visual);
+    });
+
+    shellTextboxes.forEach((visualId) => {
+      const filePath = visualPath(pageId, visualId);
+      if (!fs.existsSync(filePath)) return;
+      const visual = readJson(filePath);
+      if (visual.position?.height) visual.position.height = 112;
+      writeJson(filePath, visual);
+    });
+  }
+}
+
+function compactTopKpiInternals() {
+  const topPages = [
+    "fe4687310000e672d410",
+    "d4f6a8c0b3e57921f234",
+    "a6f4e2b9c1d34780ef12",
+    "f1a9c2e7d4b86350a1f2",
+    "b2d4e6f8a1c34567d890",
+    "c3e5f7a9b2d46810e123",
+  ];
+  const titleIds = [
+    "f3de4e402caca2606d87",
+    "bfb0cddd400eb2900509",
+    "608d654032270cbb431d",
+    "4ffb18dd757aab970d7b",
+    "53c66d29d5a7934b053c",
+  ];
+  const valueIds = [
+    "66b0c66366547de4d305",
+    "c1ffe8209c0d20ba00a9",
+    "146b4b2456c5190541a0",
+    "0ef44800ed7ba9b2a451",
+    "8db4fab56170d3c4a670",
+  ];
+  const varIds = [
+    "2346d05958531b1c0e70",
+    "8ed644355c0522d96e45",
+    "d8c53201b61254046ba2",
+    "0698e7cbde04a3e75c43",
+    "9e5c2c97509007d8206a",
+  ];
+  const deltaCardIds = [
+    "6bdc2989401065a6a9c8",
+    "09ac7c2dade205a90b7e",
+    "76679585a806334163ed",
+    "7787568665e3205bb6c2",
+    "8156d8700ccc9862e851",
+  ];
+
+  for (const pageId of topPages) {
+    titleIds.forEach((visualId) => {
+      const filePath = visualPath(pageId, visualId);
+      if (!fs.existsSync(filePath)) return;
+      const visual = readJson(filePath);
+      visual.position = {
+        ...visual.position,
+        x: 8,
+        y: 8,
+        height: 18,
+        width: 150,
+      };
+      writeJson(filePath, visual);
+      setTextboxFontSize(pageId, visualId, "10pt");
+    });
+
+    valueIds.forEach((visualId) => {
+      const filePath = visualPath(pageId, visualId);
+      if (!fs.existsSync(filePath)) return;
+      const visual = readJson(filePath);
+      visual.position = {
+        ...visual.position,
+        x: 8,
+        y: 28,
+        height: 32,
+        width: 160,
+      };
+      writeJson(filePath, visual);
+      setTextboxFontSize(pageId, visualId, "16pt");
+    });
+
+    varIds.forEach((visualId) => {
+      const filePath = visualPath(pageId, visualId);
+      if (!fs.existsSync(filePath)) return;
+      const visual = readJson(filePath);
+      visual.position = {
+        ...visual.position,
+        x: 8,
+        y: 78,
+        height: 12,
+        width: 22,
+      };
+      writeJson(filePath, visual);
+      setTextboxFontSize(pageId, visualId, "8pt");
+    });
+
+    deltaCardIds.forEach((visualId) => {
+      const filePath = visualPath(pageId, visualId);
+      if (!fs.existsSync(filePath)) return;
+      const visual = readJson(filePath);
+      visual.position = {
+        ...visual.position,
+        x: 30,
+        y: 74,
+        height: 18,
+        width: 118,
+      };
+      writeJson(filePath, visual);
+    });
+  }
+}
+
+function standardizeTopKpiContent() {
+  const topPages = [
+    "fe4687310000e672d410",
+    "d4f6a8c0b3e57921f234",
+    "a6f4e2b9c1d34780ef12",
+    "f1a9c2e7d4b86350a1f2",
+    "b2d4e6f8a1c34567d890",
+    "c3e5f7a9b2d46810e123",
+  ];
+  const titleIds = [
+    "f3de4e402caca2606d87",
+    "bfb0cddd400eb2900509",
+    "608d654032270cbb431d",
+    "4ffb18dd757aab970d7b",
+    "53c66d29d5a7934b053c",
+  ];
+  const valueIds = [
+    "66b0c66366547de4d305",
+    "c1ffe8209c0d20ba00a9",
+    "146b4b2456c5190541a0",
+    "0ef44800ed7ba9b2a451",
+    "8db4fab56170d3c4a670",
+  ];
+  const deltaCardIds = [
+    "6bdc2989401065a6a9c8",
+    "09ac7c2dade205a90b7e",
+    "76679585a806334163ed",
+    "7787568665e3205bb6c2",
+    "8156d8700ccc9862e851",
+  ];
+  const cards = [
+    {
+      title: "Valor Arbitrado",
+      measure: "Valor Arbitrado Base",
+      format: "R$ #,0.00;(R$ #,0.00);R$ #,0.00",
+      deltaMeasure: "Subtítulo Card Valor Arbitrado YoY",
+      sortMeasure: "Valor Arbitrado YoY %",
+    },
+    {
+      title: "Ticket médio",
+      measure: "Valor Médio por Perícia Base",
+      format: "R$ #,0.00;(R$ #,0.00);R$ #,0.00",
+      deltaMeasure: "Subtítulo Card Valor Médio por Perícia YoY",
+      sortMeasure: "Valor Médio por Perícia YoY %",
+    },
+    {
+      title: "Média diária",
+      measure: "Média Diária Valor Arbitrado",
+      format: "R$ #,0.00;(R$ #,0.00);R$ #,0.00",
+      deltaMeasure: "Subtítulo Card Valor Arbitrado YoY",
+      sortMeasure: "Valor Arbitrado YoY %",
+    },
+    {
+      title: "Qtd Perícias",
+      measure: "Qtd Perícias Base",
+      format: "0",
+      deltaMeasure: "Subtítulo Card Qtd Perícias YoY",
+      sortMeasure: "Qtd Perícias YoY %",
+    },
+    {
+      title: "Peritos únicos",
+      measure: "Peritos Distintos Base",
+      format: "0",
+      deltaMeasure: "Subtítulo Card Peritos Distintos YoY",
+      sortMeasure: "Peritos Distintos YoY %",
+    },
+  ];
+
+  for (const pageId of topPages) {
+    cards.forEach((card, index) => {
+      setTextLabel(pageId, titleIds[index], card.title);
+      setTextboxMeasure(pageId, valueIds[index], card.measure, card.format);
+      setCardVisualMeasure(pageId, deltaCardIds[index], card.deltaMeasure, card.sortMeasure);
+    });
+  }
 }
 
 function configureComarcasBlueprint() {
@@ -2674,15 +4614,15 @@ function configureComarcasBlueprint() {
   setBarChartBinding(
     pageId,
     cfg.leftToggle.charts.valor,
-    { entity: "FactPericias", property: "ComarcaExibicao", displayName: "Comarca" },
-    { entity: "Measure", property: "Valor Arbitrado Base", displayName: "Valor Arbitrado Base", sortProperty: "ValorArbitrado" },
+    { entity: "Orders", property: "State Mapa", displayName: "Comarca" },
+    { entity: "Measure", property: "Valor Arbitrado Base", displayName: "Valor Arbitrado Base", sortProperty: "Sales" },
     10
   );
   setBarChartBinding(
     pageId,
     cfg.leftToggle.charts.qtd,
-    { entity: "FactPericias", property: "ComarcaExibicao", displayName: "Comarca" },
-    { entity: "Measure", property: "Qtd Perícias Base", displayName: "Qtd Perícias Base", sortProperty: "NumeroPericia", aggFunction: 5 },
+    { entity: "Orders", property: "State Mapa", displayName: "Comarca" },
+    { entity: "Measure", property: "Qtd Perícias Base", displayName: "Qtd Perícias Base", sortProperty: "Quantity", aggFunction: 0 },
     10
   );
   setTreemapBinding(
@@ -2716,10 +4656,12 @@ function configureComarcasBlueprint() {
   Object.values(cfg.leftToggle.titles).forEach(({ titleId, subtitleId, title, subtitle }) => {
     setTextLabel(pageId, titleId, title);
     setTextLabel(pageId, subtitleId, subtitle);
+    setHidden(pageId, subtitleId, true);
   });
   Object.values(cfg.rightToggle.titles).forEach(({ titleId, subtitleId, title, subtitle }) => {
     setTextLabel(pageId, titleId, title);
     setTextLabel(pageId, subtitleId, subtitle);
+    setHidden(pageId, subtitleId, true);
   });
 
   writeMinimalGroupBookmark({
@@ -2860,6 +4802,8 @@ function configureEntityAnalysisPages() {
     setHidden(pageId, cfg.ranking.altGroupId, true);
     setHidden(pageId, cfg.ranking.headerGroupId, false);
     setHidden(pageId, cfg.ranking.altHeaderGroupId, true);
+    setHidden(pageId, cfg.ranking.subtitleId, true);
+    setHidden(pageId, cfg.ranking.altSubtitleId, true);
 
     writeMinimalGroupBookmark({
       bookmarkId: cfg.ranking.bookmarks.valor.id,
@@ -2936,9 +4880,136 @@ function configureEntityAnalysisPages() {
       buildMeasureProjection("Measure", "Saldo a Receber Base", "Saldo Pendente"),
       buildMeasureProjection("FactPericias", "Ticket Médio", "Ticket Médio"),
     ]);
+
+    // Remove o bloco legado que estava poluindo o miolo das páginas analíticas.
+    ["acee2d020bb8c1c4903b", "51d63b4f58c8609a1a33", "1ec0e6adc7607be01bdd", "f67a89c63b41e2a74038"].forEach((visualId) => {
+      setHidden(pageId, visualId, true);
+    });
   }
 
   writeJson(BOOKMARKS_PATH, bookmarks);
+}
+
+function ensureRmCampinaOperationalChart() {
+  const targetPageId = "e5a1b2c3d4f60789ab01";
+  const targetVisualId = "e85feb694080c3b3bc21";
+  if (!fs.existsSync(visualPath(targetPageId, targetVisualId))) {
+    upsertVisualFromPage(targetPageId, targetVisualId, "a6f4e2b9c1d34780ef12", targetVisualId, (visual) => {
+      delete visual.parentGroupName;
+      delete visual.isHidden;
+      visual.position = {
+        x: 868,
+        y: 420,
+        z: 15000,
+        width: 381,
+        height: 225,
+        tabOrder: 11000,
+      };
+    });
+  }
+}
+
+function configureMetroOperationalCharts() {
+  const measure = {
+    entity: "Measure",
+    property: "Valor Arbitrado Base",
+    displayName: "Valor Arbitrado Base",
+    sortProperty: "ValorArbitrado",
+  };
+
+  ensureRmCampinaOperationalChart();
+
+  setDonutChartBinding(
+    "a6f4e2b9c1d34780ef12",
+    "e85feb694080c3b3bc21",
+    { entity: "FactPericias", property: "JuizoExibicao", displayName: "Vara" },
+    measure,
+    10
+  );
+  setPosition("a6f4e2b9c1d34780ef12", "e85feb694080c3b3bc21", {
+    x: 868.75,
+    y: 460,
+    z: 15000,
+    width: 220,
+    height: 185,
+    tabOrder: 11000,
+  });
+  setVisualContainerTitle(
+    "a6f4e2b9c1d34780ef12",
+    "e85feb694080c3b3bc21",
+    "Distribuição por Vara | RM João Pessoa",
+    "10D"
+  );
+  createOrUpdateCustomTable(
+    "a6f4e2b9c1d34780ef12",
+    "a6f4rmvaralist001",
+    {
+      x: 1094,
+      y: 490,
+      z: 15010,
+      width: 152,
+      height: 146,
+      tabOrder: 11010,
+    },
+    "Valores por vara | RM João Pessoa",
+    [
+      buildColumnProjection("FactPericias", "JuizoExibicao", "Vara"),
+      buildMeasureProjection("Measure", "Valor Arbitrado Base", "Valor"),
+    ]
+  );
+  setVisualContainerTitleVisibility("a6f4e2b9c1d34780ef12", "a6f4rmvaralist001", false);
+
+  setDonutChartBinding(
+    "e5a1b2c3d4f60789ab01",
+    "e85feb694080c3b3bc21",
+    { entity: "FactPericias", property: "JuizoExibicao", displayName: "Vara" },
+    measure,
+    10
+  );
+  setPosition("e5a1b2c3d4f60789ab01", "e85feb694080c3b3bc21", {
+    x: 868,
+    y: 420,
+    z: 15000,
+    width: 220,
+    height: 225,
+    tabOrder: 11000,
+  });
+  setVisualContainerTitle(
+    "e5a1b2c3d4f60789ab01",
+    "e85feb694080c3b3bc21",
+    "Distribuição por Vara | RM Campina Grande",
+    "10D"
+  );
+  createOrUpdateCustomTable(
+    "e5a1b2c3d4f60789ab01",
+    "e5a1rmvaralist001",
+    {
+      x: 1092,
+      y: 450,
+      z: 15010,
+      width: 154,
+      height: 184,
+      tabOrder: 11010,
+    },
+    "Valores por vara | RM Campina Grande",
+    [
+      buildColumnProjection("FactPericias", "JuizoExibicao", "Vara"),
+      buildMeasureProjection("Measure", "Valor Arbitrado Base", "Valor"),
+    ]
+  );
+  setVisualContainerTitleVisibility("e5a1b2c3d4f60789ab01", "e5a1rmvaralist001", false);
+}
+
+function configureDefaultPieCharts() {
+  setDonutChartBinding(
+    COMARCAS_BLUEPRINT_CONFIG.pageId,
+    COMARCAS_BLUEPRINT_CONFIG.operational.chartId,
+    COMARCAS_BLUEPRINT_CONFIG.operational.dimension,
+    { entity: "Measure", property: "Valor Arbitrado Base", displayName: "Valor Arbitrado Base", sortProperty: "ValorArbitrado" },
+    COMARCAS_BLUEPRINT_CONFIG.operational.topN
+  );
+
+  configureMetroOperationalCharts();
 }
 
 function main() {
@@ -2956,10 +5027,20 @@ function main() {
   fixCruzamentosOverlap();
   cleanTrendLowerRow();
   hideTitleOverlays();
+  configureSidebarLayouts();
+  simplifyVariationLabels();
   extendEntityPages();
   configureOverviewSummary();
   configureComarcasBlueprint();
   configureEntityAnalysisPages();
+  configureDefaultPieCharts();
+  standardizeTopKpiContent();
+  compactTopKpiCards();
+  compactTopKpiInternals();
+  standardizePrimaryChartBoxes();
+  standardizeMapBoxes();
+  removeTopMetricSlicersAndRestoreButtons();
+  applyMetropolitanFilters();
   console.log("Layout estabilizado: grupos de bookmark recriados e overlays ocultados.");
 }
 

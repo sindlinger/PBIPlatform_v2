@@ -2,17 +2,16 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "gc3e5f7a9b2d46801",
   "position": {
-    "x": 0,
-    "y": 24.456651540482447,
-    "z": 0,
-    "height": 165.08239789825652,
+    "x": 203.37887230792137,
+    "y": 33.96441511661222,
+    "z": 15000,
+    "height": 189.53904943873897,
     "width": 613.8619536661095,
-    "tabOrder": 0
+    "tabOrder": 15000
   },
   "visualGroup": {
     "displayName": "Histograma",
     "groupMode": "ScaleMode"
   },
-  "parentGroupName": "c06e3ec2d2d69b43427e",
   "isHidden": false
 }

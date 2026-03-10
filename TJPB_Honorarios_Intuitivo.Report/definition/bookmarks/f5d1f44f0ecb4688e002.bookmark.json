@@ -5,10 +5,10 @@
   "options": {
     "applyOnlyToTargetVisuals": true,
     "targetVisualNames": [
-      "gd4f6a8c0b3e57901",
-      "gd4f6a8c0b3e57902",
-      "gd4f6a8c0b3e57903",
-      "gd4f6a8c0b3e57904"
+      "b6174e917cba1a6c4b66",
+      "cc44dd55ee66ff778899",
+      "dd55ee66ff778899aa00",
+      "ff77aa8899bb00cc11dd"
     ],
     "suppressData": true
   },
@@ -17,19 +17,39 @@
     "activeSection": "d4f6a8c0b3e57921f234",
     "sections": {
       "d4f6a8c0b3e57921f234": {
-        "visualContainers": {},
-        "visualContainerGroups": {
-          "gd4f6a8c0b3e57901": {
-            "isHidden": true
+        "visualContainers": {
+          "b6174e917cba1a6c4b66": {
+            "singleVisual": {
+              "visualType": "clusteredColumnChart",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
           },
-          "gd4f6a8c0b3e57902": {
-            "isHidden": false
+          "cc44dd55ee66ff778899": {
+            "singleVisual": {
+              "visualType": "lineChart",
+              "objects": {}
+            }
           },
-          "gd4f6a8c0b3e57903": {
-            "isHidden": true
+          "dd55ee66ff778899aa00": {
+            "singleVisual": {
+              "visualType": "clusteredBarChart",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
           },
-          "gd4f6a8c0b3e57904": {
-            "isHidden": true
+          "ff77aa8899bb00cc11dd": {
+            "singleVisual": {
+              "visualType": "areaChart",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
           }
         }
       }

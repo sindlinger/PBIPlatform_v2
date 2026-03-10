@@ -738,6 +738,25 @@ table Measure
 			    )
 		lineageTag: d549e5a6-c4bd-4f8d-8962-1af2c0cd6091
 
+	measure 'Metrica Visual Selecionada' =
+			
+			VAR _metrica =
+			    SELECTEDVALUE(
+			        ParametroMetricaVisual[Parametro Metrica Visual],
+			        "Valor Arbitrado"
+			    )
+			RETURN
+			    SWITCH(
+			        _metrica,
+			        "Qtd Perícias", [Qtd Perícias Base],
+			        "Saldo a Receber", [Saldo a Receber Base],
+			        "Ticket Médio", [Valor Médio por Perícia Base],
+			        [Valor Arbitrado Base]
+			    )
+		lineageTag: 1fd45ca7-124c-4707-80d4-f884a68ec0e2
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column Column
 		isHidden
 		formatString: 0

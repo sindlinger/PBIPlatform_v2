@@ -244,7 +244,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "flt_3a7f14d4e8",
+        "name": "flt_rmcg_b1c2d3e4",
         "field": {
           "Column": {
             "Expression": {
@@ -285,7 +285,63 @@
                     [
                       {
                         "Literal": {
+                          "Value": "'Alagoa Nova'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Boqueirão'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Boqueirao'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
                           "Value": "'Campina Grande'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Ingá'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Inga'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Pocinhos'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Queimadas'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Umbuzeiro'"
                         }
                       }
                     ]

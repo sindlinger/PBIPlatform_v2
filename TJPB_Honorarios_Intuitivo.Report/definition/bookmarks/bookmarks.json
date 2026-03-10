@@ -102,16 +102,16 @@
       ]
     },
     {
+      "displayName": "Comarcas Mapa Nomes",
       "name": "c1d4a9f0e2c34ab18d00",
-      "displayName": "Detalhes Mapa Comarcas",
       "children": [
         "b1d4a9f0e2c34ab18d01",
         "b1d4a9f0e2c34ab18d02"
       ]
     },
     {
+      "displayName": "RM Joao Pessoa Mapa Nomes",
       "name": "c1a6a9f0e2c34ab18f00",
-      "displayName": "Detalhes Mapa RM",
       "children": [
         "b1a6a9f0e2c34ab18f01",
         "b1a6a9f0e2c34ab18f02"
@@ -219,6 +219,46 @@
       "children": [
         "especialidades-ranking-valor",
         "especialidades-ranking-qtd"
+      ]
+    },
+    {
+      "displayName": "Overview Mapa Nomes",
+      "name": "c1fe4687310000m01",
+      "children": [
+        "b1fe4687310000m01",
+        "b1fe4687310000m02"
+      ]
+    },
+    {
+      "displayName": "RM Campina Mapa Nomes",
+      "name": "c1e5a1b2c3d4f6070a1",
+      "children": [
+        "b1e5a1b2c3d4f6070a1",
+        "b1e5a1b2c3d4f6070a2"
+      ]
+    },
+    {
+      "displayName": "Varas Mapa Nomes",
+      "name": "c1f1a9maptoggle001",
+      "children": [
+        "b1f1a9maptoggle001",
+        "b1f1a9maptoggle002"
+      ]
+    },
+    {
+      "displayName": "Peritos Mapa Nomes",
+      "name": "c1b2d4maptoggle001",
+      "children": [
+        "b1b2d4maptoggle001",
+        "b1b2d4maptoggle002"
+      ]
+    },
+    {
+      "displayName": "Especialidades Mapa Nomes",
+      "name": "c1c3e5maptoggle001",
+      "children": [
+        "b1c3e5maptoggle001",
+        "b1c3e5maptoggle002"
       ]
     }
   ]

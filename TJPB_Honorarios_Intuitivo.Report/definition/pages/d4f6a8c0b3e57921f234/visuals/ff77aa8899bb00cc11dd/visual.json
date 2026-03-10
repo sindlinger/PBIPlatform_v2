@@ -5,7 +5,7 @@
     "x": 0,
     "y": 0,
     "z": 0,
-    "height": 132.0984441481931,
+    "height": 154,
     "width": 602.2904309925042,
     "tabOrder": 0
   },
@@ -221,31 +221,24 @@
       "title": [
         {
           "properties": {
-            "text": {
+            "show": {
               "expr": {
                 "Literal": {
-                  "Value": "'Histograma Mensal de Gasto'"
+                  "Value": "true"
                 }
               }
             },
-            "fontFamily": {
+            "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'''Segoe UI'', wf_segoe-ui_normal, helvetica, arial, sans-serif'"
+                  "Value": "'Comarcas | Valor Arbitrado ao longo do tempo'"
                 }
               }
             },
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
-                }
-              }
-            },
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
+                  "Value": "9D"
                 }
               }
             }
@@ -268,5 +261,6 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "gd4f6a8c0b3e57904"
+  "parentGroupName": "gd4f6a8c0b3e57904",
+  "isHidden": true
 }
