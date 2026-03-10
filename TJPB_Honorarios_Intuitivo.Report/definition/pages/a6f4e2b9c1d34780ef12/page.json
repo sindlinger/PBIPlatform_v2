@@ -1,0 +1,25 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
+  "name": "a6f4e2b9c1d34780ef12",
+  "displayName": "RM João Pessoa",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "pageBinding": {
+    "name": "7f63a9d1b2045ce8a41f",
+    "type": "Default",
+    "parameters": []
+  },
+  "visualInteractions": [
+    {
+      "source": "9200b685124c79a9de7c",
+      "target": "7a0a375c13acb32abc97",
+      "type": "NoFilter"
+    },
+    {
+      "source": "9200b685124c79a9de7c",
+      "target": "2c247783361668d613a4",
+      "type": "NoFilter"
+    }
+  ]
+}

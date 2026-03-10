@@ -243,24 +243,6 @@ table Orders
 				    }),
 				    NormalizeComarcaMapa = (value as any) as nullable text =>
 				        let
-				            Base = if value = null then null else Text.Trim(Text.From(value)),
-				            UpperBase = if Base = null then null else Text.Upper(Base),
-				            WithoutPrefix =
-				                if UpperBase = null then null
-				                else if Text.StartsWith(UpperBase, "COMARCA INTEGRADA DE ") then Text.Trim(Text.Range(Base, Text.Length("Comarca Integrada de ")))
-				                else if Text.StartsWith(UpperBase, "COMARCA INTEGRADA DA ") then Text.Trim(Text.Range(Base, Text.Length("Comarca Integrada da ")))
-				                else if Text.StartsWith(UpperBase, "COMARCA INTEGRADA DO ") then Text.Trim(Text.Range(Base, Text.Length("Comarca Integrada do ")))
-				                else if Text.StartsWith(UpperBase, "COMARCA DE ") then Text.Trim(Text.Range(Base, Text.Length("Comarca de ")))
-				                else if Text.StartsWith(UpperBase, "COMARCA DA ") then Text.Trim(Text.Range(Base, Text.Length("Comarca da ")))
-				                else if Text.StartsWith(UpperBase, "COMARCA DO ") then Text.Trim(Text.Range(Base, Text.Length("Comarca do ")))
-				                else Base,
-				            WithoutUf1 = if WithoutPrefix = null then null else Text.Replace(WithoutPrefix, "/PB", ""),
-				            WithoutUf2 = if WithoutUf1 = null then null else Text.Replace(WithoutUf1, "- PB", ""),
-				            WithoutUf3 = if WithoutUf2 = null then null else Text.Replace(WithoutUf2, "(PB)", ""),
-				            Trimmed = if WithoutUf3 = null then null else Text.Trim(WithoutUf3),
-				            NormalizedSpaces =
-				                if Trimmed = null then null
-				                else Text.Combine(List.Select(Text.Split(Trimmed, " "), each _ <> ""), " "),
 				            StripAccents = (textValue as nullable text) as nullable text =>
 				                if textValue = null then
 				                    null
@@ -283,58 +265,125 @@ table Orders
 				                        Stripped = List.Accumulate(Replacements, textValue, (state as text, pair as list) => Text.Replace(state, pair{0}, pair{1}))
 				                    in
 				                        Stripped,
-				            AccentlessUpper = if NormalizedSpaces = null then null else Text.Upper(StripAccents(NormalizedSpaces)),
-				            Alias =
-				                if AccentlessUpper = null then null
-				                else if AccentlessUpper = "BAYEUX E SANTA RITA" then "Santa Rita"
-				                else if AccentlessUpper = "LITORAL SUL" then "Alhandra"
-				                else if AccentlessUpper = "PRINCESA ISABEL E AGUA BRANCA" then "Princesa Isabel"
-				                else if AccentlessUpper = "AGUA BRANCA" then "Água Branca"
-				                else if AccentlessUpper = "CAAPORA" then "Caaporã"
-				                else if AccentlessUpper = "CATOLE DO ROCHA" then "Catolé do Rocha"
-				                else if AccentlessUpper = "CONCEICAO" then "Conceição"
-				                else if AccentlessUpper = "CUITE" then "Cuité"
-				                else if AccentlessUpper = "GURINHEM" then "Gurinhém"
-				                else if AccentlessUpper = "INGA" then "Ingá"
-				                else if AccentlessUpper = "JACARAU" then "Jacaraú"
-				                else if AccentlessUpper = "JOAO PESSOA" then "João Pessoa"
-				                else if AccentlessUpper = "PIANCO" then "Piancó"
-				                else if AccentlessUpper = "SAO BENTO" then "São Bento"
-				                else if AccentlessUpper = "SAO JOAO DO RIO DO PEIXE" then "São João do Rio do Peixe"
-				                else if AccentlessUpper = "SAO JOSE DE PIRANHAS" then "São José de Piranhas"
-				                else if AccentlessUpper = "SAPE" then "Sapé"
-				                else if AccentlessUpper = "SOLANEA" then "Solânea"
-				                else if AccentlessUpper = "SUME" then "Sumé"
-				                else if AccentlessUpper = "UIRAUNA" then "Uiraúna"
-				                else NormalizedSpaces,
-				            UpperAlias = if Alias = null then null else Text.Upper(Alias),
-				            Titled = if Alias = null then null else Text.Proper(Text.Lower(Alias)),
-				            LowerConnectors =
-				                if Titled = null then null
+				            NormalizeKey = (textValue as nullable text) as nullable text =>
+				                if textValue = null then
+				                    null
 				                else
-				                    Text.Replace(
-				                        Text.Replace(
-				                            Text.Replace(
-				                                Text.Replace(
-				                                    Text.Replace(
-				                                        Text.Replace(Titled, " De ", " de "),
-				                                        " Da ",
-				                                        " da "
-				                                    ),
-				                                    " Do ",
-				                                    " do "
-				                                ),
-				                                " Das ",
-				                                " das "
-				                            ),
-				                            " Dos ",
-				                            " dos "
-				                        ),
-				                        " E ",
-				                        " e "
-				                    )
+				                    let
+				                        Upper = Text.Upper(StripAccents(Text.Trim(textValue))),
+				                        KeepChars = Text.Select(Upper, List.Combine({{"A".."Z"}, {"0".."9"}, {" "}})),
+				                        Parts = List.Select(Text.Split(KeepChars, " "), each _ <> ""),
+				                        Key = if List.Count(Parts) = 0 then null else Text.Combine(Parts, " ")
+				                    in
+				                        Key,
+				            OfficialComarcaByKey = [
+				                #"AGUA BRANCA" = "Água Branca",
+				                #"ALAGOA GRANDE" = "Alagoa Grande",
+				                #"ALAGOA NOVA" = "Alagoa Nova",
+				                #"ALAGOINHA" = "Alagoinha",
+				                #"ALHANDRA" = "Alhandra",
+				                #"ARACAGI" = "Araçagi",
+				                #"ARARA" = "Arara",
+				                #"ARARUNA" = "Araruna",
+				                #"AREIA" = "Areia",
+				                #"AROEIRAS" = "Aroeiras",
+				                #"BANANEIRAS" = "Bananeiras",
+				                #"BARRA DE SANTA ROSA" = "Barra de Santa Rosa",
+				                #"BAYEUX" = "Bayeux",
+				                #"BELEM" = "Belém",
+				                #"BONITO DE SANTA FE" = "Bonito de Santa Fé",
+				                #"BOQUEIRAO" = "Boqueirão",
+				                #"BREJO DO CRUZ" = "Brejo do Cruz",
+				                #"CAAPORA" = "Caaporã",
+				                #"CABACEIRAS" = "Cabaceiras",
+				                #"CABEDELO" = "Cabedelo",
+				                #"CACIMBA DE DENTRO" = "Cacimba de Dentro",
+				                #"CAICARA" = "Caiçara",
+				                #"CAJAZEIRAS" = "Cajazeiras",
+				                #"CAMPINA GRANDE" = "Campina Grande",
+				                #"CATOLE DO ROCHA" = "Catolé do Rocha",
+				                #"CONCEICAO" = "Conceição",
+				                #"CONDE" = "Conde",
+				                #"COREMAS" = "Coremas",
+				                #"CRUZ DO ESPIRITO SANTO" = "Cruz do Espírito Santo",
+				                #"CUITE" = "Cuité",
+				                #"ESPERANCA" = "Esperança",
+				                #"GUARABIRA" = "Guarabira",
+				                #"GURINHEM" = "Gurinhém",
+				                #"INGA" = "Ingá",
+				                #"ITABAIANA" = "Itabaiana",
+				                #"ITAPORANGA" = "Itaporanga",
+				                #"JACARAU" = "Jacaraú",
+				                #"JOAO PESSOA" = "João Pessoa",
+				                #"JUAZEIRINHO" = "Juazeirinho",
+				                #"LUCENA" = "Lucena",
+				                #"MALTA" = "Malta",
+				                #"MAMANGUAPE" = "Mamanguape",
+				                #"MARI" = "Mari",
+				                #"MONTEIRO" = "Monteiro",
+				                #"PATOS" = "Patos",
+				                #"PAULISTA" = "Paulista",
+				                #"PEDRAS DE FOGO" = "Pedras de Fogo",
+				                #"PIANCO" = "Piancó",
+				                #"PICUI" = "Picuí",
+				                #"PILAR" = "Pilar",
+				                #"PILOES" = "Pilões",
+				                #"PIRPIRITUBA" = "Pirpirituba",
+				                #"POCINHOS" = "Pocinhos",
+				                #"POMBAL" = "Pombal",
+				                #"PRATA" = "Prata",
+				                #"PRINCESA ISABEL" = "Princesa Isabel",
+				                #"QUEIMADAS" = "Queimadas",
+				                #"REMIGIO" = "Remígio",
+				                #"RIO TINTO" = "Rio Tinto",
+				                #"SANTA LUZIA" = "Santa Luzia",
+				                #"SANTA RITA" = "Santa Rita",
+				                #"SANTANA DOS GARROTES" = "Santana dos Garrotes",
+				                #"SAO BENTO" = "São Bento",
+				                #"SAO JOAO DO CARIRI" = "São João do Cariri",
+				                #"SAO JOAO DO RIO DO PEIXE" = "São João do Rio do Peixe",
+				                #"SAO JOSE DA LAGOA TAPADA" = "São José da Lagoa Tapada",
+				                #"SAO JOSE DE PIRANHAS" = "São José de Piranhas",
+				                #"SAO MAMEDE" = "São Mamede",
+				                #"SAPE" = "Sapé",
+				                #"SERRA BRANCA" = "Serra Branca",
+				                #"SERRARIA" = "Serraria",
+				                #"SOLANEA" = "Solânea",
+				                #"SOLEDADE" = "Soledade",
+				                #"SOUSA" = "Sousa",
+				                #"SUME" = "Sumé",
+				                #"TAPEROA" = "Taperoá",
+				                #"TEIXEIRA" = "Teixeira",
+				                #"UIRAUNA" = "Uiraúna",
+				                #"UMBUZEIRO" = "Umbuzeiro"
+				            ],
+				            AliasToComarcaKey = [
+				                #"BAYEUX E SANTA RITA" = "SANTA RITA",
+				                #"PRINCESA ISABEL E AGUA BRANCA" = "PRINCESA ISABEL",
+				                #"LITORAL SUL" = "ALHANDRA",
+				                #"COMARCA INT PRIC ISABEL E AGUA BRANCA" = "PRINCESA ISABEL",
+				                #"COMARCAS INTEGRADAS DO LITORAL SUL" = "ALHANDRA",
+				                #"SAO JOSE DE LAGOA TAPADA" = "SAO JOSE DA LAGOA TAPADA"
+				            ],
+				            Base = if value = null then null else Text.Trim(Text.From(value)),
+				            UpperBase = if Base = null then null else Text.Upper(Base),
+				            WithoutPrefix =
+				                if UpperBase = null then null
+				                else if Text.StartsWith(UpperBase, "COMARCA INTEGRADA DE ") then Text.Trim(Text.Range(Base, Text.Length("Comarca Integrada de ")))
+				                else if Text.StartsWith(UpperBase, "COMARCA INTEGRADA DA ") then Text.Trim(Text.Range(Base, Text.Length("Comarca Integrada da ")))
+				                else if Text.StartsWith(UpperBase, "COMARCA INTEGRADA DO ") then Text.Trim(Text.Range(Base, Text.Length("Comarca Integrada do ")))
+				                else if Text.StartsWith(UpperBase, "COMARCA DE ") then Text.Trim(Text.Range(Base, Text.Length("Comarca de ")))
+				                else if Text.StartsWith(UpperBase, "COMARCA DA ") then Text.Trim(Text.Range(Base, Text.Length("Comarca da ")))
+				                else if Text.StartsWith(UpperBase, "COMARCA DO ") then Text.Trim(Text.Range(Base, Text.Length("Comarca do ")))
+				                else Base,
+				            WithoutUf1 = if WithoutPrefix = null then null else Text.Replace(WithoutPrefix, "/PB", ""),
+				            WithoutUf2 = if WithoutUf1 = null then null else Text.Replace(WithoutUf1, "- PB", ""),
+				            WithoutUf3 = if WithoutUf2 = null then null else Text.Replace(WithoutUf2, "(PB)", ""),
+				            KeyRaw = NormalizeKey(WithoutUf3),
+				            KeyFinal = if KeyRaw <> null and Record.HasFields(AliasToComarcaKey, KeyRaw) then Record.Field(AliasToComarcaKey, KeyRaw) else KeyRaw,
+				            Canonical = if KeyFinal = null then null else Record.FieldOrDefault(OfficialComarcaByKey, KeyFinal, null)
 				        in
-				            if UpperAlias = null or UpperAlias = "" or Text.StartsWith(UpperAlias, "SEM ") then null else LowerConnectors,
+				            Canonical,
 				    Filtered = Table.SelectRows(Clean, each [DataRequisicao] <> null and [ValorArbitrado] <> null),
 				    #"Added Index" = Table.AddIndexColumn(Filtered, "Row ID", 1, 1, Int64.Type),
 				    #"Added Order ID" = Table.AddColumn(#"Added Index", "Order ID", each if [NumeroPericia] <> null and [NumeroPericia] <> "" then [NumeroPericia] else Text.From([#"Row ID"]), type text),

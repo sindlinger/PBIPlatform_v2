@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Variação Anual (%)",
+                    "value": "Variacao Anual (%)",
                     "textStyle": {
                       "fontFamily": "DIN",
                       "fontSize": "12pt"

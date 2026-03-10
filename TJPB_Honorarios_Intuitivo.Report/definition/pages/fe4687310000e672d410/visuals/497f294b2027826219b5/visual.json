@@ -5,8 +5,8 @@
     "x": 0,
     "y": 0,
     "z": 0,
-    "height": 41.346153846153847,
-    "width": 104.80769230769231,
+    "height": 24,
+    "width": 178.84615384615384,
     "tabOrder": 1000
   },
   "visual": {
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Valor Arbitrado ao longo do tempo",
+                    "value": "Valor Arbitrado ao Longo do Mês",
                     "textStyle": {
                       "fontFamily": "DIN",
                       "fontSize": "10pt"

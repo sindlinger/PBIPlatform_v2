@@ -1,0 +1,30 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.0.0/schema.json",
+  "displayName": "Product",
+  "name": "a6f4rmjp-left-product",
+  "options": {
+    "applyOnlyToTargetVisuals": true,
+    "targetVisualNames": [
+      "216b5a259063013b5d69",
+      "b76ef7c0bcd3318585d6"
+    ],
+    "suppressData": true
+  },
+  "explorationState": {
+    "version": "1.0",
+    "activeSection": "a6f4e2b9c1d34780ef12",
+    "sections": {
+      "a6f4e2b9c1d34780ef12": {
+        "visualContainers": {},
+        "visualContainerGroups": {
+          "216b5a259063013b5d69": {
+            "isHidden": true
+          },
+          "b76ef7c0bcd3318585d6": {
+            "isHidden": false
+          }
+        }
+      }
+    }
+  }
+}

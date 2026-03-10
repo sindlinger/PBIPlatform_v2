@@ -23,11 +23,11 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "Sales Card Subtitle"
+                  "Property": "Sales Card Subtitle Tooltip"
                 }
               },
-              "queryRef": "Measure.Sales Card Subtitle",
-              "nativeQueryRef": "Sales Card Subtitle"
+              "queryRef": "Measure.Sales Card Subtitle Tooltip",
+              "nativeQueryRef": "Sales Card Subtitle Tooltip"
             }
           ]
         }
@@ -87,7 +87,7 @@
                                           "Entity": "Measure"
                                         }
                                       },
-                                      "Property": "Sales Card Subtitle"
+                                      "Property": "Sales Card Subtitle Tooltip"
                                     }
                                   },
                                   "Right": {
@@ -119,7 +119,7 @@
                                       "Entity": "Measure"
                                     }
                                   },
-                                  "Property": "Sales Card Subtitle"
+                                  "Property": "Sales Card Subtitle Tooltip"
                                 }
                               },
                               "Right": {

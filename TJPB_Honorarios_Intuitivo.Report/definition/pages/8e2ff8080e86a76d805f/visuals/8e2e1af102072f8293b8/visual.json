@@ -65,15 +65,15 @@
                                       "Source": "m"
                                     }
                                   },
-                                  "Property": "Total Sales"
+                                  "Property": "Total Sales Tooltip"
                                 },
-                                "Name": "Measure.Total Sales"
+                                "Name": "Measure.Total Sales Tooltip"
                               }
                             ]
                           }
                         }
                       },
-                      "Property": "Measure.Total Sales"
+                      "Property": "Measure.Total Sales Tooltip"
                     }
                   },
                   "IncludeAllTypes": 1

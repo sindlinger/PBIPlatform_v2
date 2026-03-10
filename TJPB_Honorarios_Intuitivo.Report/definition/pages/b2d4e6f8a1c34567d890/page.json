@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
   "name": "b2d4e6f8a1c34567d890",
-  "displayName": "Perito",
+  "displayName": "Peritos",
   "displayOption": "FitToPage",
   "height": 720,
   "width": 1280,

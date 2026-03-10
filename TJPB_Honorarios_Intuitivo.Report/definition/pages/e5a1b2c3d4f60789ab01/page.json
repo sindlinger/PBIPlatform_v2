@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
   "name": "e5a1b2c3d4f60789ab01",
-  "displayName": "Mapa JP/Campina",
+  "displayName": "RM Campina Grande",
   "displayOption": "FitToPage",
   "visibility": "HiddenInViewMode",
   "height": 720,

@@ -6,7 +6,7 @@
     "y": 29.719153130905728,
     "z": 1000,
     "height": 158.22266450676307,
-    "width": 288.7218045112782,
+    "width": 288.72180451127821,
     "tabOrder": 1000
   },
   "visual": {
@@ -212,8 +212,5 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "216b5a259063013b5d69",
-  "filterConfig": {
-    "filters": []
-  }
+  "parentGroupName": "216b5a259063013b5d69"
 }

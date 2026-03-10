@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.0.0/schema.json",
+  "displayName": "Área",
+  "name": "f5d1f44f0ecb4688e004",
+  "options": {
+    "applyOnlyToTargetVisuals": true,
+    "targetVisualNames": [
+      "gd4f6a8c0b3e57901",
+      "gd4f6a8c0b3e57902",
+      "gd4f6a8c0b3e57903",
+      "gd4f6a8c0b3e57904"
+    ],
+    "suppressData": true
+  },
+  "explorationState": {
+    "version": "1.0",
+    "activeSection": "d4f6a8c0b3e57921f234",
+    "sections": {
+      "d4f6a8c0b3e57921f234": {
+        "visualContainers": {},
+        "visualContainerGroups": {
+          "gd4f6a8c0b3e57901": {
+            "isHidden": true
+          },
+          "gd4f6a8c0b3e57902": {
+            "isHidden": true
+          },
+          "gd4f6a8c0b3e57903": {
+            "isHidden": true
+          },
+          "gd4f6a8c0b3e57904": {
+            "isHidden": false
+          }
+        }
+      }
+    }
+  }
+}

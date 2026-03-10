@@ -3,14 +3,14 @@
   "name": "cdc1b6c2cd04d7b04dd7",
   "position": {
     "x": 0,
-    "y": 25.4994026378166,
+    "y": 0,
     "z": 0,
-    "height": 167.52806305230476,
-    "width": 613.86195366610946,
+    "height": 165.08239789825652,
+    "width": 613.8619536661095,
     "tabOrder": 0
   },
   "visual": {
-    "visualType": "lineChart",
+    "visualType": "clusteredBarChart",
     "query": {
       "queryState": {
         "Category": {
@@ -125,49 +125,35 @@
           "projections": [
             {
               "field": {
-                "Measure": {
+                "Aggregation": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "Measure"
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "FactPericias"
+                        }
+                      },
+                      "Property": "ValorArbitrado"
                     }
                   },
-                  "Property": "Gasto Ano Atual"
+                  "Function": 0
                 }
               },
-              "queryRef": "Measure.Gasto Ano Atual",
-              "nativeQueryRef": "Gasto Ano Atual"
+              "queryRef": "Sum(FactPericias.ValorArbitrado)",
+              "nativeQueryRef": "Sum of ValorArbitrado"
             }
           ]
         }
       }
     },
     "objects": {
-      "trend": [
+      "labels": [
         {
           "properties": {
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "displayName": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Trend line 1'"
-                }
-              }
-            },
-            "lineColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 5,
-                      "Percent": 0
-                    }
-                  }
+                  "Value": "false"
                 }
               }
             }
@@ -177,10 +163,62 @@
       "valueAxis": [
         {
           "properties": {
+            "start": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1000D"
+                }
+              }
+            },
             "showAxisTitle": {
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            },
+            "italic": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'wf_standard-font_light, helvetica, arial, sans-serif'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dataPoint": [
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#1E88E5'"
+                    }
+                  }
                 }
               }
             }
@@ -197,119 +235,33 @@
                 }
               }
             },
-            "show": {
+            "fontFamily": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "'wf_standard-font_light, helvetica, arial, sans-serif'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
                 }
               }
             }
           }
         }
       ],
-      "forecast": [
+      "zoom": [
         {
           "properties": {
             "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "displayName": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Forecast 1'"
-                }
-              }
-            },
-            "transform": {
-              "algorithm": "Forecast",
-              "parameters": [
-                {
-                  "Literal": {
-                    "Value": "2D"
-                  },
-                  "Name": "Unit"
-                },
-                {
-                  "Literal": {
-                    "Value": "4D"
-                  },
-                  "Name": "ForecastLength"
-                },
-                {
-                  "Literal": {
-                    "Value": "0D"
-                  },
-                  "Name": "IgnoreLast"
-                },
-                {
-                  "Literal": {
-                    "Value": "0.95D"
-                  },
-                  "Name": "ConfidenceLevel"
-                },
-                {
-                  "Literal": {
-                    "Value": "3D"
-                  },
-                  "Name": "MaxSeasonality"
-                }
-              ]
-            },
-            "bandAreaColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 5,
-                      "Percent": 0.2
-                    }
-                  }
-                }
-              }
-            },
-            "bandAreaTransparency": {
-              "expr": {
-                "Literal": {
-                  "Value": "80D"
-                }
-              }
-            },
-            "bandAreaMatchColor": {
               "expr": {
                 "Literal": {
                   "Value": "false"
                 }
               }
             }
-          },
-          "selector": {
-            "metadata": "Measure.Gasto Ano Atual",
-            "id": "1"
-          }
-        }
-      ],
-      "dataPoint": [
-        {
-          "properties": {
-            "fill": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 5,
-                      "Percent": 0.2
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Measure.Gasto Ano Atual"
           }
         }
       ]
@@ -357,6 +309,5 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "1f4dc0dc85809149ab2d",
-  "isHidden": true
+  "parentGroupName": "gf1a9c2e7d4b86303"
 }

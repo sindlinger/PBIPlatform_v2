@@ -3,8 +3,8 @@
   "name": "c53011ae822e9c542005",
   "displayName": "Tooltip Comarca",
   "displayOption": "FitToPage",
-  "height": 240,
-  "width": 320,
+  "height": 120,
+  "width": 260,
   "visibility": "HiddenInViewMode",
   "type": "Tooltip"
 }

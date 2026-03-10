@@ -1,0 +1,49 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.0.0/schema.json",
+  "displayName": "Mostrar detalhes",
+  "name": "b1d4a9f0e2c34ab18d01",
+  "options": {
+    "applyOnlyToTargetVisuals": true,
+    "targetVisualNames": [
+      "e85feb694080c3b3bc21",
+      "8bf3bac09e4e3528d02a",
+      "383c1f03c460e952a08d",
+      "b2d9b7eea3c0e116eac9"
+    ],
+    "suppressData": true
+  },
+  "explorationState": {
+    "version": "1.0",
+    "activeSection": "d4f6a8c0b3e57921f234",
+    "sections": {
+      "d4f6a8c0b3e57921f234": {
+        "visualContainers": {
+          "e85feb694080c3b3bc21": {
+            "singleVisual": {
+              "visualType": "clusteredBarChart",
+              "objects": {}
+            }
+          },
+          "8bf3bac09e4e3528d02a": {
+            "singleVisual": {
+              "visualType": "textbox",
+              "objects": {}
+            }
+          },
+          "383c1f03c460e952a08d": {
+            "singleVisual": {
+              "visualType": "textbox",
+              "objects": {}
+            }
+          },
+          "b2d9b7eea3c0e116eac9": {
+            "singleVisual": {
+              "visualType": "textbox",
+              "objects": {}
+            }
+          }
+        }
+      }
+    }
+  }
+}

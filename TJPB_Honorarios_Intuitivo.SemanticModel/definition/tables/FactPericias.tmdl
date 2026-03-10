@@ -241,6 +241,7 @@ table FactPericias
 
 	column NumeroPericia
 		dataType: string
+		isHidden
 		lineageTag: d7fbf50b-8eaa-4571-808e-bd26cdd65b42
 		summarizeBy: none
 		sourceColumn: NumeroPericia

@@ -6,7 +6,7 @@
     "y": 25.4994026378166,
     "z": 0,
     "height": 167.52806305230476,
-    "width": 613.86195366610946,
+    "width": 613.8619536661095,
     "tabOrder": 0
   },
   "visual": {
@@ -131,11 +131,11 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "Count Orders Returned"
+                  "Property": "Orders Total"
                 }
               },
-              "queryRef": "Measure.Count Orders Returned",
-              "nativeQueryRef": "Count Orders Returned"
+              "queryRef": "Measure.Orders Total",
+              "nativeQueryRef": "Orders Total"
             }
           ]
         }
@@ -357,6 +357,5 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "1f4dc0dc85809149ab2d",
-  "isHidden": true
+  "parentGroupName": "1f4dc0dc85809149ab2d"
 }

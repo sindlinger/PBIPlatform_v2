@@ -3,14 +3,14 @@
   "name": "07c5dfc89d70d1658ac3",
   "position": {
     "x": 0,
-    "y": 24.456651540482447,
+    "y": 0,
     "z": 0,
     "height": 165.08239789825652,
-    "width": 613.86195366610946,
+    "width": 613.8619536661095,
     "tabOrder": 0
   },
   "visual": {
-    "visualType": "lineChart",
+    "visualType": "clusteredColumnChart",
     "query": {
       "queryState": {
         "Category": {
@@ -147,150 +147,13 @@
       }
     },
     "objects": {
-      "forecast": [
+      "labels": [
         {
           "properties": {
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "displayName": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Forecast 1'"
-                }
-              }
-            },
-            "transform": {
-              "algorithm": "Forecast",
-              "parameters": [
-                {
-                  "Literal": {
-                    "Value": "2D"
-                  },
-                  "Name": "Unit"
-                },
-                {
-                  "Literal": {
-                    "Value": "4D"
-                  },
-                  "Name": "ForecastLength"
-                },
-                {
-                  "Literal": {
-                    "Value": "0D"
-                  },
-                  "Name": "IgnoreLast"
-                },
-                {
-                  "Literal": {
-                    "Value": "0.95D"
-                  },
-                  "Name": "ConfidenceLevel"
-                },
-                {
-                  "Literal": {
-                    "Value": "6D"
-                  },
-                  "Name": "MaxSeasonality"
-                }
-              ]
-            },
-            "interpolation": {
-              "expr": {
-                "Literal": {
-                  "Value": "'smooth'"
-                }
-              }
-            },
-            "bandLineShow": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "bandLineMatchColor": {
-              "expr": {
-                "Literal": {
                   "Value": "false"
-                }
-              }
-            },
-            "bandLineColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 6,
-                      "Percent": 0.6
-                    }
-                  }
-                }
-              }
-            },
-            "bandLinePattern": {
-              "expr": {
-                "Literal": {
-                  "Value": "'dotted'"
-                }
-              }
-            },
-            "bandAreaMatchColor": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "bandAreaColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 7,
-                      "Percent": 0.2
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Sum(FactPericias.ValorArbitrado)",
-            "id": "1"
-          }
-        }
-      ],
-      "trend": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "displayName": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Trend line 1'"
-                }
-              }
-            },
-            "lineColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 2,
-                      "Percent": 0
-                    }
-                  }
                 }
               }
             }
@@ -300,10 +163,62 @@
       "valueAxis": [
         {
           "properties": {
+            "start": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1000D"
+                }
+              }
+            },
             "showAxisTitle": {
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            },
+            "italic": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'wf_standard-font_light, helvetica, arial, sans-serif'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dataPoint": [
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#1E88E5'"
+                    }
+                  }
                 }
               }
             }
@@ -320,112 +235,33 @@
                 }
               }
             },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'wf_standard-font_light, helvetica, arial, sans-serif'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "zoom": [
+        {
+          "properties": {
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "dataPoint": [
-        {
-          "properties": {
-            "fill": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 7,
-                      "Percent": 0
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Sum(FactPericias.ValorArbitrado)"
-          }
-        }
-      ],
-      "error": [
-        {
-          "properties": {
-            "enabled": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "markerShow": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "shadeShow": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "barShow": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "labelShow": {
-              "expr": {
-                "Literal": {
                   "Value": "false"
                 }
               }
             }
-          },
-          "selector": {
-            "metadata": "Sum(FactPericias.ValorArbitrado)"
-          }
-        },
-        {
-          "properties": {
-            "errorRange": {
-              "kind": "ErrorRange",
-              "percentage": {
-                "lowerBoundDelta": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "0.1D"
-                    }
-                  }
-                },
-                "upperBoundDelta": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "0.1D"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "data": [
-              {
-                "dataViewWildcard": {
-                  "matchingOption": 0
-                }
-              }
-            ],
-            "metadata": "Sum(FactPericias.ValorArbitrado)",
-            "highlightMatching": 1
           }
         }
       ]
@@ -473,5 +309,5 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "c06e3ec2d2d69b43427e"
+  "parentGroupName": "gf1a9c2e7d4b86301"
 }

@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "1ec0e6adc7607be01bdd",
   "position": {
-    "x": 832.74898495342734,
-    "y": 283.69715786959637,
-    "z": 2000,
-    "height": 37.907809887747788,
-    "width": 187.09338428469073,
-    "tabOrder": 27000
+    "x": 834,
+    "y": 283,
+    "z": 20509,
+    "height": 26,
+    "width": 260,
+    "tabOrder": 20509
   },
   "visual": {
     "visualType": "textbox",
@@ -19,10 +19,11 @@
               {
                 "textRuns": [
                   {
-                    "value": "Curva Anual de Gasto",
+                    "value": "Destaque de Especialidades",
                     "textStyle": {
                       "fontFamily": "DIN",
-                      "fontSize": "12pt"
+                      "fontSize": "10pt",
+                      "color": "#334155"
                     }
                   }
                 ]

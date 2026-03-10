@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Forecast Unit Sold",
+                    "value": "Qtd Pericias",
                     "textStyle": {
                       "fontFamily": "DIN",
                       "fontSize": "12pt"

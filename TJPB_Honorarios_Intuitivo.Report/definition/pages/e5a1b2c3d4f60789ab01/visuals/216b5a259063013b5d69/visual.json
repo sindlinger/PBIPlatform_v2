@@ -3,14 +3,15 @@
   "name": "216b5a259063013b5d69",
   "position": {
     "x": 232.49691358024685,
-    "y": 473.44907407407419,
+    "y": 473.4490740740742,
     "z": 19000,
     "height": 187.94181763766878,
-    "width": 288.72180451127821,
+    "width": 288.7218045112782,
     "tabOrder": 3000
   },
   "visualGroup": {
     "displayName": "CATEGORY",
     "groupMode": "ScaleMode"
-  }
+  },
+  "isHidden": true
 }

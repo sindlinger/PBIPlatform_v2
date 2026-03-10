@@ -25,7 +25,7 @@ table DimEspecialidades
 				            if UpperValue = null or UpperValue = "" or UpperValue = "SEM INFO" then null
 				            else if Text.StartsWith(UpperValue, "SEM ") then null
 				            else Canonical,
-
+				
 				    StripAccents = (textValue as nullable text) as nullable text =>
 				        if textValue = null then
 				            null

@@ -59,8 +59,13 @@
           "type": "BaseTheme"
         },
         {
-          "name": "paraiba.municipios.topo",
-          "path": "Shapemaps/paraiba.municipios.topo.json",
+          "name": "paraiba.comarcas.topo",
+          "path": "Shapemaps/paraiba.comarcas.topo.json",
+          "type": "ShapeMap"
+        },
+        {
+          "name": "paraiba.rmjp.topo",
+          "path": "Shapemaps/paraiba.rmjp.topo.json",
           "type": "ShapeMap"
         }
       ]

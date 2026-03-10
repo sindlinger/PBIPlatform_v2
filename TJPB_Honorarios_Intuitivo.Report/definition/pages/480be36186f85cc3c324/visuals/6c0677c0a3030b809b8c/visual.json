@@ -2,7 +2,7 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "6c0677c0a3030b809b8c",
   "position": {
-    "x": 45.729885534057267,
+    "x": 45.72988553405727,
     "y": 0,
     "z": 1000,
     "height": 37.948906065767055,
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Projeção do Valor Arbitrado",
+                    "value": "Gasto Ano Atual",
                     "textStyle": {
                       "fontFamily": "DIN",
                       "fontSize": "12pt"

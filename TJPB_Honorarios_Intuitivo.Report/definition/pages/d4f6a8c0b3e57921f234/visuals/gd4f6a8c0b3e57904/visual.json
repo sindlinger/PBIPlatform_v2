@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "gd4f6a8c0b3e57904",
+  "position": {
+    "x": 216.45834164877184,
+    "y": 234.76901707525406,
+    "z": 8000,
+    "height": 132.0984441481931,
+    "width": 602.2904309925042,
+    "tabOrder": 0
+  },
+  "visualGroup": {
+    "displayName": "Período Comarcas 4",
+    "groupMode": "ScaleMode"
+  },
+  "isHidden": true
+}

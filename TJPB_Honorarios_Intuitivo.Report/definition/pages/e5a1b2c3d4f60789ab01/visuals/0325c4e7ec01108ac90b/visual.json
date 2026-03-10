@@ -46,9 +46,16 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#2196F3'"
+                      "Value": "'#114E86'"
                     }
                   }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
                 }
               }
             }

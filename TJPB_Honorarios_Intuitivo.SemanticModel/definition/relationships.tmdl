@@ -70,3 +70,9 @@ relationship 8b8a6e7c-c789-4639-8a65-97595c7d7de7
 	fromColumn: Orders.State
 	toColumn: DimComarcas.Comarca
 
+relationship d6d97383-f2cc-4688-af68-4cf46422f7e9
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: DimMunicipiosRMCampina.ComarcaMapa
+	toColumn: Orders.'State Mapa'
+

@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "db2731d2e8a48055475a",
   "position": {
-    "x": 27.90705596797774,
-    "y": 68.60484592127861,
-    "z": 3000,
-    "height": 41.860583951966611,
-    "width": 118.60498786390541,
-    "tabOrder": 3000
+    "x": 846.95214105793445,
+    "y": 436,
+    "z": 20510,
+    "height": 22,
+    "width": 399.89924433249365,
+    "tabOrder": 20510
   },
   "visual": {
     "visualType": "card",
@@ -23,11 +23,11 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "YoY Profit Card Subtitle"
+                  "Property": "Destaque Comarca"
                 }
               },
-              "queryRef": "Measure.YoY Profit Card Subtitle",
-              "nativeQueryRef": "YoY Profit Card Subtitle"
+              "queryRef": "Measure.Destaque Comarca",
+              "nativeQueryRef": "Destaque Comarca"
             }
           ]
         }
@@ -65,7 +65,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
+                  "Value": "9D"
                 }
               }
             },
@@ -73,73 +73,8 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "Conditional": {
-                      "Cases": [
-                        {
-                          "Condition": {
-                            "Not": {
-                              "Expression": {
-                                "Contains": {
-                                  "Left": {
-                                    "Measure": {
-                                      "Expression": {
-                                        "SourceRef": {
-                                          "Entity": "Measure"
-                                        }
-                                      },
-                                      "Property": "YoY Profit Card Subtitle"
-                                    }
-                                  },
-                                  "Right": {
-                                    "Literal": {
-                                      "Value": "'-'"
-                                    }
-                                  }
-                                },
-                                "Annotations": {
-                                  "PowerBI.SQExprEvaluationKind": 1,
-                                  "PowerBI.SQExprTextOperatorOption": 7
-                                }
-                              }
-                            }
-                          },
-                          "Value": {
-                            "Literal": {
-                              "Value": "'#16C47F'"
-                            }
-                          }
-                        },
-                        {
-                          "Condition": {
-                            "Contains": {
-                              "Left": {
-                                "Measure": {
-                                  "Expression": {
-                                    "SourceRef": {
-                                      "Entity": "Measure"
-                                    }
-                                  },
-                                  "Property": "YoY Profit Card Subtitle"
-                                }
-                              },
-                              "Right": {
-                                "Literal": {
-                                  "Value": "'-'"
-                                }
-                              }
-                            },
-                            "Annotations": {
-                              "PowerBI.SQExprEvaluationKind": 1,
-                              "PowerBI.SQExprTextOperatorOption": 6
-                            }
-                          },
-                          "Value": {
-                            "Literal": {
-                              "Value": "'#FF6333'"
-                            }
-                          }
-                        }
-                      ]
+                    "Literal": {
+                      "Value": "'#0B7F7E'"
                     }
                   }
                 }
@@ -183,7 +118,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Orders'"
+                  "Value": "'Resumo da Comarca'"
                 }
               }
             }
@@ -218,7 +153,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "parentGroupName": "5b9d2604747920a48a6e",
-  "isHidden": true
+  }
 }

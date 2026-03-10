@@ -3,9 +3,9 @@
   "name": "8d3b844d9e399d19bb03",
   "position": {
     "x": 0,
-    "y": 26.931481724092752,
+    "y": 26.93148172409275,
     "z": 3000,
-    "height": 44.069697366697227,
+    "height": 44.06969736669723,
     "width": 150.55001915533015,
     "tabOrder": 0
   },
@@ -66,15 +66,15 @@
                                       "Source": "m"
                                     }
                                   },
-                                  "Property": "SMA Units Sold 2Y"
+                                  "Property": "Units Sold"
                                 },
-                                "Name": "Measure.SMA Units Sold 2Y"
+                                "Name": "Measure.Units Sold"
                               }
                             ]
                           }
                         }
                       },
-                      "Property": "Measure.SMA Units Sold 2Y"
+                      "Property": "Measure.Units Sold"
                     }
                   },
                   "IncludeAllTypes": 1

@@ -8,7 +8,7 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
-annotation PBI_QueryOrder = ["fnNormalizeText","ExcelPath","SheetName","fnDigitsOnly","FactPericias","DimComarcas","DimVaras","DimPeritos","DimEspecialidades","BridgePeritoEspecialidade","Orders","People","Returns"]
+annotation PBI_QueryOrder = ["fnNormalizeText","ExcelPath","SheetName","fnDigitsOnly","FactPericias","DimComarcas","DimMunicipiosRMCampina","DimVaras","DimPeritos","DimEspecialidades","BridgePeritoEspecialidade","Orders","People","Returns"]
 
 annotation PBI_ProTooling = ["DevMode"]
 
@@ -35,6 +35,7 @@ ref table DateTableTemplate_a135b490-b7b3-48f1-a981-c83e52d2d408
 ref table LocalDateTable_80d6bfdd-4f21-4567-b3a6-8617d8845fde
 ref table LocalDateTable_76cc1d11-5866-4430-bacd-bf62edb5aae0
 ref table LocalDateTable_ee889c8e-afcf-4150-8321-4984f89ba935
+ref table DimMunicipiosRMCampina
 
 ref cultureInfo pt-BR
 ref cultureInfo en-US

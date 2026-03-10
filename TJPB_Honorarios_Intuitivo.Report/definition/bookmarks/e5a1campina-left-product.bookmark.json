@@ -1,0 +1,30 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.0.0/schema.json",
+  "displayName": "Product",
+  "name": "e5a1campina-left-product",
+  "options": {
+    "applyOnlyToTargetVisuals": true,
+    "targetVisualNames": [
+      "216b5a259063013b5d69",
+      "b76ef7c0bcd3318585d6"
+    ],
+    "suppressData": true
+  },
+  "explorationState": {
+    "version": "1.0",
+    "activeSection": "e5a1b2c3d4f60789ab01",
+    "sections": {
+      "e5a1b2c3d4f60789ab01": {
+        "visualContainers": {},
+        "visualContainerGroups": {
+          "216b5a259063013b5d69": {
+            "isHidden": true
+          },
+          "b76ef7c0bcd3318585d6": {
+            "isHidden": false
+          }
+        }
+      }
+    }
+  }
+}

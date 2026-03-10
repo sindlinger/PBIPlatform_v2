@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "f67a89c63b41e2a74038",
   "position": {
-    "x": 29.093935633349886,
-    "y": 56.382192568583008,
-    "z": 0,
-    "height": 37.568393344703189,
-    "width": 118.70325738406754,
-    "tabOrder": 3000
+    "x": 834,
+    "y": 314,
+    "z": 20510,
+    "height": 36,
+    "width": 400,
+    "tabOrder": 20510
   },
   "visual": {
     "visualType": "card",
@@ -23,11 +23,11 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "YoY Profit Card Subtitle"
+                  "Property": "Destaque Especialidade"
                 }
               },
-              "queryRef": "Measure.YoY Profit Card Subtitle",
-              "nativeQueryRef": "YoY Profit Card Subtitle"
+              "queryRef": "Measure.Destaque Especialidade",
+              "nativeQueryRef": "Destaque Especialidade"
             }
           ]
         }
@@ -65,7 +65,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
+                  "Value": "11D"
                 }
               }
             },
@@ -73,73 +73,8 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "Conditional": {
-                      "Cases": [
-                        {
-                          "Condition": {
-                            "Not": {
-                              "Expression": {
-                                "Contains": {
-                                  "Left": {
-                                    "Measure": {
-                                      "Expression": {
-                                        "SourceRef": {
-                                          "Entity": "Measure"
-                                        }
-                                      },
-                                      "Property": "YoY Sales Card Subtitle"
-                                    }
-                                  },
-                                  "Right": {
-                                    "Literal": {
-                                      "Value": "'-'"
-                                    }
-                                  }
-                                },
-                                "Annotations": {
-                                  "PowerBI.SQExprEvaluationKind": 1,
-                                  "PowerBI.SQExprTextOperatorOption": 7
-                                }
-                              }
-                            }
-                          },
-                          "Value": {
-                            "Literal": {
-                              "Value": "'#16C47F'"
-                            }
-                          }
-                        },
-                        {
-                          "Condition": {
-                            "Contains": {
-                              "Left": {
-                                "Measure": {
-                                  "Expression": {
-                                    "SourceRef": {
-                                      "Entity": "Measure"
-                                    }
-                                  },
-                                  "Property": "YoY Sales Card Subtitle"
-                                }
-                              },
-                              "Right": {
-                                "Literal": {
-                                  "Value": "'-'"
-                                }
-                              }
-                            },
-                            "Annotations": {
-                              "PowerBI.SQExprEvaluationKind": 1,
-                              "PowerBI.SQExprTextOperatorOption": 6
-                            }
-                          },
-                          "Value": {
-                            "Literal": {
-                              "Value": "'#FF6333'"
-                            }
-                          }
-                        }
-                      ]
+                    "Literal": {
+                      "Value": "'#2563EB'"
                     }
                   }
                 }
@@ -219,6 +154,5 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "2fcbd9e3b826e026e4c5",
   "isHidden": true
 }

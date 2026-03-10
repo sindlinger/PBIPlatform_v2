@@ -19,10 +19,11 @@
               {
                 "textRuns": [
                   {
-                    "value": "Top 3",
+                    "value": "Legenda: azul claro = menor valor | azul escuro = maior valor | passe o mouse para tooltip",
                     "textStyle": {
                       "fontFamily": "DIN Light",
-                      "fontSize": "8pt"
+                      "fontSize": "8pt",
+                      "color": "#0F766E"
                     }
                   }
                 ]

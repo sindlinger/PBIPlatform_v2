@@ -40,6 +40,130 @@
         "e0b88a3b5e91855ea803",
         "45b09ea2c418bae00bb7"
       ]
+    },
+    {
+      "displayName": "Tipo de grafico Varas",
+      "name": "7ab3e915c24d4f998102",
+      "children": [
+        "f5d1f44f0ecb4688a001",
+        "f5d1f44f0ecb4688a002",
+        "f5d1f44f0ecb4688a003",
+        "f5d1f44f0ecb4688a004"
+      ]
+    },
+    {
+      "displayName": "Tipo de grafico Peritos",
+      "name": "7ab3e915c24d4f998103",
+      "children": [
+        "f5d1f44f0ecb4688b001",
+        "f5d1f44f0ecb4688b002",
+        "f5d1f44f0ecb4688b003",
+        "f5d1f44f0ecb4688b004"
+      ]
+    },
+    {
+      "displayName": "Tipo de grafico Especialidades",
+      "name": "7ab3e915c24d4f998104",
+      "children": [
+        "f5d1f44f0ecb4688c001",
+        "f5d1f44f0ecb4688c002",
+        "f5d1f44f0ecb4688c003",
+        "f5d1f44f0ecb4688c004"
+      ]
+    },
+    {
+      "displayName": "Tipo de grafico Overview",
+      "name": "7ab3e915c24d4f998105",
+      "children": [
+        "f5d1f44f0ecb4688d001",
+        "f5d1f44f0ecb4688d002",
+        "f5d1f44f0ecb4688d003",
+        "f5d1f44f0ecb4688d004"
+      ]
+    },
+    {
+      "displayName": "Tipo de grafico Comarcas",
+      "name": "7ab3e915c24d4f998106",
+      "children": [
+        "f5d1f44f0ecb4688e001",
+        "f5d1f44f0ecb4688e002",
+        "f5d1f44f0ecb4688e003",
+        "f5d1f44f0ecb4688e004"
+      ]
+    },
+    {
+      "displayName": "Tipo de grafico RM Joao Pessoa",
+      "name": "7ab3e915c24d4f998107",
+      "children": [
+        "f5d1f44f0ecb4688f001",
+        "f5d1f44f0ecb4688f002",
+        "f5d1f44f0ecb4688f003",
+        "f5d1f44f0ecb4688f004"
+      ]
+    },
+    {
+      "name": "c1d4a9f0e2c34ab18d00",
+      "displayName": "Detalhes Mapa Comarcas",
+      "children": [
+        "b1d4a9f0e2c34ab18d01",
+        "b1d4a9f0e2c34ab18d02"
+      ]
+    },
+    {
+      "name": "c1a6a9f0e2c34ab18f00",
+      "displayName": "Detalhes Mapa RM",
+      "children": [
+        "b1a6a9f0e2c34ab18f01",
+        "b1a6a9f0e2c34ab18f02"
+      ]
+    },
+    {
+      "displayName": "RM Campina Toggle Left",
+      "name": "e5a1campina-left-toggle",
+      "children": [
+        "e5a1campina-left-category",
+        "e5a1campina-left-product"
+      ]
+    },
+    {
+      "displayName": "RM Campina Toggle Right",
+      "name": "e5a1campina-right-toggle",
+      "children": [
+        "e5a1campina-right-specialty",
+        "e5a1campina-right-range"
+      ]
+    },
+    {
+      "displayName": "RM Joao Pessoa Toggle Left",
+      "name": "a6f4rmjp-left-toggle",
+      "children": [
+        "a6f4rmjp-left-category",
+        "a6f4rmjp-left-product"
+      ]
+    },
+    {
+      "displayName": "RM Joao Pessoa Toggle Right",
+      "name": "a6f4rmjp-right-toggle",
+      "children": [
+        "a6f4rmjp-right-specialty",
+        "a6f4rmjp-right-range"
+      ]
+    },
+    {
+      "displayName": "Comarcas Toggle Left",
+      "name": "d4f6comarcas-left-toggle",
+      "children": [
+        "d4f6comarcas-left-category",
+        "d4f6comarcas-left-product"
+      ]
+    },
+    {
+      "displayName": "Comarcas Toggle Right",
+      "name": "d4f6comarcas-right-toggle",
+      "children": [
+        "d4f6comarcas-right-specialty",
+        "d4f6comarcas-right-range"
+      ]
     }
   ]
 }

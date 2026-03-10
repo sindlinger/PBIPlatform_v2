@@ -2,10 +2,10 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "b12f05ed128090ccb600",
   "position": {
-    "x": 45.521435510945473,
-    "y": 26.931481724092752,
+    "x": 45.52143551094547,
+    "y": 26.93148172409275,
     "z": 3000,
-    "height": 44.069697366697227,
+    "height": 44.06969736669723,
     "width": 150.55001915533015,
     "tabOrder": 0
   },
@@ -66,15 +66,15 @@
                                       "Source": "m"
                                     }
                                   },
-                                  "Property": "SMA Sales 2Y"
+                                  "Property": "Gasto Ano Atual"
                                 },
-                                "Name": "Measure.SMA 2Y"
+                                "Name": "Measure.Gasto Ano Atual"
                               }
                             ]
                           }
                         }
                       },
-                      "Property": "Measure.SMA 2Y"
+                      "Property": "Measure.Gasto Ano Atual"
                     }
                   },
                   "IncludeAllTypes": 1
@@ -94,7 +94,7 @@
             "formatString": {
               "expr": {
                 "Literal": {
-                  "Value": "'\\$#,0;(\\$#,0);\\$#,0'"
+                  "Value": "'R$ #,##0;(R$ #,##0);R$ #,##0'"
                 }
               }
             }

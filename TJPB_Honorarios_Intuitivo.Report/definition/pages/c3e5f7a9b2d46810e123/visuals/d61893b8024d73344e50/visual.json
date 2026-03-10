@@ -114,7 +114,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#ffffff'"
+                      "Value": "'#1F2937'"
                     }
                   }
                 }
@@ -123,7 +123,7 @@
             "textSize": {
               "expr": {
                 "Literal": {
-                  "Value": "11D"
+                  "Value": "10D"
                 }
               }
             },
@@ -138,9 +138,8 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 7,
-                      "Percent": 0.2
+                    "Literal": {
+                      "Value": "'#FFFFFF'"
                     }
                   }
                 }
@@ -157,7 +156,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
                 }
               }
             },
@@ -166,7 +165,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#ffffff'"
+                      "Value": "'#D98C2B'"
                     }
                   }
                 }
@@ -175,7 +174,7 @@
             "radius": {
               "expr": {
                 "Literal": {
-                  "Value": "6D"
+                  "Value": "8D"
                 }
               }
             }
@@ -190,7 +189,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#ffffff'"
+                      "Value": "'#FFFFFF'"
                     }
                   }
                 }
@@ -199,14 +198,14 @@
             "transparency": {
               "expr": {
                 "Literal": {
-                  "Value": "100D"
+                  "Value": "8D"
                 }
               }
             },
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
                 }
               }
             }

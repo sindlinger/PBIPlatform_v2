@@ -6,7 +6,7 @@
     "y": 0,
     "z": 3000,
     "height": 719.94666343414747,
-    "width": 178,
+    "width": 174,
     "tabOrder": 5000
   },
   "visual": {
@@ -46,9 +46,16 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#2196F3'"
+                      "Value": "'#1D644B'"
                     }
                   }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
                 }
               }
             }

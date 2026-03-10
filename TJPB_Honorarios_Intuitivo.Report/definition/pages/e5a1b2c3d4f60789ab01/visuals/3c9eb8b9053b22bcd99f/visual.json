@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "3c9eb8b9053b22bcd99f",
   "position": {
-    "x": 180,
-    "y": 0,
+    "x": 8,
+    "y": 165,
     "z": 30000,
-    "height": 24,
-    "width": 900,
+    "height": 240,
+    "width": 160,
     "tabOrder": 1000
   },
   "visual": {
@@ -18,7 +18,7 @@
             "tileShape": {
               "expr": {
                 "Literal": {
-                  "Value": "'pill'"
+                  "Value": "'rectangle'"
                 }
               }
             }
@@ -34,7 +34,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             }
@@ -53,6 +53,13 @@
                   }
                 }
               }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
             }
           },
           "selector": {
@@ -66,7 +73,7 @@
             "orientation": {
               "expr": {
                 "Literal": {
-                  "Value": "0D"
+                  "Value": "1D"
                 }
               }
             }
@@ -80,9 +87,8 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 1,
-                      "Percent": 0
+                    "Literal": {
+                      "Value": "'#1F2937'"
                     }
                   }
                 }
@@ -91,7 +97,14 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "13D"
+                  "Value": "8D"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'DIN'"
                 }
               }
             }
@@ -105,21 +118,32 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
+                  "Value": "8D"
                 }
               }
             },
             "bold": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
                 }
               }
             },
             "fontFamily": {
               "expr": {
                 "Literal": {
-                  "Value": "'wf_standard-font, helvetica, arial, sans-serif'"
+                  "Value": "'DIN'"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFFFFF'"
+                    }
+                  }
                 }
               }
             }
@@ -135,7 +159,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
                 }
               }
             },
@@ -143,9 +167,8 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 6,
-                      "Percent": 0.4
+                    "Literal": {
+                      "Value": "'#9DCCFF'"
                     }
                   }
                 }
@@ -165,7 +188,25 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#2367B2'"
+                      "Value": "'#F3F7FC'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        },
+        {
+          "properties": {
+            "fillColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#2D8EF0'"
                     }
                   }
                 }
@@ -174,6 +215,26 @@
           },
           "selector": {
             "id": "selected"
+          }
+        }
+      ],
+      "outline": [
+        {
+          "properties": {
+            "lineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#9DCCFF'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
           }
         }
       ]

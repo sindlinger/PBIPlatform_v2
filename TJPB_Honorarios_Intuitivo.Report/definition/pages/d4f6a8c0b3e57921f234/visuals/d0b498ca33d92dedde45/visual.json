@@ -6,7 +6,7 @@
     "y": 0,
     "z": 0,
     "height": 41.346153846153847,
-    "width": 104.80769230769231,
+    "width": 178.84615384615384,
     "tabOrder": 1000
   },
   "visual": {
@@ -19,7 +19,15 @@
               {
                 "textRuns": [
                   {
-                    "value": "Comarca: clique no mapa para filtrar",
+                    "value": {
+                      "propertyIdentifier": {
+                        "objectName": "values",
+                        "propertyName": "expr"
+                      },
+                      "selector": {
+                        "id": "Value"
+                      }
+                    },
                     "textStyle": {
                       "fontFamily": "DIN",
                       "fontSize": "10pt"
@@ -28,6 +36,64 @@
                 ]
               }
             ]
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "expr": {
+              "expr": {
+                "Min": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "Subquery": {
+                          "Query": {
+                            "Version": 2,
+                            "From": [
+                              {
+                                "Name": "m",
+                                "Entity": "Measure",
+                                "Type": 0
+                              }
+                            ],
+                            "Select": [
+                              {
+                                "Measure": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "m"
+                                    }
+                                  },
+                                  "Property": "Título Mapa Comarcas"
+                                },
+                                "Name": "Measure.Título Mapa Comarcas"
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      "Property": "Measure.Título Mapa Comarcas"
+                    }
+                  },
+                  "IncludeAllTypes": 1
+                },
+                "Annotations": {
+                  "NaturalLanguage": {
+                    "version": 1,
+                    "kind": "NaturalLanguage",
+                    "annotation": {
+                      "name": "Value",
+                      "utterance": "selected comarca title"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "Value"
           }
         }
       ]

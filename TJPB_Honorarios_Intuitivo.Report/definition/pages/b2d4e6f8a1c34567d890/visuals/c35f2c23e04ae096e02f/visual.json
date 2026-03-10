@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "c35f2c23e04ae096e02f",
   "position": {
-    "x": 13.451158347265345,
-    "y": 34.239312156675425,
-    "z": 2000,
-    "height": 176.08789109147361,
-    "width": 612.63912108908528,
-    "tabOrder": 1000
+    "x": 0,
+    "y": 0,
+    "z": 0,
+    "height": 165.08239789825652,
+    "width": 613.8619536661095,
+    "tabOrder": 0
   },
   "visual": {
     "visualType": "lineChart",
@@ -125,49 +125,35 @@
           "projections": [
             {
               "field": {
-                "Measure": {
+                "Aggregation": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "Measure"
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "FactPericias"
+                        }
+                      },
+                      "Property": "ValorArbitrado"
                     }
                   },
-                  "Property": "Gasto Semana Atual"
+                  "Function": 0
                 }
               },
-              "queryRef": "Measure.Gasto Semana Atual",
-              "nativeQueryRef": "Gasto Semana Atual"
+              "queryRef": "Sum(FactPericias.ValorArbitrado)",
+              "nativeQueryRef": "Sum of ValorArbitrado"
             }
           ]
         }
       }
     },
     "objects": {
-      "trend": [
+      "labels": [
         {
           "properties": {
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "displayName": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Trend line 1'"
-                }
-              }
-            },
-            "lineColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 7,
-                      "Percent": 0
-                    }
-                  }
+                  "Value": "false"
                 }
               }
             }
@@ -177,10 +163,62 @@
       "valueAxis": [
         {
           "properties": {
+            "start": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1000D"
+                }
+              }
+            },
             "showAxisTitle": {
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            },
+            "italic": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'wf_standard-font_light, helvetica, arial, sans-serif'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dataPoint": [
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#1E88E5'"
+                    }
+                  }
                 }
               }
             }
@@ -197,117 +235,33 @@
                 }
               }
             },
-            "show": {
+            "fontFamily": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "'wf_standard-font_light, helvetica, arial, sans-serif'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
                 }
               }
             }
           }
         }
       ],
-      "forecast": [
+      "zoom": [
         {
           "properties": {
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "displayName": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Forecast 1'"
-                }
-              }
-            },
-            "transform": {
-              "algorithm": "Forecast",
-              "parameters": [
-                {
-                  "Literal": {
-                    "Value": "2D"
-                  },
-                  "Name": "Unit"
-                },
-                {
-                  "Literal": {
-                    "Value": "4D"
-                  },
-                  "Name": "ForecastLength"
-                },
-                {
-                  "Literal": {
-                    "Value": "0D"
-                  },
-                  "Name": "IgnoreLast"
-                },
-                {
-                  "Literal": {
-                    "Value": "0.95D"
-                  },
-                  "Name": "ConfidenceLevel"
-                },
-                {
-                  "Literal": {
-                    "Value": "6D"
-                  },
-                  "Name": "MaxSeasonality"
-                }
-              ]
-            },
-            "bandLineShow": {
-              "expr": {
-                "Literal": {
                   "Value": "false"
-                }
-              }
-            },
-            "bandAreaShow": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "bandAreaColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 2,
-                      "Percent": 0.2
-                    }
-                  }
-                }
-              }
-            },
-            "bandAreaMatchColor": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "lineColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 7,
-                      "Percent": 0
-                    }
-                  }
                 }
               }
             }
-          },
-          "selector": {
-            "metadata": "Measure.Gasto Semana Atual",
-            "id": "1"
           }
         }
       ]
@@ -355,6 +309,5 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "acee2d020bb8c1c4903b",
-  "isHidden": true
+  "parentGroupName": "gb2d4e6f8a1c34502"
 }

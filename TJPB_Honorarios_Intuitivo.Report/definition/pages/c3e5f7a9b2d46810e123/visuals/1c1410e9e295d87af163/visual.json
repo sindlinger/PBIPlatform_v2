@@ -12,6 +12,5 @@
   "visualGroup": {
     "displayName": "ShipMode",
     "groupMode": "ScaleMode"
-  },
-  "isHidden": true
+  }
 }

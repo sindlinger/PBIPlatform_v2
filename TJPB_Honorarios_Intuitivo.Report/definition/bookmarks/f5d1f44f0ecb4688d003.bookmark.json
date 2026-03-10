@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.0.0/schema.json",
+  "displayName": "Barras",
+  "name": "f5d1f44f0ecb4688d003",
+  "options": {
+    "applyOnlyToTargetVisuals": true,
+    "targetVisualNames": [
+      "gfe4687310000e601",
+      "gfe4687310000e602",
+      "gfe4687310000e603",
+      "gfe4687310000e604"
+    ],
+    "suppressData": true
+  },
+  "explorationState": {
+    "version": "1.0",
+    "activeSection": "fe4687310000e672d410",
+    "sections": {
+      "fe4687310000e672d410": {
+        "visualContainers": {},
+        "visualContainerGroups": {
+          "gfe4687310000e601": {
+            "isHidden": true
+          },
+          "gfe4687310000e602": {
+            "isHidden": true
+          },
+          "gfe4687310000e603": {
+            "isHidden": false
+          },
+          "gfe4687310000e604": {
+            "isHidden": true
+          }
+        }
+      }
+    }
+  }
+}

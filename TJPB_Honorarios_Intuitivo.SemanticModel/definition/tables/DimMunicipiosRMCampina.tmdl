@@ -1,0 +1,65 @@
+table DimMunicipiosRMCampina
+	lineageTag: 42c625ac-24fd-47f8-bf43-e7407ef44f9e
+
+	column Municipio
+		dataType: string
+		lineageTag: 496ab8ef-4a9b-42a8-9741-c9574bee1870
+		summarizeBy: none
+		sourceColumn: Municipio
+
+		annotation SummarizationSetBy = User
+
+	column ComarcaMapa
+		dataType: string
+		lineageTag: c8c614ae-b901-4f8b-a6ce-fa3d2973dcac
+		summarizeBy: none
+		sourceColumn: ComarcaMapa
+
+		annotation SummarizationSetBy = User
+
+	column Ordem
+		dataType: int64
+		formatString: 0
+		lineageTag: 095489d4-2e3b-4f3f-882c-c731dacae731
+		summarizeBy: none
+		sourceColumn: Ordem
+
+		annotation SummarizationSetBy = User
+
+	partition DimMunicipiosRMCampina = m
+		mode: import
+		source =
+				let
+				    Source =
+				        Table.FromRecords(
+				            {
+				                [Municipio = "Alcantil", ComarcaMapa = "Boqueirão", Ordem = 1],
+				                [Municipio = "Aroeiras", ComarcaMapa = "Umbuzeiro", Ordem = 2],
+				                [Municipio = "Barra de Santana", ComarcaMapa = "Boqueirão", Ordem = 3],
+				                [Municipio = "Boa Vista", ComarcaMapa = "Campina Grande", Ordem = 4],
+				                [Municipio = "Boqueirão", ComarcaMapa = "Boqueirão", Ordem = 5],
+				                [Municipio = "Campina Grande", ComarcaMapa = "Campina Grande", Ordem = 6],
+				                [Municipio = "Caturité", ComarcaMapa = "Queimadas", Ordem = 7],
+				                [Municipio = "Fagundes", ComarcaMapa = "Queimadas", Ordem = 8],
+				                [Municipio = "Gado Bravo", ComarcaMapa = "Umbuzeiro", Ordem = 9],
+				                [Municipio = "Itatuba", ComarcaMapa = "Ingá", Ordem = 10],
+				                [Municipio = "Lagoa Seca", ComarcaMapa = "Campina Grande", Ordem = 11],
+				                [Municipio = "Massaranduba", ComarcaMapa = "Campina Grande", Ordem = 12],
+				                [Municipio = "Matinhas", ComarcaMapa = "Alagoa Nova", Ordem = 13],
+				                [Municipio = "Natuba", ComarcaMapa = "Umbuzeiro", Ordem = 14],
+				                [Municipio = "Puxinanã", ComarcaMapa = "Pocinhos", Ordem = 15],
+				                [Municipio = "Queimadas", ComarcaMapa = "Queimadas", Ordem = 16],
+				                [Municipio = "Santa Cecília", ComarcaMapa = "Umbuzeiro", Ordem = 17],
+				                [Municipio = "Serra Redonda", ComarcaMapa = "Ingá", Ordem = 18],
+				                [Municipio = "Umbuzeiro", ComarcaMapa = "Umbuzeiro", Ordem = 19]
+				            }
+				        ),
+				    Typed = Table.TransformColumnTypes(Source, {{"Municipio", type text}, {"ComarcaMapa", type text}, {"Ordem", Int64.Type}}),
+				    Sorted = Table.Sort(Typed, {{"Ordem", Order.Ascending}})
+				in
+				    Sorted
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+
