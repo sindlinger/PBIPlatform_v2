@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Historico do valor medio por periodo"
+                    "value": "Cruzamento operacional"
                   }
                 ]
               }
@@ -46,5 +46,5 @@
     "drillFilterOtherVisuals": true
   },
   "parentGroupName": "51d63b4f58c8609a1a33",
-  "isHidden": true
+  "isHidden": false
 }

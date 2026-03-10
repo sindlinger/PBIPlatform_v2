@@ -1,0 +1,30 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.0.0/schema.json",
+  "displayName": "Especialidades",
+  "name": "d4f6-comarcas-crossover-especialidades",
+  "options": {
+    "applyOnlyToTargetVisuals": true,
+    "targetVisualNames": [
+      "0a67c55e012b45db0585",
+      "781ea67c59c51a0a5292"
+    ],
+    "suppressData": true
+  },
+  "explorationState": {
+    "version": "1.0",
+    "activeSection": "d4f6a8c0b3e57921f234",
+    "sections": {
+      "d4f6a8c0b3e57921f234": {
+        "visualContainers": {},
+        "visualContainerGroups": {
+          "0a67c55e012b45db0585": {
+            "isHidden": true
+          },
+          "781ea67c59c51a0a5292": {
+            "isHidden": false
+          }
+        }
+      }
+    }
+  }
+}

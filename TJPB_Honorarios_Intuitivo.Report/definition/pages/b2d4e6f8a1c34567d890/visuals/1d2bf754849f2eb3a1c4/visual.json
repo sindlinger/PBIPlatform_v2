@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Valor Medio por Pericia ao Longo do Tempo",
+                    "value": "Comarcas associadas aos Peritos",
                     "textStyle": {
                       "fontFamily": "DIN",
                       "fontSize": "10pt"

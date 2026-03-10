@@ -20,15 +20,15 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "DimEspecialidades"
+                      "Entity": "FactPericias"
                     }
                   },
-                  "Property": "Especialidade"
+                  "Property": "EspecialidadeExibicao"
                 }
               },
-              "queryRef": "DimEspecialidades.Especialidade",
-              "nativeQueryRef": "Especialidade",
-              "active": true
+              "queryRef": "FactPericias.EspecialidadeExibicao",
+              "nativeQueryRef": "EspecialidadeExibicao",
+              "displayName": "Especialidade"
             }
           ]
         },
@@ -46,7 +46,8 @@
                 }
               },
               "queryRef": "Measure.Valor Arbitrado Base",
-              "nativeQueryRef": "Valor Arbitrado Base"
+              "nativeQueryRef": "Valor Arbitrado Base",
+              "displayName": "Valor Arbitrado Base"
             }
           ]
         }
@@ -66,27 +67,11 @@
             },
             "direction": "Descending"
           }
-        ],
-        "isDefaultSort": true
+        ]
       }
     },
     "objects": {
       "dataPoint": [
-        {
-          "properties": {
-            "fill": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#7984EE'"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
         {
           "properties": {
             "fill": {
@@ -100,155 +85,6 @@
                 }
               }
             }
-          },
-          "selector": {
-            "data": [
-              {
-                "scopeId": {
-                  "Comparison": {
-                    "ComparisonKind": 0,
-                    "Left": {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "DimEspecialidades"
-                          }
-                        },
-                        "Property": "Especialidade"
-                      }
-                    },
-                    "Right": {
-                      "Literal": {
-                        "Value": "'Standard Class'"
-                      }
-                    }
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
-          "properties": {
-            "fill": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#2196F3'"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "data": [
-              {
-                "scopeId": {
-                  "Comparison": {
-                    "ComparisonKind": 0,
-                    "Left": {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "DimEspecialidades"
-                          }
-                        },
-                        "Property": "Especialidade"
-                      }
-                    },
-                    "Right": {
-                      "Literal": {
-                        "Value": "'Second Class'"
-                      }
-                    }
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
-          "properties": {
-            "fill": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#ABC4FF'"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "data": [
-              {
-                "scopeId": {
-                  "Comparison": {
-                    "ComparisonKind": 0,
-                    "Left": {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "DimEspecialidades"
-                          }
-                        },
-                        "Property": "Especialidade"
-                      }
-                    },
-                    "Right": {
-                      "Literal": {
-                        "Value": "'First Class'"
-                      }
-                    }
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
-          "properties": {
-            "fill": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#E2EAFC'"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "data": [
-              {
-                "scopeId": {
-                  "Comparison": {
-                    "ComparisonKind": 0,
-                    "Left": {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "DimEspecialidades"
-                          }
-                        },
-                        "Property": "Especialidade"
-                      }
-                    },
-                    "Right": {
-                      "Literal": {
-                        "Value": "'Same Day'"
-                      }
-                    }
-                  }
-                }
-              }
-            ]
           }
         }
       ],
@@ -261,20 +97,14 @@
                   "Value": "true"
                 }
               }
-            }
-          }
-        },
-        {
-          "properties": {},
-          "selector": {
-            "data": [
-              {
-                "dataViewWildcard": {
-                  "matchingOption": 1
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
                 }
               }
-            ],
-            "highlightMatching": 1
+            }
           }
         }
       ]
@@ -309,5 +139,110 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "781ea67c59c51a0a5292"
+  "parentGroupName": "781ea67c59c51a0a5292",
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "FactPericias-EspecialidadeExibicao-5",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "FactPericias"
+              }
+            },
+            "Property": "EspecialidadeExibicao"
+          }
+        },
+        "type": "TopN",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "subquery",
+              "Expression": {
+                "Subquery": {
+                  "Query": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "f",
+                        "Entity": "FactPericias",
+                        "Type": 0
+                      }
+                    ],
+                    "Select": [
+                      {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Source": "f"
+                            }
+                          },
+                          "Property": "EspecialidadeExibicao"
+                        },
+                        "Name": "field"
+                      }
+                    ],
+                    "OrderBy": [
+                      {
+                        "Direction": 2,
+                        "Expression": {
+                          "Aggregation": {
+                            "Expression": {
+                              "Column": {
+                                "Expression": {
+                                  "SourceRef": {
+                                    "Source": "f"
+                                  }
+                                },
+                                "Property": "ValorArbitrado"
+                              }
+                            },
+                            "Function": 0
+                          }
+                        }
+                      }
+                    ],
+                    "Top": 5
+                  }
+                }
+              },
+              "Type": 2
+            },
+            {
+              "Name": "f",
+              "Entity": "FactPericias",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "f"
+                          }
+                        },
+                        "Property": "EspecialidadeExibicao"
+                      }
+                    }
+                  ],
+                  "Table": {
+                    "SourceRef": {
+                      "Source": "subquery"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
 }

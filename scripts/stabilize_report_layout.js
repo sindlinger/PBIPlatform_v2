@@ -642,6 +642,388 @@ const BOOKMARK_STABILIZE_SKIP_PAGES = new Set([
   ...Object.keys(TOP_GRAPH_PAGES),
 ]);
 
+const ENTITY_PAGE_CANVAS_CONFIG = {
+  d4f6a8c0b3e57921f234: {
+    height: 980,
+    displayOption: "FitToWidth",
+    mainBackgroundId: "cbb9050b7ce28900e44a",
+    sidebarBackgroundId: "0325c4e7ec01108ac90b",
+    sidebarPanelId: "aa00bb11cc22dd33ee52",
+  },
+  f1a9c2e7d4b86350a1f2: {
+    height: 980,
+    displayOption: "FitToWidth",
+    mainBackgroundId: "602d61c16500ea288cdc",
+    sidebarBackgroundId: "71d424213bef4ecba9fd",
+    sidebarPanelId: "aa00bb11cc22dd33ee62",
+  },
+  b2d4e6f8a1c34567d890: {
+    height: 980,
+    displayOption: "FitToWidth",
+    mainBackgroundId: "602d61c16500ea288cdc",
+    sidebarBackgroundId: "71d424213bef4ecba9fd",
+    sidebarPanelId: "aa00bb11cc22dd33ee72",
+  },
+  c3e5f7a9b2d46810e123: {
+    height: 980,
+    displayOption: "FitToWidth",
+    mainBackgroundId: "602d61c16500ea288cdc",
+    sidebarBackgroundId: "71d424213bef4ecba9fd",
+    sidebarPanelId: "aa00bb11cc22dd33ee82",
+  },
+};
+
+const OVERVIEW_SUMMARY_CONFIG = {
+  pageId: "fe4687310000e672d410",
+  left: {
+    navigatorId: "e4f886c778183b7d6274",
+    bookmarkGroupId: "overview-summary-left-toggle",
+    bookmarkGroupDisplayName: "Resumo Overview Left",
+    defaultBookmarkId: "overview-left-comarcas",
+    buttonPosition: {
+      x: 235.76642335766422,
+      y: 440.1459854014598,
+      z: 20000,
+      height: 21.8978102189781,
+      width: 191.970802919708,
+      tabOrder: 16000,
+    },
+    groups: {
+      comarcas: "216b5a259063013b5d69",
+      varas: "b76ef7c0bcd3318585d6",
+    },
+    bookmarks: {
+      comarcas: { id: "overview-left-comarcas", displayName: "Comarcas" },
+      varas: { id: "overview-left-varas", displayName: "Varas" },
+    },
+    charts: {
+      comarcas: "cd3d55d60e6c404b02c7",
+      varas: "317b187a9471457a326e",
+    },
+    titles: {
+      comarcas: {
+        titleId: "04ae690c03b1748a60e1",
+        subtitleId: "bb6dc63c95c92ece933a",
+        title: "Top 5 Comarcas por Valor",
+        subtitle: "Resumo executivo",
+      },
+      varas: {
+        titleId: "81808ee2e04cb5a44453",
+        subtitleId: "06008ec31a834a664a82",
+        title: "Top 5 Varas por Valor",
+        subtitle: "Resumo executivo",
+      },
+    },
+  },
+  right: {
+    navigatorId: "86a9222c6d0de10c5604",
+    bookmarkGroupId: "overview-summary-right-toggle",
+    bookmarkGroupDisplayName: "Resumo Overview Right",
+    defaultBookmarkId: "overview-right-peritos",
+    buttonPosition: {
+      x: 543.3333333333334,
+      y: 438.33333333333337,
+      z: 23000,
+      height: 21.666666666666668,
+      width: 191.66666666666669,
+      tabOrder: 19000,
+    },
+    groups: {
+      peritos: "0a67c55e012b45db0585",
+      especialidades: "781ea67c59c51a0a5292",
+    },
+    bookmarks: {
+      peritos: { id: "overview-right-peritos", displayName: "Peritos" },
+      especialidades: { id: "overview-right-especialidades", displayName: "Especialidades" },
+    },
+    groupPositions: {
+      peritos: {
+        x: 539.0046296296297,
+        y: 473.33333333333337,
+        z: 21000,
+        width: 269.1666666666667,
+        height: 185,
+        tabOrder: 25000,
+      },
+      especialidades: {
+        x: 539.1666666666667,
+        y: 473.33333333333337,
+        z: 22000,
+        width: 269.1666666666667,
+        height: 185,
+        tabOrder: 26000,
+      },
+    },
+    charts: {
+      peritos: "dcb76924e59193d0b160",
+      especialidades: "ec5fc66339257d3549a0",
+    },
+    titles: {
+      peritos: {
+        titleId: "0dec849700348dcb5b4a",
+        subtitleId: "695545bd2abe7cd323a2",
+        title: "Peritos por Valor",
+        subtitle: "Resumo executivo",
+      },
+      especialidades: {
+        titleId: "ff6b88429017dbc20ae9",
+        subtitleId: "add260de38365a4d45a7",
+        title: "Especialidades por Valor",
+        subtitle: "Resumo executivo",
+      },
+    },
+  },
+};
+
+const COMARCAS_BLUEPRINT_CONFIG = {
+  pageId: "d4f6a8c0b3e57921f234",
+  leftToggle: {
+    navigatorId: "e4f886c778183b7d6274",
+    bookmarkGroupId: "d4f6-comarcas-ranking",
+    bookmarkGroupDisplayName: "Comarcas Ranking",
+    defaultBookmarkId: "d4f6-comarcas-ranking-valor",
+    groups: {
+      valor: "216b5a259063013b5d69",
+      qtd: "b76ef7c0bcd3318585d6",
+    },
+    bookmarks: {
+      valor: { id: "d4f6-comarcas-ranking-valor", displayName: "Valor" },
+      qtd: { id: "d4f6-comarcas-ranking-qtd", displayName: "Perícias" },
+    },
+    charts: {
+      valor: "cd3d55d60e6c404b02c7",
+      qtd: "317b187a9471457a326e",
+    },
+    titles: {
+      valor: {
+        titleId: "04ae690c03b1748a60e1",
+        subtitleId: "bb6dc63c95c92ece933a",
+        title: "Top 10 Comarcas por Valor",
+        subtitle: "Ranking financeiro",
+      },
+      qtd: {
+        titleId: "81808ee2e04cb5a44453",
+        subtitleId: "06008ec31a834a664a82",
+        title: "Top 10 Comarcas por Perícias",
+        subtitle: "Ranking de volume",
+      },
+    },
+  },
+  rightToggle: {
+    navigatorId: "86a9222c6d0de10c5604",
+    bookmarkGroupId: "d4f6-comarcas-crossover",
+    bookmarkGroupDisplayName: "Comarcas Cruzamentos",
+    defaultBookmarkId: "d4f6-comarcas-crossover-peritos",
+    groups: {
+      peritos: "0a67c55e012b45db0585",
+      especialidades: "781ea67c59c51a0a5292",
+    },
+    bookmarks: {
+      peritos: { id: "d4f6-comarcas-crossover-peritos", displayName: "Peritos" },
+      especialidades: { id: "d4f6-comarcas-crossover-especialidades", displayName: "Especialidades" },
+    },
+    charts: {
+      peritos: "dcb76924e59193d0b160",
+      especialidades: "ec5fc66339257d3549a0",
+    },
+    titles: {
+      peritos: {
+        titleId: "0dec849700348dcb5b4a",
+        subtitleId: "695545bd2abe7cd323a2",
+        title: "Peritos nas Comarcas",
+        subtitle: "Cruzamento financeiro",
+      },
+      especialidades: {
+        titleId: "ff6b88429017dbc20ae9",
+        subtitleId: "add260de38365a4d45a7",
+        title: "Especialidades nas Comarcas",
+        subtitle: "Cruzamento financeiro",
+      },
+    },
+  },
+  operational: {
+    titleId: "383c1f03c460e952a08d",
+    subtitleId: "b2d9b7eea3c0e116eac9",
+    title: "Varas nas Comarcas",
+    subtitle: "Cruzamento operacional",
+    chartId: "e85feb694080c3b3bc21",
+    dimension: { entity: "FactPericias", property: "JuizoExibicao", label: "Vara" },
+    topN: 10,
+  },
+  detail: {
+    visualId: "d4f6detailtable001",
+    title: "Tabela detalhe de Comarcas",
+    entityColumn: { entity: "FactPericias", property: "ComarcaExibicao", displayName: "Comarca" },
+  },
+};
+
+const ENTITY_BLUEPRINT_CONFIG = {
+  f1a9c2e7d4b86350a1f2: {
+    pageTitle: "Varas",
+    entityColumn: { entity: "FactPericias", property: "JuizoExibicao", displayName: "Vara" },
+    secondaryColumn: { entity: "FactPericias", property: "ComarcaExibicao", displayName: "Comarca" },
+    ranking: {
+      groupId: "5147d92f75e43d7a0abf",
+      chartId: "5715f23ae7323c710a25",
+      headerGroupId: "56522877312f663a7d8b",
+      titleId: "066019ba059cc7614a8b",
+      subtitleId: "ab7dded9cc785816772d",
+      altGroupId: "5147d92f75e43d7a0abg",
+      altChartId: "5715f23ae7323c710a26",
+      altHeaderGroupId: "56522877312f663a7d8c",
+      altTitleId: "066019ba059cc7614a8c",
+      altSubtitleId: "ab7dded9cc785816772e",
+      navigatorId: "varas-ranking-nav",
+      bookmarkGroupId: "varas-ranking-toggle",
+      bookmarkGroupDisplayName: "Ranking Varas",
+      bookmarks: {
+        valor: { id: "varas-ranking-valor", displayName: "Valor" },
+        qtd: { id: "varas-ranking-qtd", displayName: "Perícias" },
+      },
+      titles: {
+        valor: { title: "Top 10 Varas por Valor", subtitle: "Ranking financeiro" },
+        qtd: { title: "Top 10 Varas por Perícias", subtitle: "Ranking de volume" },
+      },
+      topN: 10,
+    },
+    operational: {
+      chartId: "va11aa22bb33cc44dd55",
+      titleId: "1d2bf754849f2eb3a1c4",
+      subtitleId: "5af0fe7f69a26356dd74",
+      dimension: { entity: "FactPericias", property: "ComarcaExibicao", displayName: "Comarca" },
+      title: "Comarcas associadas às Varas",
+      subtitle: "Cruzamento operacional",
+      topN: 10,
+    },
+    financial: {
+      chartId: "0641c7fbed87452465c7",
+      titleId: "a3fd999b18168eab6ea9",
+      subtitleId: "c59c9e94f2ac24805c9b",
+      dimension: { entity: "FactPericias", property: "EspecialidadeExibicao", displayName: "Especialidade" },
+      title: "Especialidades associadas às Varas",
+      subtitle: "Cruzamento financeiro",
+      topN: 10,
+    },
+    detail: {
+      visualId: "f1a9detailtable001",
+      title: "Tabela detalhe de Varas",
+    },
+  },
+  b2d4e6f8a1c34567d890: {
+    pageTitle: "Peritos",
+    entityColumn: { entity: "FactPericias", property: "PeritoNomeExibicao", displayName: "Perito" },
+    secondaryColumn: { entity: "FactPericias", property: "EspecialidadeExibicao", displayName: "Especialidade" },
+    ranking: {
+      groupId: "5147d92f75e43d7a0abf",
+      chartId: "5715f23ae7323c710a25",
+      headerGroupId: "56522877312f663a7d8b",
+      titleId: "066019ba059cc7614a8b",
+      subtitleId: "ab7dded9cc785816772d",
+      altGroupId: "5147d92f75e43d7a0abh",
+      altChartId: "5715f23ae7323c710a27",
+      altHeaderGroupId: "56522877312f663a7d8d",
+      altTitleId: "066019ba059cc7614a8d",
+      altSubtitleId: "ab7dded9cc785816772f",
+      navigatorId: "peritos-ranking-nav",
+      bookmarkGroupId: "peritos-ranking-toggle",
+      bookmarkGroupDisplayName: "Ranking Peritos",
+      bookmarks: {
+        valor: { id: "peritos-ranking-valor", displayName: "Valor" },
+        qtd: { id: "peritos-ranking-qtd", displayName: "Perícias" },
+      },
+      titles: {
+        valor: { title: "Top 10 Peritos por Valor", subtitle: "Ranking financeiro" },
+        qtd: { title: "Top 10 Peritos por Perícias", subtitle: "Ranking de volume" },
+      },
+      topN: 10,
+    },
+    operational: {
+      chartId: "pe11aa22bb33cc44dd55",
+      titleId: "1d2bf754849f2eb3a1c4",
+      subtitleId: "5af0fe7f69a26356dd74",
+      dimension: { entity: "FactPericias", property: "ComarcaExibicao", displayName: "Comarca" },
+      title: "Comarcas associadas aos Peritos",
+      subtitle: "Cruzamento operacional",
+      topN: 10,
+    },
+    financial: {
+      chartId: "0641c7fbed87452465c7",
+      titleId: "a3fd999b18168eab6ea9",
+      subtitleId: "c59c9e94f2ac24805c9b",
+      dimension: { entity: "FactPericias", property: "EspecialidadeExibicao", displayName: "Especialidade" },
+      title: "Especialidades associadas aos Peritos",
+      subtitle: "Cruzamento financeiro",
+      topN: 10,
+    },
+    detail: {
+      visualId: "b2d4detailtable001",
+      title: "Tabela detalhe de Peritos",
+    },
+  },
+  c3e5f7a9b2d46810e123: {
+    pageTitle: "Especialidades",
+    entityColumn: { entity: "FactPericias", property: "EspecialidadeExibicao", displayName: "Especialidade" },
+    secondaryColumn: { entity: "FactPericias", property: "ComarcaExibicao", displayName: "Comarca" },
+    ranking: {
+      groupId: "5147d92f75e43d7a0abf",
+      chartId: "5715f23ae7323c710a25",
+      headerGroupId: "56522877312f663a7d8b",
+      titleId: "066019ba059cc7614a8b",
+      subtitleId: "ab7dded9cc785816772d",
+      altGroupId: "5147d92f75e43d7a0abi",
+      altChartId: "5715f23ae7323c710a28",
+      altHeaderGroupId: "56522877312f663a7d8e",
+      altTitleId: "066019ba059cc7614a8e",
+      altSubtitleId: "ab7dded9cc785816772g",
+      navigatorId: "especialidades-ranking-nav",
+      bookmarkGroupId: "especialidades-ranking-toggle",
+      bookmarkGroupDisplayName: "Ranking Especialidades",
+      bookmarks: {
+        valor: { id: "especialidades-ranking-valor", displayName: "Valor" },
+        qtd: { id: "especialidades-ranking-qtd", displayName: "Perícias" },
+      },
+      titles: {
+        valor: { title: "Top 10 Especialidades por Valor", subtitle: "Ranking financeiro" },
+        qtd: { title: "Top 10 Especialidades por Perícias", subtitle: "Ranking de volume" },
+      },
+      topN: 10,
+    },
+    operational: {
+      chartId: "es11aa22bb33cc44dd55",
+      titleId: "1d2bf754849f2eb3a1c4",
+      subtitleId: "5af0fe7f69a26356dd74",
+      dimension: { entity: "FactPericias", property: "ComarcaExibicao", displayName: "Comarca" },
+      title: "Comarcas associadas às Especialidades",
+      subtitle: "Cruzamento operacional",
+      topN: 10,
+    },
+    financial: {
+      chartId: "0641c7fbed87452465c7",
+      titleId: "a3fd999b18168eab6ea9",
+      subtitleId: "c59c9e94f2ac24805c9b",
+      dimension: { entity: "FactPericias", property: "PeritoNomeExibicao", displayName: "Perito" },
+      title: "Peritos associados às Especialidades",
+      subtitle: "Cruzamento financeiro",
+      topN: 10,
+    },
+    detail: {
+      visualId: "c3e5detailtable001",
+      title: "Tabela detalhe de Especialidades",
+    },
+  },
+};
+
+const DETAIL_TABLE_SOURCE_PAGE_ID = "82ff2dfb93623b9eeb6c";
+const DETAIL_TABLE_SOURCE_VISUAL_ID = "57b5ea49ef39b6022b88";
+const DETAIL_TABLE_POSITION = {
+  x: 232,
+  y: 716,
+  z: 32000,
+  width: 1018,
+  height: 210,
+  tabOrder: 32000,
+};
+
 function readJson(filePath) {
   return JSON.parse(fs.readFileSync(filePath, "utf8"));
 }
@@ -1053,6 +1435,586 @@ function setChartMeasure(pageId, visualId, measureProperty) {
   projection.nativeQueryRef = measureProperty;
   delete visual.isHidden;
   writeJson(filePath, visual);
+}
+
+function sourceVisualPath(pageId, visualId) {
+  return path.join(REPORT_ROOT, "pages", pageId, "visuals", visualId, "visual.json");
+}
+
+function upsertVisualFromPage(targetPageId, visualId, sourcePageId, sourceVisualId, transform) {
+  const targetPath = visualPath(targetPageId, visualId);
+  const source = readJson(sourceVisualPath(sourcePageId, sourceVisualId));
+  const next = deepClone(source);
+  next.name = visualId;
+  if (typeof transform === "function") {
+    transform(next);
+  }
+  ensureDir(path.dirname(targetPath));
+  writeJson(targetPath, next);
+}
+
+function readPageJson(pageId) {
+  return readJson(path.join(REPORT_ROOT, "pages", pageId, "page.json"));
+}
+
+function writePageJson(pageId, page) {
+  writeJson(path.join(REPORT_ROOT, "pages", pageId, "page.json"), page);
+}
+
+function setPosition(pageId, visualId, position) {
+  const filePath = visualPath(pageId, visualId);
+  if (!fs.existsSync(filePath)) return;
+  const visual = readJson(filePath);
+  visual.position = { ...visual.position, ...position };
+  writeJson(filePath, visual);
+}
+
+function setHidden(pageId, visualId, hidden) {
+  const filePath = visualPath(pageId, visualId);
+  if (!fs.existsSync(filePath)) return;
+  const visual = readJson(filePath);
+  visual.isHidden = hidden;
+  writeJson(filePath, visual);
+}
+
+function buildColumnProjection(entity, property, displayName) {
+  const projection = {
+    field: {
+      Column: {
+        Expression: {
+          SourceRef: {
+            Entity: entity,
+          },
+        },
+        Property: property,
+      },
+    },
+    queryRef: `${entity}.${property}`,
+    nativeQueryRef: property,
+  };
+  if (displayName) projection.displayName = displayName;
+  return projection;
+}
+
+function buildMeasureProjection(entity, property, displayName) {
+  const projection = {
+    field: {
+      Measure: {
+        Expression: {
+          SourceRef: {
+            Entity: entity,
+          },
+        },
+        Property: property,
+      },
+    },
+    queryRef: `${entity}.${property}`,
+    nativeQueryRef: property,
+  };
+  if (displayName) projection.displayName = displayName;
+  return projection;
+}
+
+function buildTopNFilter({ entity, property, top, measureEntity, factEntity, factProperty, aggFunction }) {
+  return {
+    filters: [
+      {
+        name: `${entity}-${property}-${top}`,
+        field: {
+          Column: {
+            Expression: {
+              SourceRef: {
+                Entity: entity,
+              },
+            },
+            Property: property,
+          },
+        },
+        type: "TopN",
+        filter: {
+          Version: 2,
+          From: [
+            {
+              Name: "subquery",
+              Expression: {
+                Subquery: {
+                  Query: {
+                    Version: 2,
+                    From: [
+                      {
+                        Name: "f",
+                        Entity: entity,
+                        Type: 0,
+                      },
+                    ],
+                    Select: [
+                      {
+                        Column: {
+                          Expression: {
+                            SourceRef: {
+                              Source: "f",
+                            },
+                          },
+                          Property: property,
+                        },
+                        Name: "field",
+                      },
+                    ],
+                    OrderBy: [
+                      {
+                        Direction: 2,
+                        Expression: {
+                          Aggregation: {
+                            Expression: {
+                              Column: {
+                                Expression: {
+                                  SourceRef: {
+                                    Source: "f",
+                                  },
+                                },
+                                Property: factProperty,
+                              },
+                            },
+                            Function: aggFunction,
+                          },
+                        },
+                      },
+                    ],
+                    Top: top,
+                  },
+                },
+              },
+              Type: 2,
+            },
+            {
+              Name: "f",
+              Entity: entity,
+              Type: 0,
+            },
+          ],
+          Where: [
+            {
+              Condition: {
+                In: {
+                  Expressions: [
+                    {
+                      Column: {
+                        Expression: {
+                          SourceRef: {
+                            Source: "f",
+                          },
+                        },
+                        Property: property,
+                      },
+                    },
+                  ],
+                  Table: {
+                    SourceRef: {
+                      Source: "subquery",
+                    },
+                  },
+                },
+              },
+            },
+          ],
+        },
+      },
+    ],
+  };
+}
+
+function createRankingBarObjects() {
+  return {
+    dataPoint: [
+      {
+        properties: {
+          fill: {
+            solid: {
+              color: {
+                expr: {
+                  Literal: {
+                    Value: "'#1E88E5'",
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    ],
+    valueAxis: [
+      {
+        properties: {
+          showAxisTitle: {
+            expr: {
+              Literal: {
+                Value: "false",
+              },
+            },
+          },
+          labelDisplayUnits: {
+            expr: {
+              Literal: {
+                Value: "1000D",
+              },
+            },
+          },
+        },
+      },
+    ],
+    categoryAxis: [
+      {
+        properties: {
+          showAxisTitle: {
+            expr: {
+              Literal: {
+                Value: "false",
+              },
+            },
+          },
+          innerPadding: {
+            expr: {
+              Literal: {
+                Value: "36L",
+              },
+            },
+          },
+          fontSize: {
+            expr: {
+              Literal: {
+                Value: "9D",
+              },
+            },
+          },
+        },
+      },
+    ],
+    labels: [
+      {
+        properties: {
+          show: {
+            expr: {
+              Literal: {
+                Value: "true",
+              },
+            },
+          },
+          labelPosition: {
+            expr: {
+              Literal: {
+                Value: "'InsideEnd'",
+              },
+            },
+          },
+          optimizeLabelDisplay: {
+            expr: {
+              Literal: {
+                Value: "false",
+              },
+            },
+          },
+        },
+      },
+    ],
+  };
+}
+
+function createTreemapObjects() {
+  return {
+    dataPoint: [
+      {
+        properties: {
+          fill: {
+            solid: {
+              color: {
+                expr: {
+                  Literal: {
+                    Value: "'#1E88E5'",
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    ],
+    labels: [
+      {
+        properties: {
+          show: {
+            expr: {
+              Literal: {
+                Value: "true",
+              },
+            },
+          },
+          fontSize: {
+            expr: {
+              Literal: {
+                Value: "9D",
+              },
+            },
+          },
+        },
+      },
+    ],
+  };
+}
+
+function setBarChartBinding(pageId, visualId, category, measure, topN) {
+  const filePath = visualPath(pageId, visualId);
+  if (!fs.existsSync(filePath)) return;
+  const visual = readJson(filePath);
+  visual.visual.visualType = "clusteredBarChart";
+  visual.visual.query = {
+    queryState: {
+      Category: {
+        projections: [buildColumnProjection(category.entity, category.property, category.displayName)],
+      },
+      Y: {
+        projections: [buildMeasureProjection(measure.entity, measure.property, measure.displayName)],
+      },
+    },
+    sortDefinition: {
+      sort: [
+        {
+          field: {
+            Measure: {
+              Expression: {
+                SourceRef: {
+                  Entity: measure.entity,
+                },
+              },
+              Property: measure.property,
+            },
+          },
+          direction: "Descending",
+        },
+      ],
+    },
+  };
+  visual.visual.objects = createRankingBarObjects();
+  visual.filterConfig = buildTopNFilter({
+    entity: category.entity,
+    property: category.property,
+    top: topN,
+    measureEntity: measure.entity,
+    factEntity: measure.entity,
+    factProperty: measure.sortProperty ?? "ValorArbitrado",
+    aggFunction: measure.aggFunction ?? 0,
+  });
+  delete visual.isHidden;
+  writeJson(filePath, visual);
+}
+
+function setTreemapBinding(pageId, visualId, groupField, measure, topN) {
+  const filePath = visualPath(pageId, visualId);
+  if (!fs.existsSync(filePath)) return;
+  const visual = readJson(filePath);
+  visual.visual.visualType = "treemap";
+  visual.visual.query = {
+    queryState: {
+      Group: {
+        projections: [buildColumnProjection(groupField.entity, groupField.property, groupField.displayName)],
+      },
+      Values: {
+        projections: [buildMeasureProjection(measure.entity, measure.property, measure.displayName)],
+      },
+    },
+    sortDefinition: {
+      sort: [
+        {
+          field: {
+            Measure: {
+              Expression: {
+                SourceRef: {
+                  Entity: measure.entity,
+                },
+              },
+              Property: measure.property,
+            },
+          },
+          direction: "Descending",
+        },
+      ],
+    },
+  };
+  visual.visual.objects = createTreemapObjects();
+  visual.filterConfig = buildTopNFilter({
+    entity: groupField.entity,
+    property: groupField.property,
+    top: topN,
+    factEntity: measure.entity,
+    factProperty: measure.sortProperty ?? "ValorArbitrado",
+    aggFunction: measure.aggFunction ?? 0,
+  });
+  delete visual.isHidden;
+  writeJson(filePath, visual);
+}
+
+function createDetailTableObjects() {
+  return {
+    columnHeaders: [
+      {
+        properties: {
+          bold: {
+            expr: {
+              Literal: {
+                Value: "false",
+              },
+            },
+          },
+          fontSize: {
+            expr: {
+              Literal: {
+                Value: "9D",
+              },
+            },
+          },
+          backColor: {
+            solid: {
+              color: {
+                expr: {
+                  ThemeDataColor: {
+                    ColorId: 0,
+                    Percent: 0,
+                  },
+                },
+              },
+            },
+          },
+          fontColor: {
+            solid: {
+              color: {
+                expr: {
+                  ThemeDataColor: {
+                    ColorId: 7,
+                    Percent: 0,
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    ],
+    grid: [
+      {
+        properties: {
+          rowPadding: {
+            expr: {
+              Literal: {
+                Value: "5D",
+              },
+            },
+          },
+          textSize: {
+            expr: {
+              Literal: {
+                Value: "9D",
+              },
+            },
+          },
+        },
+      },
+    ],
+  };
+}
+
+function createOrUpdateDetailTable(pageId, visualId, title, columns) {
+  upsertVisualFromPage(pageId, visualId, DETAIL_TABLE_SOURCE_PAGE_ID, DETAIL_TABLE_SOURCE_VISUAL_ID, (visual) => {
+    visual.position = { ...DETAIL_TABLE_POSITION };
+    visual.visual.visualType = "tableEx";
+    visual.visual.query = {
+      queryState: {
+        Values: {
+          projections: columns,
+        },
+      },
+      sortDefinition: {
+        sort: [
+          {
+            field: {
+              Measure: {
+                Expression: {
+                  SourceRef: {
+                    Entity: "Measure",
+                  },
+                },
+                Property: "Valor Arbitrado Base",
+              },
+            },
+            direction: "Descending",
+          },
+        ],
+      },
+    };
+    visual.visual.objects = createDetailTableObjects();
+    visual.visual.visualContainerObjects = {
+      stylePreset: [
+        {
+          properties: {
+            name: {
+              expr: {
+                Literal: {
+                  Value: "'Sparse'",
+                },
+              },
+            },
+          },
+        },
+      ],
+      background: [
+        {
+          properties: {
+            show: {
+              expr: {
+                Literal: {
+                  Value: "true",
+                },
+              },
+            },
+          },
+        },
+      ],
+      title: [
+        {
+          properties: {
+            show: {
+              expr: {
+                Literal: {
+                  Value: "true",
+                },
+              },
+            },
+            text: {
+              expr: {
+                Literal: {
+                  Value: `'${title}'`,
+                },
+              },
+            },
+          },
+        },
+      ],
+    };
+    visual.drillFilterOtherVisuals = true;
+    delete visual.parentGroupName;
+    delete visual.isHidden;
+  });
+}
+
+function extendEntityPages() {
+  for (const [pageId, cfg] of Object.entries(ENTITY_PAGE_CANVAS_CONFIG)) {
+    const page = readPageJson(pageId);
+    page.height = cfg.height;
+    page.displayOption = cfg.displayOption;
+    writePageJson(pageId, page);
+
+    setPosition(pageId, cfg.mainBackgroundId, { height: cfg.height });
+    setPosition(pageId, cfg.sidebarBackgroundId, { height: cfg.height - 0.0533365658525 });
+    setPosition(pageId, cfg.sidebarPanelId, { height: cfg.height - 171 - 30 });
+  }
 }
 
 function setChartTitle(visual, title) {
@@ -1577,6 +2539,408 @@ function cleanTrendLowerRow() {
   }
 }
 
+function configureOverviewSummary() {
+  const bookmarks = readJson(BOOKMARKS_PATH);
+  const { pageId, left, right } = OVERVIEW_SUMMARY_CONFIG;
+
+  setBarChartBinding(
+    pageId,
+    left.charts.comarcas,
+    { entity: "FactPericias", property: "ComarcaExibicao", displayName: "Comarca" },
+    { entity: "Measure", property: "Valor Arbitrado Base", displayName: "Valor Arbitrado Base", sortProperty: "ValorArbitrado" },
+    5
+  );
+  setBarChartBinding(
+    pageId,
+    left.charts.varas,
+    { entity: "FactPericias", property: "JuizoExibicao", displayName: "Vara" },
+    { entity: "Measure", property: "Valor Arbitrado Base", displayName: "Valor Arbitrado Base", sortProperty: "ValorArbitrado" },
+    5
+  );
+  setTreemapBinding(
+    pageId,
+    right.charts.peritos,
+    { entity: "FactPericias", property: "PeritoNomeExibicao", displayName: "Perito" },
+    { entity: "Measure", property: "Valor Arbitrado Base", displayName: "Valor Arbitrado Base", sortProperty: "ValorArbitrado" },
+    5
+  );
+  setTreemapBinding(
+    pageId,
+    right.charts.especialidades,
+    { entity: "FactPericias", property: "EspecialidadeExibicao", displayName: "Especialidade" },
+    { entity: "Measure", property: "Valor Arbitrado Base", displayName: "Valor Arbitrado Base", sortProperty: "ValorArbitrado" },
+    5
+  );
+
+  for (const [key, groupId] of Object.entries(right.groups)) {
+    setPosition(pageId, groupId, right.groupPositions[key]);
+    setHidden(pageId, groupId, key !== "peritos");
+  }
+  setHidden(pageId, left.groups.comarcas, false);
+  setHidden(pageId, left.groups.varas, true);
+
+  Object.values(left.titles).forEach(({ titleId, subtitleId, title, subtitle }) => {
+    setTextLabel(pageId, titleId, title);
+    setTextLabel(pageId, subtitleId, subtitle);
+  });
+  Object.values(right.titles).forEach(({ titleId, subtitleId, title, subtitle }) => {
+    setTextLabel(pageId, titleId, title);
+    setTextLabel(pageId, subtitleId, subtitle);
+  });
+
+  writeMinimalGroupBookmark({
+    bookmarkId: left.bookmarks.comarcas.id,
+    displayName: left.bookmarks.comarcas.displayName,
+    pageId,
+    targetVisualNames: Object.values(left.groups),
+    hiddenStates: {
+      [left.groups.comarcas]: false,
+      [left.groups.varas]: true,
+    },
+  });
+  writeMinimalGroupBookmark({
+    bookmarkId: left.bookmarks.varas.id,
+    displayName: left.bookmarks.varas.displayName,
+    pageId,
+    targetVisualNames: Object.values(left.groups),
+    hiddenStates: {
+      [left.groups.comarcas]: true,
+      [left.groups.varas]: false,
+    },
+  });
+  upsertBookmarkGroup(bookmarks, left.bookmarkGroupId, left.bookmarkGroupDisplayName, [
+    left.bookmarks.comarcas.id,
+    left.bookmarks.varas.id,
+  ]);
+
+  writeMinimalGroupBookmark({
+    bookmarkId: right.bookmarks.peritos.id,
+    displayName: right.bookmarks.peritos.displayName,
+    pageId,
+    targetVisualNames: Object.values(right.groups),
+    hiddenStates: {
+      [right.groups.peritos]: false,
+      [right.groups.especialidades]: true,
+    },
+  });
+  writeMinimalGroupBookmark({
+    bookmarkId: right.bookmarks.especialidades.id,
+    displayName: right.bookmarks.especialidades.displayName,
+    pageId,
+    targetVisualNames: Object.values(right.groups),
+    hiddenStates: {
+      [right.groups.peritos]: true,
+      [right.groups.especialidades]: false,
+    },
+  });
+  upsertBookmarkGroup(bookmarks, right.bookmarkGroupId, right.bookmarkGroupDisplayName, [
+    right.bookmarks.peritos.id,
+    right.bookmarks.especialidades.id,
+  ]);
+
+  const leftNavigator = readJson(visualPath(pageId, left.navigatorId));
+  leftNavigator.position = { ...left.buttonPosition };
+  updateBookmarkSelected(leftNavigator, left.defaultBookmarkId);
+  leftNavigator.visual.objects.bookmarks[0].properties.bookmarkGroup = {
+    expr: {
+      Literal: {
+        Value: `'${left.bookmarkGroupId}'`,
+      },
+    },
+  };
+  writeJson(visualPath(pageId, left.navigatorId), leftNavigator);
+
+  const rightNavigator = readJson(visualPath(pageId, right.navigatorId));
+  rightNavigator.position = { ...right.buttonPosition };
+  updateBookmarkSelected(rightNavigator, right.defaultBookmarkId);
+  rightNavigator.visual.objects.bookmarks[0].properties.bookmarkGroup = {
+    expr: {
+      Literal: {
+        Value: `'${right.bookmarkGroupId}'`,
+      },
+    },
+  };
+  delete rightNavigator.isHidden;
+  writeJson(visualPath(pageId, right.navigatorId), rightNavigator);
+
+  writeJson(BOOKMARKS_PATH, bookmarks);
+}
+
+function configureComarcasBlueprint() {
+  const bookmarks = readJson(BOOKMARKS_PATH);
+  const cfg = COMARCAS_BLUEPRINT_CONFIG;
+  const pageId = cfg.pageId;
+
+  setBarChartBinding(
+    pageId,
+    cfg.leftToggle.charts.valor,
+    { entity: "FactPericias", property: "ComarcaExibicao", displayName: "Comarca" },
+    { entity: "Measure", property: "Valor Arbitrado Base", displayName: "Valor Arbitrado Base", sortProperty: "ValorArbitrado" },
+    10
+  );
+  setBarChartBinding(
+    pageId,
+    cfg.leftToggle.charts.qtd,
+    { entity: "FactPericias", property: "ComarcaExibicao", displayName: "Comarca" },
+    { entity: "Measure", property: "Qtd Perícias Base", displayName: "Qtd Perícias Base", sortProperty: "NumeroPericia", aggFunction: 5 },
+    10
+  );
+  setTreemapBinding(
+    pageId,
+    cfg.rightToggle.charts.peritos,
+    { entity: "FactPericias", property: "PeritoNomeExibicao", displayName: "Perito" },
+    { entity: "Measure", property: "Valor Arbitrado Base", displayName: "Valor Arbitrado Base", sortProperty: "ValorArbitrado" },
+    10
+  );
+  setTreemapBinding(
+    pageId,
+    cfg.rightToggle.charts.especialidades,
+    { entity: "FactPericias", property: "EspecialidadeExibicao", displayName: "Especialidade" },
+    { entity: "Measure", property: "Valor Arbitrado Base", displayName: "Valor Arbitrado Base", sortProperty: "ValorArbitrado" },
+    10
+  );
+  setBarChartBinding(
+    pageId,
+    cfg.operational.chartId,
+    cfg.operational.dimension,
+    { entity: "Measure", property: "Valor Arbitrado Base", displayName: "Valor Arbitrado Base", sortProperty: "ValorArbitrado" },
+    cfg.operational.topN
+  );
+  setTextLabel(pageId, cfg.operational.titleId, cfg.operational.title);
+  setTextLabel(pageId, cfg.operational.subtitleId, cfg.operational.subtitle);
+  setHidden(pageId, cfg.leftToggle.groups.valor, false);
+  setHidden(pageId, cfg.leftToggle.groups.qtd, true);
+  setHidden(pageId, cfg.rightToggle.groups.peritos, false);
+  setHidden(pageId, cfg.rightToggle.groups.especialidades, true);
+
+  Object.values(cfg.leftToggle.titles).forEach(({ titleId, subtitleId, title, subtitle }) => {
+    setTextLabel(pageId, titleId, title);
+    setTextLabel(pageId, subtitleId, subtitle);
+  });
+  Object.values(cfg.rightToggle.titles).forEach(({ titleId, subtitleId, title, subtitle }) => {
+    setTextLabel(pageId, titleId, title);
+    setTextLabel(pageId, subtitleId, subtitle);
+  });
+
+  writeMinimalGroupBookmark({
+    bookmarkId: cfg.leftToggle.bookmarks.valor.id,
+    displayName: cfg.leftToggle.bookmarks.valor.displayName,
+    pageId,
+    targetVisualNames: Object.values(cfg.leftToggle.groups),
+    hiddenStates: {
+      [cfg.leftToggle.groups.valor]: false,
+      [cfg.leftToggle.groups.qtd]: true,
+    },
+  });
+  writeMinimalGroupBookmark({
+    bookmarkId: cfg.leftToggle.bookmarks.qtd.id,
+    displayName: cfg.leftToggle.bookmarks.qtd.displayName,
+    pageId,
+    targetVisualNames: Object.values(cfg.leftToggle.groups),
+    hiddenStates: {
+      [cfg.leftToggle.groups.valor]: true,
+      [cfg.leftToggle.groups.qtd]: false,
+    },
+  });
+  upsertBookmarkGroup(bookmarks, cfg.leftToggle.bookmarkGroupId, cfg.leftToggle.bookmarkGroupDisplayName, [
+    cfg.leftToggle.bookmarks.valor.id,
+    cfg.leftToggle.bookmarks.qtd.id,
+  ]);
+
+  writeMinimalGroupBookmark({
+    bookmarkId: cfg.rightToggle.bookmarks.peritos.id,
+    displayName: cfg.rightToggle.bookmarks.peritos.displayName,
+    pageId,
+    targetVisualNames: Object.values(cfg.rightToggle.groups),
+    hiddenStates: {
+      [cfg.rightToggle.groups.peritos]: false,
+      [cfg.rightToggle.groups.especialidades]: true,
+    },
+  });
+  writeMinimalGroupBookmark({
+    bookmarkId: cfg.rightToggle.bookmarks.especialidades.id,
+    displayName: cfg.rightToggle.bookmarks.especialidades.displayName,
+    pageId,
+    targetVisualNames: Object.values(cfg.rightToggle.groups),
+    hiddenStates: {
+      [cfg.rightToggle.groups.peritos]: true,
+      [cfg.rightToggle.groups.especialidades]: false,
+    },
+  });
+  upsertBookmarkGroup(bookmarks, cfg.rightToggle.bookmarkGroupId, cfg.rightToggle.bookmarkGroupDisplayName, [
+    cfg.rightToggle.bookmarks.peritos.id,
+    cfg.rightToggle.bookmarks.especialidades.id,
+  ]);
+
+  const leftNavigator = readJson(visualPath(pageId, cfg.leftToggle.navigatorId));
+  updateBookmarkSelected(leftNavigator, cfg.leftToggle.defaultBookmarkId);
+  leftNavigator.visual.objects.bookmarks[0].properties.bookmarkGroup = {
+    expr: { Literal: { Value: `'${cfg.leftToggle.bookmarkGroupId}'` } },
+  };
+  writeJson(visualPath(pageId, cfg.leftToggle.navigatorId), leftNavigator);
+
+  const rightNavigator = readJson(visualPath(pageId, cfg.rightToggle.navigatorId));
+  updateBookmarkSelected(rightNavigator, cfg.rightToggle.defaultBookmarkId);
+  rightNavigator.visual.objects.bookmarks[0].properties.bookmarkGroup = {
+    expr: { Literal: { Value: `'${cfg.rightToggle.bookmarkGroupId}'` } },
+  };
+  writeJson(visualPath(pageId, cfg.rightToggle.navigatorId), rightNavigator);
+
+  createOrUpdateDetailTable(pageId, cfg.detail.visualId, cfg.detail.title, [
+    buildColumnProjection(cfg.detail.entityColumn.entity, cfg.detail.entityColumn.property, cfg.detail.entityColumn.displayName),
+    buildMeasureProjection("Measure", "Qtd Perícias Base", "Qtd Perícias"),
+    buildMeasureProjection("Measure", "Valor Arbitrado Base", "Valor Arbitrado"),
+    buildMeasureProjection("Measure", "Saldo a Receber Base", "Saldo Pendente"),
+    buildMeasureProjection("FactPericias", "Ticket Médio", "Ticket Médio"),
+  ]);
+
+  writeJson(BOOKMARKS_PATH, bookmarks);
+}
+
+function configureEntityAnalysisPages() {
+  const bookmarks = readJson(BOOKMARKS_PATH);
+
+  for (const [pageId, cfg] of Object.entries(ENTITY_BLUEPRINT_CONFIG)) {
+    upsertVisual(pageId, cfg.ranking.altGroupId, cfg.ranking.groupId, (visual) => {
+      visual.position = deepClone(visual.position);
+      visual.visualGroup = deepClone(visual.visualGroup);
+      visual.visualGroup.displayName = "Ranking Perícias";
+      visual.isHidden = true;
+      delete visual.parentGroupName;
+    });
+    upsertVisual(pageId, cfg.ranking.altChartId, cfg.ranking.chartId, (visual) => {
+      visual.parentGroupName = cfg.ranking.altGroupId;
+      delete visual.isHidden;
+    });
+    upsertVisual(pageId, cfg.ranking.altHeaderGroupId, cfg.ranking.headerGroupId, (visual) => {
+      visual.isHidden = true;
+      delete visual.parentGroupName;
+    });
+    upsertVisual(pageId, cfg.ranking.altTitleId, cfg.ranking.titleId, (visual) => {
+      visual.parentGroupName = cfg.ranking.altHeaderGroupId;
+      delete visual.isHidden;
+    });
+    upsertVisual(pageId, cfg.ranking.altSubtitleId, cfg.ranking.subtitleId, (visual) => {
+      visual.parentGroupName = cfg.ranking.altHeaderGroupId;
+      delete visual.isHidden;
+    });
+
+    upsertVisualFromPage(pageId, cfg.ranking.navigatorId, "d4f6a8c0b3e57921f234", "e4f886c778183b7d6274", (visual) => {
+      visual.position = {
+        x: 235.76642335766422,
+        y: 440.1459854014598,
+        z: 20000,
+        height: 21.8978102189781,
+        width: 191.970802919708,
+        tabOrder: 17000,
+      };
+      delete visual.parentGroupName;
+      delete visual.isHidden;
+    });
+
+    setBarChartBinding(
+      pageId,
+      cfg.ranking.chartId,
+      cfg.entityColumn,
+      { entity: "Measure", property: "Valor Arbitrado Base", displayName: "Valor Arbitrado Base", sortProperty: "ValorArbitrado" },
+      cfg.ranking.topN
+    );
+    setBarChartBinding(
+      pageId,
+      cfg.ranking.altChartId,
+      cfg.entityColumn,
+      { entity: "Measure", property: "Qtd Perícias Base", displayName: "Qtd Perícias Base", sortProperty: "NumeroPericia", aggFunction: 5 },
+      cfg.ranking.topN
+    );
+    setTextLabel(pageId, cfg.ranking.titleId, cfg.ranking.titles.valor.title);
+    setTextLabel(pageId, cfg.ranking.subtitleId, cfg.ranking.titles.valor.subtitle);
+    setTextLabel(pageId, cfg.ranking.altTitleId, cfg.ranking.titles.qtd.title);
+    setTextLabel(pageId, cfg.ranking.altSubtitleId, cfg.ranking.titles.qtd.subtitle);
+    setHidden(pageId, cfg.ranking.groupId, false);
+    setHidden(pageId, cfg.ranking.altGroupId, true);
+    setHidden(pageId, cfg.ranking.headerGroupId, false);
+    setHidden(pageId, cfg.ranking.altHeaderGroupId, true);
+
+    writeMinimalGroupBookmark({
+      bookmarkId: cfg.ranking.bookmarks.valor.id,
+      displayName: cfg.ranking.bookmarks.valor.displayName,
+      pageId,
+      targetVisualNames: [
+        cfg.ranking.groupId,
+        cfg.ranking.altGroupId,
+        cfg.ranking.headerGroupId,
+        cfg.ranking.altHeaderGroupId,
+      ],
+      hiddenStates: {
+        [cfg.ranking.groupId]: false,
+        [cfg.ranking.altGroupId]: true,
+        [cfg.ranking.headerGroupId]: false,
+        [cfg.ranking.altHeaderGroupId]: true,
+      },
+    });
+    writeMinimalGroupBookmark({
+      bookmarkId: cfg.ranking.bookmarks.qtd.id,
+      displayName: cfg.ranking.bookmarks.qtd.displayName,
+      pageId,
+      targetVisualNames: [
+        cfg.ranking.groupId,
+        cfg.ranking.altGroupId,
+        cfg.ranking.headerGroupId,
+        cfg.ranking.altHeaderGroupId,
+      ],
+      hiddenStates: {
+        [cfg.ranking.groupId]: true,
+        [cfg.ranking.altGroupId]: false,
+        [cfg.ranking.headerGroupId]: true,
+        [cfg.ranking.altHeaderGroupId]: false,
+      },
+    });
+    upsertBookmarkGroup(bookmarks, cfg.ranking.bookmarkGroupId, cfg.ranking.bookmarkGroupDisplayName, [
+      cfg.ranking.bookmarks.valor.id,
+      cfg.ranking.bookmarks.qtd.id,
+    ]);
+
+    const navigator = readJson(visualPath(pageId, cfg.ranking.navigatorId));
+    updateBookmarkSelected(navigator, cfg.ranking.bookmarks.valor.id);
+    navigator.visual.objects.bookmarks[0].properties.bookmarkGroup = {
+      expr: { Literal: { Value: `'${cfg.ranking.bookmarkGroupId}'` } },
+    };
+    writeJson(visualPath(pageId, cfg.ranking.navigatorId), navigator);
+
+    setBarChartBinding(
+      pageId,
+      cfg.operational.chartId,
+      cfg.operational.dimension,
+      { entity: "Measure", property: "Valor Arbitrado Base", displayName: "Valor Arbitrado Base", sortProperty: "ValorArbitrado" },
+      cfg.operational.topN
+    );
+    setTextLabel(pageId, cfg.operational.titleId, cfg.operational.title);
+    setTextLabel(pageId, cfg.operational.subtitleId, cfg.operational.subtitle);
+    setHidden(pageId, cfg.operational.subtitleId, false);
+
+    setTreemapBinding(
+      pageId,
+      cfg.financial.chartId,
+      cfg.financial.dimension,
+      { entity: "Measure", property: "Valor Arbitrado Base", displayName: "Valor Arbitrado Base", sortProperty: "ValorArbitrado" },
+      cfg.financial.topN
+    );
+    setTextLabel(pageId, cfg.financial.titleId, cfg.financial.title);
+    setTextLabel(pageId, cfg.financial.subtitleId, cfg.financial.subtitle);
+
+    createOrUpdateDetailTable(pageId, cfg.detail.visualId, cfg.detail.title, [
+      buildColumnProjection(cfg.entityColumn.entity, cfg.entityColumn.property, cfg.entityColumn.displayName),
+      buildColumnProjection(cfg.secondaryColumn.entity, cfg.secondaryColumn.property, cfg.secondaryColumn.displayName),
+      buildMeasureProjection("Measure", "Qtd Perícias Base", "Qtd Perícias"),
+      buildMeasureProjection("Measure", "Valor Arbitrado Base", "Valor Arbitrado"),
+      buildMeasureProjection("Measure", "Saldo a Receber Base", "Saldo Pendente"),
+      buildMeasureProjection("FactPericias", "Ticket Médio", "Ticket Médio"),
+    ]);
+  }
+
+  writeJson(BOOKMARKS_PATH, bookmarks);
+}
+
 function main() {
   stabilizeBookmarkGroups();
   fixChartTypeTogglePages();
@@ -1592,6 +2956,10 @@ function main() {
   fixCruzamentosOverlap();
   cleanTrendLowerRow();
   hideTitleOverlays();
+  extendEntityPages();
+  configureOverviewSummary();
+  configureComarcasBlueprint();
+  configureEntityAnalysisPages();
   console.log("Layout estabilizado: grupos de bookmark recriados e overlays ocultados.");
 }
 

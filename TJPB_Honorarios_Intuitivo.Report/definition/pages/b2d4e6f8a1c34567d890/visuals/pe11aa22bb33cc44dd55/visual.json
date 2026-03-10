@@ -10,114 +10,25 @@
     "tabOrder": 0
   },
   "visual": {
-    "visualType": "lineChart",
+    "visualType": "clusteredBarChart",
     "query": {
       "queryState": {
         "Category": {
           "projections": [
             {
               "field": {
-                "HierarchyLevel": {
+                "Column": {
                   "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "Date"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "DateMonth"
-                        }
-                      },
-                      "Hierarchy": "Date Hierarchy"
+                    "SourceRef": {
+                      "Entity": "FactPericias"
                     }
                   },
-                  "Level": "Year"
+                  "Property": "ComarcaExibicao"
                 }
               },
-              "queryRef": "Date.DateMonth.Variation.Date Hierarchy.Year",
-              "nativeQueryRef": "DateMonth Year",
-              "active": true
-            },
-            {
-              "field": {
-                "HierarchyLevel": {
-                  "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "Date"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "DateMonth"
-                        }
-                      },
-                      "Hierarchy": "Date Hierarchy"
-                    }
-                  },
-                  "Level": "Quarter"
-                }
-              },
-              "queryRef": "Date.DateMonth.Variation.Date Hierarchy.Quarter",
-              "nativeQueryRef": "DateMonth Quarter",
-              "active": true
-            },
-            {
-              "field": {
-                "HierarchyLevel": {
-                  "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "Date"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "DateMonth"
-                        }
-                      },
-                      "Hierarchy": "Date Hierarchy"
-                    }
-                  },
-                  "Level": "Month"
-                }
-              },
-              "queryRef": "Date.DateMonth.Variation.Date Hierarchy.Month",
-              "nativeQueryRef": "DateMonth Month",
-              "active": true
-            },
-            {
-              "field": {
-                "HierarchyLevel": {
-                  "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "Date"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "DateMonth"
-                        }
-                      },
-                      "Hierarchy": "Date Hierarchy"
-                    }
-                  },
-                  "Level": "Day"
-                }
-              },
-              "queryRef": "Date.DateMonth.Variation.Date Hierarchy.Day",
-              "nativeQueryRef": "DateMonth Day",
-              "active": true
+              "queryRef": "FactPericias.ComarcaExibicao",
+              "nativeQueryRef": "ComarcaExibicao",
+              "displayName": "Comarca"
             }
           ]
         },
@@ -128,81 +39,38 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "FactPericias"
+                      "Entity": "Measure"
                     }
                   },
-                  "Property": "Valor Médio por Perícia"
+                  "Property": "Valor Arbitrado Base"
                 }
               },
-              "queryRef": "FactPericias.Valor Médio por Perícia",
-              "nativeQueryRef": "Valor Médio por Perícia"
+              "queryRef": "Measure.Valor Arbitrado Base",
+              "nativeQueryRef": "Valor Arbitrado Base",
+              "displayName": "Valor Arbitrado Base"
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Measure"
+                  }
+                },
+                "Property": "Valor Arbitrado Base"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
       }
     },
     "objects": {
-      "labels": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "valueAxis": [
-        {
-          "properties": {
-            "start": {
-              "expr": {
-                "Literal": {
-                  "Value": "0D"
-                }
-              }
-            },
-            "labelDisplayUnits": {
-              "expr": {
-                "Literal": {
-                  "Value": "1000D"
-                }
-              }
-            },
-            "showAxisTitle": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "8D"
-                }
-              }
-            },
-            "italic": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "fontFamily": {
-              "expr": {
-                "Literal": {
-                  "Value": "'wf_standard-font_light, helvetica, arial, sans-serif'"
-                }
-              }
-            }
-          }
-        }
-      ],
       "dataPoint": [
         {
           "properties": {
@@ -220,6 +88,26 @@
           }
         }
       ],
+      "valueAxis": [
+        {
+          "properties": {
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1000D"
+                }
+              }
+            }
+          }
+        }
+      ],
       "categoryAxis": [
         {
           "properties": {
@@ -230,27 +118,41 @@
                 }
               }
             },
-            "fontFamily": {
+            "innerPadding": {
               "expr": {
                 "Literal": {
-                  "Value": "'wf_standard-font_light, helvetica, arial, sans-serif'"
+                  "Value": "36L"
                 }
               }
             },
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "8D"
+                  "Value": "9D"
                 }
               }
             }
           }
         }
       ],
-      "zoom": [
+      "labels": [
         {
           "properties": {
             "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "labelPosition": {
+              "expr": {
+                "Literal": {
+                  "Value": "'InsideEnd'"
+                }
+              }
+            },
+            "optimizeLabelDisplay": {
               "expr": {
                 "Literal": {
                   "Value": "false"
@@ -311,5 +213,110 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "acee2d020bb8c1c4903b"
+  "parentGroupName": "acee2d020bb8c1c4903b",
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "FactPericias-ComarcaExibicao-10",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "FactPericias"
+              }
+            },
+            "Property": "ComarcaExibicao"
+          }
+        },
+        "type": "TopN",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "subquery",
+              "Expression": {
+                "Subquery": {
+                  "Query": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "f",
+                        "Entity": "FactPericias",
+                        "Type": 0
+                      }
+                    ],
+                    "Select": [
+                      {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Source": "f"
+                            }
+                          },
+                          "Property": "ComarcaExibicao"
+                        },
+                        "Name": "field"
+                      }
+                    ],
+                    "OrderBy": [
+                      {
+                        "Direction": 2,
+                        "Expression": {
+                          "Aggregation": {
+                            "Expression": {
+                              "Column": {
+                                "Expression": {
+                                  "SourceRef": {
+                                    "Source": "f"
+                                  }
+                                },
+                                "Property": "ValorArbitrado"
+                              }
+                            },
+                            "Function": 0
+                          }
+                        }
+                      }
+                    ],
+                    "Top": 10
+                  }
+                }
+              },
+              "Type": 2
+            },
+            {
+              "Name": "f",
+              "Entity": "FactPericias",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "f"
+                          }
+                        },
+                        "Property": "ComarcaExibicao"
+                      }
+                    }
+                  ],
+                  "Table": {
+                    "SourceRef": {
+                      "Source": "subquery"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
 }

@@ -20,15 +20,15 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "DimEspecialidades"
+                      "Entity": "FactPericias"
                     }
                   },
-                  "Property": "Especialidade"
+                  "Property": "ComarcaExibicao"
                 }
               },
-              "queryRef": "DimEspecialidades.Especialidade",
-              "nativeQueryRef": "Especialidade",
-              "active": true
+              "queryRef": "FactPericias.ComarcaExibicao",
+              "nativeQueryRef": "ComarcaExibicao",
+              "displayName": "Comarca"
             }
           ]
         },
@@ -42,11 +42,12 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "Valor Arbitrado Base"
+                  "Property": "Qtd Perícias Base"
                 }
               },
-              "queryRef": "Measure.Valor Arbitrado Base",
-              "nativeQueryRef": "Valor Arbitrado Base"
+              "queryRef": "Measure.Qtd Perícias Base",
+              "nativeQueryRef": "Qtd Perícias Base",
+              "displayName": "Qtd Perícias Base"
             }
           ]
         }
@@ -61,13 +62,12 @@
                     "Entity": "Measure"
                   }
                 },
-                "Property": "Valor Arbitrado Base"
+                "Property": "Qtd Perícias Base"
               }
             },
             "direction": "Descending"
           }
-        ],
-        "isDefaultSort": true
+        ]
       }
     },
     "objects": {
@@ -97,6 +97,13 @@
                   "Value": "false"
                 }
               }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1000D"
+                }
+              }
             }
           }
         }
@@ -115,6 +122,13 @@
               "expr": {
                 "Literal": {
                   "Value": "36L"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
                 }
               }
             }
@@ -145,32 +159,6 @@
                 }
               }
             }
-          }
-        },
-        {
-          "properties": {
-            "dynamicLabelValue": {
-              "expr": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Measure"
-                    }
-                  },
-                  "Property": "Rótulo Barra Vara Valor %"
-                }
-              }
-            }
-          },
-          "selector": {
-            "data": [
-              {
-                "dataViewWildcard": {
-                  "matchingOption": 1
-                }
-              }
-            ],
-            "highlightMatching": 1
           }
         }
       ]
@@ -205,5 +193,110 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "b76ef7c0bcd3318585d6"
+  "parentGroupName": "b76ef7c0bcd3318585d6",
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "FactPericias-ComarcaExibicao-10",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "FactPericias"
+              }
+            },
+            "Property": "ComarcaExibicao"
+          }
+        },
+        "type": "TopN",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "subquery",
+              "Expression": {
+                "Subquery": {
+                  "Query": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "f",
+                        "Entity": "FactPericias",
+                        "Type": 0
+                      }
+                    ],
+                    "Select": [
+                      {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Source": "f"
+                            }
+                          },
+                          "Property": "ComarcaExibicao"
+                        },
+                        "Name": "field"
+                      }
+                    ],
+                    "OrderBy": [
+                      {
+                        "Direction": 2,
+                        "Expression": {
+                          "Aggregation": {
+                            "Expression": {
+                              "Column": {
+                                "Expression": {
+                                  "SourceRef": {
+                                    "Source": "f"
+                                  }
+                                },
+                                "Property": "NumeroPericia"
+                              }
+                            },
+                            "Function": 5
+                          }
+                        }
+                      }
+                    ],
+                    "Top": 10
+                  }
+                }
+              },
+              "Type": 2
+            },
+            {
+              "Name": "f",
+              "Entity": "FactPericias",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "f"
+                          }
+                        },
+                        "Property": "ComarcaExibicao"
+                      }
+                    }
+                  ],
+                  "Table": {
+                    "SourceRef": {
+                      "Source": "subquery"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
 }

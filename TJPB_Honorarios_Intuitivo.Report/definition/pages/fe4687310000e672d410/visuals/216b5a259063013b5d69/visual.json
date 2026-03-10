@@ -12,5 +12,6 @@
   "visualGroup": {
     "displayName": "CATEGORY",
     "groupMode": "ScaleMode"
-  }
+  },
+  "isHidden": false
 }

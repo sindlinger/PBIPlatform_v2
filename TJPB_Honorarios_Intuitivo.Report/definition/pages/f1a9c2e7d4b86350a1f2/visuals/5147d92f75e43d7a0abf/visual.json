@@ -12,5 +12,6 @@
   "visualGroup": {
     "displayName": "PRODUCT",
     "groupMode": "ScaleMode"
-  }
+  },
+  "isHidden": false
 }

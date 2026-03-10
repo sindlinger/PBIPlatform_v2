@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.0.0/schema.json",
+  "displayName": "Perícias",
+  "name": "especialidades-ranking-qtd",
+  "options": {
+    "applyOnlyToTargetVisuals": true,
+    "targetVisualNames": [
+      "5147d92f75e43d7a0abf",
+      "5147d92f75e43d7a0abi",
+      "56522877312f663a7d8b",
+      "56522877312f663a7d8e"
+    ],
+    "suppressData": true
+  },
+  "explorationState": {
+    "version": "1.0",
+    "activeSection": "c3e5f7a9b2d46810e123",
+    "sections": {
+      "c3e5f7a9b2d46810e123": {
+        "visualContainers": {},
+        "visualContainerGroups": {
+          "5147d92f75e43d7a0abf": {
+            "isHidden": true
+          },
+          "5147d92f75e43d7a0abi": {
+            "isHidden": false
+          },
+          "56522877312f663a7d8b": {
+            "isHidden": true
+          },
+          "56522877312f663a7d8e": {
+            "isHidden": false
+          }
+        }
+      }
+    }
+  }
+}

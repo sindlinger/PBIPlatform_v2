@@ -20,15 +20,15 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "DimEspecialidades"
+                      "Entity": "FactPericias"
                     }
                   },
-                  "Property": "Especialidade"
+                  "Property": "JuizoExibicao"
                 }
               },
-              "queryRef": "DimEspecialidades.Especialidade",
-              "nativeQueryRef": "Especialidade",
-              "active": true
+              "queryRef": "FactPericias.JuizoExibicao",
+              "nativeQueryRef": "JuizoExibicao",
+              "displayName": "Vara"
             }
           ]
         },
@@ -46,7 +46,8 @@
                 }
               },
               "queryRef": "Measure.Valor Arbitrado Base",
-              "nativeQueryRef": "Valor Arbitrado Base"
+              "nativeQueryRef": "Valor Arbitrado Base",
+              "displayName": "Valor Arbitrado Base"
             }
           ]
         }
@@ -66,8 +67,7 @@
             },
             "direction": "Descending"
           }
-        ],
-        "isDefaultSort": true
+        ]
       }
     },
     "objects": {
@@ -97,6 +97,13 @@
                   "Value": "false"
                 }
               }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1000D"
+                }
+              }
             }
           }
         }
@@ -115,6 +122,13 @@
               "expr": {
                 "Literal": {
                   "Value": "36L"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
                 }
               }
             }
@@ -145,32 +159,6 @@
                 }
               }
             }
-          }
-        },
-        {
-          "properties": {
-            "dynamicLabelValue": {
-              "expr": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Measure"
-                    }
-                  },
-                  "Property": "Rótulo Barra Vara Valor %"
-                }
-              }
-            }
-          },
-          "selector": {
-            "data": [
-              {
-                "dataViewWildcard": {
-                  "matchingOption": 1
-                }
-              }
-            ],
-            "highlightMatching": 1
           }
         }
       ]
@@ -205,5 +193,110 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "b76ef7c0bcd3318585d6"
+  "parentGroupName": "b76ef7c0bcd3318585d6",
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "FactPericias-JuizoExibicao-5",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "FactPericias"
+              }
+            },
+            "Property": "JuizoExibicao"
+          }
+        },
+        "type": "TopN",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "subquery",
+              "Expression": {
+                "Subquery": {
+                  "Query": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "f",
+                        "Entity": "FactPericias",
+                        "Type": 0
+                      }
+                    ],
+                    "Select": [
+                      {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Source": "f"
+                            }
+                          },
+                          "Property": "JuizoExibicao"
+                        },
+                        "Name": "field"
+                      }
+                    ],
+                    "OrderBy": [
+                      {
+                        "Direction": 2,
+                        "Expression": {
+                          "Aggregation": {
+                            "Expression": {
+                              "Column": {
+                                "Expression": {
+                                  "SourceRef": {
+                                    "Source": "f"
+                                  }
+                                },
+                                "Property": "ValorArbitrado"
+                              }
+                            },
+                            "Function": 0
+                          }
+                        }
+                      }
+                    ],
+                    "Top": 5
+                  }
+                }
+              },
+              "Type": 2
+            },
+            {
+              "Name": "f",
+              "Entity": "FactPericias",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "f"
+                          }
+                        },
+                        "Property": "JuizoExibicao"
+                      }
+                    }
+                  ],
+                  "Table": {
+                    "SourceRef": {
+                      "Source": "subquery"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
 }

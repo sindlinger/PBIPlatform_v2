@@ -164,6 +164,62 @@
         "d4f6comarcas-right-specialty",
         "d4f6comarcas-right-range"
       ]
+    },
+    {
+      "displayName": "Resumo Overview Left",
+      "name": "overview-summary-left-toggle",
+      "children": [
+        "overview-left-comarcas",
+        "overview-left-varas"
+      ]
+    },
+    {
+      "displayName": "Resumo Overview Right",
+      "name": "overview-summary-right-toggle",
+      "children": [
+        "overview-right-peritos",
+        "overview-right-especialidades"
+      ]
+    },
+    {
+      "displayName": "Comarcas Ranking",
+      "name": "d4f6-comarcas-ranking",
+      "children": [
+        "d4f6-comarcas-ranking-valor",
+        "d4f6-comarcas-ranking-qtd"
+      ]
+    },
+    {
+      "displayName": "Comarcas Cruzamentos",
+      "name": "d4f6-comarcas-crossover",
+      "children": [
+        "d4f6-comarcas-crossover-peritos",
+        "d4f6-comarcas-crossover-especialidades"
+      ]
+    },
+    {
+      "displayName": "Ranking Varas",
+      "name": "varas-ranking-toggle",
+      "children": [
+        "varas-ranking-valor",
+        "varas-ranking-qtd"
+      ]
+    },
+    {
+      "displayName": "Ranking Peritos",
+      "name": "peritos-ranking-toggle",
+      "children": [
+        "peritos-ranking-valor",
+        "peritos-ranking-qtd"
+      ]
+    },
+    {
+      "displayName": "Ranking Especialidades",
+      "name": "especialidades-ranking-toggle",
+      "children": [
+        "especialidades-ranking-valor",
+        "especialidades-ranking-qtd"
+      ]
     }
   ]
 }

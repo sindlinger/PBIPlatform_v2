@@ -20,15 +20,15 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "DimPeritos"
+                      "Entity": "FactPericias"
                     }
                   },
-                  "Property": "PeritoLabel"
+                  "Property": "PeritoNomeExibicao"
                 }
               },
-              "queryRef": "DimPeritos.PeritoLabel",
-              "nativeQueryRef": "PeritoLabel",
-              "active": true
+              "queryRef": "FactPericias.PeritoNomeExibicao",
+              "nativeQueryRef": "PeritoNomeExibicao",
+              "displayName": "Perito"
             }
           ]
         },
@@ -46,7 +46,8 @@
                 }
               },
               "queryRef": "Measure.Valor Arbitrado Base",
-              "nativeQueryRef": "Valor Arbitrado Base"
+              "nativeQueryRef": "Valor Arbitrado Base",
+              "displayName": "Valor Arbitrado Base"
             }
           ]
         }
@@ -66,27 +67,11 @@
             },
             "direction": "Descending"
           }
-        ],
-        "isDefaultSort": true
+        ]
       }
     },
     "objects": {
       "dataPoint": [
-        {
-          "properties": {
-            "fill": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#7984EE'"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
         {
           "properties": {
             "fill": {
@@ -100,155 +85,6 @@
                 }
               }
             }
-          },
-          "selector": {
-            "data": [
-              {
-                "scopeId": {
-                  "Comparison": {
-                    "ComparisonKind": 0,
-                    "Left": {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "DimPeritos"
-                          }
-                        },
-                        "Property": "PeritoLabel"
-                      }
-                    },
-                    "Right": {
-                      "Literal": {
-                        "Value": "'Standard Class'"
-                      }
-                    }
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
-          "properties": {
-            "fill": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#2196F3'"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "data": [
-              {
-                "scopeId": {
-                  "Comparison": {
-                    "ComparisonKind": 0,
-                    "Left": {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "DimPeritos"
-                          }
-                        },
-                        "Property": "PeritoLabel"
-                      }
-                    },
-                    "Right": {
-                      "Literal": {
-                        "Value": "'Second Class'"
-                      }
-                    }
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
-          "properties": {
-            "fill": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#ABC4FF'"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "data": [
-              {
-                "scopeId": {
-                  "Comparison": {
-                    "ComparisonKind": 0,
-                    "Left": {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "DimPeritos"
-                          }
-                        },
-                        "Property": "PeritoLabel"
-                      }
-                    },
-                    "Right": {
-                      "Literal": {
-                        "Value": "'First Class'"
-                      }
-                    }
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
-          "properties": {
-            "fill": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#E2EAFC'"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "data": [
-              {
-                "scopeId": {
-                  "Comparison": {
-                    "ComparisonKind": 0,
-                    "Left": {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "DimPeritos"
-                          }
-                        },
-                        "Property": "PeritoLabel"
-                      }
-                    },
-                    "Right": {
-                      "Literal": {
-                        "Value": "'Same Day'"
-                      }
-                    }
-                  }
-                }
-              }
-            ]
           }
         }
       ],
@@ -261,20 +97,14 @@
                   "Value": "true"
                 }
               }
-            }
-          }
-        },
-        {
-          "properties": {},
-          "selector": {
-            "data": [
-              {
-                "dataViewWildcard": {
-                  "matchingOption": 1
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
                 }
               }
-            ],
-            "highlightMatching": 1
+            }
           }
         }
       ]
@@ -296,5 +126,110 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "1c1410e9e295d87af163"
+  "parentGroupName": "1c1410e9e295d87af163",
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "FactPericias-PeritoNomeExibicao-10",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "FactPericias"
+              }
+            },
+            "Property": "PeritoNomeExibicao"
+          }
+        },
+        "type": "TopN",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "subquery",
+              "Expression": {
+                "Subquery": {
+                  "Query": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "f",
+                        "Entity": "FactPericias",
+                        "Type": 0
+                      }
+                    ],
+                    "Select": [
+                      {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Source": "f"
+                            }
+                          },
+                          "Property": "PeritoNomeExibicao"
+                        },
+                        "Name": "field"
+                      }
+                    ],
+                    "OrderBy": [
+                      {
+                        "Direction": 2,
+                        "Expression": {
+                          "Aggregation": {
+                            "Expression": {
+                              "Column": {
+                                "Expression": {
+                                  "SourceRef": {
+                                    "Source": "f"
+                                  }
+                                },
+                                "Property": "ValorArbitrado"
+                              }
+                            },
+                            "Function": 0
+                          }
+                        }
+                      }
+                    ],
+                    "Top": 10
+                  }
+                }
+              },
+              "Type": 2
+            },
+            {
+              "Name": "f",
+              "Entity": "FactPericias",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "f"
+                          }
+                        },
+                        "Property": "PeritoNomeExibicao"
+                      }
+                    }
+                  ],
+                  "Table": {
+                    "SourceRef": {
+                      "Source": "subquery"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
 }

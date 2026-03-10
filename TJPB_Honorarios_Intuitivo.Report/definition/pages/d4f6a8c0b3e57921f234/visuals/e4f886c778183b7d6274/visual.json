@@ -18,14 +18,14 @@
             "selectedBookmark": {
               "expr": {
                 "Literal": {
-                  "Value": "'d4f6comarcas-left-category'"
+                  "Value": "'d4f6-comarcas-ranking-valor'"
                 }
               }
             },
             "bookmarkGroup": {
               "expr": {
                 "Literal": {
-                  "Value": "'d4f6comarcas-left-toggle'"
+                  "Value": "'d4f6-comarcas-ranking'"
                 }
               }
             },
