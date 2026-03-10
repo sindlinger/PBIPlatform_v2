@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Distribuição por Faixa de Valor",
+                    "value": "Comarcas associadas por Valor",
                     "textStyle": {
                       "fontFamily": "DIN",
                       "fontSize": "10pt"
