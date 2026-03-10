@@ -1,0 +1,4 @@
+municipio,opcoes,escolha,regra
+Matinhas,Comarca de Alagoa Nova; Comarca de Alagoinha,Comarca de Alagoa Nova,regra_loj
+Sossêgo,Comarca de Cuité; Comarca de Soledade,Comarca de Soledade,regra_loj_desinstalacao_cubati
+Água Branca,Comarca Integrada de Princesa Isabel e Água Branca; Comarca de Água Branca,Comarca Integrada de Princesa Isabel e Água Branca,integrada_precedencia
