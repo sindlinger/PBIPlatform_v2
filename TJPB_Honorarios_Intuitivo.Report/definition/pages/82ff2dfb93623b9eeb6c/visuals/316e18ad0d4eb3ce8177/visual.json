@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "316e18ad0d4eb3ce8177",
   "position": {
-    "x": 15.906234554825955,
-    "y": 146.04815363976559,
+    "x": 14,
+    "y": 52,
     "z": 2000,
-    "height": 203.88900656640544,
-    "width": 284.86620066370119,
+    "height": 182,
+    "width": 288,
     "tabOrder": 9992000
   },
   "visual": {
@@ -20,15 +20,15 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Orders"
+                      "Entity": "DimPeritos"
                     }
                   },
-                  "Property": "Sub-Category"
+                  "Property": "PeritoCurto"
                 }
               },
-              "queryRef": "Orders.Sub-Category",
-              "nativeQueryRef": "Sub-Category",
-              "active": true
+              "queryRef": "DimPeritos.PeritoCurto",
+              "nativeQueryRef": "PeritoCurto",
+              "displayName": "Perito"
             }
           ]
         },
@@ -42,11 +42,12 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "Qtd Retornos"
+                  "Property": "Valor Arbitrado Base"
                 }
               },
-              "queryRef": "Measure.Qtd Retornos",
-              "nativeQueryRef": "Qtd Retornos"
+              "queryRef": "Measure.Valor Arbitrado Base",
+              "nativeQueryRef": "Valor Arbitrado Base",
+              "displayName": "Valor Arbitrado Base"
             }
           ]
         }
@@ -61,7 +62,7 @@
                     "Entity": "Measure"
                   }
                 },
-                "Property": "Qtd Retornos"
+                "Property": "Valor Arbitrado Base"
               }
             },
             "direction": "Descending"
@@ -94,6 +95,13 @@
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1000D"
                 }
               }
             }
@@ -152,32 +160,6 @@
               }
             }
           }
-        },
-        {
-          "properties": {
-            "dynamicLabelValue": {
-              "expr": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Measure"
-                    }
-                  },
-                  "Property": "Rótulo Categoria Retorno %"
-                }
-              }
-            }
-          },
-          "selector": {
-            "data": [
-              {
-                "dataViewWildcard": {
-                  "matchingOption": 1
-                }
-              }
-            ],
-            "highlightMatching": 1
-          }
         }
       ]
     },
@@ -211,5 +193,110 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "66f8a48cf31c935a5b46"
+  "parentGroupName": "66f8a48cf31c935a5b46",
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "DimPeritos-PeritoCurto-10",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DimPeritos"
+              }
+            },
+            "Property": "PeritoCurto"
+          }
+        },
+        "type": "TopN",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "subquery",
+              "Expression": {
+                "Subquery": {
+                  "Query": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "d",
+                        "Entity": "DimPeritos",
+                        "Type": 0
+                      },
+                      {
+                        "Name": "m",
+                        "Entity": "Measure",
+                        "Type": 0
+                      }
+                    ],
+                    "Select": [
+                      {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Source": "d"
+                            }
+                          },
+                          "Property": "PeritoCurto"
+                        },
+                        "Name": "field"
+                      }
+                    ],
+                    "OrderBy": [
+                      {
+                        "Direction": 2,
+                        "Expression": {
+                          "Measure": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "m"
+                              }
+                            },
+                            "Property": "Valor Arbitrado Base"
+                          }
+                        }
+                      }
+                    ],
+                    "Top": 10
+                  }
+                }
+              },
+              "Type": 2
+            },
+            {
+              "Name": "d",
+              "Entity": "DimPeritos",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "d"
+                          }
+                        },
+                        "Property": "PeritoCurto"
+                      }
+                    }
+                  ],
+                  "Table": {
+                    "SourceRef": {
+                      "Source": "subquery"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
 }

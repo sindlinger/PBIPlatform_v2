@@ -9,6 +9,13 @@ table DimComarcas
 
 		annotation SummarizationSetBy = Automatic
 
+	column ComarcaCurta = [Comarca]
+		dataType: string
+		lineageTag: 8d52f36c-61d1-4e55-b95a-7f402530b4e1
+		summarizeBy: none
+
+		annotation SummarizationSetBy = User
+
 	column UF = "PB"
 		dataType: string
 		lineageTag: 4d4a8d49-1583-4c5f-8628-4da5389f29bc

@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "228ebdbd38ce5bbddfd6",
   "position": {
-    "x": 16.47881283406792,
+    "x": 16,
     "y": 0,
     "z": 6000,
-    "height": 42.538735992227679,
-    "width": 215.43811454128212,
+    "height": 36,
+    "width": 240,
     "tabOrder": 2000
   },
   "visual": {
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Top Employees",
+                    "value": "Top 10 Especialidades por Valor",
                     "textStyle": {
                       "fontFamily": "DIN",
                       "fontSize": "12pt",

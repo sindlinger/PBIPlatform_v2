@@ -20,15 +20,15 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Orders"
+                      "Entity": "DimPeritos"
                     }
                   },
-                  "Property": "Product Name"
+                  "Property": "PeritoCurto"
                 }
               },
-              "queryRef": "Orders.Product Name",
-              "nativeQueryRef": "Product Name",
-              "active": true
+              "queryRef": "DimPeritos.PeritoCurto",
+              "nativeQueryRef": "PeritoCurto",
+              "displayName": "Perito"
             }
           ]
         },
@@ -46,7 +46,8 @@
                 }
               },
               "queryRef": "Measure.Valor Arbitrado Base",
-              "nativeQueryRef": "Valor Arbitrado Base"
+              "nativeQueryRef": "Valor Arbitrado Base",
+              "displayName": "Valor Arbitrado Base"
             }
           ]
         }
@@ -66,8 +67,7 @@
             },
             "direction": "Descending"
           }
-        ],
-        "isDefaultSort": true
+        ]
       }
     },
     "objects": {
@@ -97,6 +97,13 @@
                   "Value": "false"
                 }
               }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1000D"
+                }
+              }
             }
           }
         }
@@ -115,6 +122,13 @@
               "expr": {
                 "Literal": {
                   "Value": "36L"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
                 }
               }
             }
@@ -146,32 +160,6 @@
               }
             }
           }
-        },
-        {
-          "properties": {
-            "dynamicLabelValue": {
-              "expr": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Measure"
-                    }
-                  },
-                  "Property": "Rótulo Barra Vara Valor %"
-                }
-              }
-            }
-          },
-          "selector": {
-            "data": [
-              {
-                "dataViewWildcard": {
-                  "matchingOption": 1
-                }
-              }
-            ],
-            "highlightMatching": 1
-          }
         }
       ]
     },
@@ -196,15 +184,15 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "05ce4ac663189c7d2097",
+        "name": "DimPeritos-PeritoCurto-5",
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "Orders"
+                "Entity": "DimPeritos"
               }
             },
-            "Property": "Product Name"
+            "Property": "PeritoCurto"
           }
         },
         "type": "TopN",
@@ -219,8 +207,13 @@
                     "Version": 2,
                     "From": [
                       {
-                        "Name": "o",
-                        "Entity": "Orders",
+                        "Name": "d",
+                        "Entity": "DimPeritos",
+                        "Type": 0
+                      },
+                      {
+                        "Name": "m",
+                        "Entity": "Measure",
                         "Type": 0
                       }
                     ],
@@ -229,10 +222,10 @@
                         "Column": {
                           "Expression": {
                             "SourceRef": {
-                              "Source": "o"
+                              "Source": "d"
                             }
                           },
-                          "Property": "Product Name"
+                          "Property": "PeritoCurto"
                         },
                         "Name": "field"
                       }
@@ -241,18 +234,13 @@
                       {
                         "Direction": 2,
                         "Expression": {
-                          "Aggregation": {
+                          "Measure": {
                             "Expression": {
-                              "Column": {
-                                "Expression": {
-                                  "SourceRef": {
-                                    "Source": "o"
-                                  }
-                                },
-                                "Property": "Sales"
+                              "SourceRef": {
+                                "Source": "m"
                               }
                             },
-                            "Function": 0
+                            "Property": "Valor Arbitrado Base"
                           }
                         }
                       }
@@ -264,8 +252,8 @@
               "Type": 2
             },
             {
-              "Name": "o",
-              "Entity": "Orders",
+              "Name": "d",
+              "Entity": "DimPeritos",
               "Type": 0
             }
           ],
@@ -278,10 +266,10 @@
                       "Column": {
                         "Expression": {
                           "SourceRef": {
-                            "Source": "o"
+                            "Source": "d"
                           }
                         },
-                        "Property": "Product Name"
+                        "Property": "PeritoCurto"
                       }
                     }
                   ],
@@ -297,6 +285,5 @@
         }
       }
     ]
-  },
-  "isHidden": true
+  }
 }

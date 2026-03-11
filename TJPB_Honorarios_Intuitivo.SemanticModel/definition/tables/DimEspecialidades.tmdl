@@ -9,6 +9,18 @@ table DimEspecialidades
 
 		annotation SummarizationSetBy = Automatic
 
+	column EspecialidadeCurta =
+			IF(
+			    LEN([Especialidade]) <= 26,
+			    [Especialidade],
+			    LEFT([Especialidade], 23) & "..."
+			)
+		dataType: string
+		lineageTag: f3a68b50-4f1c-4be9-b7f6-2f4bd8a6886b
+		summarizeBy: none
+
+		annotation SummarizationSetBy = User
+
 	partition DimEspecialidades = m
 		mode: import
 		source =

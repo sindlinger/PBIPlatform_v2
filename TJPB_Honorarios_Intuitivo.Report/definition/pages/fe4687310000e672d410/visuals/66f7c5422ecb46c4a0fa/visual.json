@@ -175,8 +175,7 @@
           }
         }
       ]
-    },
-    "drillFilterOtherVisuals": true
+    }
   },
   "isHidden": true
 }

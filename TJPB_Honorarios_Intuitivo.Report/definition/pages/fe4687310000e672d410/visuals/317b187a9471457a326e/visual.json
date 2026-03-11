@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "FactPericias"
+                      "Entity": "DimVaras"
                     }
                   },
-                  "Property": "JuizoExibicao"
+                  "Property": "JuizoCurto"
                 }
               },
-              "queryRef": "FactPericias.JuizoExibicao",
-              "nativeQueryRef": "JuizoExibicao",
+              "queryRef": "DimVaras.JuizoCurto",
+              "nativeQueryRef": "JuizoCurto",
               "displayName": "Vara"
             }
           ]
@@ -204,15 +204,15 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "FactPericias-JuizoExibicao-5",
+        "name": "DimVaras-JuizoCurto-5",
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "FactPericias"
+                "Entity": "DimVaras"
               }
             },
-            "Property": "JuizoExibicao"
+            "Property": "JuizoCurto"
           }
         },
         "type": "TopN",
@@ -227,8 +227,13 @@
                     "Version": 2,
                     "From": [
                       {
-                        "Name": "f",
-                        "Entity": "FactPericias",
+                        "Name": "d",
+                        "Entity": "DimVaras",
+                        "Type": 0
+                      },
+                      {
+                        "Name": "m",
+                        "Entity": "Measure",
                         "Type": 0
                       }
                     ],
@@ -237,10 +242,10 @@
                         "Column": {
                           "Expression": {
                             "SourceRef": {
-                              "Source": "f"
+                              "Source": "d"
                             }
                           },
-                          "Property": "JuizoExibicao"
+                          "Property": "JuizoCurto"
                         },
                         "Name": "field"
                       }
@@ -249,18 +254,13 @@
                       {
                         "Direction": 2,
                         "Expression": {
-                          "Aggregation": {
+                          "Measure": {
                             "Expression": {
-                              "Column": {
-                                "Expression": {
-                                  "SourceRef": {
-                                    "Source": "f"
-                                  }
-                                },
-                                "Property": "ValorArbitrado"
+                              "SourceRef": {
+                                "Source": "m"
                               }
                             },
-                            "Function": 0
+                            "Property": "Valor Arbitrado Base"
                           }
                         }
                       }
@@ -272,8 +272,8 @@
               "Type": 2
             },
             {
-              "Name": "f",
-              "Entity": "FactPericias",
+              "Name": "d",
+              "Entity": "DimVaras",
               "Type": 0
             }
           ],
@@ -286,10 +286,10 @@
                       "Column": {
                         "Expression": {
                           "SourceRef": {
-                            "Source": "f"
+                            "Source": "d"
                           }
                         },
-                        "Property": "JuizoExibicao"
+                        "Property": "JuizoCurto"
                       }
                     }
                   ],

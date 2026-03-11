@@ -36,6 +36,18 @@ table DimPeritos
 
 		annotation SummarizationSetBy = Automatic
 
+	column PeritoCurto =
+			IF(
+			    LEN([PeritoNomeExibicao]) <= 24,
+			    [PeritoNomeExibicao],
+			    LEFT([PeritoNomeExibicao], 21) & "..."
+			)
+		dataType: string
+		lineageTag: 4af784c5-d18d-4f2d-90d2-b699f2c74087
+		summarizeBy: none
+
+		annotation SummarizationSetBy = User
+
 	partition DimPeritos = m
 		mode: import
 		source =

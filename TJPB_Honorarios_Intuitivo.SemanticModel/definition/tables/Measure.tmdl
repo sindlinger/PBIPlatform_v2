@@ -598,19 +598,19 @@ table Measure
 		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: 4961d0a4-f0aa-4308-aee5-c410f83131ad
 
-	measure 'Peritos no Contexto' = DISTINCTCOUNT(Orders.'Product Name')
+	measure 'Peritos no Contexto' = DISTINCTCOUNT(DimPeritos.PeritoKey)
 		formatString: #,0
 		lineageTag: 6bef628f-8126-4354-b4dc-04f6a8723b87
 
-	measure 'Comarcas no Contexto' = DISTINCTCOUNT(Orders.State)
+	measure 'Comarcas no Contexto' = DISTINCTCOUNT(DimComarcas.Comarca)
 		formatString: #,0
 		lineageTag: 17e77863-d04b-44b4-9f97-5b1fc38ce5dc
 
-	measure 'Varas no Contexto' = DISTINCTCOUNT(Orders.City)
+	measure 'Varas no Contexto' = DISTINCTCOUNT(DimVaras.Juizo)
 		formatString: #,0
 		lineageTag: 7f7f2303-559f-49a6-b1de-af3c289149f0
 
-	measure 'Especialidades no Contexto' = DISTINCTCOUNT(Orders.Category)
+	measure 'Especialidades no Contexto' = DISTINCTCOUNT(DimEspecialidades.Especialidade)
 		formatString: #,0
 		lineageTag: 2ecf820f-6328-4cf2-9307-1f7ff4817375
 
@@ -621,15 +621,15 @@ table Measure
 			    TOPN(
 			        1,
 			        SUMMARIZE(
-			            ALLSELECTED(Orders.'Product Name'),
-			            Orders.'Product Name',
+			            ALLSELECTED(DimPeritos.PeritoLabel),
+			            DimPeritos.PeritoLabel,
 			            "ValorPerito", [Valor Arbitrado Base]
 			        ),
 			        [ValorPerito], DESC,
-			        Orders.'Product Name', ASC
+			        DimPeritos.PeritoLabel, ASC
 			    )
 			RETURN
-			    MAXX(TopPerito, Orders.'Product Name')
+			    MAXX(TopPerito, DimPeritos.PeritoLabel)
 		lineageTag: c4f6c6c6-b3a1-4b3b-99d2-8704f57f2b4f
 
 	measure 'Campeão no Contexto (Valor)' =
@@ -639,12 +639,12 @@ table Measure
 			    TOPN(
 			        1,
 			        SUMMARIZE(
-			            ALLSELECTED(Orders.'Product Name'),
-			            Orders.'Product Name',
+			            ALLSELECTED(DimPeritos.PeritoLabel),
+			            DimPeritos.PeritoLabel,
 			            "ValorPerito", [Valor Arbitrado Base]
 			        ),
 			        [ValorPerito], DESC,
-			        Orders.'Product Name', ASC
+			        DimPeritos.PeritoLabel, ASC
 			    )
 			RETURN
 			    MAXX(TopPerito, [ValorPerito])
@@ -714,13 +714,13 @@ table Measure
 	measure 'Destaque Comarca' = VAR UmaComarca = HASONEVALUE(Orders[State Mapa]) VAR NomeSel = SELECTEDVALUE(Orders[State Mapa]) VAR ValorSel = [Valor Arbitrado Base] VAR T = TOPN(1, SUMMARIZE(ALLSELECTED(Orders[State Mapa]), Orders[State Mapa], "V", [Valor Arbitrado Base]), [V], DESC, Orders[State Mapa], ASC) VAR N = MAXX(T, Orders[State Mapa]) VAR V = MAXX(T, [V]) RETURN IF(UmaComarca, "Comarca: " & NomeSel & " | " & FORMAT(COALESCE(ValorSel, 0), "R$ #,##0.00"), IF(ISBLANK(V), "Sem dados no contexto atual", "Maior valor no contexto: " & N & " | " & FORMAT(V, "R$ #,##0.00")))
 		lineageTag: c3891e61-c0dd-4423-97c9-167a152b0e2c
 
-	measure 'Destaque Vara' = VAR T = TOPN(1, SUMMARIZE(ALLSELECTED('Orders'[City]), 'Orders'[City], "V", [Valor Arbitrado Base]), [V], DESC, 'Orders'[City], ASC) VAR N = MAXX(T, 'Orders'[City]) VAR V = MAXX(T, [V]) RETURN IF(ISBLANK(V), "Sem dados", N & " | " & FORMAT(V, "R$ #,##0.00"))
+	measure 'Destaque Vara' = VAR T = TOPN(1, SUMMARIZE(ALLSELECTED(DimVaras[Juizo]), DimVaras[Juizo], "V", [Valor Arbitrado Base]), [V], DESC, DimVaras[Juizo], ASC) VAR N = MAXX(T, DimVaras[Juizo]) VAR V = MAXX(T, [V]) RETURN IF(ISBLANK(V), "Sem dados", N & " | " & FORMAT(V, "R$ #,##0.00"))
 		lineageTag: d6a30125-ca15-4e75-a735-bd5dbc83eea0
 
-	measure 'Destaque Perito' = VAR T = TOPN(1, SUMMARIZE(ALLSELECTED('Orders'[Product Name]), 'Orders'[Product Name], "V", [Valor Arbitrado Base]), [V], DESC, 'Orders'[Product Name], ASC) VAR N = MAXX(T, 'Orders'[Product Name]) VAR V = MAXX(T, [V]) RETURN IF(ISBLANK(V), "Sem dados", N & " | " & FORMAT(V, "R$ #,##0.00"))
+	measure 'Destaque Perito' = VAR T = TOPN(1, SUMMARIZE(ALLSELECTED(DimPeritos[PeritoLabel]), DimPeritos[PeritoLabel], "V", [Valor Arbitrado Base]), [V], DESC, DimPeritos[PeritoLabel], ASC) VAR N = MAXX(T, DimPeritos[PeritoLabel]) VAR V = MAXX(T, [V]) RETURN IF(ISBLANK(V), "Sem dados", N & " | " & FORMAT(V, "R$ #,##0.00"))
 		lineageTag: 68da0ad6-ade2-41d1-bf05-87128172454f
 
-	measure 'Destaque Especialidade' = VAR T = TOPN(1, SUMMARIZE(ALLSELECTED('Orders'[Category]), 'Orders'[Category], "V", [Valor Arbitrado Base]), [V], DESC, 'Orders'[Category], ASC) VAR N = MAXX(T, 'Orders'[Category]) VAR V = MAXX(T, [V]) RETURN IF(ISBLANK(V), "Sem dados", N & " | " & FORMAT(V, "R$ #,##0.00"))
+	measure 'Destaque Especialidade' = VAR T = TOPN(1, SUMMARIZE(ALLSELECTED(DimEspecialidades[Especialidade]), DimEspecialidades[Especialidade], "V", [Valor Arbitrado Base]), [V], DESC, DimEspecialidades[Especialidade], ASC) VAR N = MAXX(T, DimEspecialidades[Especialidade]) VAR V = MAXX(T, [V]) RETURN IF(ISBLANK(V), "Sem dados", N & " | " & FORMAT(V, "R$ #,##0.00"))
 		lineageTag: c2cb2df0-2f07-4141-8425-2a4a44078712
 
 	measure 'Valor Arbitrado Tooltip' = COALESCE([Valor Arbitrado Base], 0)
@@ -737,25 +737,6 @@ table Measure
 			        COALESCE(TextoBase, "Sem dados")
 			    )
 		lineageTag: d549e5a6-c4bd-4f8d-8962-1af2c0cd6091
-
-	measure 'Metrica Visual Selecionada' =
-			
-			VAR _metrica =
-			    SELECTEDVALUE(
-			        ParametroMetricaVisual[Parametro Metrica Visual],
-			        "Valor Arbitrado"
-			    )
-			RETURN
-			    SWITCH(
-			        _metrica,
-			        "Qtd Perícias", [Qtd Perícias Base],
-			        "Saldo a Receber", [Saldo a Receber Base],
-			        "Ticket Médio", [Valor Médio por Perícia Base],
-			        [Valor Arbitrado Base]
-			    )
-		lineageTag: 1fd45ca7-124c-4707-80d4-f884a68ec0e2
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column Column
 		isHidden

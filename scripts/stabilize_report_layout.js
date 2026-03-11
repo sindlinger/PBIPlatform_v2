@@ -338,36 +338,10 @@ const PRIMARY_CHART_ENTITY_TITLES = {
   fe4687310000e672d410: "Visão geral | Valor Arbitrado ao longo do tempo",
   d4f6a8c0b3e57921f234: "Comarcas | Valor Arbitrado ao longo do tempo",
   a6f4e2b9c1d34780ef12: "RM João Pessoa | Valor Arbitrado ao longo do tempo",
+  e5a1b2c3d4f60789ab01: "RM Campina Grande | Valor Arbitrado ao longo do tempo",
   f1a9c2e7d4b86350a1f2: "Varas | Valor Arbitrado ao longo do tempo",
   b2d4e6f8a1c34567d890: "Peritos | Valor Arbitrado ao longo do tempo",
   c3e5f7a9b2d46810e123: "Especialidades | Valor Arbitrado ao longo do tempo",
-};
-
-const TOP_METRIC_SLICER_CONFIG = {
-  fe4687310000e672d410: {
-    slicerId: "fe46metricslicer001",
-    entityTitle: "Visão geral | Evolução",
-  },
-  d4f6a8c0b3e57921f234: {
-    slicerId: "d4f6metricslicer001",
-    entityTitle: "Comarcas | Evolução",
-  },
-  a6f4e2b9c1d34780ef12: {
-    slicerId: "a6f4metricslicer001",
-    entityTitle: "RM João Pessoa | Evolução",
-  },
-  f1a9c2e7d4b86350a1f2: {
-    slicerId: "f1a9metricslicer001",
-    entityTitle: "Varas | Evolução",
-  },
-  b2d4e6f8a1c34567d890: {
-    slicerId: "b2d4metricslicer001",
-    entityTitle: "Peritos | Evolução",
-  },
-  c3e5f7a9b2d46810e123: {
-    slicerId: "c3e5metricslicer001",
-    entityTitle: "Especialidades | Evolução",
-  },
 };
 
 const MAP_BOX_CONFIG = {
@@ -524,20 +498,11 @@ const STANDARD_PRIMARY_CHART_POSITION = {
 };
 
 const STANDARD_PRIMARY_CHART_NAV_POSITION = {
-  x: 646,
-  y: 186,
+  x: 670,
+  y: 188,
   z: 35000,
-  height: 16,
-  width: 152,
-  tabOrder: 20500,
-};
-
-const STANDARD_PRIMARY_METRIC_SLICER_OFFSET = {
-  x: 438,
-  y: 6,
-  z: 35000,
-  width: 154,
-  height: 28,
+  height: 14,
+  width: 118,
   tabOrder: 20500,
 };
 
@@ -1304,6 +1269,30 @@ const ENTITY_BLUEPRINT_CONFIG = {
   },
 };
 
+const ENTITY_CHART_LABEL_CONFIG = {
+  f1a9c2e7d4b86350a1f2: {
+    ranking: { entity: "DimVaras", property: "JuizoCurto", displayName: "Vara" },
+    operational: { entity: "DimComarcas", property: "ComarcaCurta", displayName: "Comarca" },
+    financial: { entity: "DimEspecialidades", property: "EspecialidadeCurta", displayName: "Especialidade" },
+    detailPrimary: { entity: "FactPericias", property: "JuizoExibicao", displayName: "Vara" },
+    detailSecondary: { entity: "FactPericias", property: "ComarcaExibicao", displayName: "Comarca" },
+  },
+  b2d4e6f8a1c34567d890: {
+    ranking: { entity: "DimPeritos", property: "PeritoCurto", displayName: "Perito" },
+    operational: { entity: "DimComarcas", property: "ComarcaCurta", displayName: "Comarca" },
+    financial: { entity: "DimEspecialidades", property: "EspecialidadeCurta", displayName: "Especialidade" },
+    detailPrimary: { entity: "FactPericias", property: "PeritoNomeExibicao", displayName: "Perito" },
+    detailSecondary: { entity: "FactPericias", property: "EspecialidadeExibicao", displayName: "Especialidade" },
+  },
+  c3e5f7a9b2d46810e123: {
+    ranking: { entity: "DimEspecialidades", property: "EspecialidadeCurta", displayName: "Especialidade" },
+    operational: { entity: "DimComarcas", property: "ComarcaCurta", displayName: "Comarca" },
+    financial: { entity: "DimPeritos", property: "PeritoCurto", displayName: "Perito" },
+    detailPrimary: { entity: "FactPericias", property: "EspecialidadeExibicao", displayName: "Especialidade" },
+    detailSecondary: { entity: "FactPericias", property: "ComarcaExibicao", displayName: "Comarca" },
+  },
+};
+
 const DETAIL_TABLE_SOURCE_PAGE_ID = "82ff2dfb93623b9eeb6c";
 const DETAIL_TABLE_SOURCE_VISUAL_ID = "57b5ea49ef39b6022b88";
 const DETAIL_TABLE_POSITION = {
@@ -1779,6 +1768,24 @@ function setCardVisualMeasure(pageId, visualId, measureProperty, sortMeasureProp
   writeJson(filePath, visual);
 }
 
+function setCardVisualFontSize(pageId, visualId, fontSize) {
+  const filePath = visualPath(pageId, visualId);
+  if (!fs.existsSync(filePath)) return;
+
+  const visual = readJson(filePath);
+  const labelProps = visual.visual?.objects?.labels?.[0]?.properties;
+  if (!labelProps) return;
+
+  labelProps.fontSize = {
+    expr: {
+      Literal: {
+        Value: fontSize,
+      },
+    },
+  };
+  writeJson(filePath, visual);
+}
+
 function setTextboxFontSize(pageId, visualId, fontSize) {
   const filePath = visualPath(pageId, visualId);
   if (!fs.existsSync(filePath)) return;
@@ -1800,9 +1807,9 @@ function setChartMeasure(pageId, visualId, measureProperty) {
   const filePath = visualPath(pageId, visualId);
   if (!fs.existsSync(filePath)) return;
   const visual = readJson(filePath);
+  const entity = MEASURE_ENTITY_BY_NAME[measureProperty] || "Measure";
   const projection = visual.visual?.query?.queryState?.Y?.projections?.[0];
   if (!projection) return;
-  const entity = MEASURE_ENTITY_BY_NAME[measureProperty] || "Measure";
 
   projection.field = {
     Measure: {
@@ -1816,6 +1823,23 @@ function setChartMeasure(pageId, visualId, measureProperty) {
   };
   projection.queryRef = `${entity}.${measureProperty}`;
   projection.nativeQueryRef = measureProperty;
+
+  const sortField = visual.visual?.query?.sortDefinition?.sort?.[0]?.field;
+  if (sortField?.Measure) {
+    sortField.Measure.Expression.SourceRef.Entity = entity;
+    sortField.Measure.Property = measureProperty;
+  } else if (sortField?.Aggregation) {
+    visual.visual.query.sortDefinition.sort[0].field = {
+      Measure: {
+        Expression: {
+          SourceRef: {
+            Entity: entity,
+          },
+        },
+        Property: measureProperty,
+      },
+    };
+  }
   delete visual.isHidden;
   writeJson(filePath, visual);
 }
@@ -1929,218 +1953,6 @@ function setVisualContainerTitleVisibility(pageId, visualId, visible) {
     },
   };
   writeJson(filePath, visual);
-}
-
-function getFirstExistingSlicerTemplate(pageId) {
-  const candidates = [
-    "550de89675d60d2a7478",
-    "72c2ba702fe2952b0f6b",
-    "65c02e07e18d7728119a",
-    "66f7c5422ecb46c4a0fa",
-    "d61893b8024d73344e50",
-  ];
-  for (const visualId of candidates) {
-    if (fs.existsSync(visualPath(pageId, visualId))) {
-      return visualId;
-    }
-  }
-  return null;
-}
-
-function createOrUpdateDropdownSlicer(pageId, visualId, position, entity, property, title) {
-  const sourceVisualId = getFirstExistingSlicerTemplate(pageId) ?? "550de89675d60d2a7478";
-  const sourcePageId = fs.existsSync(visualPath(pageId, sourceVisualId))
-    ? pageId
-    : "b2d4e6f8a1c34567d890";
-
-  upsertVisualFromPage(pageId, visualId, sourcePageId, sourceVisualId, (visual) => {
-    visual.position = { ...position };
-    delete visual.parentGroupName;
-    delete visual.isHidden;
-    delete visual.filterConfig;
-    delete visual.drillFilterOtherVisuals;
-    visual.visual.visualType = "slicer";
-    visual.visual.query = {
-      queryState: {
-        Values: {
-          projections: [
-            {
-              field: {
-                Column: {
-                  Expression: {
-                    SourceRef: {
-                      Entity: entity,
-                    },
-                  },
-                  Property: property,
-                },
-              },
-              queryRef: `${entity}.${property}`,
-              nativeQueryRef: property,
-              active: true,
-            },
-          ],
-        },
-      },
-      sortDefinition: {
-        isDefaultSort: true,
-      },
-    };
-    visual.visual.objects = visual.visual.objects || {};
-    visual.visual.objects.data = [
-      {
-        properties: {
-          mode: {
-            expr: {
-              Literal: {
-                Value: "'Dropdown'",
-              },
-            },
-          },
-        },
-      },
-    ];
-    visual.visual.objects.header = [
-      {
-        properties: {
-          show: {
-            expr: {
-              Literal: {
-                Value: "false",
-              },
-            },
-          },
-        },
-      },
-    ];
-    visual.visual.objects.items = [
-      {
-        properties: {
-          fontColor: {
-            solid: {
-              color: {
-                expr: {
-                  Literal: {
-                    Value: "'#1F2937'",
-                  },
-                },
-              },
-            },
-          },
-          fontFamily: {
-            expr: {
-              Literal: {
-                Value: "'wf_standard-font, helvetica, arial, sans-serif'",
-              },
-            },
-          },
-          textSize: {
-            expr: {
-              Literal: {
-                Value: "8D",
-              },
-            },
-          },
-          background: {
-            solid: {
-              color: {
-                expr: {
-                  Literal: {
-                    Value: "'#FFFFFF'",
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
-    ];
-    visual.visual.visualContainerObjects = visual.visual.visualContainerObjects || {};
-    visual.visual.visualContainerObjects.background = [
-      {
-        properties: {
-          show: {
-            expr: {
-              Literal: {
-                Value: "true",
-              },
-            },
-          },
-          color: {
-            solid: {
-              color: {
-                expr: {
-                  Literal: {
-                    Value: "'#FFFFFF'",
-                  },
-                },
-              },
-            },
-          },
-          transparency: {
-            expr: {
-              Literal: {
-                Value: "6D",
-              },
-            },
-          },
-        },
-      },
-    ];
-    visual.visual.visualContainerObjects.border = [
-      {
-        properties: {
-          show: {
-            expr: {
-              Literal: {
-                Value: "true",
-              },
-            },
-          },
-          radius: {
-            expr: {
-              Literal: {
-                Value: "8D",
-              },
-            },
-          },
-          color: {
-            solid: {
-              color: {
-                expr: {
-                  Literal: {
-                    Value: "'#0B7F7E'",
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
-    ];
-    visual.visual.visualContainerObjects.title = [
-      {
-        properties: {
-          show: {
-            expr: {
-              Literal: {
-                Value: "true",
-              },
-            },
-          },
-          text: literalExpr(title),
-          fontSize: {
-            expr: {
-              Literal: {
-                Value: "7D",
-              },
-            },
-          },
-        },
-      },
-    ];
-    delete visual.visual.drillFilterOtherVisuals;
-  });
 }
 
 function standardizeBookmarkNavigatorVisual(pageId, visualId, options = {}) {
@@ -2351,6 +2163,50 @@ function upsertCategoricalIncludeFilter(visual, { entity, property, values, filt
 }
 
 function buildTopNFilter({ entity, property, top, measureEntity, factEntity, factProperty, aggFunction }) {
+  const subqueryFrom = [
+    {
+      Name: "d",
+      Entity: entity,
+      Type: 0,
+    },
+  ];
+
+  if (measureEntity && measureEntity !== entity) {
+    subqueryFrom.push({
+      Name: "m",
+      Entity: measureEntity,
+      Type: 0,
+    });
+  }
+
+  const orderByExpression =
+    measureEntity && measureEntity !== entity
+      ? {
+          Measure: {
+            Expression: {
+              SourceRef: {
+                Source: "m",
+              },
+            },
+            Property: factProperty,
+          },
+        }
+      : {
+          Aggregation: {
+            Expression: {
+              Column: {
+                Expression: {
+                  SourceRef: {
+                    Source: "d",
+                  },
+                },
+                Property: factProperty,
+              },
+            },
+            Function: aggFunction,
+          },
+        };
+
   return {
     filters: [
       {
@@ -2375,19 +2231,13 @@ function buildTopNFilter({ entity, property, top, measureEntity, factEntity, fac
                 Subquery: {
                   Query: {
                     Version: 2,
-                    From: [
-                      {
-                        Name: "f",
-                        Entity: entity,
-                        Type: 0,
-                      },
-                    ],
+                    From: subqueryFrom,
                     Select: [
                       {
                         Column: {
                           Expression: {
                             SourceRef: {
-                              Source: "f",
+                              Source: "d",
                             },
                           },
                           Property: property,
@@ -2398,21 +2248,7 @@ function buildTopNFilter({ entity, property, top, measureEntity, factEntity, fac
                     OrderBy: [
                       {
                         Direction: 2,
-                        Expression: {
-                          Aggregation: {
-                            Expression: {
-                              Column: {
-                                Expression: {
-                                  SourceRef: {
-                                    Source: "f",
-                                  },
-                                },
-                                Property: factProperty,
-                              },
-                            },
-                            Function: aggFunction,
-                          },
-                        },
+                        Expression: orderByExpression,
                       },
                     ],
                     Top: top,
@@ -2422,7 +2258,7 @@ function buildTopNFilter({ entity, property, top, measureEntity, factEntity, fac
               Type: 2,
             },
             {
-              Name: "f",
+              Name: "d",
               Entity: entity,
               Type: 0,
             },
@@ -2436,7 +2272,7 @@ function buildTopNFilter({ entity, property, top, measureEntity, factEntity, fac
                       Column: {
                         Expression: {
                           SourceRef: {
-                            Source: "f",
+                            Source: "d",
                           },
                         },
                         Property: property,
@@ -2689,7 +2525,28 @@ function createDonutObjects() {
           fontSize: {
             expr: {
               Literal: {
-                Value: "8D",
+                Value: "6D",
+              },
+            },
+          },
+          labelStyle: {
+            expr: {
+              Literal: {
+                Value: "'Category'",
+              },
+            },
+          },
+          labelPosition: {
+            expr: {
+              Literal: {
+                Value: "'Inside'",
+              },
+            },
+          },
+          labelDisplayUnits: {
+            expr: {
+              Literal: {
+                Value: "0D",
               },
             },
           },
@@ -2793,7 +2650,7 @@ function setBarChartBinding(pageId, visualId, category, measure, topN) {
     top: topN,
     measureEntity: measure.entity,
     factEntity: measure.entity,
-    factProperty: measure.sortProperty ?? "ValorArbitrado",
+    factProperty: measure.sortProperty ?? measure.property,
     aggFunction: measure.aggFunction ?? 0,
   });
   delete visual.isHidden;
@@ -2836,8 +2693,9 @@ function setDonutChartBinding(pageId, visualId, category, measure, topN) {
     entity: category.entity,
     property: category.property,
     top: topN,
+    measureEntity: measure.entity,
     factEntity: measure.entity,
-    factProperty: measure.sortProperty ?? "ValorArbitrado",
+    factProperty: measure.sortProperty ?? measure.property,
     aggFunction: measure.aggFunction ?? 0,
   });
   visual.visual.objects = createDonutObjects();
@@ -2884,7 +2742,7 @@ function setColumnChartBinding(pageId, visualId, category, measure, topN) {
     top: topN,
     measureEntity: measure.entity,
     factEntity: measure.entity,
-    factProperty: measure.sortProperty ?? "ValorArbitrado",
+    factProperty: measure.sortProperty ?? measure.property,
     aggFunction: measure.aggFunction ?? 0,
   });
   delete visual.isHidden;
@@ -2928,8 +2786,9 @@ function setTreemapBinding(pageId, visualId, groupField, measure, topN) {
     entity: groupField.entity,
     property: groupField.property,
     top: topN,
+    measureEntity: measure.entity,
     factEntity: measure.entity,
-    factProperty: measure.sortProperty ?? "ValorArbitrado",
+    factProperty: measure.sortProperty ?? measure.property,
     aggFunction: measure.aggFunction ?? 0,
   });
   delete visual.isHidden;
@@ -3279,7 +3138,7 @@ function fixChartTypeTogglePages() {
       wrapper.position = { ...wrapperPosition };
       delete wrapper.parentGroupName;
       wrapper.visualGroup.displayName = cfg.bookmarkLabels[key];
-      wrapper.isHidden = false;
+      wrapper.isHidden = key !== "hist";
       writeJson(visualPath(pageId, wrapperId), wrapper);
 
       const visual = readJson(visualPath(pageId, visualId));
@@ -3290,6 +3149,7 @@ function fixChartTypeTogglePages() {
       visual.visual.objects = createGenericChartObjects();
       visual.isHidden = key !== "hist";
       writeJson(visualPath(pageId, visualId), visual);
+      setChartMeasure(pageId, visualId, "Valor Arbitrado Base");
     }
 
     for (const [bookmarkKey, bookmarkId] of Object.entries(cfg.bookmarks)) {
@@ -3385,7 +3245,7 @@ function fixTopGraphPages() {
     for (const [key, groupId] of Object.entries(groups)) {
       const group = readJson(visualPath(pageId, groupId));
       group.position = { ...STANDARD_PRIMARY_CHART_POSITION };
-      group.isHidden = false;
+      group.isHidden = key !== "hist";
       writeJson(visualPath(pageId, groupId), group);
     }
 
@@ -3418,6 +3278,7 @@ function fixTopGraphPages() {
         visual.visual.objects = createGenericChartObjects();
         visual.isHidden = key !== "hist";
         writeJson(visualPath(pageId, visualId), visual);
+        setChartMeasure(pageId, visualId, "Valor Arbitrado Base");
       }
 
       for (const [key, bookmarkId] of Object.entries(pageBookmarks)) {
@@ -3473,6 +3334,21 @@ function upsertBookmarkGroup(bookmarks, groupId, displayName, children) {
     bookmarks.items[index] = group;
   } else {
     bookmarks.items.push(group);
+  }
+}
+
+function removeBookmarkArtifacts(groupIds, bookmarkIds) {
+  const bookmarks = readJson(BOOKMARKS_PATH);
+  bookmarks.items = bookmarks.items.filter(
+    (item) => !groupIds.includes(item.name) && !bookmarkIds.includes(item.name)
+  );
+  writeJson(BOOKMARKS_PATH, bookmarks);
+
+  for (const bookmarkId of bookmarkIds) {
+    const filePath = bookmarkPath(bookmarkId);
+    if (fs.existsSync(filePath)) {
+      fs.unlinkSync(filePath);
+    }
   }
 }
 
@@ -3764,6 +3640,249 @@ function fixCruzamentosOverlap() {
   }
 }
 
+function configureCruzamentosPage() {
+  const pageId = "82ff2dfb93623b9eeb6c";
+  const page = readPageJson(pageId);
+  page.height = 980;
+  page.displayOption = "FitToWidth";
+  delete page.visibility;
+  writePageJson(pageId, page);
+
+  setPosition(pageId, "301f18119397cb656803", { height: 979.9466634341475 });
+  setPosition(pageId, "a40efbf69139973c4735", {
+    height: 980.2483878672081,
+    width: 1109.109147360879,
+  });
+
+  [
+    "6b882b30e9d35ad7104b",
+    "3ae138c0070d9535eab0",
+    "54e7fcce680019d79758",
+    "15e477a15641386c8885",
+    "532a7c0bfd9cd446e505",
+    "5e740dcfc97e99a9208d",
+    "0694802c908372e455d6",
+    "d0ade5bea6e3bfa614d9",
+    "89f74e7669fe3e91eb5a",
+    "2c123080474d0bc71651",
+    "209d2c9fa931e68f2177",
+    "b4bd3b8784ca7b06aa9a",
+    "db5cdbd9253d5d85ecfa",
+    "3e7367399ce208251f7a",
+    "3ecd385e0823aad23b76",
+  ].forEach((visualId) => setHidden(pageId, visualId, true));
+  setHidden(pageId, "055bca1490f437da7149", true);
+  setHidden(pageId, "8a25d0234525a8ef9a69", false);
+  setHidden(pageId, "feaf95fcf54bcc5d3a2b", true);
+  setHidden(pageId, "c9a79e210484f61718be", true);
+  setHidden(pageId, "cedc6b6b1891cb3f0963", true);
+
+  setBarChartBinding(
+    pageId,
+    "7001e63689bf0fe0ad3f",
+    { entity: "DimVaras", property: "JuizoCurto", displayName: "Vara" },
+    { entity: "Measure", property: "Valor Arbitrado Base", displayName: "Valor Arbitrado Base", sortProperty: "Valor Arbitrado Base" },
+    10
+  );
+  setBarChartBinding(
+    pageId,
+    "316e18ad0d4eb3ce8177",
+    { entity: "DimPeritos", property: "PeritoCurto", displayName: "Perito" },
+    { entity: "Measure", property: "Valor Arbitrado Base", displayName: "Valor Arbitrado Base", sortProperty: "Valor Arbitrado Base" },
+    10
+  );
+  setBarChartBinding(
+    pageId,
+    "d9d8f17ef9af19daf21f",
+    { entity: "DimEspecialidades", property: "EspecialidadeCurta", displayName: "Especialidade" },
+    { entity: "Measure", property: "Valor Arbitrado Base", displayName: "Valor Arbitrado Base", sortProperty: "Valor Arbitrado Base" },
+    10
+  );
+
+  setTextLabel(pageId, "658ca0095a407531586f", "Top 10 Varas por Valor");
+  setTextLabel(pageId, "fd849ce2439bbbba879b", "Top 10 Peritos por Valor");
+  setTextLabel(pageId, "be4d85c8f71b4972f53b", "Top 10 Peritos por Valor");
+  setTextLabel(pageId, "228ebdbd38ce5bbddfd6", "Top 10 Especialidades por Valor");
+
+  setHidden(pageId, "fd849ce2439bbbba879b", false);
+
+  setPosition(pageId, "b08f93bb0866e5af89ad", {
+    x: 205.9503506981505,
+    y: 21.94659732067458,
+    width: 318,
+    height: 255,
+  });
+  setPosition(pageId, "66f8a48cf31c935a5b46", {
+    x: 562,
+    y: 21.94659732067458,
+    width: 318,
+    height: 255,
+  });
+  setPosition(pageId, "d581dbe83ada4d298e9d", {
+    x: 918,
+    y: 21.94659732067458,
+    width: 318,
+    height: 255,
+  });
+  setPosition(pageId, "658ca0095a407531586f", {
+    x: 16,
+    y: 0,
+    width: 220,
+    height: 36,
+  });
+  setPosition(pageId, "fd849ce2439bbbba879b", {
+    x: 16,
+    y: 0,
+    width: 220,
+    height: 36,
+  });
+  setPosition(pageId, "228ebdbd38ce5bbddfd6", {
+    x: 16,
+    y: 0,
+    width: 240,
+    height: 36,
+  });
+  setPosition(pageId, "7001e63689bf0fe0ad3f", {
+    x: 14,
+    y: 52,
+    width: 288,
+    height: 182,
+  });
+  setPosition(pageId, "316e18ad0d4eb3ce8177", {
+    x: 14,
+    y: 52,
+    width: 288,
+    height: 182,
+  });
+  setPosition(pageId, "d9d8f17ef9af19daf21f", {
+    x: 14,
+    y: 52,
+    width: 288,
+    height: 182,
+  });
+
+  createOrUpdateCustomTable(
+    pageId,
+    "57b5ea49ef39b6022b88",
+    {
+      x: 205.9503506981505,
+      y: 618,
+      z: 18000,
+      height: 230,
+      width: 318,
+      tabOrder: 17000,
+    },
+    "Detalhe de Varas",
+    [
+      buildColumnProjection("FactPericias", "JuizoExibicao", "Vara"),
+      buildColumnProjection("FactPericias", "ComarcaExibicao", "Comarca"),
+      buildMeasureProjection("Measure", "Qtd Perícias Base", "Qtd Perícias"),
+      buildMeasureProjection("Measure", "Valor Arbitrado Base", "Valor Arbitrado"),
+    ]
+  );
+  createOrUpdateCustomTable(
+    pageId,
+    "5ab18e24ca23a9b7614d",
+    {
+      x: 562,
+      y: 618,
+      z: 22000,
+      height: 230,
+      width: 318,
+      tabOrder: 21000,
+    },
+    "Detalhe de Peritos",
+    [
+      buildColumnProjection("FactPericias", "PeritoNomeExibicao", "Perito"),
+      buildColumnProjection("FactPericias", "EspecialidadeExibicao", "Especialidade"),
+      buildMeasureProjection("Measure", "Qtd Perícias Base", "Qtd Perícias"),
+      buildMeasureProjection("Measure", "Valor Arbitrado Base", "Valor Arbitrado"),
+    ]
+  );
+  createOrUpdateCustomTable(
+    pageId,
+    "5ff5982cc919326c4378",
+    {
+      x: 918,
+      y: 618,
+      z: 23000,
+      height: 230,
+      width: 318,
+      tabOrder: 22000,
+    },
+    "Detalhe de Especialidades",
+    [
+      buildColumnProjection("FactPericias", "EspecialidadeExibicao", "Especialidade"),
+      buildColumnProjection("FactPericias", "ComarcaExibicao", "Comarca"),
+      buildMeasureProjection("Measure", "Qtd Perícias Base", "Qtd Perícias"),
+      buildMeasureProjection("Measure", "Valor Arbitrado Base", "Valor Arbitrado"),
+    ]
+  );
+
+  if (fs.existsSync(visualPath(pageId, "a7c5b2d9f1840e63c2ab"))) {
+    const trend = readJson(visualPath(pageId, "a7c5b2d9f1840e63c2ab"));
+    trend.visual.visualType = "lineChart";
+    trend.visual.objects = createGenericChartObjects();
+    trend.position = {
+      ...trend.position,
+      x: 205.9503506981505,
+      y: 318,
+      width: 676,
+      height: 250,
+      tabOrder: 23000,
+    };
+    writeJson(visualPath(pageId, "a7c5b2d9f1840e63c2ab"), trend);
+    setChartMeasure(pageId, "a7c5b2d9f1840e63c2ab", "Valor Arbitrado Base");
+    setVisualContainerTitle(pageId, "a7c5b2d9f1840e63c2ab", "Tendência de Valor Arbitrado", "10D");
+  }
+
+  setPosition(pageId, "8a25d0234525a8ef9a69", {
+    x: 918,
+    y: 318,
+    width: 318,
+    height: 250,
+  });
+  if (fs.existsSync(visualPath(pageId, "8a25d0234525a8ef9a69"))) {
+    const agingGroup = readJson(visualPath(pageId, "8a25d0234525a8ef9a69"));
+    if (agingGroup.visualGroup) agingGroup.visualGroup.displayName = "Distribuição por Aging";
+    writeJson(visualPath(pageId, "8a25d0234525a8ef9a69"), agingGroup);
+  }
+  if (fs.existsSync(visualPath(pageId, "a91c817375176beaccfc"))) {
+    const agingHeader = readJson(visualPath(pageId, "a91c817375176beaccfc"));
+    if (agingHeader.visualGroup) agingHeader.visualGroup.displayName = "Cabeçalho Aging";
+    agingHeader.position = {
+      ...agingHeader.position,
+      x: 8,
+      y: 0,
+      width: 302,
+      height: 32,
+    };
+    writeJson(visualPath(pageId, "a91c817375176beaccfc"), agingHeader);
+  }
+  setPosition(pageId, "bc9521bfb3bbaeccb209", {
+    x: 0,
+    y: 0,
+    width: 210,
+    height: 32,
+  });
+  setTextLabel(pageId, "bc9521bfb3bbaeccb209", "Distribuição por Aging");
+  setPosition(pageId, "3b4618b308b187a14feb", {
+    x: 0,
+    y: 34,
+    width: 318,
+    height: 190,
+  });
+  setTreemapBinding(
+    pageId,
+    "3b4618b308b187a14feb",
+    { entity: "FactPericias", property: "AgingFaixa", displayName: "Aging" },
+    { entity: "Measure", property: "Valor Arbitrado Base", displayName: "Valor Arbitrado Base", sortProperty: "Valor Arbitrado Base" },
+    6
+  );
+  setVisualContainerTitle(pageId, "3b4618b308b187a14feb", "Distribuição por Aging", "10D");
+  setVisualContainerTitleVisibility(pageId, "3b4618b308b187a14feb", false);
+}
+
 function hideClutter() {
   for (const [pageId, visualIds] of Object.entries(CLUTTER_BY_PAGE)) {
     for (const visualId of visualIds) {
@@ -3884,6 +4003,9 @@ function configureOverviewSummary() {
   setHidden(pageId, right.navigatorId, true);
   setHidden(pageId, "e1b04cb7aad1837227ba", true);
   setHidden(pageId, "e85feb694080c3b3bc21", true);
+  setHidden(pageId, "8bf3bac09e4e3528d02a", true);
+  setHidden(pageId, "db2731d2e8a48055475a", true);
+  setHidden(pageId, "fec209241e28d2185094", true);
   setPosition(pageId, "5d705d8ba8a6c89a0671", {
     x: 202.9902077860043,
     y: 446,
@@ -3899,28 +4021,28 @@ function configureOverviewSummary() {
     pageId,
     left.charts.comarcas,
     { entity: "Orders", property: "State Mapa", displayName: "Comarca" },
-    { entity: "Measure", property: "Valor Arbitrado Base", displayName: "Valor Arbitrado Base", sortProperty: "Sales" },
+    { entity: "Measure", property: "Valor Arbitrado Base", displayName: "Valor Arbitrado Base", sortProperty: "Valor Arbitrado Base" },
     5
   );
   setColumnChartBinding(
     pageId,
     left.charts.varas,
-    { entity: "FactPericias", property: "JuizoExibicao", displayName: "Vara" },
-    { entity: "Measure", property: "Valor Arbitrado Base", displayName: "Valor Arbitrado Base", sortProperty: "ValorArbitrado" },
+    { entity: "DimVaras", property: "JuizoCurto", displayName: "Vara" },
+    { entity: "Measure", property: "Valor Arbitrado Base", displayName: "Valor Arbitrado Base", sortProperty: "Valor Arbitrado Base" },
     5
   );
   setBarChartBinding(
     pageId,
     right.charts.peritos,
-    { entity: "FactPericias", property: "PeritoNomeExibicao", displayName: "Perito" },
-    { entity: "Measure", property: "Valor Arbitrado Base", displayName: "Valor Arbitrado Base", sortProperty: "ValorArbitrado" },
+    { entity: "DimPeritos", property: "PeritoCurto", displayName: "Perito" },
+    { entity: "Measure", property: "Valor Arbitrado Base", displayName: "Valor Arbitrado Base", sortProperty: "Valor Arbitrado Base" },
     5
   );
   setTreemapBinding(
     pageId,
     right.charts.especialidades,
-    { entity: "FactPericias", property: "EspecialidadeExibicao", displayName: "Especialidade" },
-    { entity: "Measure", property: "Valor Arbitrado Base", displayName: "Valor Arbitrado Base", sortProperty: "ValorArbitrado" },
+    { entity: "DimEspecialidades", property: "EspecialidadeCurta", displayName: "Especialidade" },
+    { entity: "Measure", property: "Valor Arbitrado Base", displayName: "Valor Arbitrado Base", sortProperty: "Valor Arbitrado Base" },
     5
   );
 
@@ -4091,9 +4213,9 @@ function standardizePrimaryChartBoxes() {
   for (const cfg of navigatorConfigs) {
     standardizeBookmarkNavigatorVisual(cfg.pageId, cfg.navigatorId, {
       position: STANDARD_PRIMARY_CHART_NAV_POSITION,
-      height: 16,
-      width: 152,
-      fontSize: "5D",
+      height: 12,
+      width: 104,
+      fontSize: "4D",
       cellPadding: "0L",
     });
 
@@ -4156,19 +4278,19 @@ function standardizeMapBoxes() {
     }
     const mapPosition = { ...mapVisual.position };
     const navigatorPosition = {
-      x: Math.max(0, Math.round((mapPosition.x || 0) + (mapPosition.width || 0) - 88)),
-      y: Math.max(0, Math.round((mapPosition.y || 0) - 16)),
+      x: Math.max(0, Math.round((mapPosition.x || 0) + (mapPosition.width || 0) - 68)),
+      y: Math.max(0, Math.round((mapPosition.y || 0) - 14)),
       z: (mapPosition.z || 0) + 5000,
-      height: 14,
-      width: 80,
+      height: 12,
+      width: 64,
       tabOrder: (mapPosition.tabOrder || 0) + 5000,
     };
 
     standardizeBookmarkNavigatorVisual(cfg.pageId, cfg.navigatorId, {
       position: navigatorPosition,
-      height: 14,
-      width: 80,
-      fontSize: "5D",
+      height: 12,
+      width: 64,
+      fontSize: "4D",
       cellPadding: "0L",
     });
 
@@ -4260,91 +4382,6 @@ function standardizeMapBoxes() {
   writeJson(BOOKMARKS_PATH, bookmarks);
 }
 
-function convertTopChartsToMetricSlicers() {
-  const pageIds = Object.keys(TOP_METRIC_SLICER_CONFIG);
-
-  for (const pageId of pageIds) {
-    const metricCfg = TOP_METRIC_SLICER_CONFIG[pageId];
-    const isChartTogglePage = Boolean(CHART_TYPE_TOGGLE_PAGES[pageId]);
-    const chartCfg = CHART_TYPE_TOGGLE_PAGES[pageId];
-    const topCfg = TOP_GRAPH_PAGES[pageId];
-
-    const lineContainerId = isChartTogglePage ? chartCfg.wrappers.line : topCfg.groups.line;
-    const lineVisualId = isChartTogglePage ? chartCfg.visuals.line : TOP_GRAPH_VISUALS[pageId].line;
-    const chartPosition = { ...STANDARD_PRIMARY_CHART_POSITION };
-    const slicerPosition = {
-      x: chartPosition.x + STANDARD_PRIMARY_METRIC_SLICER_OFFSET.x,
-      y: chartPosition.y + STANDARD_PRIMARY_METRIC_SLICER_OFFSET.y,
-      z: STANDARD_PRIMARY_METRIC_SLICER_OFFSET.z,
-      width: STANDARD_PRIMARY_METRIC_SLICER_OFFSET.width,
-      height: STANDARD_PRIMARY_METRIC_SLICER_OFFSET.height,
-      tabOrder: STANDARD_PRIMARY_METRIC_SLICER_OFFSET.tabOrder,
-    };
-
-    if (fs.existsSync(visualPath(pageId, lineContainerId))) {
-      setPosition(pageId, lineContainerId, chartPosition);
-      setHidden(pageId, lineContainerId, false);
-    }
-    setPosition(pageId, lineVisualId, {
-      x: 0,
-      y: 0,
-      z: 0,
-      width: chartPosition.width,
-      height: chartPosition.height,
-      tabOrder: 0,
-    });
-    setHidden(pageId, lineVisualId, false);
-    setChartMeasure(pageId, lineVisualId, "Metrica Visual Selecionada");
-    setVisualContainerTitle(pageId, lineVisualId, metricCfg.entityTitle, "9D");
-
-    if (isChartTogglePage) {
-      for (const [key, wrapperId] of Object.entries(chartCfg.wrappers)) {
-        if (key !== "line") setHidden(pageId, wrapperId, true);
-      }
-      for (const [key, visualId] of Object.entries(chartCfg.visuals)) {
-        if (key !== "line") setHidden(pageId, visualId, true);
-      }
-      setHidden(pageId, chartCfg.navigatorId, true);
-      setHidden(pageId, chartCfg.modeLabelId, true);
-    } else {
-      for (const [key, groupId] of Object.entries(topCfg.groups)) {
-        if (key !== "line") setHidden(pageId, groupId, true);
-      }
-      for (const [key, visualId] of Object.entries(TOP_GRAPH_VISUALS[pageId])) {
-        if (key !== "line") setHidden(pageId, visualId, true);
-      }
-      setHidden(pageId, topCfg.navigatorId, true);
-    }
-
-    createOrUpdateDropdownSlicer(
-      pageId,
-      metricCfg.slicerId,
-      slicerPosition,
-      "ParametroMetricaVisual",
-      "Parametro Metrica Visual",
-      "Métrica"
-    );
-  }
-}
-
-function removeTopMetricSlicersAndRestoreButtons() {
-  for (const [pageId, metricCfg] of Object.entries(TOP_METRIC_SLICER_CONFIG)) {
-    const slicerDir = path.dirname(visualPath(pageId, metricCfg.slicerId));
-    fs.rmSync(slicerDir, { recursive: true, force: true });
-
-    if (TOP_GRAPH_PAGES[pageId]) {
-      const cfg = TOP_GRAPH_PAGES[pageId];
-      setHidden(pageId, cfg.navigatorId, false);
-    }
-
-    if (CHART_TYPE_TOGGLE_PAGES[pageId]) {
-      const cfg = CHART_TYPE_TOGGLE_PAGES[pageId];
-      setHidden(pageId, cfg.navigatorId, false);
-      setHidden(pageId, cfg.modeLabelId, false);
-    }
-  }
-}
-
 function applyMetropolitanFilters() {
   for (const [pageId, cfg] of Object.entries(METROPOLITAN_PAGE_FILTERS)) {
     const visualsDir = path.join(REPORT_ROOT, "pages", pageId, "visuals");
@@ -4376,6 +4413,7 @@ function compactTopKpiCards() {
     "fe4687310000e672d410",
     "d4f6a8c0b3e57921f234",
     "a6f4e2b9c1d34780ef12",
+    "e5a1b2c3d4f60789ab01",
     "f1a9c2e7d4b86350a1f2",
     "b2d4e6f8a1c34567d890",
     "c3e5f7a9b2d46810e123",
@@ -4407,7 +4445,7 @@ function compactTopKpiCards() {
       const filePath = visualPath(pageId, visualId);
       if (!fs.existsSync(filePath)) return;
       const visual = readJson(filePath);
-      visual.position.height = 118;
+      visual.position.height = 132;
       writeJson(filePath, visual);
     });
 
@@ -4415,7 +4453,7 @@ function compactTopKpiCards() {
       const filePath = visualPath(pageId, visualId);
       if (!fs.existsSync(filePath)) return;
       const visual = readJson(filePath);
-      visual.position.height = 110;
+      visual.position.height = 124;
       writeJson(filePath, visual);
     });
 
@@ -4423,7 +4461,7 @@ function compactTopKpiCards() {
       const filePath = visualPath(pageId, visualId);
       if (!fs.existsSync(filePath)) return;
       const visual = readJson(filePath);
-      if (visual.position?.height) visual.position.height = 112;
+      if (visual.position?.height) visual.position.height = 126;
       writeJson(filePath, visual);
     });
   }
@@ -4434,6 +4472,7 @@ function compactTopKpiInternals() {
     "fe4687310000e672d410",
     "d4f6a8c0b3e57921f234",
     "a6f4e2b9c1d34780ef12",
+    "e5a1b2c3d4f60789ab01",
     "f1a9c2e7d4b86350a1f2",
     "b2d4e6f8a1c34567d890",
     "c3e5f7a9b2d46810e123",
@@ -4466,66 +4505,92 @@ function compactTopKpiInternals() {
     "7787568665e3205bb6c2",
     "8156d8700ccc9862e851",
   ];
+  const parentGroups = [
+    "44907662101800700ecc",
+    "5b9d2604747920a48a6e",
+    "c5c8629e334896c41696",
+    "c25572076e890d9dc34a",
+    "bce8872da1da18e40493",
+  ];
 
   for (const pageId of topPages) {
     titleIds.forEach((visualId) => {
       const filePath = visualPath(pageId, visualId);
       if (!fs.existsSync(filePath)) return;
       const visual = readJson(filePath);
+      const targetParent = parentGroups[titleIds.indexOf(visualId)];
+      if (targetParent) visual.parentGroupName = targetParent;
       visual.position = {
         ...visual.position,
-        x: 8,
+        x: 10,
         y: 8,
-        height: 18,
+        height: 20,
         width: 150,
       };
       writeJson(filePath, visual);
-      setTextboxFontSize(pageId, visualId, "10pt");
+      setTextboxFontSize(pageId, visualId, "9pt");
     });
 
     valueIds.forEach((visualId) => {
       const filePath = visualPath(pageId, visualId);
       if (!fs.existsSync(filePath)) return;
       const visual = readJson(filePath);
+      const targetParent = parentGroups[valueIds.indexOf(visualId)];
+      if (targetParent) visual.parentGroupName = targetParent;
       visual.position = {
         ...visual.position,
-        x: 8,
-        y: 28,
-        height: 32,
-        width: 160,
+        x: 10,
+        y: 30,
+        height: 30,
+        width: 152,
       };
       writeJson(filePath, visual);
-      setTextboxFontSize(pageId, visualId, "16pt");
+      setTextboxFontSize(pageId, visualId, "13pt");
     });
 
     varIds.forEach((visualId) => {
       const filePath = visualPath(pageId, visualId);
       if (!fs.existsSync(filePath)) return;
       const visual = readJson(filePath);
+      const targetParent = parentGroups[varIds.indexOf(visualId)];
+      if (targetParent) visual.parentGroupName = targetParent;
       visual.position = {
         ...visual.position,
-        x: 8,
-        y: 78,
-        height: 12,
-        width: 22,
+        x: 10,
+        y: 67,
+        height: 10,
+        width: 20,
       };
       writeJson(filePath, visual);
-      setTextboxFontSize(pageId, visualId, "8pt");
+      setTextboxFontSize(pageId, visualId, "6pt");
     });
 
     deltaCardIds.forEach((visualId) => {
       const filePath = visualPath(pageId, visualId);
       if (!fs.existsSync(filePath)) return;
       const visual = readJson(filePath);
+      const targetParent = parentGroups[deltaCardIds.indexOf(visualId)];
+      if (targetParent) visual.parentGroupName = targetParent;
       visual.position = {
         ...visual.position,
-        x: 30,
-        y: 74,
+        x: 24,
+        y: 63,
         height: 18,
-        width: 118,
+        width: 138,
       };
       writeJson(filePath, visual);
+      setCardVisualFontSize(pageId, visualId, "7D");
     });
+
+    const duplicateSecondCardId = "db2731d2e8a48055475a";
+    const duplicatePath = visualPath(pageId, duplicateSecondCardId);
+    if (fs.existsSync(duplicatePath)) {
+      const duplicateVisual = readJson(duplicatePath);
+      if (duplicateVisual.parentGroupName) {
+        duplicateVisual.isHidden = true;
+        writeJson(duplicatePath, duplicateVisual);
+      }
+    }
   }
 }
 
@@ -4534,6 +4599,7 @@ function standardizeTopKpiContent() {
     "fe4687310000e672d410",
     "d4f6a8c0b3e57921f234",
     "a6f4e2b9c1d34780ef12",
+    "e5a1b2c3d4f60789ab01",
     "f1a9c2e7d4b86350a1f2",
     "b2d4e6f8a1c34567d890",
     "c3e5f7a9b2d46810e123",
@@ -4606,44 +4672,176 @@ function standardizeTopKpiContent() {
   }
 }
 
+function ensureTopKpiParentBinding() {
+  const topPages = [
+    "fe4687310000e672d410",
+    "d4f6a8c0b3e57921f234",
+    "a6f4e2b9c1d34780ef12",
+    "e5a1b2c3d4f60789ab01",
+  ];
+  const parentGroups = [
+    "44907662101800700ecc",
+    "5b9d2604747920a48a6e",
+    "c5c8629e334896c41696",
+    "c25572076e890d9dc34a",
+    "bce8872da1da18e40493",
+  ];
+  const visualSets = [
+    [
+      "f3de4e402caca2606d87",
+      "bfb0cddd400eb2900509",
+      "608d654032270cbb431d",
+      "4ffb18dd757aab970d7b",
+      "53c66d29d5a7934b053c",
+    ],
+    [
+      "66b0c66366547de4d305",
+      "c1ffe8209c0d20ba00a9",
+      "146b4b2456c5190541a0",
+      "0ef44800ed7ba9b2a451",
+      "8db4fab56170d3c4a670",
+    ],
+    [
+      "2346d05958531b1c0e70",
+      "8ed644355c0522d96e45",
+      "d8c53201b61254046ba2",
+      "0698e7cbde04a3e75c43",
+      "9e5c2c97509007d8206a",
+    ],
+    [
+      "6bdc2989401065a6a9c8",
+      "09ac7c2dade205a90b7e",
+      "76679585a806334163ed",
+      "7787568665e3205bb6c2",
+      "8156d8700ccc9862e851",
+    ],
+  ];
+
+  for (const pageId of topPages) {
+    for (const visualIds of visualSets) {
+      visualIds.forEach((visualId, index) => {
+        const filePath = visualPath(pageId, visualId);
+        if (!fs.existsSync(filePath)) return;
+        const visual = readJson(filePath);
+        visual.parentGroupName = parentGroups[index];
+        writeJson(filePath, visual);
+      });
+    }
+  }
+}
+
+function finalizeTopKpiLayout() {
+  const topPages = [
+    "fe4687310000e672d410",
+    "d4f6a8c0b3e57921f234",
+    "a6f4e2b9c1d34780ef12",
+    "e5a1b2c3d4f60789ab01",
+    "f1a9c2e7d4b86350a1f2",
+    "b2d4e6f8a1c34567d890",
+    "c3e5f7a9b2d46810e123",
+  ];
+  const outerGroups = [
+    "c27b164dcb574ce0774a",
+    "023d9031bdc059cb91e5",
+    "0b182f50da018a3c0ecc",
+    "96fb689035d3de660b04",
+    "8ae84b03c92891ceb709",
+  ];
+  const innerGroups = [
+    "44907662101800700ecc",
+    "5b9d2604747920a48a6e",
+    "c5c8629e334896c41696",
+    "c25572076e890d9dc34a",
+    "bce8872da1da18e40493",
+  ];
+  const shellTextboxes = [
+    "57bd32d86e050743c456",
+    "57fb7ea088dba8840545",
+    "604d45c9638bb1606852",
+    "c960bd069b6605e6eeda",
+    "606dec8a30465c5b9d0b",
+  ];
+
+  for (const pageId of topPages) {
+    outerGroups.forEach((visualId) => {
+      const filePath = visualPath(pageId, visualId);
+      if (!fs.existsSync(filePath)) return;
+      const visual = readJson(filePath);
+      visual.position = {
+        ...visual.position,
+        height: 132,
+      };
+      writeJson(filePath, visual);
+    });
+
+    innerGroups.forEach((visualId) => {
+      const filePath = visualPath(pageId, visualId);
+      if (!fs.existsSync(filePath)) return;
+      const visual = readJson(filePath);
+      visual.position = {
+        ...visual.position,
+        height: 124,
+      };
+      writeJson(filePath, visual);
+    });
+
+    shellTextboxes.forEach((visualId) => {
+      const filePath = visualPath(pageId, visualId);
+      if (!fs.existsSync(filePath)) return;
+      const visual = readJson(filePath);
+      visual.position = {
+        ...visual.position,
+        height: 126,
+      };
+      writeJson(filePath, visual);
+    });
+  }
+}
+
 function configureComarcasBlueprint() {
   const bookmarks = readJson(BOOKMARKS_PATH);
   const cfg = COMARCAS_BLUEPRINT_CONFIG;
   const pageId = cfg.pageId;
 
+  // Hide legacy containers that still leak into the map/cross block.
+  setHidden(pageId, "c8938c6da410891b5040", true);
+  setHidden(pageId, "e1b04cb7aad1837227ba", true);
+  setHidden(pageId, "8bf3bac09e4e3528d02a", true);
+  setHidden(pageId, "db2731d2e8a48055475a", true);
+
   setBarChartBinding(
     pageId,
     cfg.leftToggle.charts.valor,
     { entity: "Orders", property: "State Mapa", displayName: "Comarca" },
-    { entity: "Measure", property: "Valor Arbitrado Base", displayName: "Valor Arbitrado Base", sortProperty: "Sales" },
+    { entity: "Measure", property: "Valor Arbitrado Base", displayName: "Valor Arbitrado Base", sortProperty: "Valor Arbitrado Base" },
     10
   );
   setBarChartBinding(
     pageId,
     cfg.leftToggle.charts.qtd,
     { entity: "Orders", property: "State Mapa", displayName: "Comarca" },
-    { entity: "Measure", property: "Qtd Perícias Base", displayName: "Qtd Perícias Base", sortProperty: "Quantity", aggFunction: 0 },
+    { entity: "Measure", property: "Qtd Perícias Base", displayName: "Qtd Perícias Base", sortProperty: "Qtd Perícias Base", aggFunction: 0 },
     10
   );
   setTreemapBinding(
     pageId,
     cfg.rightToggle.charts.peritos,
-    { entity: "FactPericias", property: "PeritoNomeExibicao", displayName: "Perito" },
-    { entity: "Measure", property: "Valor Arbitrado Base", displayName: "Valor Arbitrado Base", sortProperty: "ValorArbitrado" },
+    { entity: "DimPeritos", property: "PeritoCurto", displayName: "Perito" },
+    { entity: "Measure", property: "Valor Arbitrado Base", displayName: "Valor Arbitrado Base", sortProperty: "Valor Arbitrado Base" },
     10
   );
   setTreemapBinding(
     pageId,
     cfg.rightToggle.charts.especialidades,
-    { entity: "FactPericias", property: "EspecialidadeExibicao", displayName: "Especialidade" },
-    { entity: "Measure", property: "Valor Arbitrado Base", displayName: "Valor Arbitrado Base", sortProperty: "ValorArbitrado" },
+    { entity: "DimEspecialidades", property: "EspecialidadeCurta", displayName: "Especialidade" },
+    { entity: "Measure", property: "Valor Arbitrado Base", displayName: "Valor Arbitrado Base", sortProperty: "Valor Arbitrado Base" },
     10
   );
   setBarChartBinding(
     pageId,
     cfg.operational.chartId,
-    cfg.operational.dimension,
-    { entity: "Measure", property: "Valor Arbitrado Base", displayName: "Valor Arbitrado Base", sortProperty: "ValorArbitrado" },
+    { entity: "DimVaras", property: "JuizoCurto", displayName: "Vara" },
+    { entity: "Measure", property: "Valor Arbitrado Base", displayName: "Valor Arbitrado Base", sortProperty: "Valor Arbitrado Base" },
     cfg.operational.topN
   );
   setTextLabel(pageId, cfg.operational.titleId, cfg.operational.title);
@@ -4743,6 +4941,14 @@ function configureEntityAnalysisPages() {
   const bookmarks = readJson(BOOKMARKS_PATH);
 
   for (const [pageId, cfg] of Object.entries(ENTITY_BLUEPRINT_CONFIG)) {
+    const labelCfg = ENTITY_CHART_LABEL_CONFIG[pageId] || {
+      ranking: cfg.entityColumn,
+      operational: cfg.operational.dimension,
+      financial: cfg.financial.dimension,
+      detailPrimary: cfg.entityColumn,
+      detailSecondary: cfg.secondaryColumn,
+    };
+
     upsertVisual(pageId, cfg.ranking.altGroupId, cfg.ranking.groupId, (visual) => {
       visual.position = deepClone(visual.position);
       visual.visualGroup = deepClone(visual.visualGroup);
@@ -4783,15 +4989,15 @@ function configureEntityAnalysisPages() {
     setBarChartBinding(
       pageId,
       cfg.ranking.chartId,
-      cfg.entityColumn,
-      { entity: "Measure", property: "Valor Arbitrado Base", displayName: "Valor Arbitrado Base", sortProperty: "ValorArbitrado" },
+      labelCfg.ranking,
+      { entity: "Measure", property: "Valor Arbitrado Base", displayName: "Valor Arbitrado Base", sortProperty: "Valor Arbitrado Base" },
       cfg.ranking.topN
     );
     setBarChartBinding(
       pageId,
       cfg.ranking.altChartId,
-      cfg.entityColumn,
-      { entity: "Measure", property: "Qtd Perícias Base", displayName: "Qtd Perícias Base", sortProperty: "NumeroPericia", aggFunction: 5 },
+      labelCfg.ranking,
+      { entity: "Measure", property: "Qtd Perícias Base", displayName: "Qtd Perícias Base", sortProperty: "Qtd Perícias Base", aggFunction: 5 },
       cfg.ranking.topN
     );
     setTextLabel(pageId, cfg.ranking.titleId, cfg.ranking.titles.valor.title);
@@ -4854,8 +5060,8 @@ function configureEntityAnalysisPages() {
     setBarChartBinding(
       pageId,
       cfg.operational.chartId,
-      cfg.operational.dimension,
-      { entity: "Measure", property: "Valor Arbitrado Base", displayName: "Valor Arbitrado Base", sortProperty: "ValorArbitrado" },
+      labelCfg.operational,
+      { entity: "Measure", property: "Valor Arbitrado Base", displayName: "Valor Arbitrado Base", sortProperty: "Valor Arbitrado Base" },
       cfg.operational.topN
     );
     setTextLabel(pageId, cfg.operational.titleId, cfg.operational.title);
@@ -4865,16 +5071,16 @@ function configureEntityAnalysisPages() {
     setTreemapBinding(
       pageId,
       cfg.financial.chartId,
-      cfg.financial.dimension,
-      { entity: "Measure", property: "Valor Arbitrado Base", displayName: "Valor Arbitrado Base", sortProperty: "ValorArbitrado" },
+      labelCfg.financial,
+      { entity: "Measure", property: "Valor Arbitrado Base", displayName: "Valor Arbitrado Base", sortProperty: "Valor Arbitrado Base" },
       cfg.financial.topN
     );
     setTextLabel(pageId, cfg.financial.titleId, cfg.financial.title);
     setTextLabel(pageId, cfg.financial.subtitleId, cfg.financial.subtitle);
 
     createOrUpdateDetailTable(pageId, cfg.detail.visualId, cfg.detail.title, [
-      buildColumnProjection(cfg.entityColumn.entity, cfg.entityColumn.property, cfg.entityColumn.displayName),
-      buildColumnProjection(cfg.secondaryColumn.entity, cfg.secondaryColumn.property, cfg.secondaryColumn.displayName),
+      buildColumnProjection(labelCfg.detailPrimary.entity, labelCfg.detailPrimary.property, labelCfg.detailPrimary.displayName),
+      buildColumnProjection(labelCfg.detailSecondary.entity, labelCfg.detailSecondary.property, labelCfg.detailSecondary.displayName),
       buildMeasureProjection("Measure", "Qtd Perícias Base", "Qtd Perícias"),
       buildMeasureProjection("Measure", "Valor Arbitrado Base", "Valor Arbitrado"),
       buildMeasureProjection("Measure", "Saldo a Receber Base", "Saldo Pendente"),
@@ -4882,9 +5088,25 @@ function configureEntityAnalysisPages() {
     ]);
 
     // Remove o bloco legado que estava poluindo o miolo das páginas analíticas.
-    ["acee2d020bb8c1c4903b", "51d63b4f58c8609a1a33", "1ec0e6adc7607be01bdd", "f67a89c63b41e2a74038"].forEach((visualId) => {
+    ["acee2d020bb8c1c4903b", "51d63b4f58c8609a1a33", "1ec0e6adc7607be01bdd", "f67a89c63b41e2a74038", "3943a8f5dc4bb830b9ae"].forEach((visualId) => {
       setHidden(pageId, visualId, true);
     });
+
+    const rankingGroupPath = visualPath(pageId, cfg.ranking.groupId);
+    if (fs.existsSync(rankingGroupPath)) {
+      const rankingGroup = readJson(rankingGroupPath);
+      rankingGroup.visualGroup = rankingGroup.visualGroup || {};
+      rankingGroup.visualGroup.displayName = "Ranking principal";
+      writeJson(rankingGroupPath, rankingGroup);
+    }
+
+    const financialGroupPath = visualPath(pageId, "1c1410e9e295d87af163");
+    if (fs.existsSync(financialGroupPath)) {
+      const financialGroup = readJson(financialGroupPath);
+      financialGroup.visualGroup = financialGroup.visualGroup || {};
+      financialGroup.visualGroup.displayName = "Cruzamento financeiro";
+      writeJson(financialGroupPath, financialGroup);
+    }
   }
 
   writeJson(BOOKMARKS_PATH, bookmarks);
@@ -4914,7 +5136,7 @@ function configureMetroOperationalCharts() {
     entity: "Measure",
     property: "Valor Arbitrado Base",
     displayName: "Valor Arbitrado Base",
-    sortProperty: "ValorArbitrado",
+    sortProperty: "Valor Arbitrado Base",
   };
 
   ensureRmCampinaOperationalChart();
@@ -4922,7 +5144,7 @@ function configureMetroOperationalCharts() {
   setDonutChartBinding(
     "a6f4e2b9c1d34780ef12",
     "e85feb694080c3b3bc21",
-    { entity: "FactPericias", property: "JuizoExibicao", displayName: "Vara" },
+    { entity: "DimVaras", property: "JuizoCurto", displayName: "Vara" },
     measure,
     10
   );
@@ -4953,8 +5175,8 @@ function configureMetroOperationalCharts() {
     },
     "Valores por vara | RM João Pessoa",
     [
-      buildColumnProjection("FactPericias", "JuizoExibicao", "Vara"),
       buildMeasureProjection("Measure", "Valor Arbitrado Base", "Valor"),
+      buildColumnProjection("DimVaras", "JuizoCurto", "Vara"),
     ]
   );
   setVisualContainerTitleVisibility("a6f4e2b9c1d34780ef12", "a6f4rmvaralist001", false);
@@ -4962,7 +5184,7 @@ function configureMetroOperationalCharts() {
   setDonutChartBinding(
     "e5a1b2c3d4f60789ab01",
     "e85feb694080c3b3bc21",
-    { entity: "FactPericias", property: "JuizoExibicao", displayName: "Vara" },
+    { entity: "DimVaras", property: "JuizoCurto", displayName: "Vara" },
     measure,
     10
   );
@@ -4993,11 +5215,42 @@ function configureMetroOperationalCharts() {
     },
     "Valores por vara | RM Campina Grande",
     [
-      buildColumnProjection("FactPericias", "JuizoExibicao", "Vara"),
       buildMeasureProjection("Measure", "Valor Arbitrado Base", "Valor"),
+      buildColumnProjection("DimVaras", "JuizoCurto", "Vara"),
     ]
   );
   setVisualContainerTitleVisibility("e5a1b2c3d4f60789ab01", "e5a1rmvaralist001", false);
+}
+
+function configureResidualLegacyCharts() {
+  const valorMeasure = {
+    entity: "Measure",
+    property: "Valor Arbitrado Base",
+    displayName: "Valor Arbitrado Base",
+    sortProperty: "Valor Arbitrado Base",
+  };
+
+  setBarChartBinding(
+    "e5a1b2c3d4f60789ab01",
+    "cd3d55d60e6c404b02c7",
+    { entity: "DimEspecialidades", property: "EspecialidadeCurta", displayName: "Especialidade" },
+    valorMeasure,
+    10
+  );
+  setBarChartBinding(
+    "e5a1b2c3d4f60789ab01",
+    "317b187a9471457a326e",
+    { entity: "DimPeritos", property: "PeritoCurto", displayName: "Perito" },
+    valorMeasure,
+    10
+  );
+  setBarChartBinding(
+    "480be36186f85cc3c324",
+    "5715f23ae7323c710a25",
+    { entity: "DimPeritos", property: "PeritoCurto", displayName: "Perito" },
+    valorMeasure,
+    5
+  );
 }
 
 function configureDefaultPieCharts() {
@@ -5005,11 +5258,601 @@ function configureDefaultPieCharts() {
     COMARCAS_BLUEPRINT_CONFIG.pageId,
     COMARCAS_BLUEPRINT_CONFIG.operational.chartId,
     COMARCAS_BLUEPRINT_CONFIG.operational.dimension,
-    { entity: "Measure", property: "Valor Arbitrado Base", displayName: "Valor Arbitrado Base", sortProperty: "ValorArbitrado" },
+    { entity: "Measure", property: "Valor Arbitrado Base", displayName: "Valor Arbitrado Base", sortProperty: "Valor Arbitrado Base" },
     COMARCAS_BLUEPRINT_CONFIG.operational.topN
   );
 
   configureMetroOperationalCharts();
+  configureResidualLegacyCharts();
+}
+
+function standardizeMetropolitanPages() {
+  const metroPages = {
+    a6f4e2b9c1d34780ef12: {
+      displayName: "RM João Pessoa",
+      pageHeight: 980,
+      mainBackgroundId: "cbb9050b7ce28900e44a",
+      sidebarBackgroundId: "0325c4e7ec01108ac90b",
+      sidebarPanelId: "aa00bb11cc22dd33ee52",
+      titleOverlayId: "07d4da210de09608d4fb",
+      pageNavigatorId: "3c9eb8b9053b22bcd99f",
+      yearLabelId: "0b1ad6f613de09bd0dbe",
+      yearSlicerId: "72c2ba702fe2952b0f6b",
+      monthLabelId: "ac264f11a941630246ff",
+      monthSlicerId: "65c02e07e18d7728119a",
+      legacyTopSlicerId: "66f7c5422ecb46c4a0fa",
+      legacyTopShapeId: "c8938c6da410891b5040",
+      legacyRightGroupId: "e1b04cb7aad1837227ba",
+      legacyRightTitleId: "8bf3bac09e4e3528d02a",
+      detailVisualId: "a6f4detailtable001",
+    },
+    e5a1b2c3d4f60789ab01: {
+      displayName: "RM Campina Grande",
+      pageHeight: 980,
+      mainBackgroundId: "cbb9050b7ce28900e44a",
+      sidebarBackgroundId: "0325c4e7ec01108ac90b",
+      titleOverlayId: "07d4da210de09608d4fb",
+      pageNavigatorId: "3c9eb8b9053b22bcd99f",
+      yearLabelId: "0b1ad6f613de09bd0dbe",
+      yearSlicerId: "72c2ba702fe2952b0f6b",
+      monthLabelId: "ac264f11a941630246ff",
+      monthSlicerId: "65c02e07e18d7728119a",
+      legacyTopSlicerId: "66f7c5422ecb46c4a0fa",
+      legacyTopShapeId: "c8938c6da410891b5040",
+      legacyRightGroupId: "e1b04cb7aad1837227ba",
+      legacyRightTitleId: "8bf3bac09e4e3528d02a",
+      detailVisualId: "e5a1detailtable001",
+    },
+  };
+
+  for (const [pageId, cfg] of Object.entries(metroPages)) {
+    const page = readPageJson(pageId);
+    page.height = cfg.pageHeight;
+    page.displayOption = "FitToWidth";
+    delete page.visibility;
+    writePageJson(pageId, page);
+
+    setPosition(pageId, cfg.mainBackgroundId, {
+      height: cfg.pageHeight,
+      width: 1108.0851063829787,
+    });
+    setPosition(pageId, cfg.sidebarBackgroundId, {
+      height: cfg.pageHeight - 0.0533365658525,
+    });
+    if (cfg.sidebarPanelId && fs.existsSync(visualPath(pageId, cfg.sidebarPanelId))) {
+      setPosition(pageId, cfg.sidebarPanelId, {
+        y: 171,
+        height: cfg.pageHeight - 200,
+      });
+    }
+
+    setHidden(pageId, cfg.titleOverlayId, true);
+    setPosition(pageId, cfg.pageNavigatorId, {
+      x: 8,
+      y: 182,
+      width: 158,
+      height: 300,
+    });
+    setPosition(pageId, cfg.yearLabelId, {
+      x: 18,
+      y: 750,
+      width: 145,
+      height: 30,
+    });
+    setPosition(pageId, cfg.yearSlicerId, {
+      x: 12,
+      y: 775,
+      width: 151.63123955099115,
+      height: 54,
+    });
+    setPosition(pageId, cfg.monthLabelId, {
+      x: 18,
+      y: 855,
+      width: 167,
+      height: 30,
+    });
+    setPosition(pageId, cfg.monthSlicerId, {
+      x: 12,
+      y: 880,
+      width: 151.63123955099115,
+      height: 53,
+    });
+
+    setHidden(pageId, cfg.legacyTopSlicerId, true);
+    setHidden(pageId, cfg.legacyTopShapeId, true);
+    setHidden(pageId, cfg.legacyRightGroupId, true);
+    setHidden(pageId, cfg.legacyRightTitleId, true);
+
+    createOrUpdateDetailTable(pageId, cfg.detailVisualId, `Detalhe Analítico | ${cfg.displayName}`, [
+      buildColumnProjection("DimVaras", "JuizoCurto", "Vara"),
+      buildColumnProjection("DimEspecialidades", "EspecialidadeCurta", "Especialidade"),
+      buildMeasureProjection("Measure", "Qtd Perícias Base", "Qtd Perícias"),
+      buildMeasureProjection("Measure", "Valor Arbitrado Base", "Valor Arbitrado"),
+      buildMeasureProjection("FactPericias", "Ticket Médio", "Ticket Médio"),
+    ]);
+  }
+}
+
+function finalizePageCleanup() {
+  const overviewPageId = "fe4687310000e672d410";
+  ["8bf3bac09e4e3528d02a", "db2731d2e8a48055475a", "fec209241e28d2185094"].forEach((visualId) => {
+    setHidden(overviewPageId, visualId, true);
+  });
+
+  const comarcasPageId = COMARCAS_BLUEPRINT_CONFIG.pageId;
+  ["c8938c6da410891b5040", "e1b04cb7aad1837227ba", "8bf3bac09e4e3528d02a", "db2731d2e8a48055475a", "fec209241e28d2185094", "59445bbfe4c2c70b7160"].forEach((visualId) => {
+    setHidden(comarcasPageId, visualId, true);
+  });
+
+  const rmJoaoPessoaPageId = "a6f4e2b9c1d34780ef12";
+  ["fec209241e28d2185094"].forEach((visualId) => {
+    setHidden(rmJoaoPessoaPageId, visualId, true);
+  });
+
+  const cruzamentosPageId = "82ff2dfb93623b9eeb6c";
+  ["3e7367399ce208251f7a", "3ecd385e0823aad23b76", "055bca1490f437da7149"].forEach((visualId) => {
+    setHidden(cruzamentosPageId, visualId, true);
+  });
+  setHidden(cruzamentosPageId, "8a25d0234525a8ef9a69", false);
+
+  removeBookmarkArtifacts(
+    ["4d4a5aa650873e37334c", "8bfbff69a59555005e30"],
+    [
+      "ca6bc2673331094a0626",
+      "5001cf6c5c4a12cd0d80",
+      "be2c1b7bbca893bdcd42",
+      "ce01212141deed8bc050",
+    ]
+  );
+}
+
+function sanitizeSensitiveVisualSchemas() {
+  const pagesRoot = path.join(REPORT_ROOT, "pages");
+  for (const pageId of fs.readdirSync(pagesRoot)) {
+    const visualsDir = path.join(pagesRoot, pageId, "visuals");
+    if (!fs.existsSync(visualsDir)) continue;
+
+    for (const visualId of fs.readdirSync(visualsDir)) {
+      const filePath = path.join(visualsDir, visualId, "visual.json");
+      if (!fs.existsSync(filePath)) continue;
+
+      const visual = readJson(filePath);
+      const visualType = visual?.visual?.visualType;
+      if (!visualType) continue;
+
+      if (visualType === "slicer" || visualType === "tableEx") {
+        delete visual.drillFilterOtherVisuals;
+        if (visual.visual) {
+          delete visual.visual.drillFilterOtherVisuals;
+        }
+        writeJson(filePath, visual);
+      }
+    }
+  }
+}
+
+const TOP_NAV_LAYOUT_CONFIG = {
+  fe4687310000e672d410: {
+    mainBackgroundId: "cbb9050b7ce28900e44a",
+    sidebarBackgroundId: "0325c4e7ec01108ac90b",
+    sidebarPanelIds: ["aa00bb11cc22dd33ee41", "aa00bb11cc22dd33ee42"],
+    pageNavigatorId: "3c9eb8b9053b22bcd99f",
+    yearLabelId: "0b1ad6f613de09bd0dbe",
+    yearSlicerId: "72c2ba702fe2952b0f6b",
+    monthLabelId: "ac264f11a941630246ff",
+    monthSlicerId: "65c02e07e18d7728119a",
+    titleOverlayIds: ["07d4da210de09608d4fb"],
+  },
+  d4f6a8c0b3e57921f234: {
+    mainBackgroundId: "cbb9050b7ce28900e44a",
+    sidebarBackgroundId: "0325c4e7ec01108ac90b",
+    sidebarPanelIds: ["aa00bb11cc22dd33ee51", "aa00bb11cc22dd33ee52"],
+    pageNavigatorId: "3c9eb8b9053b22bcd99f",
+    yearLabelId: "0b1ad6f613de09bd0dbe",
+    yearSlicerId: "72c2ba702fe2952b0f6b",
+    monthLabelId: "ac264f11a941630246ff",
+    monthSlicerId: "65c02e07e18d7728119a",
+    titleOverlayIds: ["07d4da210de09608d4fb"],
+  },
+  f1a9c2e7d4b86350a1f2: {
+    mainBackgroundId: "602d61c16500ea288cdc",
+    sidebarBackgroundId: "71d424213bef4ecba9fd",
+    sidebarPanelIds: ["aa00bb11cc22dd33ee61", "aa00bb11cc22dd33ee62"],
+    pageNavigatorId: "82a71ddf3d9cfc3071cb",
+    yearLabelId: "7b9674f786248db06ec7",
+    yearSlicerId: "d61893b8024d73344e50",
+    monthLabelId: "a36e96c0b8c299e25767",
+    monthSlicerId: "550de89675d60d2a7478",
+    titleOverlayIds: ["b3ca9db4dc5f60ce98f2"],
+  },
+  b2d4e6f8a1c34567d890: {
+    mainBackgroundId: "602d61c16500ea288cdc",
+    sidebarBackgroundId: "71d424213bef4ecba9fd",
+    sidebarPanelIds: ["aa00bb11cc22dd33ee71", "aa00bb11cc22dd33ee72"],
+    pageNavigatorId: "82a71ddf3d9cfc3071cb",
+    yearLabelId: "7b9674f786248db06ec7",
+    yearSlicerId: "d61893b8024d73344e50",
+    monthLabelId: "a36e96c0b8c299e25767",
+    monthSlicerId: "550de89675d60d2a7478",
+    titleOverlayIds: ["b3ca9db4dc5f60ce98f2"],
+  },
+  c3e5f7a9b2d46810e123: {
+    mainBackgroundId: "602d61c16500ea288cdc",
+    sidebarBackgroundId: "71d424213bef4ecba9fd",
+    sidebarPanelIds: ["aa00bb11cc22dd33ee81", "aa00bb11cc22dd33ee82"],
+    pageNavigatorId: "82a71ddf3d9cfc3071cb",
+    yearLabelId: "7b9674f786248db06ec7",
+    yearSlicerId: "d61893b8024d73344e50",
+    monthLabelId: "a36e96c0b8c299e25767",
+    monthSlicerId: "550de89675d60d2a7478",
+    titleOverlayIds: ["b3ca9db4dc5f60ce98f2"],
+  },
+  a6f4e2b9c1d34780ef12: {
+    mainBackgroundId: "cbb9050b7ce28900e44a",
+    sidebarBackgroundId: "0325c4e7ec01108ac90b",
+    sidebarPanelIds: ["aa00bb11cc22dd33ee51", "aa00bb11cc22dd33ee52"],
+    pageNavigatorId: "3c9eb8b9053b22bcd99f",
+    yearLabelId: "0b1ad6f613de09bd0dbe",
+    yearSlicerId: "72c2ba702fe2952b0f6b",
+    monthLabelId: "ac264f11a941630246ff",
+    monthSlicerId: "65c02e07e18d7728119a",
+    titleOverlayIds: ["07d4da210de09608d4fb"],
+  },
+  e5a1b2c3d4f60789ab01: {
+    mainBackgroundId: "cbb9050b7ce28900e44a",
+    sidebarBackgroundId: "0325c4e7ec01108ac90b",
+    sidebarPanelIds: [],
+    pageNavigatorId: "3c9eb8b9053b22bcd99f",
+    yearLabelId: "0b1ad6f613de09bd0dbe",
+    yearSlicerId: "72c2ba702fe2952b0f6b",
+    monthLabelId: "ac264f11a941630246ff",
+    monthSlicerId: "65c02e07e18d7728119a",
+    titleOverlayIds: ["07d4da210de09608d4fb"],
+  },
+  "480be36186f85cc3c324": {
+    mainBackgroundId: "602d61c16500ea288cdc",
+    sidebarBackgroundId: "71d424213bef4ecba9fd",
+    sidebarPanelIds: [],
+    pageNavigatorId: "82a71ddf3d9cfc3071cb",
+    yearLabelId: "7b9674f786248db06ec7",
+    yearSlicerId: "d61893b8024d73344e50",
+    monthLabelId: "a36e96c0b8c299e25767",
+    monthSlicerId: "550de89675d60d2a7478",
+    titleOverlayIds: ["b3ca9db4dc5f60ce98f2"],
+  },
+  "82ff2dfb93623b9eeb6c": {
+    mainBackgroundId: "a40efbf69139973c4735",
+    sidebarBackgroundId: "301f18119397cb656803",
+    sidebarPanelIds: [],
+    pageNavigatorId: "90ef7133d4dc72c8b01c",
+    yearLabelId: "9664cd3d5cf425f02640",
+    yearSlicerId: "345887e07b9731b60c0e",
+    monthLabelId: "4589da918d8d51e29e33",
+    monthSlicerId: "ee8a2f8166853578bf1e",
+    titleOverlayIds: ["e309cc1f1d3c9195aeac"],
+  },
+};
+
+function findRootLogoVisualId(pageId) {
+  const visualsDir = path.join(REPORT_ROOT, "pages", pageId, "visuals");
+  if (!fs.existsSync(visualsDir)) return null;
+  for (const visualId of fs.readdirSync(visualsDir)) {
+    const filePath = path.join(visualsDir, visualId, "visual.json");
+    if (!fs.existsSync(filePath)) continue;
+    const visual = readJson(filePath);
+    if (visual.parentGroupName) continue;
+    const visualType = visual.visual?.visualType || visual.singleVisual?.visualType;
+    const position = visual.position || {};
+    if (visualType === "image" && (position.x ?? 9999) < 170 && (position.y ?? 9999) < 50) {
+      return visualId;
+    }
+  }
+  return null;
+}
+
+function setPageNavigatorOrientation(pageId, visualId, literalValue) {
+  const filePath = visualPath(pageId, visualId);
+  if (!fs.existsSync(filePath)) return;
+  const visual = readJson(filePath);
+  const layout = visual.visual?.objects?.layout?.[0]?.properties;
+  if (!layout) return;
+  layout.orientation = {
+    expr: {
+      Literal: {
+        Value: literalValue,
+      },
+    },
+  };
+  const textObjects = visual.visual?.objects?.text;
+  if (Array.isArray(textObjects)) {
+    for (const textObject of textObjects) {
+      textObject.properties = textObject.properties || {};
+      textObject.properties.fontSize = {
+        expr: {
+          Literal: {
+            Value: "7D",
+          },
+        },
+      };
+    }
+  }
+  writeJson(filePath, visual);
+}
+
+function shiftRootVisualsLeft(pageId, deltaX, excludedIds = new Set()) {
+  const visualsDir = path.join(REPORT_ROOT, "pages", pageId, "visuals");
+  if (!fs.existsSync(visualsDir)) return;
+  for (const visualId of fs.readdirSync(visualsDir)) {
+    if (excludedIds.has(visualId)) continue;
+    const filePath = path.join(visualsDir, visualId, "visual.json");
+    if (!fs.existsSync(filePath)) continue;
+    const visual = readJson(filePath);
+    if (visual.parentGroupName) continue;
+    const position = visual.position || {};
+    const x = position.x;
+    if (typeof x !== "number" || x < 170) continue;
+    visual.position = { ...position, x: x - deltaX };
+    writeJson(filePath, visual);
+  }
+}
+
+function promoteNavigationToTopBar() {
+  const pageIds = Object.keys(TOP_NAV_LAYOUT_CONFIG);
+  for (const pageId of pageIds) {
+    const cfg = TOP_NAV_LAYOUT_CONFIG[pageId];
+    const logoId = findRootLogoVisualId(pageId);
+
+    setPosition(pageId, cfg.mainBackgroundId, {
+      x: 0,
+      width: 1280,
+    });
+    setHidden(pageId, cfg.sidebarBackgroundId, true);
+    for (const visualId of cfg.sidebarPanelIds) {
+      setHidden(pageId, visualId, true);
+    }
+    for (const visualId of cfg.titleOverlayIds) {
+      setHidden(pageId, visualId, true);
+    }
+
+    const visualsDir = path.join(REPORT_ROOT, "pages", pageId, "visuals");
+    if (fs.existsSync(visualsDir)) {
+      for (const visualId of fs.readdirSync(visualsDir)) {
+        const filePath = path.join(visualsDir, visualId, "visual.json");
+        if (!fs.existsSync(filePath)) continue;
+        const visual = readJson(filePath);
+        if (visual.parentGroupName) continue;
+        const position = visual.position || {};
+        const x = position.x;
+        const visualType = visual.visual?.visualType || visual.singleVisual?.visualType;
+        if (
+          typeof x === "number" &&
+          x < 170 &&
+          visualType === "shape" &&
+          ![cfg.sidebarBackgroundId, cfg.pageNavigatorId].includes(visualId)
+        ) {
+          visual.isHidden = true;
+          writeJson(filePath, visual);
+        }
+        if (
+          typeof x === "number" &&
+          x < 170 &&
+          visualType === "textbox" &&
+          ![cfg.yearLabelId, cfg.monthLabelId].includes(visualId)
+        ) {
+          visual.isHidden = true;
+          writeJson(filePath, visual);
+        }
+      }
+    }
+
+    setHidden(pageId, cfg.mainBackgroundId, false);
+
+    if (logoId) {
+      setPosition(pageId, logoId, {
+        x: 12,
+        y: 6,
+        width: 38,
+        height: 38,
+      });
+      setHidden(pageId, logoId, false);
+    }
+
+    setPageNavigatorOrientation(pageId, cfg.pageNavigatorId, "0D");
+    setPosition(pageId, cfg.pageNavigatorId, {
+      x: 66,
+      y: 8,
+      width: 760,
+      height: 22,
+    });
+
+    setPosition(pageId, cfg.yearLabelId, {
+      x: 850,
+      y: 10,
+      width: 34,
+      height: 18,
+    });
+    setTextboxFontSize(pageId, cfg.yearLabelId, "7pt");
+    setPosition(pageId, cfg.yearSlicerId, {
+      x: 884,
+      y: 6,
+      width: 132,
+      height: 26,
+    });
+
+    setPosition(pageId, cfg.monthLabelId, {
+      x: 1028,
+      y: 10,
+      width: 36,
+      height: 18,
+    });
+    setTextboxFontSize(pageId, cfg.monthLabelId, "7pt");
+    setPosition(pageId, cfg.monthSlicerId, {
+      x: 1064,
+      y: 6,
+      width: 132,
+      height: 26,
+    });
+
+    shiftRootVisualsLeft(
+      pageId,
+      145,
+      new Set([
+        cfg.mainBackgroundId,
+        cfg.sidebarBackgroundId,
+        cfg.pageNavigatorId,
+        cfg.yearLabelId,
+        cfg.yearSlicerId,
+        cfg.monthLabelId,
+        cfg.monthSlicerId,
+        logoId,
+        ...cfg.sidebarPanelIds,
+        ...cfg.titleOverlayIds,
+      ].filter(Boolean))
+    );
+  }
+}
+
+function restoreSidebarRails() {
+  for (const [pageId, cfg] of Object.entries(SIDEBAR_LAYOUT_CONFIG)) {
+    setHidden(pageId, cfg.mainBackgroundId, false);
+    setHidden(pageId, cfg.sidebarBackgroundId, false);
+    setHidden(pageId, cfg.sidebarPanelId, false);
+    setPageNavigatorOrientation(pageId, cfg.pageNavigatorId, "1D");
+    setPosition(pageId, cfg.pageNavigatorId, {
+      x: 8,
+      y: 182,
+      width: 158,
+      height: 300,
+    });
+    setPosition(pageId, cfg.yearLabelId, {
+      x: 18,
+      y: 530,
+      width: 145,
+      height: 30,
+    });
+    setPosition(pageId, cfg.yearSlicerId, {
+      x: 12,
+      y: 555,
+      width: 151.63123955099115,
+      height: 54,
+    });
+    setPosition(pageId, cfg.monthLabelId, {
+      x: 18,
+      y: 635,
+      width: 167,
+      height: 30,
+    });
+    setPosition(pageId, cfg.monthSlicerId, {
+      x: 12,
+      y: 660,
+      width: 151.63123955099115,
+      height: 54,
+    });
+  }
+
+  const extraPages = {
+    a6f4e2b9c1d34780ef12: {
+      mainBackgroundId: "cbb9050b7ce28900e44a",
+      sidebarBackgroundId: "0325c4e7ec01108ac90b",
+      sidebarPanelId: "aa00bb11cc22dd33ee52",
+      pageNavigatorId: "3c9eb8b9053b22bcd99f",
+      yearLabelId: "0b1ad6f613de09bd0dbe",
+      yearSlicerId: "72c2ba702fe2952b0f6b",
+      monthLabelId: "ac264f11a941630246ff",
+      monthSlicerId: "65c02e07e18d7728119a",
+      yearY: 750,
+      yearSlicerY: 775,
+      monthY: 855,
+      monthSlicerY: 880,
+      navY: 182,
+      navHeight: 300,
+    },
+    e5a1b2c3d4f60789ab01: {
+      mainBackgroundId: "cbb9050b7ce28900e44a",
+      sidebarBackgroundId: "0325c4e7ec01108ac90b",
+      sidebarPanelId: null,
+      pageNavigatorId: "3c9eb8b9053b22bcd99f",
+      yearLabelId: "0b1ad6f613de09bd0dbe",
+      yearSlicerId: "72c2ba702fe2952b0f6b",
+      monthLabelId: "ac264f11a941630246ff",
+      monthSlicerId: "65c02e07e18d7728119a",
+      yearY: 750,
+      yearSlicerY: 775,
+      monthY: 855,
+      monthSlicerY: 880,
+      navY: 182,
+      navHeight: 300,
+    },
+    "480be36186f85cc3c324": {
+      mainBackgroundId: "602d61c16500ea288cdc",
+      sidebarBackgroundId: "71d424213bef4ecba9fd",
+      sidebarPanelId: null,
+      pageNavigatorId: "82a71ddf3d9cfc3071cb",
+      yearLabelId: "7b9674f786248db06ec7",
+      yearSlicerId: "d61893b8024d73344e50",
+      monthLabelId: "a36e96c0b8c299e25767",
+      monthSlicerId: "550de89675d60d2a7478",
+      yearY: 425.54573680439455,
+      yearSlicerY: 448.7795557678529,
+      monthY: 518.4810126582279,
+      monthSlicerY: 541.7148316216861,
+      navY: 165,
+      navHeight: 240,
+    },
+    "82ff2dfb93623b9eeb6c": {
+      mainBackgroundId: "a40efbf69139973c4735",
+      sidebarBackgroundId: "301f18119397cb656803",
+      sidebarPanelId: null,
+      pageNavigatorId: "90ef7133d4dc72c8b01c",
+      yearLabelId: "9664cd3d5cf425f02640",
+      yearSlicerId: "345887e07b9731b60c0e",
+      monthLabelId: "4589da918d8d51e29e33",
+      monthSlicerId: "ee8a2f8166853578bf1e",
+      yearY: 425.54573680439455,
+      yearSlicerY: 448.7795557678529,
+      monthY: 518.4810126582279,
+      monthSlicerY: 541.7148316216861,
+      navY: 203.1234256926952,
+      navHeight: 240.30226700251887,
+    },
+  };
+
+  for (const [pageId, cfg] of Object.entries(extraPages)) {
+    setHidden(pageId, cfg.mainBackgroundId, false);
+    setHidden(pageId, cfg.sidebarBackgroundId, false);
+    if (cfg.sidebarPanelId) setHidden(pageId, cfg.sidebarPanelId, false);
+    setPageNavigatorOrientation(pageId, cfg.pageNavigatorId, "1D");
+    setPosition(pageId, cfg.pageNavigatorId, {
+      x: 8,
+      y: cfg.navY,
+      width: 158,
+      height: cfg.navHeight,
+    });
+    setPosition(pageId, cfg.yearLabelId, {
+      x: 18,
+      y: cfg.yearY,
+      width: 145,
+      height: 30,
+    });
+    setPosition(pageId, cfg.yearSlicerId, {
+      x: 12,
+      y: cfg.yearSlicerY,
+      width: 151.63123955099115,
+      height: 54,
+    });
+    setPosition(pageId, cfg.monthLabelId, {
+      x: 18,
+      y: cfg.monthY,
+      width: 167,
+      height: 30,
+    });
+    setPosition(pageId, cfg.monthSlicerId, {
+      x: 12,
+      y: cfg.monthSlicerY,
+      width: 151.63123955099115,
+      height: 54,
+    });
+  }
 }
 
 function main() {
@@ -5025,6 +5868,7 @@ function main() {
   fixTrendPage();
   addExtraChartsToDetailPages();
   fixCruzamentosOverlap();
+  configureCruzamentosPage();
   cleanTrendLowerRow();
   hideTitleOverlays();
   configureSidebarLayouts();
@@ -5034,13 +5878,18 @@ function main() {
   configureComarcasBlueprint();
   configureEntityAnalysisPages();
   configureDefaultPieCharts();
+  standardizeMetropolitanPages();
   standardizeTopKpiContent();
   compactTopKpiCards();
   compactTopKpiInternals();
   standardizePrimaryChartBoxes();
   standardizeMapBoxes();
-  removeTopMetricSlicersAndRestoreButtons();
   applyMetropolitanFilters();
+  finalizePageCleanup();
+  ensureTopKpiParentBinding();
+  finalizeTopKpiLayout();
+  restoreSidebarRails();
+  sanitizeSensitiveVisualSchemas();
   console.log("Layout estabilizado: grupos de bookmark recriados e overlays ocultados.");
 }
 

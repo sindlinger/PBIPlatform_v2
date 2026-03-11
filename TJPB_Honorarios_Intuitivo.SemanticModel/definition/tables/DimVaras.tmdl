@@ -9,6 +9,18 @@ table DimVaras
 
 		annotation SummarizationSetBy = Automatic
 
+	column JuizoCurto =
+			IF(
+			    LEN([Juizo]) <= 28,
+			    [Juizo],
+			    LEFT([Juizo], 25) & "..."
+			)
+		dataType: string
+		lineageTag: 5f70f474-c6b3-4d7a-93db-f5071187d57d
+		summarizeBy: none
+
+		annotation SummarizationSetBy = User
+
 	partition DimVaras = m
 		mode: import
 		source =

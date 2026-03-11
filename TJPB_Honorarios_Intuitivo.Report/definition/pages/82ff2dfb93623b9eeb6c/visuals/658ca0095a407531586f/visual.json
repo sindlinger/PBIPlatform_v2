@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "658ca0095a407531586f",
   "position": {
-    "x": 16.40566918203492,
+    "x": 16,
     "y": 0,
     "z": 6000,
-    "height": 42.5531914893617,
-    "width": 158.29787234042553,
+    "height": 36,
+    "width": 220,
     "tabOrder": 3000
   },
   "visual": {
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Top 5 Varas por Valor",
+                    "value": "Top 10 Varas por Valor",
                     "textStyle": {
                       "fontFamily": "DIN",
                       "fontSize": "12pt",

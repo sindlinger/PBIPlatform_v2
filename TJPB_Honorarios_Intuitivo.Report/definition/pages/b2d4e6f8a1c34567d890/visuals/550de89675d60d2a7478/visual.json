@@ -5,7 +5,7 @@
     "x": 12,
     "y": 660,
     "z": 4000,
-    "height": 53,
+    "height": 54,
     "width": 151.63123955099115,
     "tabOrder": 4000
   },
@@ -175,7 +175,6 @@
           }
         }
       ]
-    },
-    "drillFilterOtherVisuals": true
+    }
   }
 }

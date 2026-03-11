@@ -2,7 +2,7 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "gf1a9c2e7d4b86304",
   "position": {
-    "x": 203.37887230792137,
+    "x": 58.378872307921355,
     "y": 33.96441511661222,
     "z": 15000,
     "height": 189.53904943873897,
@@ -13,5 +13,5 @@
     "displayName": "Área",
     "groupMode": "ScaleMode"
   },
-  "isHidden": false
+  "isHidden": true
 }

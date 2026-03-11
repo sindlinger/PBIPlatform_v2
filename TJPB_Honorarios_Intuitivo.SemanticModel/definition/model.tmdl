@@ -36,7 +36,6 @@ ref table LocalDateTable_80d6bfdd-4f21-4567-b3a6-8617d8845fde
 ref table LocalDateTable_76cc1d11-5866-4430-bacd-bf62edb5aae0
 ref table LocalDateTable_ee889c8e-afcf-4150-8321-4984f89ba935
 ref table DimMunicipiosRMCampina
-ref table ParametroMetricaVisual
 ref table DimMunicipiosRMJoaoPessoa
 
 ref cultureInfo pt-BR

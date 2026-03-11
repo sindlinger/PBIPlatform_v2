@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "4ffb18dd757aab970d7b",
   "position": {
-    "x": 0.83343896583923538,
-    "y": 0,
+    "x": 10,
+    "y": 8,
     "z": 1000,
-    "height": 41.860583951966611,
-    "width": 159.30277781720628,
+    "height": 20,
+    "width": 150,
     "tabOrder": 1000
   },
   "visual": {
@@ -22,7 +22,7 @@
                     "value": "Qtd Perícias",
                     "textStyle": {
                       "fontFamily": "DIN",
-                      "fontSize": "14pt"
+                      "fontSize": "9pt"
                     }
                   }
                 ]

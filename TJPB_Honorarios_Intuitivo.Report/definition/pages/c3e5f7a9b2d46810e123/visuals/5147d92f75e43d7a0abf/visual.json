@@ -2,7 +2,7 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "5147d92f75e43d7a0abf",
   "position": {
-    "x": 232.6111118057122,
+    "x": 87.6111118057122,
     "y": 473.3333328371861,
     "z": 5000,
     "height": 187.94181763766878,
@@ -10,7 +10,7 @@
     "tabOrder": 0
   },
   "visualGroup": {
-    "displayName": "PRODUCT",
+    "displayName": "Ranking principal",
     "groupMode": "ScaleMode"
   },
   "isHidden": false

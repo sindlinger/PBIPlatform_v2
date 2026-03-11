@@ -125,22 +125,17 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "FactPericias"
-                        }
-                      },
-                      "Property": "ValorArbitrado"
+                    "SourceRef": {
+                      "Entity": "Measure"
                     }
                   },
-                  "Function": 0
+                  "Property": "Valor Arbitrado Base"
                 }
               },
-              "queryRef": "Sum(FactPericias.ValorArbitrado)",
-              "nativeQueryRef": "Sum of ValorArbitrado"
+              "queryRef": "Measure.Valor Arbitrado Base",
+              "nativeQueryRef": "Valor Arbitrado Base"
             }
           ]
         }
@@ -323,6 +318,5 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "gb2d4e6f8a1c34504",
-  "isHidden": true
+  "parentGroupName": "gb2d4e6f8a1c34504"
 }

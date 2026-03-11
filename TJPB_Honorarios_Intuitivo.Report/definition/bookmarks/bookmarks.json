@@ -2,22 +2,6 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmarksMetadata/1.0.0/schema.json",
   "items": [
     {
-      "name": "8bfbff69a59555005e30",
-      "displayName": "Slicers 2",
-      "children": [
-        "be2c1b7bbca893bdcd42",
-        "ce01212141deed8bc050"
-      ]
-    },
-    {
-      "name": "4d4a5aa650873e37334c",
-      "displayName": "Slicers",
-      "children": [
-        "ca6bc2673331094a0626",
-        "5001cf6c5c4a12cd0d80"
-      ]
-    },
-    {
       "name": "108c738bb591bbe6ca5c",
       "displayName": "Slicers City",
       "children": [

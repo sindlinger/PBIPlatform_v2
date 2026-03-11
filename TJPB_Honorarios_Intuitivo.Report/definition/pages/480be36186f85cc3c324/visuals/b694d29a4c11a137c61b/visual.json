@@ -3,9 +3,9 @@
   "name": "b694d29a4c11a137c61b",
   "position": {
     "x": 12.228325770241224,
-    "y": 388.86075949367091,
+    "y": 388.8607594936709,
     "z": 8000,
-    "height": 41.576307618820159,
+    "height": 41.57630761882016,
     "width": 152.8540721280153,
     "tabOrder": 8000
   },
@@ -133,5 +133,6 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "howCreated": "InsertVisualButton"
+  "howCreated": "InsertVisualButton",
+  "isHidden": true
 }

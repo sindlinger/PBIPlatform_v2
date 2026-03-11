@@ -7,6 +7,34 @@ Reformular o relatório para uma estrutura estável, legível e padronizada, com
 - Checkpoint local: `.stable_snapshots/20260310_160023_checkpoint_pre_reformulacao`
 - Arquivo compactado local: `.stable_snapshots/20260310_160023_checkpoint_pre_reformulacao/TJPB_Honorarios_Intuitivo_checkpoint_20260310_160023.tar.gz`
 - Checkpoint remoto: registrar via commit + tag Git
+- Checkpoint completo do workspace: `.stable_snapshots/20260310_161704_workspace_full_checkpoint`
+- Arquivo completo do workspace: `.stable_snapshots/20260310_161704_workspace_full_checkpoint/PBIPlatform_v2_workspace_full_20260310_161704.tar.gz`
+- Branch de arquivo: `checkpoint/full-workspace-20260310_161704`
+- Tag de arquivo: `full-workspace-checkpoint-20260310_161704`
+
+## Status atual
+- Fase atual: acabamento visual fino e validação no Desktop de `Overview`, `Comarcas`, `RM João Pessoa` e `RM Campina Grande`.
+- Concluído com segurança:
+  - checkpoints local, remoto e do workspace completo
+  - colunas curtas de exibição no modelo
+  - correção do `TopN` para ordenar por medida nas páginas analíticas
+  - saneamento dos controles/sobras legadas mais críticas
+  - remoção do ramo descartado de `metricslicer` no gerador e no modelo
+  - normalização dos gráficos superiores para medida explícita
+  - limpeza estrutural inicial da página `Cruzamentos`
+  - remoção dos resíduos ativos de `Product Name`/`Sub-Category` das páginas visíveis
+  - limpeza estrutural principal de `Overview` e `Comarcas`, com blocos inferiores já separados e visuais legados principais ocultos
+  - ocultação do wrapper duplicado do gráfico superior em `Varas`, `Peritos` e `Especialidades`
+  - renomeação dos grupos ativos das páginas analíticas para nomes de negócio, removendo `PRODUCT`/`ShipMode` do layout ativo
+  - realinhamento final dos cards do topo também em `RM Campina Grande`
+  - experimento de promoção da navegação para faixa superior revertido; mantido o rail lateral como baseline estável
+  - reflow estrutural da página `Cruzamentos` em três faixas (`rankings`, `tendência + aging`, `detalhes`)
+  - carga local do TMDL pela stack de modelagem confirmada após as últimas alterações de medidas
+- Ainda em aberto:
+  - validação final no Power BI Desktop sem cortes/sobreposições
+  - fechamento visual dos cards do topo
+  - fechamento dos toggles/botões do gráfico e do mapa
+  - acabamento das páginas analíticas (`Varas`, `Peritos`, `Especialidades`)
 
 ## Princípios de projeto
 - `Overview` mostra visão geral; não concentra profundidade analítica.
@@ -19,71 +47,71 @@ Reformular o relatório para uma estrutura estável, legível e padronizada, com
 ## Estrutura-alvo por página
 
 ### 1. Overview
-- [ ] Cards executivos finais padronizados
-- [ ] Tendência geral consolidada
-- [ ] Mapa geral com legenda e toggle `Mapa/Nomes`
-- [ ] Resumo das 4 entidades no bloco inferior
-- [ ] Sem tabela analítica grande
+- [x] Cards executivos base padronizados
+- [x] Tendência geral consolidada
+- [x] Mapa geral com legenda e toggle `Mapa/Nomes`
+- [x] Resumo das 4 entidades no bloco inferior
+- [x] Sem tabela analítica grande
 - [ ] Sem sobreposição visual
 
 ### 2. Comarcas
-- [ ] Cards da entidade
-- [ ] Tendência principal da entidade
-- [ ] Ranking lateral `Top 10 por Valor / Top 10 por Perícias`
-- [ ] Cruzamento operacional `Comarca x Vara`
-- [ ] Cruzamento financeiro `Comarca x Especialidade`
-- [ ] Tabela detalhe exportável
-- [ ] Rótulos curtos sem prefixo redundante `Comarca`
+- [x] Cards da entidade
+- [x] Tendência principal da entidade
+- [x] Ranking lateral `Top 10 por Valor / Top 10 por Perícias`
+- [x] Cruzamento operacional `Comarca x Vara`
+- [x] Cruzamento financeiro `Comarca x Especialidade`
+- [x] Tabela detalhe exportável
+- [x] Rótulos curtos sem prefixo redundante `Comarca`
 
 ### 3. Varas
-- [ ] Cards da entidade
-- [ ] Tendência principal
-- [ ] Ranking lateral `Top 10 por Valor / Top 10 por Perícias`
-- [ ] Cruzamento operacional `Vara x Comarca`
-- [ ] Cruzamento financeiro `Vara x Especialidade`
-- [ ] Tabela detalhe exportável
-- [ ] Mapa padronizado com legenda e toggle `Mapa/Nomes`
+- [x] Cards da entidade
+- [x] Tendência principal
+- [x] Ranking lateral `Top 10 por Valor / Top 10 por Perícias`
+- [x] Cruzamento operacional `Vara x Comarca`
+- [x] Cruzamento financeiro `Vara x Especialidade`
+- [x] Tabela detalhe exportável
+- [x] Mapa padronizado com legenda e toggle `Mapa/Nomes`
 
 ### 4. Peritos
-- [ ] Cards da entidade
-- [ ] Tendência principal
-- [ ] Ranking lateral `Top 10 por Valor / Top 10 por Perícias`
-- [ ] Cruzamento operacional `Perito x Comarca`
-- [ ] Cruzamento financeiro `Perito x Especialidade`
-- [ ] Tabela detalhe exportável
-- [ ] Mapa padronizado com legenda e toggle `Mapa/Nomes`
+- [x] Cards da entidade
+- [x] Tendência principal
+- [x] Ranking lateral `Top 10 por Valor / Top 10 por Perícias`
+- [x] Cruzamento operacional `Perito x Comarca`
+- [x] Cruzamento financeiro `Perito x Especialidade`
+- [x] Tabela detalhe exportável
+- [x] Mapa padronizado com legenda e toggle `Mapa/Nomes`
 
 ### 5. Especialidades
-- [ ] Cards da entidade
-- [ ] Tendência principal
-- [ ] Ranking lateral `Top 10 por Valor / Top 10 por Perícias`
-- [ ] Cruzamento operacional `Especialidade x Comarca`
-- [ ] Cruzamento financeiro `Especialidade x Vara`
-- [ ] Tabela detalhe exportável
-- [ ] Mapa padronizado com legenda e toggle `Mapa/Nomes`
+- [x] Cards da entidade
+- [x] Tendência principal
+- [x] Ranking lateral `Top 10 por Valor / Top 10 por Perícias`
+- [x] Cruzamento operacional `Especialidade x Comarca`
+- [x] Cruzamento financeiro `Especialidade x Vara`
+- [x] Tabela detalhe exportável
+- [x] Mapa padronizado com legenda e toggle `Mapa/Nomes`
 
 ### 6. RM João Pessoa
-- [ ] Filtro local correto, sem somar o estado inteiro
-- [ ] Mapa padronizado com legenda e toggle `Mapa/Nomes`
-- [ ] Bloco abaixo do mapa com `Distribuição por Vara`
-- [ ] Donut à esquerda e lista de valores à direita
-- [ ] Mesmo padrão visual das páginas analíticas
+- [x] Filtro local correto, sem somar o estado inteiro
+- [x] Mapa padronizado com legenda e toggle `Mapa/Nomes`
+- [x] Bloco abaixo do mapa com `Distribuição por Vara`
+- [x] Donut à esquerda e lista de valores à direita
+- [x] Mesmo padrão visual das páginas analíticas
 
 ### 7. RM Campina Grande
-- [ ] Filtro local correto, sem somar o estado inteiro
-- [ ] Mapa padronizado com legenda e toggle `Mapa/Nomes`
-- [ ] Bloco abaixo do mapa com `Distribuição por Vara`
-- [ ] Donut à esquerda e lista de valores à direita
-- [ ] Mesmo padrão visual das páginas analíticas
+- [x] Filtro local correto, sem somar o estado inteiro
+- [x] Mapa padronizado com legenda e toggle `Mapa/Nomes`
+- [x] Bloco abaixo do mapa com `Distribuição por Vara`
+- [x] Donut à esquerda e lista de valores à direita
+- [x] Mesmo padrão visual das páginas analíticas
 
 ## Checklist de padronização visual
 
 ### Cards do topo
-- [ ] Altura uniforme
-- [ ] Alinhamento interno corrigido
-- [ ] Valores monetários em `R$`
+- [x] Altura uniforme
+- [x] Alinhamento interno corrigido
+- [x] Valores monetários em `R$`
 - [ ] Remover `Saldo pendente` quando não fizer sentido no contexto
-- [ ] Manter conjunto final: `Valor Arbitrado`, `Ticket médio`, `Média diária`, `Qtd Perícias`, `Peritos únicos`
+- [x] Manter conjunto final: `Valor Arbitrado`, `Ticket médio`, `Média diária`, `Qtd Perícias`, `Peritos únicos`
 - [ ] Subtítulos de variação legíveis e sem corte
 
 ### Caixa de gráfico
@@ -94,38 +122,39 @@ Reformular o relatório para uma estrutura estável, legível e padronizada, com
 - [ ] Contexto atual visível no título ou subtítulo
 
 ### Caixa de mapa
-- [ ] Mesmo padrão em todas as páginas com mapa
-- [ ] Legenda padronizada
-- [ ] Toggle `Mapa/Nomes`
+- [x] Mesmo padrão em todas as páginas com mapa
+- [x] Legenda padronizada
+- [x] Toggle `Mapa/Nomes`
 - [ ] Sem sobreposição entre título, legenda e conteúdo
 - [ ] Contorno e leitura geográfica consistentes
 
 ### Ranking
 - [ ] Evitar quatro barras idênticas no `Overview`
 - [ ] Barra horizontal como padrão para ranking
-- [ ] Rótulos curtos
+- [x] Rótulos curtos
 - [ ] Valor legível no corpo da barra ou na lateral
 - [ ] Alternância estável entre `Valor` e `Perícias`
 
 ### Cruzamentos
-- [ ] Um cruzamento operacional
-- [ ] Um cruzamento financeiro
+- [x] Um cruzamento operacional
+- [x] Um cruzamento financeiro
 - [ ] Escolher visual por legibilidade, não por variedade
 - [ ] Preferir matriz/heatmap, barra, treemap ou donut conforme o caso
+- [ ] Validar no Desktop o novo reflow da página `Cruzamentos` (rankings no topo, tendência + aging no meio, detalhes embaixo)
 
 ## Checklist de modelagem e nomenclatura
 - [ ] Confirmar medidas finais de domínio
 - [ ] Eliminar herança residual de nomes do template
-- [ ] Criar/usar colunas curtas para exibição
-- [ ] Garantir filtros locais corretos das RMs
-- [ ] Validar relações usadas por mapas e rankings
+- [x] Criar/usar colunas curtas para exibição
+- [x] Garantir filtros locais corretos das RMs
+- [x] Validar relações usadas por mapas e rankings
 
 ## Checklist de estabilidade técnica
-- [ ] Sem erro de schema JSON no report
+- [x] Sem erro de schema JSON no report
 - [ ] Sem bookmarks inválidos
-- [ ] Sem visual com propriedade não permitida
-- [ ] Sem visual branco por relação ambígua
-- [ ] Sem sobreposição estrutural entre grupos/containers
+- [x] Sem visual com propriedade não permitida
+- [x] Sem visual branco por relação ambígua
+- [x] Sem sobreposição estrutural principal entre grupos/containers
 
 ## Checklist de validação final no Desktop
 - [ ] Abrir projeto sem popup de erro
@@ -147,9 +176,9 @@ Reformular o relatório para uma estrutura estável, legível e padronizada, com
 
 ## Controle de checkpoint
 - [x] Checkpoint local criado
-- [ ] Checkpoint remoto criado por commit/tag
+- [x] Checkpoint remoto criado por commit/tag
 - [ ] Baseline validado no Desktop
-- [ ] Fase 1 concluída
+- [x] Fase 1 concluída
 - [ ] Fase 2 concluída
 - [ ] Fase 3 concluída
 - [ ] Fase 4 concluída

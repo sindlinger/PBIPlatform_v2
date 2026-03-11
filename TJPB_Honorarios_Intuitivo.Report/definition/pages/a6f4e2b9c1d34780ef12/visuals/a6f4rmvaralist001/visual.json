@@ -17,21 +17,6 @@
           "projections": [
             {
               "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "FactPericias"
-                    }
-                  },
-                  "Property": "JuizoExibicao"
-                }
-              },
-              "queryRef": "FactPericias.JuizoExibicao",
-              "nativeQueryRef": "JuizoExibicao",
-              "displayName": "Vara"
-            },
-            {
-              "field": {
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
@@ -44,6 +29,21 @@
               "queryRef": "Measure.Valor Arbitrado Base",
               "nativeQueryRef": "Valor Arbitrado Base",
               "displayName": "Valor"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimVaras"
+                    }
+                  },
+                  "Property": "JuizoCurto"
+                }
+              },
+              "queryRef": "DimVaras.JuizoCurto",
+              "nativeQueryRef": "JuizoCurto",
+              "displayName": "Vara"
             }
           ]
         }
@@ -186,8 +186,7 @@
           }
         }
       ]
-    },
-    "drillFilterOtherVisuals": true
+    }
   },
   "filterConfig": {
     "filters": [

@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "d9d8f17ef9af19daf21f",
   "position": {
-    "x": 8.6761279389959753,
-    "y": 153.27826025559557,
+    "x": 14,
+    "y": 52,
     "z": 2000,
-    "height": 180.75266539574949,
-    "width": 286.3122219868672,
+    "height": 182,
+    "width": 288,
     "tabOrder": 1000
   },
   "visual": {
@@ -20,15 +20,15 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "People"
+                      "Entity": "DimEspecialidades"
                     }
                   },
-                  "Property": "Person"
+                  "Property": "EspecialidadeCurta"
                 }
               },
-              "queryRef": "People.Person",
-              "nativeQueryRef": "Person",
-              "active": true
+              "queryRef": "DimEspecialidades.EspecialidadeCurta",
+              "nativeQueryRef": "EspecialidadeCurta",
+              "displayName": "Especialidade"
             }
           ]
         },
@@ -36,22 +36,18 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Orders"
-                        }
-                      },
-                      "Property": "Order ID"
+                    "SourceRef": {
+                      "Entity": "Measure"
                     }
                   },
-                  "Function": 5
+                  "Property": "Valor Arbitrado Base"
                 }
               },
-              "queryRef": "CountNonNull(Orders.Order ID)",
-              "nativeQueryRef": "Count of Order ID"
+              "queryRef": "Measure.Valor Arbitrado Base",
+              "nativeQueryRef": "Valor Arbitrado Base",
+              "displayName": "Valor Arbitrado Base"
             }
           ]
         }
@@ -60,24 +56,18 @@
         "sort": [
           {
             "field": {
-              "Aggregation": {
+              "Measure": {
                 "Expression": {
-                  "Column": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "Orders"
-                      }
-                    },
-                    "Property": "Order ID"
+                  "SourceRef": {
+                    "Entity": "Measure"
                   }
                 },
-                "Function": 5
+                "Property": "Valor Arbitrado Base"
               }
             },
             "direction": "Descending"
           }
-        ],
-        "isDefaultSort": true
+        ]
       }
     },
     "objects": {
@@ -105,6 +95,13 @@
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1000D"
                 }
               }
             }
@@ -163,32 +160,6 @@
               }
             }
           }
-        },
-        {
-          "properties": {
-            "dynamicLabelValue": {
-              "expr": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Measure"
-                    }
-                  },
-                  "Property": "Rótulo Barra Vara Valor %"
-                }
-              }
-            }
-          },
-          "selector": {
-            "data": [
-              {
-                "dataViewWildcard": {
-                  "matchingOption": 1
-                }
-              }
-            ],
-            "highlightMatching": 1
-          }
         }
       ]
     },
@@ -239,36 +210,15 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "d309e45ef605417305ed",
-        "ordinal": 0,
-        "field": {
-          "Aggregation": {
-            "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "Orders"
-                  }
-                },
-                "Property": "Order ID"
-              }
-            },
-            "Function": 5
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "f4e6151136790403a820",
-        "ordinal": 1,
+        "name": "DimEspecialidades-EspecialidadeCurta-10",
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "People"
+                "Entity": "DimEspecialidades"
               }
             },
-            "Property": "Person"
+            "Property": "EspecialidadeCurta"
           }
         },
         "type": "TopN",
@@ -283,13 +233,13 @@
                     "Version": 2,
                     "From": [
                       {
-                        "Name": "p",
-                        "Entity": "People",
+                        "Name": "d",
+                        "Entity": "DimEspecialidades",
                         "Type": 0
                       },
                       {
-                        "Name": "o",
-                        "Entity": "Orders",
+                        "Name": "m",
+                        "Entity": "Measure",
                         "Type": 0
                       }
                     ],
@@ -298,10 +248,10 @@
                         "Column": {
                           "Expression": {
                             "SourceRef": {
-                              "Source": "p"
+                              "Source": "d"
                             }
                           },
-                          "Property": "Person"
+                          "Property": "EspecialidadeCurta"
                         },
                         "Name": "field"
                       }
@@ -310,31 +260,26 @@
                       {
                         "Direction": 2,
                         "Expression": {
-                          "Aggregation": {
+                          "Measure": {
                             "Expression": {
-                              "Column": {
-                                "Expression": {
-                                  "SourceRef": {
-                                    "Source": "o"
-                                  }
-                                },
-                                "Property": "Order ID"
+                              "SourceRef": {
+                                "Source": "m"
                               }
                             },
-                            "Function": 2
+                            "Property": "Valor Arbitrado Base"
                           }
                         }
                       }
                     ],
-                    "Top": 5
+                    "Top": 10
                   }
                 }
               },
               "Type": 2
             },
             {
-              "Name": "p",
-              "Entity": "People",
+              "Name": "d",
+              "Entity": "DimEspecialidades",
               "Type": 0
             }
           ],
@@ -347,10 +292,10 @@
                       "Column": {
                         "Expression": {
                           "SourceRef": {
-                            "Source": "p"
+                            "Source": "d"
                           }
                         },
-                        "Property": "Person"
+                        "Property": "EspecialidadeCurta"
                       }
                     }
                   ],
@@ -365,7 +310,6 @@
           ]
         }
       }
-    ],
-    "filterSortOrder": "Custom"
+    ]
   }
 }

@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "6bdc2989401065a6a9c8",
   "position": {
-    "x": 29.06984996664348,
-    "y": 68.60484592127861,
+    "x": 24,
+    "y": 63,
     "z": 0,
-    "height": 41.86058395196661,
-    "width": 118.60498786390541,
+    "height": 18,
+    "width": 138,
     "tabOrder": 3000
   },
   "visual": {
@@ -42,7 +42,7 @@
                     "Entity": "Measure"
                   }
                 },
-                "Property": "Variação Mensal Valor Arbitrado %"
+                "Property": "Valor Arbitrado YoY %"
               }
             },
             "direction": "Descending"
@@ -65,7 +65,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
+                  "Value": "7D"
                 }
               }
             },

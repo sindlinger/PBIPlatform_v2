@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "FactPericias"
+                      "Entity": "DimComarcas"
                     }
                   },
-                  "Property": "ComarcaExibicao"
+                  "Property": "ComarcaCurta"
                 }
               },
-              "queryRef": "FactPericias.ComarcaExibicao",
-              "nativeQueryRef": "ComarcaExibicao",
+              "queryRef": "DimComarcas.ComarcaCurta",
+              "nativeQueryRef": "ComarcaCurta",
               "displayName": "Comarca"
             }
           ]
@@ -224,15 +224,15 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "FactPericias-ComarcaExibicao-10",
+        "name": "DimComarcas-ComarcaCurta-10",
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "FactPericias"
+                "Entity": "DimComarcas"
               }
             },
-            "Property": "ComarcaExibicao"
+            "Property": "ComarcaCurta"
           }
         },
         "type": "TopN",
@@ -247,8 +247,13 @@
                     "Version": 2,
                     "From": [
                       {
-                        "Name": "f",
-                        "Entity": "FactPericias",
+                        "Name": "d",
+                        "Entity": "DimComarcas",
+                        "Type": 0
+                      },
+                      {
+                        "Name": "m",
+                        "Entity": "Measure",
                         "Type": 0
                       }
                     ],
@@ -257,10 +262,10 @@
                         "Column": {
                           "Expression": {
                             "SourceRef": {
-                              "Source": "f"
+                              "Source": "d"
                             }
                           },
-                          "Property": "ComarcaExibicao"
+                          "Property": "ComarcaCurta"
                         },
                         "Name": "field"
                       }
@@ -269,18 +274,13 @@
                       {
                         "Direction": 2,
                         "Expression": {
-                          "Aggregation": {
+                          "Measure": {
                             "Expression": {
-                              "Column": {
-                                "Expression": {
-                                  "SourceRef": {
-                                    "Source": "f"
-                                  }
-                                },
-                                "Property": "ValorArbitrado"
+                              "SourceRef": {
+                                "Source": "m"
                               }
                             },
-                            "Function": 0
+                            "Property": "Valor Arbitrado Base"
                           }
                         }
                       }
@@ -292,8 +292,8 @@
               "Type": 2
             },
             {
-              "Name": "f",
-              "Entity": "FactPericias",
+              "Name": "d",
+              "Entity": "DimComarcas",
               "Type": 0
             }
           ],
@@ -306,10 +306,10 @@
                       "Column": {
                         "Expression": {
                           "SourceRef": {
-                            "Source": "f"
+                            "Source": "d"
                           }
                         },
-                        "Property": "ComarcaExibicao"
+                        "Property": "ComarcaCurta"
                       }
                     }
                   ],

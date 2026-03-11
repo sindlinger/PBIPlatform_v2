@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "09ac7c2dade205a90b7e",
   "position": {
-    "x": 29.06984996664348,
-    "y": 68.60484592127861,
+    "x": 24,
+    "y": 63,
     "z": 3000,
-    "height": 41.86058395196661,
-    "width": 118.60498786390541,
+    "height": 18,
+    "width": 138,
     "tabOrder": 3000
   },
   "visual": {
@@ -23,11 +23,11 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "Subtítulo Card Valor Arbitrado"
+                  "Property": "Subtítulo Card Valor Médio por Perícia YoY"
                 }
               },
-              "queryRef": "Measure.Subtítulo Card Valor Arbitrado",
-              "nativeQueryRef": "Subtítulo Card Valor Arbitrado",
+              "queryRef": "Measure.Subtítulo Card Valor Médio por Perícia YoY",
+              "nativeQueryRef": "Subtítulo Card Valor Médio por Perícia YoY",
               "format": "G"
             }
           ]
@@ -43,7 +43,7 @@
                     "Entity": "Measure"
                   }
                 },
-                "Property": "Variação Mensal Valor Arbitrado %"
+                "Property": "Valor Médio por Perícia YoY %"
               }
             },
             "direction": "Descending"
@@ -66,7 +66,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
+                  "Value": "7D"
                 }
               }
             },

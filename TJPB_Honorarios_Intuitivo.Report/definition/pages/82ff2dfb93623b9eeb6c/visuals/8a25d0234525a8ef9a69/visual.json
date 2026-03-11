@@ -2,16 +2,16 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "8a25d0234525a8ef9a69",
   "position": {
-    "x": 539.16666666666674,
-    "y": 473.33333333333337,
+    "x": 918,
+    "y": 318,
     "z": 5000,
-    "height": 185,
-    "width": 269.16666666666669,
+    "height": 250,
+    "width": 318,
     "tabOrder": 5000
   },
   "visualGroup": {
-    "displayName": "ShipMode",
+    "displayName": "Distribuição por Aging",
     "groupMode": "ScaleMode"
   },
-  "isHidden": true
+  "isHidden": false
 }

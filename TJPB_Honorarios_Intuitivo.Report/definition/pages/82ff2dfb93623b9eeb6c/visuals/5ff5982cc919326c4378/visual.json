@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "5ff5982cc919326c4378",
   "position": {
-    "x": 942.3477124183006,
-    "y": 174.9054466230937,
+    "x": 918,
+    "y": 618,
     "z": 23000,
-    "height": 199.89193899782134,
-    "width": 292.69891067538128,
+    "height": 230,
+    "width": 318,
     "tabOrder": 22000
   },
   "visual": {
@@ -20,28 +20,30 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "People"
+                      "Entity": "FactPericias"
                     }
                   },
-                  "Property": "Person"
+                  "Property": "EspecialidadeExibicao"
                 }
               },
-              "queryRef": "People.Person",
-              "nativeQueryRef": "Person"
+              "queryRef": "FactPericias.EspecialidadeExibicao",
+              "nativeQueryRef": "EspecialidadeExibicao",
+              "displayName": "Especialidade"
             },
             {
               "field": {
-                "Measure": {
+                "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Measure"
+                      "Entity": "FactPericias"
                     }
                   },
-                  "Property": "Saldo a Receber Base"
+                  "Property": "ComarcaExibicao"
                 }
               },
-              "queryRef": "Measure.Saldo a Receber Base",
-              "nativeQueryRef": "Saldo a Receber Base"
+              "queryRef": "FactPericias.ComarcaExibicao",
+              "nativeQueryRef": "ComarcaExibicao",
+              "displayName": "Comarca"
             },
             {
               "field": {
@@ -55,7 +57,8 @@
                 }
               },
               "queryRef": "Measure.Qtd Perícias Base",
-              "nativeQueryRef": "Qtd Perícias Base"
+              "nativeQueryRef": "Qtd Perícias Base",
+              "displayName": "Qtd Perícias"
             },
             {
               "field": {
@@ -69,7 +72,8 @@
                 }
               },
               "queryRef": "Measure.Valor Arbitrado Base",
-              "nativeQueryRef": "Valor Arbitrado Base"
+              "nativeQueryRef": "Valor Arbitrado Base",
+              "displayName": "Valor Arbitrado"
             }
           ]
         }
@@ -122,20 +126,6 @@
                 }
               }
             },
-            "fontFamily": {
-              "expr": {
-                "Literal": {
-                  "Value": "'wf_standard-font_light, helvetica, arial, sans-serif'"
-                }
-              }
-            },
-            "autoSizeColumnWidth": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
             "fontColor": {
               "solid": {
                 "color": {
@@ -170,311 +160,6 @@
             }
           }
         }
-      ],
-      "values": [
-        {
-          "properties": {
-            "backColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "FillRule": {
-                      "Input": {
-                        "Measure": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "Measure"
-                            }
-                          },
-                          "Property": "Valor Arbitrado Base"
-                        }
-                      },
-                      "FillRule": {
-                        "linearGradient2": {
-                          "min": {
-                            "color": {
-                              "Literal": {
-                                "Value": "'#FFFFFF'"
-                              }
-                            }
-                          },
-                          "max": {
-                            "color": {
-                              "Literal": {
-                                "Value": "'#d5f0e4'"
-                              }
-                            }
-                          },
-                          "nullColoringStrategy": {
-                            "strategy": {
-                              "Literal": {
-                                "Value": "'asZero'"
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "data": [
-              {
-                "dataViewWildcard": {
-                  "matchingOption": 1
-                }
-              }
-            ],
-            "metadata": "Measure.Valor Arbitrado Base"
-          }
-        },
-        {
-          "properties": {
-            "icon": {
-              "kind": "Icon",
-              "layout": {
-                "expr": {
-                  "Literal": {
-                    "Value": "'Before'"
-                  }
-                }
-              },
-              "verticalAlignment": {
-                "expr": {
-                  "Literal": {
-                    "Value": "'Top'"
-                  }
-                }
-              },
-              "value": {
-                "expr": {
-                  "Conditional": {
-                    "Cases": [
-                      {
-                        "Condition": {
-                          "And": {
-                            "Left": {
-                              "Comparison": {
-                                "ComparisonKind": 2,
-                                "Left": {
-                                  "Measure": {
-                                    "Expression": {
-                                      "SourceRef": {
-                                        "Entity": "Measure"
-                                      }
-                                    },
-                                    "Property": "Saldo a Receber Base"
-                                  }
-                                },
-                                "Right": {
-                                  "Literal": {
-                                    "Value": "0D"
-                                  }
-                                }
-                              }
-                            },
-                            "Right": {
-                              "Comparison": {
-                                "ComparisonKind": 3,
-                                "Left": {
-                                  "Measure": {
-                                    "Expression": {
-                                      "SourceRef": {
-                                        "Entity": "Measure"
-                                      }
-                                    },
-                                    "Property": "Saldo a Receber Base"
-                                  }
-                                },
-                                "Right": {
-                                  "Literal": {
-                                    "Value": "100000D"
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        },
-                        "Value": {
-                          "Literal": {
-                            "Value": "'ColoredArrowUp'"
-                          }
-                        }
-                      },
-                      {
-                        "Condition": {
-                          "And": {
-                            "Left": {
-                              "Comparison": {
-                                "ComparisonKind": 2,
-                                "Left": {
-                                  "Measure": {
-                                    "Expression": {
-                                      "SourceRef": {
-                                        "Entity": "Measure"
-                                      }
-                                    },
-                                    "Property": "Saldo a Receber Base"
-                                  }
-                                },
-                                "Right": {
-                                  "Literal": {
-                                    "Value": "-10000000D"
-                                  }
-                                }
-                              }
-                            },
-                            "Right": {
-                              "Comparison": {
-                                "ComparisonKind": 3,
-                                "Left": {
-                                  "Measure": {
-                                    "Expression": {
-                                      "SourceRef": {
-                                        "Entity": "Measure"
-                                      }
-                                    },
-                                    "Property": "Saldo a Receber Base"
-                                  }
-                                },
-                                "Right": {
-                                  "Literal": {
-                                    "Value": "0D"
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        },
-                        "Value": {
-                          "Literal": {
-                            "Value": "'ColoredArrowDown'"
-                          }
-                        }
-                      }
-                    ]
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "data": [
-              {
-                "dataViewWildcard": {
-                  "matchingOption": 1
-                }
-              }
-            ],
-            "metadata": "Measure.Saldo a Receber Base"
-          }
-        }
-      ],
-      "columnFormatting": [
-        {
-          "properties": {
-            "dataBars": {
-              "positiveColor": {
-                "solid": {
-                  "color": {
-                    "expr": {
-                      "Literal": {
-                        "Value": "'#16C47F'"
-                      }
-                    }
-                  }
-                }
-              },
-              "negativeColor": {
-                "solid": {
-                  "color": {
-                    "expr": {
-                      "Literal": {
-                        "Value": "'#CD4C46'"
-                      }
-                    }
-                  }
-                }
-              },
-              "axisColor": {
-                "solid": {
-                  "color": {
-                    "expr": {
-                      "Literal": {
-                        "Value": "'#FFFFFF'"
-                      }
-                    }
-                  }
-                }
-              },
-              "reverseDirection": {
-                "expr": {
-                  "Literal": {
-                    "Value": "false"
-                  }
-                }
-              },
-              "hideText": {
-                "expr": {
-                  "Literal": {
-                    "Value": "false"
-                  }
-                }
-              },
-              "totalMatchingOption": {
-                "expr": {
-                  "Literal": {
-                    "Value": "1L"
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Measure.Qtd Perícias Base"
-          }
-        }
-      ],
-      "total": [
-        {
-          "properties": {
-            "backColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 0,
-                      "Percent": 0
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      ],
-      "columnWidth": [
-        {
-          "properties": {},
-          "selector": {
-            "metadata": "Measure.Saldo a Receber Base"
-          }
-        },
-        {
-          "properties": {},
-          "selector": {
-            "metadata": "Measure.Qtd Perícias Base"
-          }
-        },
-        {
-          "properties": {},
-          "selector": {
-            "metadata": "Measure.Valor Arbitrado Base"
-          }
-        }
       ]
     },
     "visualContainerObjects": {
@@ -507,17 +192,30 @@
       "title": [
         {
           "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Table Emp'"
+                  "Value": "'Detalhe de Especialidades'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
                 }
               }
             }
           }
         }
       ]
-    },
-    "drillFilterOtherVisuals": true
+    }
   }
 }

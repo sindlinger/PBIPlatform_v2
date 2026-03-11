@@ -78,18 +78,13 @@
         "sort": [
           {
             "field": {
-              "Aggregation": {
+              "Measure": {
                 "Expression": {
-                  "Column": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "Date"
-                      }
-                    },
-                    "Property": "MonthNumber"
+                  "SourceRef": {
+                    "Entity": "Measure"
                   }
                 },
-                "Function": 4
+                "Property": "Valor Arbitrado Base"
               }
             },
             "direction": "Ascending"
@@ -401,6 +396,5 @@
         "type": "Advanced"
       }
     ]
-  },
-  "isHidden": false
+  }
 }

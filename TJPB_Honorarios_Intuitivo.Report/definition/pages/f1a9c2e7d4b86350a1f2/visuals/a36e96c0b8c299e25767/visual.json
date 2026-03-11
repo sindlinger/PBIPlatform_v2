@@ -21,14 +21,14 @@
                   {
                     "value": "Mês",
                     "textStyle": {
-                      "fontSize": "12pt",
+                      "fontSize": "7pt",
                       "color": "#ffffff"
                     }
                   },
                   {
                     "value": ":",
                     "textStyle": {
-                      "fontSize": "14pt",
+                      "fontSize": "7pt",
                       "color": "#ffffff"
                     }
                   }

@@ -2,7 +2,7 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "e85feb694080c3b3bc21",
   "position": {
-    "x": 868.75,
+    "x": 433.75,
     "y": 460,
     "z": 15000,
     "height": 185,
@@ -100,7 +100,28 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "8D"
+                  "Value": "6D"
+                }
+              }
+            },
+            "labelStyle": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Category'"
+                }
+              }
+            },
+            "labelPosition": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Inside'"
+                }
+              }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
                 }
               }
             }
@@ -184,8 +205,13 @@
                     "Version": 2,
                     "From": [
                       {
-                        "Name": "f",
+                        "Name": "d",
                         "Entity": "FactPericias",
+                        "Type": 0
+                      },
+                      {
+                        "Name": "m",
+                        "Entity": "Measure",
                         "Type": 0
                       }
                     ],
@@ -194,7 +220,7 @@
                         "Column": {
                           "Expression": {
                             "SourceRef": {
-                              "Source": "f"
+                              "Source": "d"
                             }
                           },
                           "Property": "JuizoExibicao"
@@ -206,18 +232,13 @@
                       {
                         "Direction": 2,
                         "Expression": {
-                          "Aggregation": {
+                          "Measure": {
                             "Expression": {
-                              "Column": {
-                                "Expression": {
-                                  "SourceRef": {
-                                    "Source": "f"
-                                  }
-                                },
-                                "Property": "ValorArbitrado"
+                              "SourceRef": {
+                                "Source": "m"
                               }
                             },
-                            "Function": 0
+                            "Property": "Valor Arbitrado Base"
                           }
                         }
                       }
@@ -229,7 +250,7 @@
               "Type": 2
             },
             {
-              "Name": "f",
+              "Name": "d",
               "Entity": "FactPericias",
               "Type": 0
             }
@@ -243,7 +264,7 @@
                       "Column": {
                         "Expression": {
                           "SourceRef": {
-                            "Source": "f"
+                            "Source": "d"
                           }
                         },
                         "Property": "JuizoExibicao"

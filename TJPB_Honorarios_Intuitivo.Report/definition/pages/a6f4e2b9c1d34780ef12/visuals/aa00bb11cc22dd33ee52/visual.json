@@ -5,7 +5,7 @@
     "x": 8,
     "y": 171,
     "z": 25000,
-    "height": 430,
+    "height": 780,
     "width": 158,
     "tabOrder": 34051
   },
@@ -120,5 +120,6 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "howCreated": "InsertVisualButton"
+  "howCreated": "InsertVisualButton",
+  "isHidden": false
 }

@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "FactPericias"
+                      "Entity": "DimEspecialidades"
                     }
                   },
-                  "Property": "EspecialidadeExibicao"
+                  "Property": "EspecialidadeCurta"
                 }
               },
-              "queryRef": "FactPericias.EspecialidadeExibicao",
-              "nativeQueryRef": "EspecialidadeExibicao",
+              "queryRef": "DimEspecialidades.EspecialidadeCurta",
+              "nativeQueryRef": "EspecialidadeCurta",
               "displayName": "Especialidade"
             }
           ]
@@ -184,15 +184,15 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "FactPericias-EspecialidadeExibicao-10",
+        "name": "DimEspecialidades-EspecialidadeCurta-10",
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "FactPericias"
+                "Entity": "DimEspecialidades"
               }
             },
-            "Property": "EspecialidadeExibicao"
+            "Property": "EspecialidadeCurta"
           }
         },
         "type": "TopN",
@@ -207,8 +207,13 @@
                     "Version": 2,
                     "From": [
                       {
-                        "Name": "f",
-                        "Entity": "FactPericias",
+                        "Name": "d",
+                        "Entity": "DimEspecialidades",
+                        "Type": 0
+                      },
+                      {
+                        "Name": "m",
+                        "Entity": "Measure",
                         "Type": 0
                       }
                     ],
@@ -217,10 +222,10 @@
                         "Column": {
                           "Expression": {
                             "SourceRef": {
-                              "Source": "f"
+                              "Source": "d"
                             }
                           },
-                          "Property": "EspecialidadeExibicao"
+                          "Property": "EspecialidadeCurta"
                         },
                         "Name": "field"
                       }
@@ -229,18 +234,13 @@
                       {
                         "Direction": 2,
                         "Expression": {
-                          "Aggregation": {
+                          "Measure": {
                             "Expression": {
-                              "Column": {
-                                "Expression": {
-                                  "SourceRef": {
-                                    "Source": "f"
-                                  }
-                                },
-                                "Property": "NumeroPericia"
+                              "SourceRef": {
+                                "Source": "m"
                               }
                             },
-                            "Function": 5
+                            "Property": "Qtd Perícias Base"
                           }
                         }
                       }
@@ -252,8 +252,8 @@
               "Type": 2
             },
             {
-              "Name": "f",
-              "Entity": "FactPericias",
+              "Name": "d",
+              "Entity": "DimEspecialidades",
               "Type": 0
             }
           ],
@@ -266,10 +266,10 @@
                       "Column": {
                         "Expression": {
                           "SourceRef": {
-                            "Source": "f"
+                            "Source": "d"
                           }
                         },
-                        "Property": "EspecialidadeExibicao"
+                        "Property": "EspecialidadeCurta"
                       }
                     }
                   ],

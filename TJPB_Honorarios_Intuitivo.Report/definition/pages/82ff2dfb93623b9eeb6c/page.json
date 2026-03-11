@@ -2,13 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
   "name": "82ff2dfb93623b9eeb6c",
   "displayName": "Cruzamentos",
-  "displayOption": "FitToPage",
-  "height": 720,
+  "displayOption": "FitToWidth",
+  "height": 980,
   "width": 1280,
   "pageBinding": {
     "name": "99c3b65f8e6e7ec18ee3",
     "type": "Default",
     "parameters": []
-  },
-  "visibility": "HiddenInViewMode"
+  }
 }

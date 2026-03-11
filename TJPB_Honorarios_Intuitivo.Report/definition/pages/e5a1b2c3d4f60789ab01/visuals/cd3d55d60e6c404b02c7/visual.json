@@ -20,15 +20,15 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Orders"
+                      "Entity": "DimEspecialidades"
                     }
                   },
-                  "Property": "Sub-Category"
+                  "Property": "EspecialidadeCurta"
                 }
               },
-              "queryRef": "Orders.Sub-Category",
-              "nativeQueryRef": "Sub-Category",
-              "active": true
+              "queryRef": "DimEspecialidades.EspecialidadeCurta",
+              "nativeQueryRef": "EspecialidadeCurta",
+              "displayName": "Especialidade"
             }
           ]
         },
@@ -46,7 +46,8 @@
                 }
               },
               "queryRef": "Measure.Valor Arbitrado Base",
-              "nativeQueryRef": "Valor Arbitrado Base"
+              "nativeQueryRef": "Valor Arbitrado Base",
+              "displayName": "Valor Arbitrado Base"
             }
           ]
         }
@@ -66,8 +67,7 @@
             },
             "direction": "Descending"
           }
-        ],
-        "isDefaultSort": true
+        ]
       }
     },
     "objects": {
@@ -95,6 +95,13 @@
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1000D"
                 }
               }
             }
@@ -153,32 +160,6 @@
               }
             }
           }
-        },
-        {
-          "properties": {
-            "dynamicLabelValue": {
-              "expr": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Measure"
-                    }
-                  },
-                  "Property": "Rótulo Barra Vara Valor %"
-                }
-              }
-            }
-          },
-          "selector": {
-            "data": [
-              {
-                "dataViewWildcard": {
-                  "matchingOption": 1
-                }
-              }
-            ],
-            "highlightMatching": 1
-          }
         }
       ]
     },
@@ -216,15 +197,15 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "07e1f1c0000be38621e3",
+        "name": "DimEspecialidades-EspecialidadeCurta-10",
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "Orders"
+                "Entity": "DimEspecialidades"
               }
             },
-            "Property": "Sub-Category"
+            "Property": "EspecialidadeCurta"
           }
         },
         "type": "TopN",
@@ -239,8 +220,13 @@
                     "Version": 2,
                     "From": [
                       {
-                        "Name": "o",
-                        "Entity": "Orders",
+                        "Name": "d",
+                        "Entity": "DimEspecialidades",
+                        "Type": 0
+                      },
+                      {
+                        "Name": "m",
+                        "Entity": "Measure",
                         "Type": 0
                       }
                     ],
@@ -249,10 +235,10 @@
                         "Column": {
                           "Expression": {
                             "SourceRef": {
-                              "Source": "o"
+                              "Source": "d"
                             }
                           },
-                          "Property": "Sub-Category"
+                          "Property": "EspecialidadeCurta"
                         },
                         "Name": "field"
                       }
@@ -261,31 +247,26 @@
                       {
                         "Direction": 2,
                         "Expression": {
-                          "Aggregation": {
+                          "Measure": {
                             "Expression": {
-                              "Column": {
-                                "Expression": {
-                                  "SourceRef": {
-                                    "Source": "o"
-                                  }
-                                },
-                                "Property": "Sales"
+                              "SourceRef": {
+                                "Source": "m"
                               }
                             },
-                            "Function": 0
+                            "Property": "Valor Arbitrado Base"
                           }
                         }
                       }
                     ],
-                    "Top": 5
+                    "Top": 10
                   }
                 }
               },
               "Type": 2
             },
             {
-              "Name": "o",
-              "Entity": "Orders",
+              "Name": "d",
+              "Entity": "DimEspecialidades",
               "Type": 0
             }
           ],
@@ -298,10 +279,10 @@
                       "Column": {
                         "Expression": {
                           "SourceRef": {
-                            "Source": "o"
+                            "Source": "d"
                           }
                         },
-                        "Property": "Sub-Category"
+                        "Property": "EspecialidadeCurta"
                       }
                     }
                   ],

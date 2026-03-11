@@ -2,15 +2,15 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "a91c817375176beaccfc",
   "position": {
-    "x": 2.1574118446067057,
+    "x": 8,
     "y": 0,
     "z": 0,
-    "height": 50.526315789473685,
-    "width": 173.11023222796874,
+    "height": 32,
+    "width": 302,
     "tabOrder": 0
   },
   "visualGroup": {
-    "displayName": "Group 2",
+    "displayName": "Cabeçalho Aging",
     "groupMode": "ScaleMode"
   },
   "parentGroupName": "8a25d0234525a8ef9a69"

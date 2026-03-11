@@ -78,18 +78,13 @@
         "sort": [
           {
             "field": {
-              "Aggregation": {
+              "Measure": {
                 "Expression": {
-                  "Column": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "Date"
-                      }
-                    },
-                    "Property": "MonthNumber"
+                  "SourceRef": {
+                    "Entity": "Measure"
                   }
                 },
-                "Function": 4
+                "Property": "Valor Arbitrado Base"
               }
             },
             "direction": "Ascending"
@@ -261,6 +256,5 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "gfe4687310000e601",
-  "isHidden": false
+  "parentGroupName": "gfe4687310000e601"
 }

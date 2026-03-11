@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "9664cd3d5cf425f02640",
   "position": {
-    "x": 18.342488655361834,
+    "x": 18,
     "y": 425.54573680439455,
     "z": 11000,
-    "height": 33.0164795796513,
-    "width": 145.51707666587055,
+    "height": 30,
+    "width": 145,
     "tabOrder": 11000
   },
   "visual": {
@@ -21,7 +21,7 @@
                   {
                     "value": "Ano",
                     "textStyle": {
-                      "fontSize": "12pt",
+                      "fontSize": "7pt",
                       "color": "#ffffff"
                     }
                   }

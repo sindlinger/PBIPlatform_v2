@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "a7c5b2d9f1840e63c2ab",
   "position": {
-    "x": 447.63572679509633,
-    "y": 342.97723292469351,
+    "x": 205.9503506981505,
+    "y": 318,
     "z": 15000,
-    "height": 320.28021015761823,
-    "width": 316.49737302977235,
+    "height": 250,
+    "width": 676,
     "tabOrder": 23000
   },
   "visual": {
@@ -78,18 +78,13 @@
         "sort": [
           {
             "field": {
-              "Aggregation": {
+              "Measure": {
                 "Expression": {
-                  "Column": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "Date"
-                      }
-                    },
-                    "Property": "MonthNumber"
+                  "SourceRef": {
+                    "Entity": "Measure"
                   }
                 },
-                "Function": 4
+                "Property": "Valor Arbitrado Base"
               }
             },
             "direction": "Ascending"
@@ -166,35 +161,6 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "Measure": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Measure"
-                        }
-                      },
-                      "Property": "Cor Valor Arbitrado"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "data": [
-              {
-                "dataViewWildcard": {
-                  "matchingOption": 1
-                }
-              }
-            ]
-          }
-        },
-        {
-          "properties": {
-            "fill": {
-              "solid": {
-                "color": {
-                  "expr": {
                     "Literal": {
                       "Value": "'#1E88E5'"
                     }
@@ -202,18 +168,19 @@
                 }
               }
             }
-          },
-          "selector": {
-            "metadata": "Measure.Valor Arbitrado Base"
           }
-        },
-        {
-          "properties": {}
         }
       ],
       "categoryAxis": [
         {
           "properties": {
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
             "fontFamily": {
               "expr": {
                 "Literal": {
@@ -228,157 +195,6 @@
                 }
               }
             }
-          }
-        }
-      ],
-      "referenceLine": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "displayName": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Avg'"
-                }
-              }
-            },
-            "value": {
-              "expr": {
-                "Aggregation": {
-                  "Expression": {
-                    "SelectRef": {
-                      "ExpressionName": "Measure.Valor Arbitrado Base"
-                    }
-                  },
-                  "Function": 1
-                }
-              }
-            },
-            "lineColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#7984EE'"
-                    }
-                  }
-                }
-              }
-            },
-            "width": {
-              "expr": {
-                "Literal": {
-                  "Value": "1D"
-                }
-              }
-            },
-            "dataLabelShow": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "shadeShow": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "dataLabelText": {
-              "expr": {
-                "Literal": {
-                  "Value": "'ValueAndName'"
-                }
-              }
-            },
-            "dataLabelColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 7,
-                      "Percent": 0.2
-                    }
-                  }
-                }
-              }
-            },
-            "dataLabelDisplayUnits": {
-              "expr": {
-                "Literal": {
-                  "Value": "1000D"
-                }
-              }
-            },
-            "dataLabelDecimalPoints": {
-              "expr": {
-                "Literal": {
-                  "Value": "0D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Measure.Valor Arbitrado Base",
-            "id": "1"
-          }
-        }
-      ],
-      "error": [
-        {
-          "properties": {
-            "enabled": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Measure.Valor Arbitrado Base"
-          }
-        },
-        {
-          "properties": {
-            "errorRange": {
-              "kind": "ErrorRange",
-              "percentage": {
-                "lowerBoundDelta": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "0.1D"
-                    }
-                  }
-                },
-                "upperBoundDelta": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "0.1D"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "data": [
-              {
-                "dataViewWildcard": {
-                  "matchingOption": 0
-                }
-              }
-            ],
-            "metadata": "Measure.Valor Arbitrado Base",
-            "highlightMatching": 1
           }
         }
       ],
@@ -400,17 +216,17 @@
       "title": [
         {
           "properties": {
-            "text": {
+            "show": {
               "expr": {
                 "Literal": {
-                  "Value": "'Curva de Gasto no Tempo (Cruzamentos)'"
+                  "Value": "true"
                 }
               }
             },
-            "fontFamily": {
+            "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'''Segoe UI'', wf_segoe-ui_normal, helvetica, arial, sans-serif'"
+                  "Value": "'Tendência de Valor Arbitrado'"
                 }
               }
             },
@@ -418,13 +234,6 @@
               "expr": {
                 "Literal": {
                   "Value": "10D"
-                }
-              }
-            },
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
                 }
               }
             }

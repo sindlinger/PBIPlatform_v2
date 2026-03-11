@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "fd849ce2439bbbba879b",
   "position": {
-    "x": 21.690319847489771,
+    "x": 16,
     "y": 0,
     "z": 6000,
-    "height": 43.380639694979877,
-    "width": 248.71566758455131,
+    "height": 36,
+    "width": 220,
     "tabOrder": 9995000
   },
   "visual": {
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "— Peritos  [Top 5]",
+                    "value": "Top 10 Peritos por Valor",
                     "textStyle": {
                       "fontFamily": "DIN",
                       "fontSize": "12pt",
@@ -51,5 +51,5 @@
     "drillFilterOtherVisuals": true
   },
   "parentGroupName": "66f8a48cf31c935a5b46",
-  "isHidden": true
+  "isHidden": false
 }
